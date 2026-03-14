@@ -20,7 +20,7 @@ import {
   GraduationCap
 } from 'lucide-react';
 
-const ServiceCard = ({ title, subtitle, solutions, icon: Icon, children, microUI, onHover, index, activeIndex }) => {
+const ServiceCard = ({ title, bgImage, subtitle, solutions, icon: Icon, children, microUI, onHover, index, activeIndex }) => {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);
 
@@ -77,11 +77,18 @@ const ServiceCard = ({ title, subtitle, solutions, icon: Icon, children, microUI
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
-      className={`relative group bg-patagonia-surface border border-white/5 rounded-card p-10 flex flex-col gap-6 transition-all duration-700 hover:border-patagonia-cyan/50 hover:shadow-[0_0_80px_rgba(0,229,255,0.05)] ${isDimmed ? 'opacity-30 scale-[0.98] grayscale-[50%]' : 'opacity-100 scale-100'}`}
+      className={`relative group bg-patagonia-surface border border-white/5 rounded-card p-10 flex flex-col gap-6 transition-all duration-700 hover:border-patagonia-cyan/50 hover:shadow-[0_0_80px_rgba(0,229,255,0.05)] overflow-hidden ${isDimmed ? 'opacity-30 scale-[0.98] grayscale-[50%]' : 'opacity-100 scale-100'}`}
     >
+      {/* Background Image Layer */}
+      <div 
+        className="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700 bg-cover bg-center"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-patagonia-void via-patagonia-void/80 to-transparent z-[1]" />
+
       {/* Dynamic Mouse Spotlight Glow */}
       <motion.div 
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[2]"
         style={{
           background: "radial-gradient(1000px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 229, 255, 0.04), transparent 40%)",
         }}
