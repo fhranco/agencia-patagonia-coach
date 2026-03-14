@@ -143,23 +143,23 @@ const ServiceMatrix = () => {
 
   const services = [
     {
-      title: "Marketing & Redes Sociales",
-      bgImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2000&auto=format&fit=crop",
+      title: "Marketing & Ecosistema Digital",
+      bgImage: "/matrix_marketing.png",
       solutions: [
         "Gestión de Redes Sociales",
-        "Publicidad en Redes Sociales",
-        "Análisis y Reporte",
+        "Publicidad de Alto Impacto",
+        "Análisis de Data Predictiva",
         "Community Management",
-        "Estrategia de Contenido",
-        "Optimización de Perfiles"
+        "Estrategia de Crecimiento",
+        "Optimización de Conversión"
       ],
       icon: Share2,
       microUI: (hover) => (
-        <div className="relative w-20 h-20 flex items-center justify-center">
+        <div className="relative w-24 h-24 flex items-center justify-center">
           <motion.div
             animate={{ rotate: hover ? 360 : 0 }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 border border-dashed border-white/10 rounded-full"
+            className="absolute inset-0 border border-dashed border-patagonia-cyan/30 rounded-full"
           />
           <div className="relative z-10 flex gap-2">
             <div className="w-2 h-2 bg-patagonia-cyan rounded-full animate-ping" />
@@ -169,14 +169,14 @@ const ServiceMatrix = () => {
       )
     },
     {
-      title: "Creación de Contenido & Storytelling",
-      bgImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop",
+      title: "Storytelling & Visual Engine",
+      bgImage: "/matrix_storytelling.png",
       solutions: [
-        "Storytelling Estratégico",
-        "Fotografía Profesional",
-        "Producción Audiovisual",
-        "IA Design aplicado",
-        "Diseño de piezas digitales"
+        "Narrativa Transmedia",
+        "Fotografía Galardonada",
+        "Producción Audiovisual 8K",
+        "Diseño con IA Generativa",
+        "Branding Documental"
       ],
       icon: Camera,
       microUI: (hover) => (
@@ -186,20 +186,20 @@ const ServiceMatrix = () => {
               key={i}
               animate={{ height: hover ? [10, Math.random() * 40 + 10, 10] : 10 }}
               transition={{ repeat: Infinity, duration: 0.5 + Math.random(), ease: "easeInOut" }}
-              className="w-1 bg-patagonia-red rounded-full"
+              className="w-1 bg-patagonia-red rounded-full shadow-[0_0_8px_rgba(240,20,10,0.5)]"
             />
           ))}
         </div>
       )
     },
     {
-      title: "Diseño & Arquitectura Web",
+      title: "Arquitectura & Desarrollo Web",
       bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop",
       solutions: [
-        "Sitios Web Corporativos",
-        "E-commerce Avanzado",
-        "Aplicaciones Web (SaaS)",
-        "Mantenimiento & Soporte"
+        "Ecosistemas Web Escalables",
+        "E-commerce de Próxima Generación",
+        "SaaS & Plataformas Custom",
+        "Optimización de Performance 100/100"
       ],
       icon: LayoutTemplate,
       microUI: (hover) => (
@@ -210,80 +210,72 @@ const ServiceMatrix = () => {
               initial={{ height: 0 }}
               animate={{ height: hover ? `${h}%` : '20%' }}
               transition={{ delay: i * 0.05, type: 'spring' }}
-              className="w-2 bg-patagonia-cyan rounded-t-sm"
+              className="w-2 bg-patagonia-cyan rounded-t-sm shadow-[0_0_10px_rgba(0,229,255,0.4)]"
             />
           ))}
         </div>
       )
     },
     {
-      title: "Inteligencia Artificial",
+      title: "Inteligencia Artificial Aplicada",
       bgImage: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2000&auto=format&fit=crop",
+      subtitle: "Automatizamos el 80% de sus tareas repetitivas para que su equipo se enfoque en la estrategia y la creatividad.",
       solutions: [
-        "Chatbots Inteligentes",
-        "Lead Scoring Automático",
-        "Email Marketing Inteligente",
-        "Automatización de Procesos"
+        "Modelos de IA Personalizados",
+        "Automatización de Workflows",
+        "Agentes de IA para Ventas",
+        "Análisis de Sentimiento"
       ],
       icon: Cpu,
-      microUI: (hover) => {
-        return (
-          <div className="flex flex-col items-center gap-4 pointer-events-none">
-            <div className="flex items-center gap-6">
-              <XCircle className={`w-5 h-5 transition-colors ${!hover ? 'text-patagonia-red' : 'text-white/20'}`} />
-              <div 
-                className={`w-12 h-6 rounded-full p-1 transition-colors ${hover ? 'bg-patagonia-cyan' : 'bg-white/10'}`}
-              >
-                <motion.div animate={{ x: hover ? 24 : 0 }} className="w-4 h-4 bg-white rounded-full shadow-lg" />
-              </div>
-              <CheckCircle2 className={`w-5 h-5 transition-colors ${hover ? 'text-patagonia-cyan' : 'text-white/20'}`} />
+      microUI: (hover) => (
+        <div className="flex flex-col items-center gap-4 pointer-events-none">
+          <div className="flex items-center gap-6">
+            <XCircle className={`w-5 h-5 transition-colors ${!hover ? 'text-patagonia-red' : 'text-white/20'}`} />
+            <div className={`w-12 h-6 rounded-full p-1 transition-colors ${hover ? 'bg-patagonia-cyan' : 'bg-white/10'}`}>
+              <motion.div animate={{ x: hover ? 24 : 0 }} className="w-4 h-4 bg-white rounded-full shadow-lg" />
             </div>
-            <span className="text-[10px] uppercase tracking-widest text-white/40">
-              {hover ? 'Status: Autonomous' : 'Status: Manual'}
-            </span>
+            <CheckCircle2 className={`w-5 h-5 transition-colors ${hover ? 'text-patagonia-cyan' : 'text-white/20'}`} />
           </div>
-        )
-      }
+          <span className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold">
+            {hover ? 'Status: Autonomous' : 'Status: Manual'}
+          </span>
+        </div>
+      )
     },
     {
-      title: "Consultoría Estratégica B2B",
+      title: "Consultoría de Transformación",
       bgImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2000&auto=format&fit=crop",
-      subtitle: "Integración de todos los verticales. Transformamos operaciones caos en sistemas eficientes escalables mediante consultoría de procesos y tecnología.",
+      subtitle: "Unificamos tecnología, cultura y estrategia en un solo ecosistema operativo diseñado para escalar sin fricciones.",
       solutions: [
-        "Auditoría Organizacional",
-        "Diseño de Ecosistemas Web",
-        "Estrategia Integral IA",
-        "Liderazgo Digital"
+        "Reingeniería de Procesos",
+        "Auditoría Tecnológica IA",
+        "Roadmap de Transformación",
+        "Cultura de Innovación"
       ],
       icon: Briefcase,
       microUI: (hover) => (
         <div className="relative w-24 h-12">
-          <motion.div
-            animate={{ opacity: hover ? 0 : 1 }}
-            className="absolute inset-0 border border-dashed border-white/20 rounded-md flex items-center justify-center"
-          >
+          <motion.div animate={{ opacity: hover ? 0 : 1 }} className="absolute inset-0 border border-dashed border-white/20 rounded-md flex items-center justify-center">
             <div className="w-8 h-8 border border-white/10" />
           </motion.div>
-          <motion.div
-            animate={{ opacity: hover ? 1 : 0, scale: hover ? 1 : 0.8 }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
+          <motion.div animate={{ opacity: hover ? 1 : 0, scale: hover ? 1 : 0.8 }} className="absolute inset-0 flex items-center justify-center">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-patagonia-red rounded-sm rotate-45" />
-              <div className="h-4 w-12 bg-white/20 rounded-full" />
+              <div className="w-6 h-6 bg-patagonia-red rounded-sm rotate-45 shadow-[0_0_15px_rgba(240,20,10,0.5)]" />
+              <div className="h-2 w-12 bg-white/20 rounded-full" />
             </div>
           </motion.div>
         </div>
       )
     },
     {
-      title: "Academia & Formación Corporativa",
+      title: "Ecosistema de Formación",
       bgImage: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2000&auto=format&fit=crop",
-      subtitle: "Capacitamos a tu equipo con los mismos modelos de las consultorías. Educación práctica y aplicable al instante.",
+      subtitle: "Capacitación continua para que su equipo no solo use la IA, sino que aprenda a evolucionar con ella.",
       solutions: [
-        "Sprints Tácticos (1-2 Hrs)",
-        "Bootcamps de Acción",
-        "Entrenamiento Custom"
+        "Sprints Tácticos de IA",
+        "Bootcamps de Acción Directa",
+        "Programas de Liderazgo Digital",
+        "Mentoría Estratégica"
       ],
       icon: GraduationCap,
       microUI: (hover) => (
