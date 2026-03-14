@@ -54,9 +54,9 @@ const Protocol = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/patagonia_protocol.png" 
+          src="/patagonia_protocol_v2.png" 
           alt="Protocol Background" 
-          className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-1000"
+          className="w-full h-full object-cover object-center opacity-60 grayscale hover:grayscale-0 transition-all duration-1000"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-patagonia-void via-transparent to-patagonia-void" />
       </div>
