@@ -30,15 +30,15 @@ const Protocol = () => {
       gsap.fromTo(bgRef.current, 
         { 
           scale: 1.1, 
-          filter: "grayscale(100%) blur(2px)",
-          opacity: 0.4,
-          x: "-5%" 
+          filter: "grayscale(100%) blur(4px)",
+          opacity: 0.3,
+          y: "-5%" 
         },
         {
-          scale: 1.2,
+          scale: 1.15,
           filter: "grayscale(0%) blur(0px)",
-          opacity: 0.8,
-          x: "5%",
+          opacity: 0.9,
+          y: "5%",
           ease: "none",
           scrollTrigger: {
             trigger: containerRef.current,
@@ -80,11 +80,11 @@ const Protocol = () => {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
           ref={bgRef}
-          src="/patagonia_protocol_v2.png" 
+          src="/patagonia_protocol_v3.png" 
           alt="Protocol Background" 
-          className="w-full h-full object-cover object-center transition-all duration-700"
+          className="w-full h-full object-cover object-top transition-all duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-patagonia-void via-transparent to-patagonia-void" />
+        <div className="absolute inset-0 bg-gradient-to-r from-patagonia-void via-transparent to-patagonia-void opacity-80" />
       </div>
 
       <div ref={scrollRef} className="flex h-screen items-center z-10 relative">
