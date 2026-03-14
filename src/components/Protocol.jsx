@@ -31,21 +31,21 @@ const Protocol = () => {
   const steps = [
     {
       id: "01",
-      title: "Diagnóstico",
-      description: "Auditoría profunda de cultura organizacional, procesos críticos y stack técnico actual. Identificamos cuellos de botella y brechas de automatización.",
-      status: "Analyzing..."
+      title: "Arquitectura",
+      description: "Diseño del mapa de integración entre su equipo y la IA. Identificamos cuellos de botella y diseñamos su arquitectura de datos única.",
+      status: "Designing..."
     },
     {
       id: "02",
-      title: "Implementación",
-      description: "Despliegue ágil de sistemas de automatización, integración de motores de IA y arquitectura de marketing digital de alto impacto.",
+      title: "Fusión",
+      description: "Despliegue donde la tecnología se vuelve parte orgánica del flujo diario. Integración de procesos y automatización de alto impacto.",
       status: "Building..."
     },
     {
       id: "03",
-      title: "Escalado",
-      description: "Capacitación interna y transferencia de conocimiento. Aseguramos la sostenibilidad y el crecimiento autónomo de la organización.",
-      status: "Scaling..."
+      title: "Evolución",
+      description: "Donde el ecosistema empieza a aprender y crecer de forma autónoma. Aseguramos la sostenibilidad y el liderazgo continuo.",
+      status: "Evolving..."
     }
   ];
 
@@ -54,9 +54,9 @@ const Protocol = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/methodology.png" 
+          src="/patagonia_protocol.png" 
           alt="Protocol Background" 
-          className="w-full h-full object-cover opacity-30 grayscale"
+          className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-1000"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-patagonia-void via-transparent to-patagonia-void" />
       </div>
