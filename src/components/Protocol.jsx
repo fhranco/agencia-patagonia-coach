@@ -6,12 +6,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Protocol = () => {
   const containerRef = useRef(null);
-  const scrollRef = useRef(null);
+  const bgRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const horizontalSections = gsap.utils.toArray(".protocol-step");
       
+      // Horizontal Content Scroll
       gsap.to(horizontalSections, {
         xPercent: -100 * (horizontalSections.length - 1),
         ease: "none",
@@ -23,6 +24,29 @@ const Protocol = () => {
           end: () => `+=${containerRef.current.offsetWidth * horizontalSections.length}`,
         }
       });
+
+      // Background Parallax & Color Activation
+      gsap.fromTo(bgRef.current, 
+        { 
+          scale: 1.1, 
+          filter: "grayscale(100%) blur(2px)",
+          opacity: 0.4,
+          x: "-5%" 
+        },
+        {
+          scale: 1.2,
+          filter: "grayscale(0%) blur(0px)",
+          opacity: 0.8,
+          x: "5%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          }
+        }
+      );
     }, containerRef);
 
     return () => ctx.revert();
@@ -52,11 +76,12 @@ const Protocol = () => {
   return (
     <section ref={containerRef} className="relative bg-black overflow-hidden">
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
+          ref={bgRef}
           src="/patagonia_protocol_v2.png" 
           alt="Protocol Background" 
-          className="w-full h-full object-cover object-center opacity-60 grayscale hover:grayscale-0 transition-all duration-1000"
+          className="w-full h-full object-cover object-center transition-all duration-700"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-patagonia-void via-transparent to-patagonia-void" />
       </div>
