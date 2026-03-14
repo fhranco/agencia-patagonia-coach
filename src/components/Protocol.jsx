@@ -29,16 +29,16 @@ const Protocol = () => {
       // Background Parallax & Color Activation
       gsap.fromTo(bgRef.current, 
         { 
-          scale: 1.1, 
-          filter: "grayscale(100%) blur(4px)",
-          opacity: 0.3,
-          y: "-5%" 
+          scale: 1.15, 
+          filter: "grayscale(100%) brightness(0.7)",
+          opacity: 0.4,
+          y: "-10%" 
         },
         {
-          scale: 1.15,
-          filter: "grayscale(0%) blur(0px)",
-          opacity: 0.9,
-          y: "5%",
+          scale: 1.1,
+          filter: "grayscale(0%) brightness(1)",
+          opacity: 0.8,
+          y: "10%",
           ease: "none",
           scrollTrigger: {
             trigger: containerRef.current,
@@ -80,9 +80,9 @@ const Protocol = () => {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
           ref={bgRef}
-          src="/patagonia_protocol_v3.png" 
+          src="/patagonia_protocol_v4.png" 
           alt="Protocol Background" 
-          className="w-full h-full object-cover object-top transition-all duration-700"
+          className="w-full h-full object-cover object-center transition-all duration-700"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-patagonia-void via-transparent to-patagonia-void opacity-80" />
       </div>
