@@ -7,6 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Protocol = () => {
   const containerRef = useRef(null);
   const bgRef = useRef(null);
+  const scrollRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
