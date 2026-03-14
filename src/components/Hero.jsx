@@ -44,7 +44,7 @@ const Hero = () => {
             ref={titleRef}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] leading-[1.05] tracking-tight font-heading font-bold text-white text-balance"
           >
-            Transformación Organizacional impulsada por Estrategia, Marketing e IA.
+            Lidera la era de la IA con un Ecosistema Organizacional diseñado para escalar.
           </h1>
           <p className="hero-text text-lg sm:text-xl font-light text-white/70 max-w-lg leading-relaxed">
             Ayudamos a las organizaciones a escalar sus resultados mediante la integración de capacidades digitales avanzadas y automatización.

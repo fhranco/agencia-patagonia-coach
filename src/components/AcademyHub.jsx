@@ -53,20 +53,20 @@ const AcademyHub = () => {
   const levels = [
     {
       id: "01",
-      name: "SPRINT",
+      name: "SPROUTS",
       type: "Talleres (2h)",
       icon: <Zap className="w-6 h-6 text-[#FF7A18]" />,
       color: "#FF7A18",
       content: (
         <div className="space-y-8">
           <div className="space-y-4">
-            <p className="text-xl font-medium text-white/90">Estrategia + Herramientas + Aplicación Directa.</p>
+            <p className="text-xl font-medium text-white/90">Cuenta tu Historia en Instagram + IA para el marketing de tu empresa.</p>
             <p className="text-white/50 leading-relaxed max-w-md">
-              Nuestros programas permiten que los equipos aprendan y apliquen inmediatamente lo aprendido en sus organizaciones mediante herramientas tecnológicas de vanguardia.
+              Aprende a conectar con tu audiencia y optimizar tu comunicación comercial utilizando herramientas de IA generativa de forma inmediata.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
-            {["Prompt Engineering", "Copy con IA", "Canva Pro", "Storytelling"].map((chip) => (
+            {["Instagram Stories", "IA para Marketing", "Content Strategy", "Social Media"].map((chip) => (
               <span key={chip} className="px-4 py-2 rounded-full border border-[#FF7A18]/30 bg-[#FF7A18]/5 text-[10px] uppercase tracking-widest text-[#FF7A18] hover:bg-[#FF7A18] hover:text-white transition-all cursor-default">
                 {chip}
               </span>
@@ -87,10 +87,10 @@ const AcademyHub = () => {
             <h4 className="text-2xl font-bold italic font-heading">Aprende y Aplica</h4>
             <ul className="space-y-4">
               {[
-                "Implementación de IA Generativa",
-                "Estrategia de Crecimiento Digital",
-                "Automatización de Procesos Críticos",
-                "Certificación de Competencias"
+                "Cómo crecer en Instagram",
+                "Crea prompts para tus tareas diarias",
+                "Optimización de Procesos con IA",
+                "Estrategia de Crecimiento Digital"
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3 text-white/70">
                   <CheckCircle2 className="w-5 h-5 text-patagonia-red" />
@@ -120,13 +120,12 @@ const AcademyHub = () => {
         <div className="flex flex-col items-center justify-center text-center space-y-8 py-10">
           <div className="space-y-4 max-w-2xl">
             <p className="text-3xl font-light tracking-[0.1em] leading-tight">
-              Diseñamos el sistema operativo de tu equipo. 
-              <span className="block font-bold mt-2">Consultoría + Formación a medida basada en tu diagnóstico organizacional.</span>
+              Implementa IA en tu empresa con una <span className="font-bold">arquitectura a medida</span> diseñada para obtener resultados inmediatos.
             </p>
           </div>
           <div className="pt-8">
             <MagneticButton className="btn-primary flex items-center gap-3 px-12 py-6 text-sm">
-              SOLICITAR DIAGNÓSTICO PARA EMPRESAS <ChevronRight className="w-4 h-4" />
+              SOLICITAR IMPLEMENTACIÓN CORPORATIVA <ChevronRight className="w-4 h-4" />
             </MagneticButton>
           </div>
         </div>

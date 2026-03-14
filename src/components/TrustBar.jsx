@@ -24,13 +24,13 @@ const TrustBar = () => {
   }, []);
 
   const clients = [
-    "TECHCORP", "ALPINELABS", "GLACIERSYSTEMS", "ANDESAI", "SUMMITDIGITAL", "VOLCANOTECH", "PATAGONIASTRATEGY"
+    "LOGÍSTICA", "TURISMO", "ACUICULTURA", "RETAIL", "ENERGÍA", "AGROINDUSTRIA", "SERVICIOS"
   ];
 
   return (
     <div className="py-12 border-y border-white/5 bg-patagonia-void overflow-hidden">
       <div className="section-container !py-0 mb-4 opacity-50 uppercase tracking-[0.3em] text-[10px] text-center">
-        Trusted by Industry Leaders
+        Experiencia en Industrias de la Patagonia
       </div>
       <div className="relative flex whitespace-nowrap overflow-hidden">
         <div ref={marqueeRef} className="flex gap-24 py-4 min-w-full">
