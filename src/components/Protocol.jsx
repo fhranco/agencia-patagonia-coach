@@ -1,0 +1,103 @@
+import { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const Protocol = () => {
+  const containerRef = useRef(null);
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const horizontalSections = gsap.utils.toArray(".protocol-step");
+      
+      gsap.to(horizontalSections, {
+        xPercent: -100 * (horizontalSections.length - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          pin: true,
+          scrub: 1,
+          snap: 1 / (horizontalSections.length - 1),
+          end: () => `+=${containerRef.current.offsetWidth * horizontalSections.length}`,
+        }
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const steps = [
+    {
+      id: "01",
+      title: "Diagnóstico",
+      description: "Auditoría profunda de cultura organizacional, procesos críticos y stack técnico actual. Identificamos cuellos de botella y brechas de automatización.",
+      status: "Analyzing..."
+    },
+    {
+      id: "02",
+      title: "Implementación",
+      description: "Despliegue ágil de sistemas de automatización, integración de motores de IA y arquitectura de marketing digital de alto impacto.",
+      status: "Building..."
+    },
+    {
+      id: "03",
+      title: "Escalado",
+      description: "Capacitación interna y transferencia de conocimiento. Aseguramos la sostenibilidad y el crecimiento autónomo de la organización.",
+      status: "Scaling..."
+    }
+  ];
+
+  return (
+    <section ref={containerRef} className="relative bg-black overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/methodology.png" 
+          alt="Protocol Background" 
+          className="w-full h-full object-cover opacity-30 grayscale"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-patagonia-void via-transparent to-patagonia-void" />
+      </div>
+
+      <div ref={scrollRef} className="flex h-screen items-center z-10 relative">
+        {/* Intro Slide */}
+        <div className="protocol-step min-w-full flex items-center justify-center p-20">
+          <div className="max-w-4xl text-center space-y-6">
+            <h2 className="text-7xl font-bold leading-none">EL PROTOCOLO</h2>
+            <p className="text-xl text-white/50 font-light tracking-wide uppercase">Metodología de Alto Impacto para la Innovación</p>
+            <div className="w-12 h-0.5 bg-patagonia-red mx-auto" />
+          </div>
+        </div>
+
+        {steps.map((step, i) => (
+          <div key={i} className="protocol-step min-w-full h-full flex items-center py-24 px-12 md:px-24">
+            <div className="grid md:grid-cols-2 gap-20 items-center max-w-7xl mx-auto w-full">
+              <div className="space-y-8">
+                <div className="text-[12rem] font-bold text-white/5 leading-none absolute -top-10 left-0 pointer-events-none">
+                  {step.id}
+                </div>
+                <div className="relative">
+                  <span className="text-patagonia-red font-heading tracking-[0.3em] text-sm uppercase mb-4 block">{step.status}</span>
+                  <h3 className="text-6xl font-bold mb-8">{step.title}</h3>
+                  <p className="text-2xl text-white/70 font-light leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+              <div className="glass-card flex flex-col items-center justify-center gap-6 py-20 border-patagonia-cyan/20 bg-patagonia-cyan/5">
+                <div className="w-24 h-24 rounded-full bg-patagonia-cyan/20 animate-pulse border border-patagonia-cyan/50 flex items-center justify-center">
+                  <div className="w-4 h-4 rounded-full bg-patagonia-cyan shadow-[0_0_15px_#00E5FF]" />
+                </div>
+                <p className="text-patagonia-cyan font-heading text-xs tracking-widest text-glow-cyan uppercase">System Active</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default Protocol;

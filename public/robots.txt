@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap link (replace with real domain once published)
+# Sitemap: https://agenciapatagonia.coach/sitemap.xml

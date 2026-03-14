@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body bg-patagonia-void text-white antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading uppercase tracking-tight;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 py-24;
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden bg-patagonia-red text-white px-8 py-4 rounded-btn font-heading font-medium transition-all duration-300 hover:scale-105 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply border border-white/20 hover:bg-white/10 text-white px-8 py-4 rounded-btn font-heading font-medium transition-all duration-300;
+  }
+
+  .glass-card {
+    @apply bg-patagonia-surface/50 backdrop-blur-xl border border-white/10 rounded-card p-8;
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+  }
+
+  .bg-glow-red {
+    box-shadow: 0 0 20px rgba(240, 20, 10, 0.3);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-patagonia-void;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-patagonia-red/50 transition-colors;
+}
+
+/* Custom Cursor styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  transition: transform 0.1s ease;
+}
+
+.custom-cursor-pill {
+  @apply bg-patagonia-red px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+/* Animations */
+.hero-animation {
+  background: radial-gradient(circle at center, rgba(0, 229, 255, 0.15) 0%, transparent 70%);
+}
