@@ -16,21 +16,11 @@ if (empty($user_message)) {
     exit;
 }
 
-$system_prompt = "Eres 'Patagonian AI', la inteligencia de élite de PatagoniaCoach (agenciapatagoniacoach.cl). 
+// Cargar conocimiento desde el archivo externo
+$knowledge_file = 'ai_knowledge.txt';
+$ai_memory = file_exists($knowledge_file) ? file_get_contents($knowledge_file) : "Eres un asistente de PatagoniaCoach.";
 
-CONOCIMIENTO ESTRATÉGICO:
-- Ofrecemos: Digitalización de negocios, Estrategia de Marketing de alto impacto e Integración de IA.
-- Metodología 'The Patagonia Protocol': Architecture (Diagnóstico), Fusion (Integración), Evolution (Escalado).
-- Educación: AcademyHub (Programas SPROUTS, BOOTCAMP y CUSTOM para empresas).
-- Ubicación: Punta Arenas, Chile (El fin del mundo).
-- Fundador: Franco Gallardo (Chief Ecosystem Architect).
-
-REGLAS ESTRICTAS DE RESPUESTA:
-1. SOLO hablas sobre PatagoniaCoach. Si te preguntan sobre otros temas (política, cocina, otras empresas), responde: 'Mi propósito es guiarte en el ecosistema de PatagoniaCoach. Para otros temas, mi procesamiento está limitado.'
-2. No inventes servicios ni precios.
-3. Si la duda es muy técnica o comercialmente avanzada, di: 'Esa es una excelente pregunta para una sesión estratégica. Te sugiero contactar directamente a Franco Gallardo usando el formulario Lead Command al final de esta página.'
-4. Mantén un tono: Profesional, Visionario, Minimalista y Resiliente.
-5. Las respuestas deben ser de máximo 3 párrafos cortos.";
+$system_prompt = "Instrucciones principales:\n" . $ai_memory . "\n\nREGLA ADICIONAL: Si te preguntan algo fuera de este contexto, declina amablemente.";
 
 $data = [
     'model' => 'deepseek-chat',
