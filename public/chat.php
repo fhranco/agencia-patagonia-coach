@@ -6,7 +6,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 
 // --- CONFIGURACIÓN ---
 // REEMPLAZA ESTO CON TU API KEY DE DEEPSEEK
-$api_key = 'TU_TOKEN_DE_DEEPSEEK_AQUI'; 
+$api_key = 'sk-3f814a317d084769817d8185fca30fb4'; 
 
 $input = json_decode(file_get_contents('php://input'), true);
 $user_message = $input['message'] ?? '';
