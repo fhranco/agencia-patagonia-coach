@@ -13,17 +13,16 @@ const WhatsAppButton = () => {
       target="_blank"
       rel="noopener noreferrer"
       initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      className="fixed bottom-8 right-8 z-50 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(37,211,102,0.4)] border border-white/20 group"
+      animate={{ scale: 1, opacity: 0.6 }}
+      whileHover={{ scale: 1.05, opacity: 1 }}
+      whileTap={{ scale: 0.95 }}
+      className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 group transition-all hover:bg-[#25D366]"
     >
-      <div className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20 group-hover:opacity-40 transition-opacity" />
-      <MessageSquare className="w-8 h-8 text-white relative z-10" />
+      <MessageSquare className="w-5 h-5 text-white/70 group-hover:text-white" />
       
       {/* Tooltip */}
-      <div className="absolute right-full mr-4 bg-patagonia-void border border-white/10 px-4 py-2 rounded-lg text-xs font-heading tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-        HABLAR CON UN EXPERTO
+      <div className="absolute right-full mr-4 bg-patagonia-void border border-white/10 px-3 py-1.5 rounded-lg text-[10px] font-heading tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+        WHATSAPP
       </div>
     </motion.a>
   );

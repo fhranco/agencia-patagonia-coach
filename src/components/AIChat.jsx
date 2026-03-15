@@ -134,17 +134,21 @@ const AIChat = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all ${
-          isOpen ? 'bg-patagonia-red rotate-90' : 'bg-patagonia-cyan'
+        className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all ${
+          isOpen ? 'bg-white text-black rotate-90' : 'bg-patagonia-red shadow-[0_0_40px_rgba(240,20,10,0.4)]'
         }`}
       >
         {isOpen ? (
-          <X className="w-6 h-6 text-white" />
+          <X className="w-6 h-6" />
         ) : (
-          <MessageSquare className="w-6 h-6 text-black" />
-        )}
-        {!isOpen && (
-          <span className="absolute -top-1 -right-1 w-4 h-4 bg-patagonia-red rounded-full border-2 border-black animate-bounce" />
+          <div className="relative">
+            <Bot className="w-7 h-7 text-white" />
+            <motion.div 
+               animate={{ scale: [1, 1.2, 1] }}
+               transition={{ repeat: Infinity, duration: 2 }}
+               className="absolute -top-1 -right-1 w-3 h-3 bg-patagonia-cyan rounded-full border-2 border-black" 
+            />
+          </div>
         )}
       </motion.button>
     </div>
