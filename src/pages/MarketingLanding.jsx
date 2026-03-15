@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Target, TrendingUp, BarChart3, Magnet, ArrowRight, CheckCircle2, XCircle, Zap, ShieldCheck } from 'lucide-react';
+import { Target, TrendingUp, BarChart3, Magnet, ArrowRight, CheckCircle2, XCircle, Zap, ShieldCheck, Users, History } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import LeadCommand from '../components/LeadCommand';
@@ -24,12 +24,12 @@ const MarketingLanding = () => {
           </motion.div>
           
           <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-8 italic leading-[0.9]">
-            Venda Más. <br />
-            <span className="text-patagonia-red">Gaste Menos.</span>
+            Historias que Venden. <br />
+            <span className="text-patagonia-red">Canales que Escalan.</span>
           </h1>
           
           <p className="text-xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed mb-12">
-            Eliminamos el marketing de vanidad. Construimos máquinas de adquisición de clientes diseñadas con datos para maximizar su ROI, no sus 'likes'.
+            No gestionamos perfiles; construimos legados. Transformamos sus redes sociales en canales de venta directos mediante un storytelling auténtico que conecta con la identidad de su marca.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -67,15 +67,15 @@ const MarketingLanding = () => {
                 {/* Patagonia Method */}
                 <div className="p-10 rounded-3xl bg-patagonia-red/5 border border-patagonia-red/30 space-y-8 relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-6 opacity-10">
-                        <Zap className="w-20 h-20 text-patagonia-red" />
+                        <Users className="w-20 h-20 text-patagonia-red" />
                     </div>
-                    <h3 className="text-2xl font-bold text-patagonia-red italic">Ingeniería de Conversión</h3>
+                    <h3 className="text-2xl font-bold text-patagonia-red italic">Método de Identidad Directa</h3>
                     <ul className="space-y-4">
                         {[
-                            "Foco en costo por cliente adquirido (CAC).",
-                            "Trazabilidad total: Sabemos de dónde viene cada peso.",
-                            "Optimización constante basada en datos reales.",
-                            "Sistemas de nutrición automáticos para cerrar ventas."
+                            "Storytelling Auténtico: Contamos su verdadera historia.",
+                            "Social-Selling: RRSS como un canal de venta activo.",
+                            "Trazabilidad: Medimos el impacto real de cada contenido.",
+                            "Comunidad: Fidelizamos clientes que comparten sus valores."
                         ].map((item, i) => (
                             <li key={i} className="flex gap-4 items-center">
                                 <CheckCircle2 className="w-5 h-5 text-patagonia-red flex-shrink-0" />
@@ -88,34 +88,40 @@ const MarketingLanding = () => {
         </div>
       </section>
 
-      {/* ROI Pillars */}
+      {/* Storytelling & Social Sales Pillars */}
       <section className="py-32 px-6 bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-                {
-                    icon: Magnet,
-                    title: "Adquisición Magnética",
-                    desc: "Encontramos a su cliente ideal donde realmente está, usando pauta segmentada por comportamiento y datos."
-                },
-                {
-                    icon: TrendingUp,
-                    title: "Escalabilidad de ROAS",
-                    desc: "Invertimos cada dólar como si fuera nuestro. Buscamos el retorno más alto sobre su inversión publicitaria."
-                },
-                {
-                    icon: BarChart3,
-                    title: "Funnels de Alto Rendimiento",
-                    desc: "No enviamos tráfico a un sitio muerto. Diseñamos experiencias de conversión que convierten clicks en contratos."
-                }
-            ].map((pilar, i) => (
-                <div key={i} className="space-y-6 text-center md:text-left">
-                    <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto md:mx-0 border border-white/10">
-                        <pilar.icon className="w-8 h-8 text-patagonia-red" />
+        <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+                <h2 className="text-4xl font-bold italic">Redes Sociales con <span className="text-patagonia-red">Propósito de Venta.</span></h2>
+                <p className="text-white/40 mt-4 max-w-xl mx-auto">No publicamos fotos bonitas; narramos historias que obligan a su audiencia a actuar.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                {[
+                    {
+                        icon: History,
+                        title: "Storytelling de Identidad",
+                        desc: "Extraemos el ADN de su marca para contar su historia real. La autenticidad es el activo más caro en la era de la IA."
+                    },
+                    {
+                        icon: Target,
+                        title: "Social-Selling Activo",
+                        desc: "Diseñamos estrategias de contenido que guían al usuario desde el 'scroll' hasta el botón de 'comprar' o 'agendar'."
+                    },
+                    {
+                        icon: BarChart3,
+                        title: "Métricas de Negocio",
+                        desc: "Auditamos el rendimiento de cada historia y post bajo un solo prisma: ¿Cuántos leads reales generó?"
+                    }
+                ].map((pilar, i) => (
+                    <div key={i} className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-patagonia-red/30 transition-all">
+                        <div className="w-14 h-14 bg-patagonia-red/10 rounded-xl flex items-center justify-center mb-6">
+                            <pilar.icon className="w-7 h-7 text-patagonia-red" />
+                        </div>
+                        <h3 className="text-2xl font-bold italic mb-4">{pilar.title}</h3>
+                        <p className="text-white/40 font-light leading-relaxed">{pilar.desc}</p>
                     </div>
-                    <h3 className="text-2xl font-bold italic">{pilar.title}</h3>
-                    <p className="text-white/40 font-light leading-relaxed">{pilar.desc}</p>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
       </section>
 
