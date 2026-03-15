@@ -13,6 +13,7 @@ import CustomCursor from './components/CustomCursor';
 import WhatsAppButton from './components/WhatsAppButton';
 import ScrollToTop from './components/ScrollToTop';
 import PhoneButton from './components/PhoneButton';
+import AIChat from './components/AIChat';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <CustomCursor />
       <WhatsAppButton />
       <PhoneButton />
+      <AIChat />
       <ScrollToTop />
 
       <Navbar />
