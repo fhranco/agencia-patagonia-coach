@@ -7,36 +7,90 @@ const questions = [
     id: 1,
     title: "¿Cuál es el tamaño actual de su ecosistema?",
     options: [
-      { text: "Individual / Profesional", score: 10 },
-      { text: "PYME en crecimiento", score: 20 },
-      { text: "Gran Empresa / Corporación", score: 30 }
+      { text: "Individual / Profesional Independiente", score: 10 },
+      { text: "PYME en crecimiento (5-20 personas)", score: 20 },
+      { text: "Gran Empresa / Corporación (+50 personas)", score: 30 }
     ]
   },
   {
     id: 2,
     title: "¿Qué nivel de automatización tiene su marketing?",
     options: [
-      { text: "Manual (Dependo de mi tiempo)", score: 5 },
-      { text: "Básica (Email simple, redes)", score: 15 },
-      { text: "Avanzada (CRM, flujos automáticos)", score: 25 }
+      { text: "Manual (Dependo de mi tiempo y memoria)", score: 5 },
+      { text: "Básica (Email simple, posteos manuales)", score: 15 },
+      { text: "Avanzada (CRM, flujos automáticos de nutrición)", score: 30 }
     ]
   },
   {
     id: 3,
     title: "¿Utiliza IA en su flujo de trabajo diario?",
     options: [
-      { text: "No, aún investigando", score: 5 },
-      { text: "Uso herramientas básicas (ChatGPT)", score: 15 },
-      { text: "IA Integrada en mis procesos", score: 30 }
+      { text: "No, aún estamos investigando", score: 5 },
+      { text: "Uso herramientas básicas (ChatGPT, Midjourney)", score: 15 },
+      { text: "IA Integrada y entrenada en nuestros procesos", score: 30 }
     ]
   },
   {
     id: 4,
-    title: "¿Cuál es su prioridad estratégica actual?",
+    title: "¿Cómo gestiona los datos de sus clientes?",
     options: [
-      { text: "Generar más Leads / Ventas", score: 20 },
-      { text: "Optimizar Tiempos / Costos", score: 20 },
-      { text: "Escalabilidad Tecnológica", score: 25 }
+      { text: "Excel / Agendas / WhatsApp personal", score: 5 },
+      { text: "CRM centralizado pero poco utilizado", score: 20 },
+      { text: "Ecosistema de datos conectado e inteligente", score: 30 }
+    ]
+  },
+  {
+    id: 5,
+    title: "¿Cuál es su velocidad de respuesta a nuevos leads?",
+    options: [
+      { text: "Más de 24 horas (o perdemos el rastro)", score: 5 },
+      { text: "Entre 1 y 4 horas (Vía humana)", score: 15 },
+      { text: "Inmediata e IA-Incentivada (24/7)", score: 30 }
+    ]
+  },
+  {
+    id: 6,
+    title: "¿Cuán escalable es su modelo de entrega actual?",
+    options: [
+      { text: "Dependencia 100% de Horas Hombre (HH)", score: 5 },
+      { text: "Procesos semi-estandarizados", score: 20 },
+      { text: "Escalabilidad total vía sistemas y software", score: 30 }
+    ]
+  },
+  {
+    id: 7,
+    title: "¿Qué porcentaje de ventas proviene de canales digitales?",
+    options: [
+      { text: "Menos del 10% (Principalmente referidos)", score: 10 },
+      { text: "Entre 10% y 40% (Crecimiento inestable)", score: 20 },
+      { text: "Más del 50% (Motor de adquisición masiva)", score: 30 }
+    ]
+  },
+  {
+    id: 8,
+    title: "¿Cuál es la cultura de innovación de su equipo?",
+    options: [
+      { text: "Resistencia al cambio tecnológico", score: 5 },
+      { text: "Aprendizaje autodidacta por necesidad", score: 15 },
+      { text: "Mentalidad 'Exponencial' y capacitación constante", score: 30 }
+    ]
+  },
+  {
+    id: 9,
+    title: "¿Invierten actualmente en I+D o Software especializado?",
+    options: [
+      { text: "Inversión nula o reactiva", score: 5 },
+      { text: "Inversión básica para operar", score: 15 },
+      { text: "Inversión estratégica para dominar el mercado", score: 30 }
+    ]
+  },
+  {
+    id: 10,
+    title: "¿Cuál es su prioridad estratégica para los próximos 6 meses?",
+    options: [
+      { text: "Sobrevivir / Ordenar el caos interno", score: 10 },
+      { text: "Aumentar Leads / Ventas rápidamente", score: 20 },
+      { text: "Automatización total y expansión masiva", score: 30 }
     ]
   }
 ];
@@ -73,13 +127,13 @@ const DigitalDiagnostic = () => {
   };
 
   const getResult = () => {
-    if (totalScore < 50) return {
+    if (totalScore < 130) return {
       status: "Ecosistema Emergente",
       message: "Su negocio tiene un potencial de digitalización gigante. Actualmente está perdiendo eficiencia y oportunidades que la IA podría capturar.",
       focus: "Recomendación: Iniciarse en el 'Patagonia Protocol: Architecture' para diseñar su base digital.",
       color: "text-patagonia-red"
     };
-    if (totalScore < 85) return {
+    if (totalScore < 230) return {
       status: "Ecosistema en Proceso",
       message: "Ya tiene bases digitales, pero falta 'Fusión'. Sus herramientas no están hablando entre sí para maximizar su rentabilidad.",
       focus: "Recomendación: Integración táctica de IA y automatización de marketing B2B.",
