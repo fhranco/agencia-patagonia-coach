@@ -12,6 +12,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-12 font-heading text-xs uppercase tracking-widest text-white/60">
           <Link to="/" className="hover:text-patagonia-red transition-colors">Agencia</Link>
           <Link to="/ia" className="hover:text-patagonia-cyan transition-colors">Evolución IA</Link>
+          <Link to="/marketing" className="hover:text-patagonia-red transition-colors">Marketing</Link>
           <a href="#consultoría" className="hover:text-patagonia-red transition-colors">Consultoría</a>
           <a href="#academia" className="hover:text-patagonia-red transition-colors">Academia</a>
           <a href="#contacto" className="hover:text-patagonia-red transition-colors text-patagonia-cyan">Contacto</a>

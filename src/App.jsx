@@ -4,6 +4,7 @@ import FloatingActions from './components/FloatingActions';
 import ScrollToTop from './components/ScrollToTop';
 import MainLanding from './pages/MainLanding';
 import IALanding from './pages/IALanding';
+import MarketingLanding from './pages/MarketingLanding';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainLanding />} />
           <Route path="/ia" element={<IALanding />} />
+          <Route path="/marketing" element={<MarketingLanding />} />
         </Routes>
       </div>
     </Router>

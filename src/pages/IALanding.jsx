@@ -3,6 +3,7 @@ import { Bot, Zap, Cpu, Code2, ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DigitalDiagnostic from '../components/DigitalDiagnostic';
+import LeadCommand from '../components/LeadCommand';
 
 const IALanding = () => {
   return (
@@ -67,6 +68,7 @@ const IALanding = () => {
       </section>
 
       <DigitalDiagnostic />
+      <LeadCommand />
 
       <Footer />
     </div>
