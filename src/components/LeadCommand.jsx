@@ -32,6 +32,7 @@ const LeadCommand = () => {
       // Integration for Hostinger (using custom mail.php)
       const form = new FormData();
       Object.keys(formData).forEach(key => form.append(key, formData[key]));
+      form.append('form_type', 'Auditoría Estratégica (Formulario)');
 
       const response = await fetch('/mail.php', {
         method: 'POST',

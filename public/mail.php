@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $to = "contacto@agenciapatagoniacoach.cl";
-    $subject = "Nueva Auditoría Estratégica - PatagoniaCoach";
     
     // Honeypot check
     if (!empty($_POST['_honeypot'])) {
@@ -19,22 +18,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $nombre = strip_tags($_POST['nombre']);
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $presupuesto = strip_tags($_POST['presupuesto']);
-    $mensaje = strip_tags($_POST['mensaje']);
+    $nombre = strip_tags($_POST['nombre'] ?? 'Sin nombre');
+    $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
+    $whatsapp = strip_tags($_POST['whatsapp'] ?? 'No provisto');
+    $type = $_POST['form_type'] ?? 'Lead General';
+    
+    $subject = "Nuevo Lead: $type - $nombre";
 
-    $body = "Has recibido una nueva solicitud de auditoría desde el sitio web:\n\n";
+    $body = "Has recibido una nueva entrada desde el sitio web ($type):\n\n";
     $body .= "Nombre: $nombre\n";
-    $body .= "Email: $email\n";
-    $body .= "Presupuesto: $presupuesto\n";
-    $body .= "Mensaje: $mensaje\n";
+    
+    if ($email) $body .= "Email: $email\n";
+    if ($whatsapp) $body .= "WhatsApp: $whatsapp\n";
+    
+    if (isset($_POST['presupuesto'])) {
+        $body .= "Presupuesto: " . strip_tags($_POST['presupuesto']) . "\n";
+    }
+    
+    if (isset($_POST['score'])) {
+        $body .= "Puntaje Diagnóstico: " . strip_tags($_POST['score']) . "/300\n";
+    }
+
+    if (isset($_POST['mensaje'])) {
+        $body .= "Mensaje/Desafío: " . strip_tags($_POST['mensaje']) . "\n";
+    }
 
     $headers = "From: webmaster@agenciapatagoniacoach.cl\r\n";
-    $headers .= "Reply-To: $email\r\n";
+    if ($email) {
+        $headers .= "Reply-To: $email\r\n";
+    }
     $headers .= "X-Mailer: PHP/" . phpversion();
 
-    if (mail($to, $subject, $body, $headers)) {
+  if (mail($to, $subject, $body, $headers)) {
         echo json_encode(["status" => "success", "message" => "Email enviado correctamente"]);
     } else {
         http_response_code(500);
@@ -45,3 +60,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode(["status" => "error", "message" => "Método no permitido"]);
 }
 ?>
+

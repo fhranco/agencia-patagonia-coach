@@ -113,10 +113,30 @@ const DigitalDiagnostic = () => {
     }
   };
 
-  const handleLeadSubmit = (e) => {
+  const handleLeadSubmit = async (e) => {
     e.preventDefault();
+    
+    // Anti-spam check
+    if (leadData._honeypot) return;
+
+    try {
+      const formData = new FormData();
+      formData.append('nombre', leadData.nombre);
+      formData.append('whatsapp', leadData.whatsapp);
+      formData.append('score', totalScore);
+      formData.append('form_type', 'Diagnóstico Digital');
+      formData.append('_honeypot', leadData._honeypot || '');
+      
+      await fetch('/mail.php', {
+        method: 'POST',
+        body: formData
+      });
+    } catch (error) {
+      console.error('Error sending diagnostic lead:', error);
+    }
+
     setShowResult(true);
-    // Track conversion
+    // Track conversion in Analytics
     if (typeof window.gtag !== 'undefined') {
         window.gtag('event', 'unlock_diagnostic', {
           'nombre': leadData.nombre,
@@ -231,6 +251,16 @@ const DigitalDiagnostic = () => {
                 <p className="text-white/40 max-w-md mx-auto">Ingresa tus datos para desbloquear tu Reporte Estratégico y los pasos a seguir.</p>
                 
                 <form onSubmit={handleLeadSubmit} className="max-w-md mx-auto space-y-4">
+                    {/* Anti-spam Honeypot */}
+                    <input 
+                      type="text" 
+                      name="_honeypot" 
+                      style={{ display: 'none' }} 
+                      tabIndex="-1" 
+                      autoComplete="off" 
+                      onChange={(e) => setLeadData({...leadData, _honeypot: e.target.value})}
+                    />
+                    
                     <input 
                         required
                         type="text" 
