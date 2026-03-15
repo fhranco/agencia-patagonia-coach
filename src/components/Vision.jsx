@@ -1,88 +1,107 @@
 import { motion } from 'framer-motion';
-import { Quote, Compass, Globe } from 'lucide-react';
+import { Compass, Globe } from 'lucide-react';
 
 const Vision = () => {
   return (
-    <section className="section-container relative py-32 overflow-hidden bg-black">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-patagonia-red/10 blur-[120px] rounded-full animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-patagonia-cyan/10 blur-[120px] rounded-full" />
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-black py-24">
+      {/* Immersive Background Elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-patagonia-red/5 blur-[160px] rounded-full" />
+        <div className="absolute bottom-0 left-1/4 w-[800px] h-[400px] bg-patagonia-cyan/5 blur-[140px] rounded-full" />
+        
+        {/* Large Decorative Text */}
+        <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none">
+          <h2 className="text-[20vw] font-bold text-white/[0.02] leading-none tracking-tighter">
+            MANIFESTO
+          </h2>
+        </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
-        <div className="grid md:grid-cols-12 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+        <div className="grid lg:grid-cols-2 gap-20 items-end">
           
-          {/* Quote Section */}
-          <div className="md:col-span-8 space-y-12">
-            <div className="relative">
-              <Quote className="w-16 h-16 text-patagonia-red/20 absolute -top-8 -left-8" />
-              <h2 className="text-4xl md:text-6xl font-bold leading-tight tracking-tight">
-                "La innovación no ocurre en las oficinas de cristal de las grandes ciudades, sino donde la <span className="text-patagonia-red">naturaleza nos obliga</span> a ser más inteligentes."
-              </h2>
-            </div>
+          {/* Section 1: The Philosophy (Humanizing) */}
+          <div className="space-y-12">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <span className="text-patagonia-red font-heading tracking-[0.4em] text-xs uppercase block font-bold">La Visión del Fundador</span>
+              <h3 className="text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight">
+                "No digitalizo procesos, <span className="text-patagonia-red">evoluciono resultados."</span>
+              </h3>
+              <div className="w-24 h-1 bg-patagonia-red/50" />
+            </motion.div>
 
-            <div className="space-y-6 text-xl text-white/70 font-light leading-relaxed max-w-2xl">
+            <div className="space-y-8 text-xl md:text-2xl text-white/50 font-light leading-relaxed max-w-xl">
               <p>
-                PatagoniaCoach nació de una observación simple: el mundo está saturado de tecnología, pero hambriento de propósito. Desde Punta Arenas, <span className="text-white font-normal">digitalizamos negocios</span> integrando marketing de alto impacto e IA para crear ecosistemas que no solo funcionan, sino que dominan mercados.
+                He visto a cientos de empresas perderse en el "ruido digital". Herramientas sin alma que solo generan complejidad y gasto sin retorno.
+              </p>
+              <p className="text-white/80">
+                En <span className="text-patagonia-cyan">PatagoniaCoach</span>, mi compromiso es personal: conectar la potencia de la Inteligencia Artificial con una <span className="text-white font-normal underline decoration-patagonia-red/50 decoration-2 underline-offset-4">estrategia de marketing de alto impacto</span> y una digitalización de negocios impecable.
               </p>
               <p>
-                No entregamos soluciones aisladas. Diseñamos la arquitectura digital que permite a su marca evolucionar con agilidad, liderando desde el rincón más remoto para que su impacto no tenga fronteras.
+                Diseñamos ecosistemas donde la tecnología trabaja para usted, y no al revés. Lideramos desde el fin del mundo porque aquí aprendimos que la resiliencia es la única ventaja competitiva que no se puede automatizar.
               </p>
-            </div>
-
-            <div className="flex items-center gap-6 pt-8">
-              <div className="w-16 h-1 bg-patagonia-red" />
-              <div>
-                <p className="text-2xl font-bold tracking-wider">FRANCO GALLARDO</p>
-                <p className="text-xs uppercase tracking-[0.3em] text-white/40">Founder & Chief Ecosystem Architect</p>
-              </div>
             </div>
           </div>
 
-          {/* Stats/Badges Column */}
-          <div className="md:col-span-4 space-y-4">
-            <motion.div 
-              whileHover={{ y: -5 }}
-              className="glass-card p-6 border-white/5 bg-white/[0.02]"
-            >
-              <Compass className="w-6 h-6 text-patagonia-cyan mb-3" />
-              <h4 className="text-sm font-bold mb-1 uppercase tracking-widest text-patagonia-cyan">ADN Austral</h4>
-              <p className="text-xs text-white/50 leading-relaxed font-light">
-                Resiliencia y visión estratégica forjada en el entorno más desafiante del planeta.
-              </p>
-            </motion.div>
+          {/* Section 2: Authority & Signature */}
+          <div className="space-y-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <motion.div 
+                whileHover={{ y: -5 }}
+                className="glass-card p-8 border-white/5 bg-white/[0.03] backdrop-blur-3xl group hover:border-patagonia-cyan/30 transition-all"
+              >
+                <Globe className="w-8 h-8 text-patagonia-cyan mb-4 group-hover:scale-110 transition-transform" />
+                <h4 className="text-lg font-bold mb-2 uppercase tracking-widest text-patagonia-cyan">Escale Global</h4>
+                <p className="text-sm text-white/40 font-light">
+                  Llevamos su negocio regional al escenario mundial mediante automatización y marketing de élite.
+                </p>
+              </motion.div>
 
-            <motion.div 
-              whileHover={{ y: -5 }}
-              className="glass-card p-6 border-white/5 bg-white/[0.02]"
-            >
-              <Globe className="w-6 h-6 text-patagonia-red mb-3" />
-              <h4 className="text-sm font-bold mb-1 uppercase tracking-widest text-patagonia-red">Impacto Global</h4>
-              <p className="text-xs text-white/50 leading-relaxed font-light">
-                Digitalización de negocios aplicada a la realidad de su empresa, sin límites geográficos.
-              </p>
-            </motion.div>
+              <motion.div 
+                whileHover={{ y: -5 }}
+                className="glass-card p-8 border-white/5 bg-white/[0.03] backdrop-blur-3xl group hover:border-patagonia-red/30 transition-all"
+              >
+                <Compass className="w-8 h-8 text-patagonia-red mb-4 group-hover:scale-110 transition-transform" />
+                <h4 className="text-lg font-bold mb-2 uppercase tracking-widest text-patagonia-red">Norte Estratégico</h4>
+                <p className="text-sm text-white/40 font-light">
+                  Cada línea de código y cada campaña tiene un solo objetivo: aumentar su rentabilidad y autoridad de mercado.
+                </p>
+              </motion.div>
+            </div>
 
-            <motion.div 
-              whileHover={{ y: -5 }}
-              className="glass-card p-6 border-white/5 bg-white/[0.02] border-l-patagonia-cyan/30"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-2 h-2 rounded-full bg-patagonia-cyan animate-pulse" />
-                <h4 className="text-sm font-bold uppercase tracking-widest text-white">Marketing Engine</h4>
+            <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <div className="space-y-2">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-patagonia-red/30 p-1 flex items-center justify-center relative">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-patagonia-red to-patagonia-cyan opacity-20 animate-pulse" />
+                    <span className="text-2xl font-bold text-white relative z-10">FG</span>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold tracking-tighter uppercase italic">Franco Gallardo</p>
+                    <p className="text-[10px] uppercase tracking-[0.4em] text-white/30">Founder & Chief Ecosystem Architect</p>
+                  </div>
+                </div>
               </div>
-              <p className="text-xs text-white/50 leading-relaxed font-light">
-                Estrategias de crecimiento digital diseñadas para convertir la tecnología en resultados tangibles.
-              </p>
-            </motion.div>
+              
+              <div className="flex gap-4">
+                <div className="px-6 py-3 rounded-full bg-white/5 border border-white/10 flex items-center gap-3 shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+                  <span className="w-2 h-2 rounded-full bg-green-500 animate-ping" />
+                  <span className="text-[10px] uppercase tracking-widest font-heading text-white/80">Consultoría VIP Disponible</span>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
       </div>
 
-      {/* Decorative Line */}
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      {/* Bottom Glow */}
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-patagonia-red/50 to-transparent shadow-[0_0_20px_rgba(240,20,10,0.5)]" />
     </section>
   );
 };
