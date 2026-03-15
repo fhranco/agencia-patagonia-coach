@@ -56,14 +56,14 @@ const AIChat = () => {
   };
 
   return (
-    <div className="fixed top-1/2 -translate-y-1/2 right-8 z-[100]">
+    <div className="relative">
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, x: 20, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 20, scale: 0.95 }}
-            className="absolute top-1/2 -translate-y-1/2 right-24 w-[320px] sm:w-[380px] h-[500px] max-h-[70vh] bg-patagonia-void/95 backdrop-blur-2xl border border-white/10 rounded-card shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden"
+            className="absolute bottom-0 right-20 w-[320px] sm:w-[380px] h-[500px] max-h-[70vh] bg-patagonia-void/95 backdrop-blur-2xl border border-white/10 rounded-card shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="p-4 border-b border-white/10 flex items-center justify-between bg-patagonia-cyan/5">
@@ -178,7 +178,7 @@ const AIChat = () => {
           setIsOpen(!isOpen);
           setShowGreeting(false);
         }}
-        className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all ${
+        className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all group ${
           isOpen ? 'bg-white text-black rotate-90' : 'bg-patagonia-red shadow-[0_0_40px_rgba(240,20,10,0.4)]'
         }`}
       >
@@ -192,6 +192,13 @@ const AIChat = () => {
                transition={{ repeat: Infinity, duration: 2 }}
                className="absolute -top-1 -right-1 w-3 h-3 bg-patagonia-cyan rounded-full border-2 border-black" 
             />
+          </div>
+        )}
+
+        {/* Tooltip */}
+        {!isOpen && (
+          <div className="absolute right-full mr-4 bg-patagonia-void border border-white/10 px-3 py-1.5 rounded-lg text-[10px] font-heading tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            IA CHAT
           </div>
         )}
       </motion.button>

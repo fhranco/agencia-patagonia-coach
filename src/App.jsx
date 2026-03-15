@@ -20,9 +20,11 @@ function App() {
   return (
     <div className="relative">
       <CustomCursor />
-      <WhatsAppButton />
-      <PhoneButton />
-      <AIChat />
+      <div className="fixed bottom-8 right-8 z-[101] flex flex-col items-center gap-4">
+        <AIChat />
+        <PhoneButton />
+        <WhatsAppButton />
+      </div>
       <ScrollToTop />
 
       <Navbar />
