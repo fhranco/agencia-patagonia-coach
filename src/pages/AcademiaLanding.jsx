@@ -49,18 +49,18 @@ const AcademiaLanding = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* 1. Sprints Tácticos */}
+                {/* 1. Talleres 2 Horas */}
                 <motion.div 
                     whileHover={{ y: -10 }}
                     className="p-10 rounded-3xl bg-black border border-white/5 hover:border-patagonia-cyan/30 transition-all flex flex-col h-full"
                 >
                     <Zap className="w-12 h-12 text-patagonia-cyan mb-8" />
-                    <h3 className="text-2xl font-bold mb-4 italic">Sprints Tácticos de IA</h3>
+                    <h3 className="text-2xl font-bold mb-4 italic text-white">Talleres de Impacto <br /><span className="text-patagonia-cyan">2 Horas</span></h3>
                     <p className="text-white/40 font-light leading-relaxed mb-8">
-                        Talleres de un solo día enfocados en una herramienta o proceso específico. Ideal para equipos que necesitan soluciones rápidas a problemas concretos.
+                        Cápsulas de ejecución pura. Sin teoría innecesaria. Entramos, resolvemos un problema específico con IA y salimos con resultados.
                     </p>
                     <ul className="space-y-4 mb-10 flex-grow">
-                        {["Uso de ChatGPT Pro", "Automatización de Email", "Creación de Contenido con IA"].map((item, i) => (
+                        {["Foco en Ejecución Inmediata", "Herramientas Críticas de IA", "Ideal para Nivelación de Equipos"].map((item, i) => (
                             <li key={i} className="flex gap-3 text-sm text-white/60">
                                 <CheckCircle2 className="w-4 h-4 text-patagonia-cyan flex-shrink-0" />
                                 {item}
@@ -68,23 +68,23 @@ const AcademiaLanding = () => {
                         ))}
                     </ul>
                     <a href="#contacto" className="w-full py-4 text-center border border-white/10 rounded-xl hover:bg-white/5 transition-colors font-bold text-sm uppercase tracking-widest">
-                        Me interesa un Sprint
+                        Consultar Taller 2h
                     </a>
                 </motion.div>
 
-                {/* 2. Bootcamps */}
+                {/* 2. Workshops 4 Horas */}
                 <motion.div 
                     whileHover={{ y: -10 }}
                     className="p-10 rounded-3xl bg-patagonia-cyan/5 border border-patagonia-cyan/30 transition-all flex flex-col h-full relative overflow-hidden"
                 >
-                    <div className="absolute top-0 right-0 bg-patagonia-cyan text-black text-[10px] font-bold px-4 py-1 uppercase tracking-widest">Popular</div>
+                    <div className="absolute top-0 right-0 bg-patagonia-cyan text-black text-[10px] font-bold px-4 py-1 uppercase tracking-widest">Recomendado</div>
                     <Users className="w-12 h-12 text-patagonia-cyan mb-8" />
-                    <h3 className="text-2xl font-bold mb-4 italic text-patagonia-cyan">Bootcamps de Acción Directa</h3>
+                    <h3 className="text-2xl font-bold mb-4 italic text-patagonia-cyan">Workshops Profundos <br /><span className="text-white">4 Horas</span></h3>
                     <p className="text-white/70 font-light leading-relaxed mb-8">
-                        Inmersiones intensivas de 1 a 4 semanas. Pasamos de cero a implementar un ecosistema operativo completo con su equipo.
+                        Inmersión de medio día. Diseñamos e implementamos un flujo de trabajo real junto a su equipo. De la idea a la automatización.
                     </p>
                     <ul className="space-y-4 mb-10 flex-grow">
-                        {["Metodología Hand-On", "Proyecto Real Implementado", "Soporte Post-Bootcamp"].map((item, i) => (
+                        {["Implementación Hands-On", "Resolución de Casos Reales", "Manual de Uso para el Equipo"].map((item, i) => (
                             <li key={i} className="flex gap-3 text-sm text-white/90">
                                 <CheckCircle2 className="w-4 h-4 text-patagonia-cyan flex-shrink-0" />
                                 {item}
@@ -92,22 +92,22 @@ const AcademiaLanding = () => {
                         ))}
                     </ul>
                     <a href="#contacto" className="w-full py-4 text-center bg-patagonia-cyan text-black rounded-xl hover:scale-105 transition-all font-bold text-sm uppercase tracking-widest">
-                        Reservar para mi Equipo
+                        Reservar Taller 4h
                     </a>
                 </motion.div>
 
-                {/* 3. Liderazgo Digital */}
+                {/* 3. Programas Personalizados */}
                 <motion.div 
                     whileHover={{ y: -10 }}
                     className="p-10 rounded-3xl bg-black border border-white/5 hover:border-patagonia-cyan/30 transition-all flex flex-col h-full"
                 >
-                    <Trophy className="w-12 h-12 text-patagonia-cyan mb-8" />
-                    <h3 className="text-2xl font-bold mb-4 italic">Programas de Liderazgo</h3>
+                    <Sparkles className="w-12 h-12 text-patagonia-cyan mb-8" />
+                    <h3 className="text-2xl font-bold mb-4 italic text-white">Programas <br /><span className="text-patagonia-cyan">Personalizados</span></h3>
                     <p className="text-white/40 font-light leading-relaxed mb-8">
-                        Formación estratégica para directivos y dueños de negocio. Cómo gestionar equipos en la era de la IA y tomar decisiones basadas en datos.
+                        Diseñamos el ecosistema formativo que su empresa necesita. Mentoring senior para directivos y formación in-house a medida.
                     </p>
                     <ul className="space-y-4 mb-10 flex-grow">
-                        {["Visión Estratégica", "Gestión de Talento Híbrido", "Ética y Seguridad en IA"].map((item, i) => (
+                        {["Contenido 100% Curado", "Acompañamiento Estratégico", "Foco en sus Objetivos B2B"].map((item, i) => (
                             <li key={i} className="flex gap-3 text-sm text-white/60">
                                 <CheckCircle2 className="w-4 h-4 text-patagonia-cyan flex-shrink-0" />
                                 {item}
@@ -115,7 +115,7 @@ const AcademiaLanding = () => {
                         ))}
                     </ul>
                     <a href="#contacto" className="w-full py-4 text-center border border-white/10 rounded-xl hover:bg-white/5 transition-colors font-bold text-sm uppercase tracking-widest">
-                        Consultar sobre Liderazgo
+                        Diseñar mi Programa
                     </a>
                 </motion.div>
             </div>
