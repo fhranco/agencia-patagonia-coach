@@ -11,7 +11,7 @@ Este archivo sirve como memoria central para el desarrollo del ecosistema digita
     - El `DigitalDiagnostic` ahora requiere Nombre y WhatsApp para desbloquear el resultado.
     - Integración directa de WhatsApp con mensaje personalizado según el puntaje obtenido.
 2.  **Estrategia de Conversión Unificada**: Todas las landing pages (`Main`, `IA`, `Marketing`) tienen el formulario `LeadCommand` como cierre.
-3.  **Ecosystem Landing Pages**: Despliegue de `/` (Home), `/ia` (IA) y `/marketing` (ROI).
+3.  **Ecosystem Landing Pages**: Despliegue de `/` (Home), `/ia` (IA), `/marketing` (ROI) y `/consultoria` (Estrategia B2B).
 4.  **Arquitectura de Navegación**: Router configurado y Navbar actualizado.
 
 ### 🏗️ En Desarrollo (WIP)

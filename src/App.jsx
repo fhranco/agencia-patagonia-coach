@@ -5,6 +5,7 @@ import ScrollToTop from './components/ScrollToTop';
 import MainLanding from './pages/MainLanding';
 import IALanding from './pages/IALanding';
 import MarketingLanding from './pages/MarketingLanding';
+import ConsultingLanding from './pages/ConsultingLanding';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<MainLanding />} />
           <Route path="/ia" element={<IALanding />} />
           <Route path="/marketing" element={<MarketingLanding />} />
+          <Route path="/consultoria" element={<ConsultingLanding />} />
         </Routes>
       </div>
     </Router>
