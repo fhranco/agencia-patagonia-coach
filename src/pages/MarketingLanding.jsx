@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Target, TrendingUp, BarChart3, Magnet, ArrowRight, CheckCircle2, XCircle, Zap, ShieldCheck, Users, History } from 'lucide-react';
+import { Target, TrendingUp, BarChart3, Magnet, ArrowRight, CheckCircle2, XCircle, Zap, ShieldCheck, Users, History, Instagram, Linkedin, MessageSquare } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import LeadCommand from '../components/LeadCommand';
@@ -145,7 +145,53 @@ const MarketingLanding = () => {
           </div>
       </section>
 
-      {/* Final Conversion CTA */}
+      {/* Profile Evaluation Section (Lead Magnet) */}
+      <section className="py-32 px-6">
+          <div className="max-w-7xl mx-auto">
+              <div className="bg-gradient-to-br from-patagonia-red/10 to-transparent border border-white/5 rounded-[3rem] p-10 md:p-20 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-12 opacity-5">
+                      <MessageSquare className="w-64 h-64" />
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-16 items-center relative z-10">
+                      <div className="space-y-8">
+                          <h2 className="text-4xl md:text-6xl font-bold italic leading-tight">Evaluación Gratuita de su <span className="text-patagonia-red">Perfil.</span></h2>
+                          <p className="text-xl text-white/60 font-light leading-relaxed">
+                              Analizamos su presencia actual en **Instagram** o **LinkedIn** para identificar fugas de autoridad y oportunidades de conversión inmediata.
+                          </p>
+                          <div className="flex gap-4">
+                              <div className="p-4 bg-white/5 rounded-2xl border border-white/10 flex items-center gap-3">
+                                  <Instagram className="w-6 h-6 text-patagonia-red" />
+                                  <span className="text-sm font-bold">Instagram</span>
+                              </div>
+                              <div className="p-4 bg-white/5 rounded-2xl border border-white/10 flex items-center gap-3">
+                                  <Linkedin className="w-6 h-6 text-patagonia-cyan" />
+                                  <span className="text-sm font-bold">LinkedIn</span>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <div className="space-y-6">
+                          <h3 className="text-2xl font-bold italic mb-6">¿Qué auditamos?</h3>
+                          {[
+                              "Estrategia de Biografía y Conversión.",
+                              "Calidad Narrativa (Storytelling).",
+                              "Engagement real vs Métricas de Vanidad.",
+                              "Optimización del Funnel de Ventas."
+                          ].map((item, i) => (
+                              <div key={i} className="flex gap-4 items-center p-4 bg-white/5 rounded-xl border border-white/5 hover:border-patagonia-red/30 transition-all">
+                                  <CheckCircle2 className="w-5 h-5 text-patagonia-red" />
+                                  <span className="text-white/80 font-light">{item}</span>
+                              </div>
+                          ))}
+                          <a href="#contacto" className="inline-block w-full text-center py-5 bg-patagonia-red text-white rounded-full font-bold hover:scale-105 transition-all shadow-xl mt-4">
+                              SOLICITAR EVALUACIÓN DE PERFIL
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
       <section className="py-32 px-6">
           <div className="max-w-4xl mx-auto text-center space-y-10">
               <ShieldCheck className="w-20 h-20 text-patagonia-cyan mx-auto opacity-50" />
