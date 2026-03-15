@@ -5,6 +5,7 @@ import ValueLadder from './components/ValueLadder';
 import Consultancy from './components/Consultancy';
 import ServiceMatrix from './components/ServiceMatrix';
 import Protocol from './components/Protocol';
+import CaseStudies from './components/CaseStudies';
 import AcademyHub from './components/AcademyHub';
 import Vision from './components/Vision';
 import LeadCommand from './components/LeadCommand';
@@ -33,6 +34,7 @@ function App() {
         <Consultancy />
         <ServiceMatrix />
         <Protocol />
+        <CaseStudies />
         <AcademyHub />
         <Vision />
         <LeadCommand />
