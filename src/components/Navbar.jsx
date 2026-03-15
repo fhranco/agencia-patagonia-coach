@@ -14,7 +14,7 @@ const Navbar = () => {
           <Link to="/ia" className="hover:text-patagonia-cyan transition-colors">Evolución IA</Link>
           <Link to="/marketing" className="hover:text-patagonia-red transition-colors">Marketing</Link>
           <Link to="/consultoria" className="hover:text-patagonia-red transition-colors">Consultoría</Link>
-          <a href="#academia" className="hover:text-patagonia-red transition-colors">Academia</a>
+          <Link to="/academia" className="hover:text-patagonia-red transition-colors">Academia</Link>
           <a href="#contacto" className="hover:text-patagonia-red transition-colors text-patagonia-cyan">Contacto</a>
         </div>
 

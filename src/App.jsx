@@ -6,6 +6,7 @@ import MainLanding from './pages/MainLanding';
 import IALanding from './pages/IALanding';
 import MarketingLanding from './pages/MarketingLanding';
 import ConsultingLanding from './pages/ConsultingLanding';
+import AcademiaLanding from './pages/AcademiaLanding';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/ia" element={<IALanding />} />
           <Route path="/marketing" element={<MarketingLanding />} />
           <Route path="/consultoria" element={<ConsultingLanding />} />
+          <Route path="/academia" element={<AcademiaLanding />} />
         </Routes>
       </div>
     </Router>

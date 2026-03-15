@@ -55,9 +55,9 @@ const Hero = () => {
               Agendar Auditoría Estratégica
               <span className="absolute inset-0 border-2 border-patagonia-red rounded-btn opacity-50 animate-ping group-hover:hidden" />
             </a>
-            <a href="#academia" className="btn-secondary inline-block text-center">
+            <Link to="/academia" className="btn-secondary inline-block text-center">
               Explorar Academia
-            </a>
+            </Link>
           </div>
         </div>
 
