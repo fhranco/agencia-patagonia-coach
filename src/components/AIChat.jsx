@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Send, Bot, User, Loader2 } from 'lucide-react';
 
-const AIChat = () => {
+const AIChat = ({ hideButton = false, forceOpen = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(false);
   const [messages, setMessages] = useState([
@@ -11,6 +11,10 @@ const AIChat = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef(null);
+  
+  useEffect(() => {
+    if (forceOpen) setIsOpen(true);
+  }, [forceOpen]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -171,37 +175,39 @@ const AIChat = () => {
       </AnimatePresence>
 
       {/* Floating Button */}
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => {
-          setIsOpen(!isOpen);
-          setShowGreeting(false);
-        }}
-        className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all group ${
-          isOpen ? 'bg-white text-black rotate-90' : 'bg-patagonia-red shadow-[0_0_40px_rgba(240,20,10,0.4)]'
-        }`}
-      >
-        {isOpen ? (
-          <X className="w-6 h-6" />
-        ) : (
-          <div className="relative">
-            <Bot className="w-7 h-7 text-white" />
-            <motion.div 
-               animate={{ scale: [1, 1.2, 1] }}
-               transition={{ repeat: Infinity, duration: 2 }}
-               className="absolute -top-1 -right-1 w-3 h-3 bg-patagonia-cyan rounded-full border-2 border-black" 
-            />
-          </div>
-        )}
+      {!hideButton && (
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => {
+            setIsOpen(!isOpen);
+            setShowGreeting(false);
+          }}
+          className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all group ${
+            isOpen ? 'bg-white text-black rotate-90' : 'bg-patagonia-red shadow-[0_0_40px_rgba(240,20,10,0.4)]'
+          }`}
+        >
+          {isOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <div className="relative">
+              <Bot className="w-7 h-7 text-white" />
+              <motion.div 
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+                className="absolute -top-1 -right-1 w-3 h-3 bg-patagonia-cyan rounded-full border-2 border-black" 
+              />
+            </div>
+          )}
 
-        {/* Tooltip */}
-        {!isOpen && (
-          <div className="absolute right-full mr-4 bg-patagonia-void border border-white/10 px-3 py-1.5 rounded-lg text-[10px] font-heading tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-            IA CHAT
-          </div>
-        )}
-      </motion.button>
+          {/* Tooltip */}
+          {!isOpen && (
+            <div className="absolute right-full mr-4 bg-patagonia-void border border-white/10 px-3 py-1.5 rounded-lg text-[10px] font-heading tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              IA CHAT
+            </div>
+          )}
+        </motion.button>
+      )}
     </div>
   );
 };

@@ -8,23 +8,18 @@ import Protocol from './components/Protocol';
 import CaseStudies from './components/CaseStudies';
 import AcademyHub from './components/AcademyHub';
 import Vision from './components/Vision';
+import DigitalDiagnostic from './components/DigitalDiagnostic';
 import LeadCommand from './components/LeadCommand';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
-import WhatsAppButton from './components/WhatsAppButton';
+import FloatingActions from './components/FloatingActions';
 import ScrollToTop from './components/ScrollToTop';
-import PhoneButton from './components/PhoneButton';
-import AIChat from './components/AIChat';
 
 function App() {
   return (
     <div className="relative">
       <CustomCursor />
-      <div className="fixed bottom-8 right-8 z-[101] flex flex-col items-center gap-4">
-        <AIChat />
-        <PhoneButton />
-        <WhatsAppButton />
-      </div>
+      <FloatingActions />
       <ScrollToTop />
 
       <Navbar />
@@ -39,6 +34,7 @@ function App() {
         <CaseStudies />
         <AcademyHub />
         <Vision />
+        <DigitalDiagnostic />
         <LeadCommand />
       </main>
       <Footer />
