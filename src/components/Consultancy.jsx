@@ -77,23 +77,23 @@ const Consultancy = () => {
   const pilares = [
     {
       id: "01",
-      title: "Transformación Organizacional",
-      focus: "Ayudamos a las organizaciones a mejorar su eficiencia, procesos y resultados, mientras formamos a sus equipos en Marketing Digital e IA aplicada al negocio.",
-      deliverable: "Consultoría + Formación en IA",
+      title: "Ecosistema Organizacional",
+      focus: "Rediseñamos la estructura de su empresa para que la IA y el Marketing no sean parches, sino el motor de un sistema organizacional que escala de forma orgánica.",
+      deliverable: "Mapa de Arquitectura Organizacional IA",
       icon: Network
     },
     {
       id: "02",
-      title: "Capacidades Digitales",
-      focus: "A través de nuestra Academia, ayudamos a empresas y profesionales a adquirir las capacidades necesarias para crecer en un entorno cada vez más competitivo.",
-      deliverable: "Programas de Estrategia Digital",
+      title: "Cultura de Innovación",
+      focus: "Transformamos la mentalidad de su equipo. Desde el liderazgo hasta la base, capacitamos en el uso táctico de IA para despejar tareas operativas y potenciar la creatividad.",
+      deliverable: "Roadmap de Adopción Cultural",
       icon: Cpu
     },
     {
       id: "03",
-      title: "Puente Tecnológico",
-      focus: "Integramos estrategia de negocio y tecnología para ayudar a las empresas a adaptarse a los cambios del mercado y la transformación digital.",
-      deliverable: "Desarrollo y Estrategia Digital",
+      title: "Puente Tecnológico Regional",
+      focus: "Conectamos la robustez de las industrias de la Patagonia con el futuro digital. Integramos procesos tradicionales con capas tecnológicas de última generación.",
+      deliverable: "Despliegue de Capas Tecnológicas",
       icon: Users
     }
   ];
