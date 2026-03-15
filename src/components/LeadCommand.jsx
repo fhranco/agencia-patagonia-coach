@@ -40,6 +40,14 @@ const LeadCommand = () => {
 
       if (response.ok) {
         setStatus('success');
+        // Track conversion in Google Analytics
+        if (typeof window.gtag !== 'undefined') {
+          window.gtag('event', 'generate_lead', {
+            'event_category': 'Engagement',
+            'event_label': 'Lead Command Form',
+            'value': formData.presupuesto
+          });
+        }
       } else {
         throw new Error('Error en el servidor');
       }
