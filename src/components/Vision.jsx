@@ -24,10 +24,10 @@ const Vision = () => {
 
             <div className="space-y-6 text-xl text-white/70 font-light leading-relaxed max-w-2xl">
               <p>
-                PatagoniaCoach nació de una observación simple: el mundo está saturado de tecnología, pero hambriento de propósito. Desde Punta Arenas, no solo integramos IA; diseñamos el ecosistema donde su organización puede evolucionar.
+                PatagoniaCoach nació de una observación simple: el mundo está saturado de tecnología, pero hambriento de propósito. Desde Punta Arenas, <span className="text-white font-normal">digitalizamos negocios</span> integrando marketing de alto impacto e IA para crear ecosistemas que no solo funcionan, sino que dominan mercados.
               </p>
               <p>
-                No vendemos herramientas. Somos el puente entre la complejidad técnica y la ejecución magistral. Lideramos desde el fin del mundo para que su impacto sea global.
+                No entregamos soluciones aisladas. Diseñamos la arquitectura digital que permite a su marca evolucionar con agilidad, liderando desde el rincón más remoto para que su impacto no tenga fronteras.
               </p>
             </div>
 
@@ -35,32 +35,45 @@ const Vision = () => {
               <div className="w-16 h-1 bg-patagonia-red" />
               <div>
                 <p className="text-2xl font-bold tracking-wider">FRANCO GALLARDO</p>
-                <p className="text-xs uppercase tracking-[0.3em] text-white/40">Founder & Lead Ecosystem Architect</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-white/40">Founder & Chief Ecosystem Architect</p>
               </div>
             </div>
           </div>
 
           {/* Stats/Badges Column */}
-          <div className="md:col-span-4 space-y-6">
+          <div className="md:col-span-4 space-y-4">
             <motion.div 
               whileHover={{ y: -5 }}
-              className="glass-card p-8 border-white/5 bg-white/[0.02]"
+              className="glass-card p-6 border-white/5 bg-white/[0.02]"
             >
-              <Compass className="w-8 h-8 text-patagonia-cyan mb-4" />
-              <h4 className="text-lg font-bold mb-2 uppercase tracking-widest text-patagonia-cyan">ADN Austral</h4>
-              <p className="text-sm text-white/50 leading-relaxed font-light">
+              <Compass className="w-6 h-6 text-patagonia-cyan mb-3" />
+              <h4 className="text-sm font-bold mb-1 uppercase tracking-widest text-patagonia-cyan">ADN Austral</h4>
+              <p className="text-xs text-white/50 leading-relaxed font-light">
                 Resiliencia y visión estratégica forjada en el entorno más desafiante del planeta.
               </p>
             </motion.div>
 
             <motion.div 
               whileHover={{ y: -5 }}
-              className="glass-card p-8 border-white/5 bg-white/[0.02]"
+              className="glass-card p-6 border-white/5 bg-white/[0.02]"
             >
-              <Globe className="w-8 h-8 text-patagonia-red mb-4" />
-              <h4 className="text-lg font-bold mb-2 uppercase tracking-widest text-patagonia-red">Impacto Global</h4>
-              <p className="text-sm text-white/50 leading-relaxed font-light">
-                Metodologías de clase mundial aplicadas a la realidad de su empresa, sin fronteras.
+              <Globe className="w-6 h-6 text-patagonia-red mb-3" />
+              <h4 className="text-sm font-bold mb-1 uppercase tracking-widest text-patagonia-red">Impacto Global</h4>
+              <p className="text-xs text-white/50 leading-relaxed font-light">
+                Digitalización de negocios aplicada a la realidad de su empresa, sin límites geográficos.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="glass-card p-6 border-white/5 bg-white/[0.02] border-l-patagonia-cyan/30"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-2 h-2 rounded-full bg-patagonia-cyan animate-pulse" />
+                <h4 className="text-sm font-bold uppercase tracking-widest text-white">Marketing Engine</h4>
+              </div>
+              <p className="text-xs text-white/50 leading-relaxed font-light">
+                Estrategias de crecimiento digital diseñadas para convertir la tecnología en resultados tangibles.
               </p>
             </motion.div>
           </div>
