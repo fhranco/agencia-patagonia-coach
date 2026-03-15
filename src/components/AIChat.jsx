@@ -48,14 +48,14 @@ const AIChat = () => {
   };
 
   return (
-    <div className="fixed bottom-24 right-6 z-[100]">
+    <div className="fixed bottom-8 left-8 z-[100]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="absolute bottom-20 right-0 w-[350px] sm:w-[400px] h-[500px] bg-patagonia-void/95 backdrop-blur-2xl border border-white/10 rounded-card shadow-2xl flex flex-col overflow-hidden"
+            className="absolute bottom-20 left-0 w-[350px] sm:w-[400px] h-[500px] bg-patagonia-void/95 backdrop-blur-2xl border border-white/10 rounded-card shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="p-4 border-b border-white/10 flex items-center justify-between bg-patagonia-cyan/5">
