@@ -151,7 +151,7 @@ const ServiceMatrix = () => {
   const services = [
     {
       title: "Marketing & Ecosistema Digital",
-      bgImage: "/matrix_marketing.png",
+      bgImage: "/matrix_marketing.webp",
       solutions: [
         "Gestión de Redes Sociales",
         "Publicidad de Alto Impacto",
@@ -177,7 +177,7 @@ const ServiceMatrix = () => {
     },
     {
       title: "Storytelling & Visual Engine",
-      bgImage: "/matrix_storytelling.png",
+      bgImage: "/matrix_storytelling.webp",
       solutions: [
         "Narrativa Transmedia",
         "Fotografía Galardonada",

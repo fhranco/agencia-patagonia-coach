@@ -97,7 +97,7 @@ const Protocol = () => {
       <div className="absolute inset-0 z-0 select-none">
         <img 
           ref={bgRef}
-          src="/patagonia_protocol_v4.png" 
+          src="/patagonia_protocol_v4.webp" 
           alt="Protocol Background" 
           className="w-full h-full object-cover object-center"
         />
