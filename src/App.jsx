@@ -6,6 +6,7 @@ import Consultancy from './components/Consultancy';
 import ServiceMatrix from './components/ServiceMatrix';
 import Protocol from './components/Protocol';
 import AcademyHub from './components/AcademyHub';
+import Vision from './components/Vision';
 import LeadCommand from './components/LeadCommand';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
@@ -31,6 +32,7 @@ function App() {
         <ServiceMatrix />
         <Protocol />
         <AcademyHub />
+        <Vision />
         <LeadCommand />
       </main>
       <Footer />
