@@ -8,14 +8,15 @@ Este archivo sirve como memoria central para el desarrollo del ecosistema digita
 
 ### ✅ Hitos Completados Hoy
 1.  **Rebranding de Mensaje**: Transición completa de "Liderazgo" a "Ecosistemas Digitales, IA y Consultoría B2B".
-2.  **Patagonian AI (v1.5)**: 
-    - Implementación de burbuja proactiva.
-    - Cerebro desacoplado en `public/ai_knowledge.txt`.
-    - Integración en el nuevo sistema de acciones flotantes.
-3.  **Digital Diagnostic Tool**: Implementado completamente en el flujo principal de la web.
-4.  **FloatingActions (v1.0)**: Centralización de WhatsApp, Phone y AI Chat en un menú dinámico y colapsable que mejora el "look & feel" premium.
-5.  **Casos de Éxito**: Integración de métricas reales para Toyota Coyhaique y Zona Austral.
-6.  **Sincronización Total**: Repositorio de GitHub actualizado y commit realizado.
+2.  **Sistema de Múltiples Landings (Routing)**: 
+    - Instalación de `react-router-dom`.
+    - Estructura de navegación configurada en `App.jsx`.
+    - Creación de `src/pages/MainLanding.jsx` e `src/pages/IALanding.jsx`.
+3.  **Patagonian AI (v1.5)**: 
+    - Implementación de burbuja proactiva e integración en el sistema de acciones flotantes.
+4.  **Digital Diagnostic Tool**: Implementado completamente en el flujo principal de la web.
+5.  **FloatingActions (v1.0)**: Menú dinámico y colapsable finalizado.
+6.  **Sincronización Total**: Repositorio de GitHub actualizado.
 
 ### 🏗️ En Desarrollo (WIP)
 - **Automatización**: Configuración final de Git -> GitHub -> Hostinger para despliegue automático.
