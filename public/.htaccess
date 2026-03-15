@@ -2,14 +2,18 @@
   RewriteEngine On
   RewriteBase /
   RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-l
-  # SEO Cleanup: Signal Google that old URLs are permanently Gone (410)
+
+  # 1. If it's a real file or directory, stop and serve it
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 2. SEO Cleanup: Signal Google that old URLs are permanently Gone (410)
   RewriteRule ^servicio/.*$ - [G,L]
   RewriteRule ^tienda/.*$ - [G,L]
   RewriteRule ^home/.*$ - [G,L]
 
+  # 3. SPA Fallback: Everything else to index.html
   RewriteRule . /index.html [L]
 </IfModule>
 
@@ -24,6 +28,6 @@
 </IfModule>
 
 # Caching for Performance
-<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|webp|svg)$">
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|webp|svg|xml)$">
   Header set Cache-Control "max-age=31536000, public"
 </FilesMatch>
