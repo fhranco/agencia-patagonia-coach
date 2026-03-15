@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import TrustBar from '../components/TrustBar';
 import ValueLadder from '../components/ValueLadder';
+import QuickOffers from '../components/QuickOffers';
 import Consultancy from '../components/Consultancy';
 import ServiceMatrix from '../components/ServiceMatrix';
 import Protocol from '../components/Protocol';
@@ -20,6 +21,7 @@ const MainLanding = () => {
         <Hero />
         <TrustBar />
         <ValueLadder />
+        <QuickOffers />
         <Consultancy />
         <ServiceMatrix />
         <Protocol />
