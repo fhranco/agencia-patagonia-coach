@@ -5,6 +5,11 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-l
+  # SEO Cleanup: Signal Google that old URLs are permanently Gone (410)
+  RewriteRule ^servicio/.*$ - [G,L]
+  RewriteRule ^tienda/.*$ - [G,L]
+  RewriteRule ^home/.*$ - [G,L]
+
   RewriteRule . /index.html [L]
 </IfModule>
 
