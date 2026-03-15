@@ -14,6 +14,19 @@ const cases = [
     ],
     image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=1000", // Symbolic high-quality car image
     color: "bg-patagonia-red"
+  },
+  {
+    client: "Zona Austral",
+    category: "Corporate Training & IA Transfer",
+    title: "Evolución Digital y Transferencia de Capacidades",
+    description: "Un proceso de transformación en dos etapas: Capacitación avanzada de equipos de marketing (2024) y transferencia técnica para la implementación de IA en flujos de trabajo operativos (2025).",
+    metrics: [
+      { label: "Equipos", value: "Marketing", icon: Users },
+      { label: "Fase 1", value: "Training", icon: Zap },
+      { label: "Fase 2", value: "IA Setup", icon: TrendingUp }
+    ],
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000", // Professional office/training setting
+    color: "bg-patagonia-cyan text-black"
   }
 ];
 

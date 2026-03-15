@@ -27,3 +27,4 @@ FILTROS Y REGLAS:
 
 CASOS DE ÉXITO (ECOSISTEMAS ENTREGADOS):
 - TOYOTA COYHAIQUE: Implementación de Chat de IA que aumentó la conversión un 40%, generando leads constantes para la comunidad automotriz de la Región de Aysén.
+- ZONA AUSTRAL: Proceso de evolución digital (2024-2025). Capacitación de equipos de marketing y transferencia técnica de Inteligencia Artificial para optimizar flujos de trabajo operativos.
