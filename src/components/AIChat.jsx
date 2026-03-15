@@ -4,12 +4,20 @@ import { MessageSquare, X, Send, Bot, User, Loader2 } from 'lucide-react';
 
 const AIChat = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showGreeting, setShowGreeting] = useState(false);
   const [messages, setMessages] = useState([
     { role: 'bot', content: '¡Hola! Soy Patagonian AI. ¿Cómo puedo ayudarte a evolucionar tu negocio hoy?' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isOpen) setShowGreeting(true);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [isOpen]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -129,11 +137,47 @@ const AIChat = () => {
         )}
       </AnimatePresence>
 
+      {/* Proactive Greeting Bubble */}
+      <AnimatePresence>
+        {showGreeting && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: 20, scale: 0.8 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 20, scale: 0.8 }}
+            className="absolute bottom-20 right-0 w-64 bg-white text-patagonia-void p-4 rounded-2xl shadow-2xl border border-white/20 select-none cursor-pointer"
+            onClick={() => setIsOpen(true)}
+          >
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowGreeting(false);
+              }}
+              className="absolute -top-2 -right-2 w-6 h-6 bg-patagonia-red text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+            >
+              <X className="w-3 h-3" />
+            </button>
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 rounded-full bg-patagonia-red/10 flex items-center justify-center flex-shrink-0">
+                <Bot className="w-4 h-4 text-patagonia-red" />
+              </div>
+              <p className="text-xs font-medium leading-relaxed">
+                <span className="font-bold">¿Hablamos?</span> Puedo ayudarte a integrar IA y potenciar tu marketing hoy mismo.
+              </p>
+            </div>
+            {/* Triangle Tail */}
+            <div className="absolute top-full right-6 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-white" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Floating Button */}
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          setIsOpen(!isOpen);
+          setShowGreeting(false);
+        }}
         className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all ${
           isOpen ? 'bg-white text-black rotate-90' : 'bg-patagonia-red shadow-[0_0_40px_rgba(240,20,10,0.4)]'
         }`}
