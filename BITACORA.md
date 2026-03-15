@@ -7,13 +7,12 @@ Este archivo sirve como memoria central para el desarrollo del ecosistema digita
 ## 📅 Estado Actual: 15 de Marzo, 2026
 
 ### ✅ Hitos Completados Hoy
-1.  **Estrategia de Conversión Unificada**: Todas las landing pages (`Main`, `IA`, `Marketing`) han sido equipadas con el componente `LeadCommand` como cierre forzoso para captura de leads.
-2.  **Ecosystem Landing Pages**: 
-    - `/` (Home): Visión general del ecosistema.
-    - `/ia`: Especializada en automatización y agentes autónomos.
-    - `/marketing`: Focada en ROI y adquisición masiva B2B.
-3.  **Arquitectura de Navegación**: Router configurado y Navbar actualizado para navegación fluida entre especialidades.
-4.  **Patagonian AI (v1.5)** e Interfaz Premium finalizados.
+1.  **Lead Magnet de Alto Impacto (Diagnóstico)**: 
+    - El `DigitalDiagnostic` ahora requiere Nombre y WhatsApp para desbloquear el resultado.
+    - Integración directa de WhatsApp con mensaje personalizado según el puntaje obtenido.
+2.  **Estrategia de Conversión Unificada**: Todas las landing pages (`Main`, `IA`, `Marketing`) tienen el formulario `LeadCommand` como cierre.
+3.  **Ecosystem Landing Pages**: Despliegue de `/` (Home), `/ia` (IA) y `/marketing` (ROI).
+4.  **Arquitectura de Navegación**: Router configurado y Navbar actualizado.
 
 ### 🏗️ En Desarrollo (WIP)
 - **Automatización**: Configuración final de Git -> GitHub -> Hostinger para despliegue automático.

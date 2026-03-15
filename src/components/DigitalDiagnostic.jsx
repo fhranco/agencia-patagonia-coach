@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ClipboardCheck, ArrowRight, BarChart3, ShieldCheck, Zap } from 'lucide-react';
+import { ClipboardCheck, ArrowRight, BarChart3, ShieldCheck, Zap, MessageSquare } from 'lucide-react';
 
 const questions = [
   {
@@ -45,6 +45,8 @@ const DigitalDiagnostic = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
+  const [showResult, setShowResult] = useState(false);
+  const [leadData, setLeadData] = useState({ nombre: '', whatsapp: '' });
 
   const handleOptionSelect = (score) => {
     const nextScore = totalScore + score;
@@ -54,6 +56,19 @@ const DigitalDiagnostic = () => {
       setCurrentStep(prev => prev + 1);
     } else {
       setIsFinished(true);
+    }
+  };
+
+  const handleLeadSubmit = (e) => {
+    e.preventDefault();
+    setShowResult(true);
+    // Track conversion
+    if (typeof window.gtag !== 'undefined') {
+        window.gtag('event', 'unlock_diagnostic', {
+          'nombre': leadData.nombre,
+          'whatsapp': leadData.whatsapp,
+          'score': totalScore
+        });
     }
   };
 
@@ -82,9 +97,12 @@ const DigitalDiagnostic = () => {
     setCurrentStep(0);
     setTotalScore(0);
     setIsFinished(false);
+    setShowResult(false);
   };
 
   const result = getResult();
+  const whatsappMsg = `Hola Franco! Acabo de completar el Diagnóstico Digital en la web. Mi ecosistema es: *${result.status}*. Me gustaría agendar la sesión estratégica de 15 min.`;
+  const whatsappUrl = `https://wa.me/56995684198?text=${encodeURIComponent(whatsappMsg)}`;
 
   return (
     <section id="diagnostic" className="section-container bg-black py-32 relative overflow-hidden">
@@ -103,15 +121,15 @@ const DigitalDiagnostic = () => {
             <ClipboardCheck className="w-4 h-4 text-patagonia-red" />
             <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Diagnóstico de Ecosistema v1.0</span>
           </motion.div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
-            Mida su <span className="text-patagonia-cyan">Potencial Digital.</span>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 italic">
+            Mide tu <span className="text-patagonia-cyan">Potencial Digital.</span>
           </h2>
           <p className="text-white/40 text-lg font-light max-w-2xl mx-auto">
-            Responda 4 preguntas para descubrir el estado real de su empresa frente a la Inteligencia Artificial y la digitalización.
+            Descubre en 60 segundos el estado real de tu empresa frente a la IA.
           </p>
         </div>
 
-        <div className="glass-card min-h-[400px] flex flex-col justify-center p-8 md:p-16 border-white/10 bg-white/[0.02] backdrop-blur-3xl">
+        <div className="glass-card min-h-[400px] flex flex-col justify-center p-8 md:p-16 border-white/10 bg-white/[0.02] backdrop-blur-3xl relative">
           <AnimatePresence mode="wait">
             {!isFinished ? (
               <motion.div
@@ -130,7 +148,7 @@ const DigitalDiagnostic = () => {
                   </div>
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-bold">{questions[currentStep].title}</h3>
+                <h3 className="text-2xl md:text-3xl font-bold italic">{questions[currentStep].title}</h3>
 
                 <div className="grid gap-4">
                   {questions[currentStep].options.map((option, idx) => (
@@ -146,6 +164,41 @@ const DigitalDiagnostic = () => {
                   ))}
                 </div>
               </motion.div>
+            ) : !showResult ? (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center space-y-8"
+              >
+                <div className="w-16 h-16 bg-patagonia-cyan/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <ShieldCheck className="w-8 h-8 text-patagonia-cyan" />
+                </div>
+                <h3 className="text-3xl font-bold">Diagnóstico Completado.</h3>
+                <p className="text-white/40 max-w-md mx-auto">Ingresa tus datos para desbloquear tu Reporte Estratégico y los pasos a seguir.</p>
+                
+                <form onSubmit={handleLeadSubmit} className="max-w-md mx-auto space-y-4">
+                    <input 
+                        required
+                        type="text" 
+                        placeholder="Nombre completo"
+                        className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:border-patagonia-cyan outline-none"
+                        value={leadData.nombre}
+                        onChange={(e) => setLeadData({...leadData, nombre: e.target.value})}
+                    />
+                    <input 
+                        required
+                        type="tel" 
+                        placeholder="WhatsApp (Ej: +569...)"
+                        className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:border-patagonia-cyan outline-none"
+                        value={leadData.whatsapp}
+                        onChange={(e) => setLeadData({...leadData, whatsapp: e.target.value})}
+                    />
+                    <button className="btn-primary w-full py-4 text-sm font-bold shadow-[0_0_30px_rgba(240,20,10,0.3)]">
+                        VER MI RESULTADO <ArrowRight className="inline ml-2 w-4 h-4" />
+                    </button>
+                    <p className="text-[10px] text-white/20 uppercase tracking-widest italic font-medium">Recibirás una copia de tu estrategia personalizada.</p>
+                </form>
+              </motion.div>
             ) : (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -156,8 +209,8 @@ const DigitalDiagnostic = () => {
                   <div className="inline-block p-4 rounded-full bg-white/5 mb-4">
                     <BarChart3 className="w-12 h-12 text-patagonia-red" />
                   </div>
-                  <h3 className={`text-4xl font-bold ${result.color}`}>{result.status}</h3>
-                  <p className="text-xl text-white/70 max-w-xl mx-auto font-light leading-relaxed">
+                  <h3 className={`text-4xl font-bold italic ${result.color}`}>{result.status}</h3>
+                  <p className="text-xl text-white/70 max-w-xl mx-auto font-light leading-relaxed italic">
                     {result.message}
                   </p>
                 </div>
@@ -165,7 +218,7 @@ const DigitalDiagnostic = () => {
                 <div className="p-6 rounded-2xl bg-white/5 border border-white/10 max-w-xl mx-auto">
                     <div className="flex items-start gap-4 text-left">
                         <Zap className="w-6 h-6 text-patagonia-cyan flex-shrink-0" />
-                        <p className="text-sm text-patagonia-cyan font-bold leading-relaxed">
+                        <p className="text-sm text-patagonia-cyan font-bold leading-relaxed italic">
                             {result.focus}
                         </p>
                     </div>
@@ -173,10 +226,12 @@ const DigitalDiagnostic = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
                   <a 
-                    href="#contact" 
-                    className="px-8 py-4 bg-patagonia-red text-white rounded-full font-bold hover:scale-105 transition-all shadow-[0_0_30px_rgba(240,20,10,0.3)] flex items-center justify-center gap-2"
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-8 py-4 bg-[#25D366] text-white rounded-full font-bold hover:scale-105 transition-all shadow-[0_0_30px_rgba(37,211,102,0.3)] flex items-center justify-center gap-2"
                   >
-                    Hablar con Franco <ShieldCheck className="w-5 h-5" />
+                    SESIÓN ESTRATÉGICA YA <MessageSquare className="w-5 h-5" />
                   </a>
                   <button 
                     onClick={restart}
