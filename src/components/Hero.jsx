@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { motion } from 'framer-motion';
 import Native3DLogo from './Native3DLogo';
@@ -50,13 +51,13 @@ const Hero = () => {
             Ayudamos a las organizaciones a escalar sus resultados mediante la integración de capacidades digitales avanzadas y automatización.
           </p>
           <div className="hero-text flex flex-wrap gap-4 pt-4">
-            <button className="btn-primary group">
+            <a href="#contacto" className="btn-primary group inline-block">
               Agendar Auditoría Estratégica
               <span className="absolute inset-0 border-2 border-patagonia-red rounded-btn opacity-50 animate-ping group-hover:hidden" />
-            </button>
-            <button className="btn-secondary">
+            </a>
+            <a href="#academia" className="btn-secondary inline-block text-center">
               Explorar Academia
-            </button>
+            </a>
           </div>
         </div>
 
