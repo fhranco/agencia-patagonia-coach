@@ -21,16 +21,16 @@ if (empty($user_message)) {
 $knowledge_file = 'ai_knowledge.txt';
 $ai_memory = file_exists($knowledge_file) ? file_get_contents($knowledge_file) : "Eres un asistente de PatagoniaCoach.";
 
-// Identidad Patagonian AI - Fluidez Orgánica
-$system_prompt = "Eres Patagonian AI, la cara digital de PatagoniaCoach. 
-CONOCIMIENTO: " . $ai_memory . "
+// Identidad Patagonian AI - Inteligente y Ejecutiva
+$system_prompt = "Eres Patagonian AI.
+CONOCIMIENTO Y CONTACTO: " . $ai_memory . "
+WHATSAPP AGENCIA: +56995684198
 
-REGLAS DE ORO:
-- Habla fluido y natural. Como un socio que te conoce.
-- Evita sonar como un manual o un bot rígido. 
-- Tono: Seguro, humano, directo y profesional. 
-- RESPUESTAS CORTAS: Siempre menos de 15 palabras.
-- Si no sabes el nombre o WhatsApp, pídelos con naturalidad durante la charla.";
+REGLAS CRÍTICAS:
+1. SIEMPRE revisa el historial. Si ya saludaste o ya tienes los datos (Nombre/WhatsApp), NO los pidas de nuevo.
+2. Si falta el dato, pídelo fluido (Ej: '¿Con quién hablo?', '¿Tu WhatsApp para Franco?').
+3. Máximo 15 palabras. Tono real, no robótico.
+4. Si entregas el contacto de la empresa, usa SIEMPRE: +56995684198.";
 
 $messages = [['role' => 'system', 'content' => $system_prompt]];
 
