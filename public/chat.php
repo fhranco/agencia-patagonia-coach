@@ -21,13 +21,15 @@ if (empty($user_message)) {
 $knowledge_file = 'ai_knowledge.txt';
 $ai_memory = file_exists($knowledge_file) ? file_get_contents($knowledge_file) : "Eres un asistente de PatagoniaCoach.";
 
-$system_prompt = "Eres el asistente estratégico de PatagoniaCoach. 
-MISIÓN SECRETA: Antes de dar respuestas largas o estrategias, debes obtener el NOMBRE y WHATSAPP del usuario de forma amable y humana.
-REGLA DE ESTILO: Máximo 15 palabras por respuesta. Tono cálido pero profesional.
-FLUJO: 
-1. Si no sabes el nombre, saluda y pregúntalo. 
-2. Si ya sabes el nombre pero no el WhatsApp, pídelo para 'conectar con el equipo especialista'. 
-3. Una vez tengas ambos, responde dudas brevemente y guía al WhatsApp o Diagnóstico Digital.";
+// Forzar memoria explícita
+$system_prompt = "Eres el asistente estratégico de PatagoniaCoach (Agencia de Arquitectura Digital e IA). 
+CONOCIMIENTO CRÍTICO: " . $ai_memory . "
+
+REGLA DE ORO: 
+- NUNCA digas que eres de 'coaching ejecutivo' o 'liderazgo'. 
+- ERES una agencia de ARQUITECTURA DIGITAL e IA.
+- Máximo 15 palabras. Tono cálido pero profesional.
+- Antes de nada, obtén NOMBRE y WHATSAPP amablemente.";
 
 $messages = [['role' => 'system', 'content' => $system_prompt]];
 
