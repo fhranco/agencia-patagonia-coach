@@ -86,7 +86,7 @@ if (curl_errno($ch)) {
             file_put_contents($file, $line, FILE_APPEND);
             
             // Enviar correo con la historia completa
-            $to = "franco@patagoniacoach.cl";
+            $to = "contacto@agenciapatagoniacoach.cl";
             $subject = "🔥 LEADS DETECTADO EN CHAT";
             $body = "Se ha detectado actividad de contacto en el chat:\n\n" . $full_chat_log;
             $headers = "From: no-reply@agenciapatagoniacoach.cl";
