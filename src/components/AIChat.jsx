@@ -40,7 +40,6 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
     localStorage.removeItem('patagonia_chat_lead_captured');
     window.location.reload(); // Forzamos recarga para limpiar estados internos de React si es necesario
   };
- Lively 
 
   useEffect(() => {
     if (scrollRef.current) {
