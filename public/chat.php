@@ -12,7 +12,7 @@ $input = json_decode(file_get_contents('php://input'), true);
 $user_message = $input['message'] ?? '';
 $history = $input['history'] ?? [];
 
-if (empty($user_message)) {
+if ($user_message === '') {
     echo json_encode(['error' => 'No message provided']);
     exit;
 }
