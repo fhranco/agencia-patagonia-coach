@@ -31,21 +31,16 @@ FLUJO:
 
 $messages = [['role' => 'system', 'content' => $system_prompt]];
 
-// Añadir historial para contexto
-foreach ($history as $msg) {
-    if (isset($msg['role']) && isset($msg['content'])) {
-        $role = ($msg['role'] === 'bot') ? 'assistant' : $msg['role'];
-        $messages[] = ['role' => $role, 'content' => $msg['content']];
-    }
-}
+$messages = [['role' => 'system', 'content' => $system_prompt]];
 
-// Añadir mensaje actual
+// Solo enviar el mensaje actual para descartar errores en el historial
 $messages[] = ['role' => 'user', 'content' => $user_message];
 
 $data = [
     'model' => 'deepseek-chat',
     'messages' => $messages,
-    'stream' => false
+    'stream' => false,
+    'max_tokens' => 100
 ];
 
 $ch = curl_init('https://api.deepseek.com/v1/chat/completions');
