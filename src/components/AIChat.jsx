@@ -5,23 +5,37 @@ import { MessageSquare, X, Send, Bot, User, Loader2 } from 'lucide-react';
 const AIChat = ({ hideButton = false, forceOpen = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(false);
-  const [messages, setMessages] = useState([
-    { role: 'bot', content: '¡Hola! Soy Patagonian AI. ¿Cómo puedo ayudarte a evolucionar tu negocio hoy?' }
-  ]);
+  const [messages, setMessages] = useState(() => {
+    const saved = localStorage.getItem('patagonia_chat_history');
+    return saved ? JSON.parse(saved) : [{ role: 'bot', content: '¿Qué escalamos hoy?' }];
+  });
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef(null);
   
+  useEffect(() => {
+    localStorage.setItem('patagonia_chat_history', JSON.stringify(messages));
+  }, [messages]);
+
   useEffect(() => {
     if (forceOpen) setIsOpen(true);
   }, [forceOpen]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (!isOpen) setShowGreeting(true);
-    }, 5000);
+      const hasInteracted = localStorage.getItem('patagonia_chat_interacted');
+      if (!isOpen && !hasInteracted) {
+        setShowGreeting(true);
+      }
+    }, 8000);
     return () => clearTimeout(timer);
   }, [isOpen]);
+
+  const clearHistory = () => {
+    const initialMsg = [{ role: 'bot', content: '¿Qué escalamos hoy?' }];
+    setMessages(initialMsg);
+    localStorage.removeItem('patagonia_chat_history');
+  };
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -37,6 +51,7 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
     setInput('');
     setIsLoading(true);
+    localStorage.setItem('patagonia_chat_interacted', 'true');
 
     try {
       const response = await fetch('/chat.php', {
@@ -48,13 +63,17 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
       const data = await response.json();
       
       if (data.reply) {
-        setMessages(prev => [...prev, { role: 'bot', content: data.reply }]);
+        // Simulamos un tiempo de escritura basado en el largo de la respuesta
+        const typingTime = Math.min(Math.max(data.reply.length * 15, 800), 2500);
+        setTimeout(() => {
+          setMessages(prev => [...prev, { role: 'bot', content: data.reply }]);
+          setIsLoading(false);
+        }, typingTime);
       } else {
         throw new Error(data.error || 'Unknown error');
       }
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'bot', content: 'Lo siento, perdí la conexión con el ecosistema. Por favor, intenta de nuevo.' }]);
-    } finally {
+      setMessages(prev => [...prev, { role: 'bot', content: 'Perdí la señal. Intenta de nuevo.' }]);
       setIsLoading(false);
     }
   };
@@ -67,54 +86,68 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
             initial={{ opacity: 0, x: 20, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 20, scale: 0.95 }}
-            className="absolute bottom-0 right-20 w-[320px] sm:w-[380px] h-[500px] max-h-[70vh] bg-patagonia-void/95 backdrop-blur-2xl border border-white/10 rounded-card shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden"
+            className="absolute bottom-0 right-20 w-[320px] sm:w-[380px] h-[500px] max-h-[85vh] bg-patagonia-void/90 backdrop-blur-3xl border border-white/5 rounded-card shadow-[0_0_80px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="p-4 border-b border-white/10 flex items-center justify-between bg-patagonia-cyan/5">
+            <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/[0.02]">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-patagonia-cyan/20 flex items-center justify-center border border-patagonia-cyan/30">
-                  <Bot className="w-4 h-4 text-patagonia-cyan" />
-                </div>
+                <div className="w-2 h-2 rounded-full bg-patagonia-cyan animate-pulse shadow-[0_0_10px_#00F0FF]" />
                 <div>
-                  <h4 className="text-sm font-bold tracking-tight">Patagonian AI</h4>
-                  <p className="text-[10px] text-patagonia-cyan uppercase tracking-widest animate-pulse">Online</p>
+                  <h4 className="text-[11px] font-bold tracking-[0.2em] uppercase text-white/90">Arquitecto Digital</h4>
                 </div>
               </div>
-              <button 
-                onClick={() => setIsOpen(false)}
-                className="p-2 hover:bg-white/10 rounded-full transition-colors"
-              >
-                <X className="w-4 h-4" />
-              </button>
+              <div className="flex items-center gap-2">
+                {messages.length > 1 && (
+                  <button 
+                    onClick={clearHistory}
+                    title="Reiniciar chat"
+                    className="p-1.5 hover:bg-white/5 rounded-full transition-colors text-white/20 hover:text-patagonia-red"
+                  >
+                    <Plus className="w-4 h-4 rotate-45" />
+                  </button>
+                )}
+                <button 
+                  onClick={() => setIsOpen(false)}
+                  className="p-1.5 hover:bg-white/5 rounded-full transition-colors text-white/30 hover:text-white"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
             {/* Chat Area */}
             <div 
               ref={scrollRef}
-              className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-white/10"
+              className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-hide"
             >
               {messages.map((msg, i) => (
                 <motion.div
-                  initial={{ opacity: 0, x: msg.role === 'user' ? 10 : -10 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   key={i}
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${
+                  <div className={`max-w-[85%] text-[13px] leading-relaxed ${
                     msg.role === 'user' 
-                      ? 'bg-patagonia-red text-white' 
-                      : 'bg-white/5 border border-white/10 text-white/80'
-                  }`}>
+                      ? 'bg-patagonia-red text-white px-4 py-2.5 rounded-2xl rounded-tr-none shadow-lg' 
+                      : 'text-white/80 font-light'
+                  } ${msg.role === 'bot' && 'border-l border-patagonia-cyan/30 pl-4 py-1'}`}>
                     {msg.content}
                   </div>
                 </motion.div>
               ))}
               {isLoading && (
-                <div className="flex justify-start">
-                  <div className="bg-white/5 border border-white/10 p-3 rounded-2xl">
-                    <Loader2 className="w-4 h-4 animate-spin text-patagonia-cyan" />
+                <motion.div 
+                   initial={{ opacity: 0 }}
+                   animate={{ opacity: 1 }}
+                   className="flex justify-start pl-4"
+                >
+                  <div className="flex gap-1.5">
+                    <span className="w-1 h-1 bg-patagonia-cyan rounded-full animate-bounce [animation-delay:-0.3s]" />
+                    <span className="w-1 h-1 bg-patagonia-cyan rounded-full animate-bounce [animation-delay:-0.15s]" />
+                    <span className="w-1 h-1 bg-patagonia-cyan rounded-full animate-bounce" />
                   </div>
-                </div>
+                </motion.div>
               )}
             </div>
 

@@ -52,16 +52,16 @@ const PilarAccordion = ({ id, title, focus, deliverable, icon: Icon, isOpen, onC
           exit={{ height: 0, opacity: 0 }}
           className="overflow-hidden"
         >
-          <div className="grid md:grid-cols-2 gap-12 p-12 ml-16">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-12 p-6 md:p-12 md:ml-16">
             <div className="space-y-4">
               <p className="text-xs uppercase tracking-[0.3em] text-patagonia-red font-bold">Foco Estratégico</p>
-              <p className="text-lg text-white/70 font-light leading-relaxed">{focus}</p>
+              <p className="text-base md:text-lg text-white/70 font-light leading-relaxed">{focus}</p>
             </div>
             <div className="space-y-4 bg-white/5 p-6 rounded-xl border border-white/10">
               <p className="text-xs uppercase tracking-[0.3em] text-white/40 font-bold">Entregable Clave</p>
               <div className="flex items-center gap-3">
                 <ShieldCheck className="w-5 h-5 text-patagonia-cyan" />
-                <p className="text-xl font-heading font-medium">{deliverable}</p>
+                <p className="text-lg md:text-xl font-heading font-medium">{deliverable}</p>
               </div>
             </div>
           </div>
@@ -100,26 +100,26 @@ const Consultancy = () => {
   ];
 
   return (
-    <section ref={containerRef} className="relative bg-patagonia-void py-32 overflow-hidden">
+    <section ref={containerRef} className="relative bg-patagonia-void py-12 md:py-32 overflow-hidden">
       <KineticBlob />
       
       <div className="section-container relative z-10">
-        <div className="grid lg:grid-cols-12 gap-20 items-start">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-20 items-start">
           {/* Left Column: Authority Block */}
-          <div className="lg:col-span-5 space-y-12">
+          <div className="lg:col-span-5 space-y-8 md:space-y-12">
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-patagonia-red rounded-full animate-ping" />
-                <span className="text-patagonia-red font-heading tracking-[0.4em] text-xs uppercase">Ecosistema de Valor</span>
+                <span className="text-patagonia-red font-heading tracking-[0.2em] md:tracking-[0.4em] text-[10px] md:text-xs uppercase">Ecosistema de Valor</span>
               </div>
-              <h2 className="text-6xl font-bold leading-tight">
+              <h2 className="text-3xl md:text-6xl font-bold leading-tight">
                 El Puente de <br />
                 <span className="text-white/20">Transformación.</span>
               </h2>
             </div>
 
             <div className="space-y-8">
-              <div className="space-y-4 border-l-2 border-patagonia-red pl-8">
+              <div className="space-y-4 border-l-2 border-patagonia-red pl-4 md:pl-8">
                 <p className="text-xl font-medium text-white/90">Transformación organizacional impulsada por estrategia, marketing digital e IA.</p>
                 <p className="text-white/50 leading-relaxed font-light">
                   Combinamos consultoría estratégica y formación técnica para que las empresas no solo implementen cambios, sino que desarrollen las capacidades internas para sostenerlos.
@@ -156,11 +156,11 @@ const Consultancy = () => {
             </div>
 
             {/* Bento Grid: Testimonials & Results */}
-            <div className="grid grid-cols-6 grid-rows-2 gap-4 h-[450px]">
+            <div className="grid grid-cols-1 md:grid-cols-6 gap-4 h-auto md:h-[450px]">
               {/* Card 1: Metrics */}
               <motion.div 
                 whileHover={{ scale: 0.98 }}
-                className="col-span-3 row-span-1 bg-patagonia-surface/50 border border-white/5 rounded-card p-8 flex flex-col justify-between"
+                className="col-span-1 md:col-span-3 bg-patagonia-surface/50 border border-white/5 rounded-card p-8 flex flex-col justify-between min-h-[160px]"
               >
                 <TrendingUp className="w-8 h-8 text-patagonia-cyan" />
                 <div className="space-y-2">
@@ -172,10 +172,10 @@ const Consultancy = () => {
               {/* Card 2: Cita */}
               <motion.div 
                 whileHover={{ scale: 0.98 }}
-                className="col-span-3 row-span-2 bg-patagonia-red/5 border border-patagonia-red/20 rounded-card p-10 flex flex-col justify-center relative overflow-hidden"
+                className="col-span-1 md:col-span-3 md:row-span-2 bg-patagonia-red/5 border border-patagonia-red/20 rounded-card p-8 md:p-10 flex flex-col justify-center relative overflow-hidden min-h-[220px]"
               >
-                <Quote className="absolute top-8 left-8 w-12 h-12 text-patagonia-red opacity-10" />
-                <p className="text-xl font-light italic leading-relaxed relative z-10">
+                <Quote className="absolute top-4 left-4 md:top-8 md:left-8 w-12 h-12 text-patagonia-red opacity-10" />
+                <p className="text-lg md:text-xl font-light italic leading-relaxed relative z-10">
                   "PatagoniaCoach no solo trajo herramientas, articuló a todo nuestro ecosistema bajo una misma mentalidad colaborativa."
                 </p>
                 <div className="mt-8 relative z-10">
@@ -187,7 +187,7 @@ const Consultancy = () => {
               {/* Card 3: Video Case */}
               <motion.div 
                 whileHover={{ scale: 0.98 }}
-                className="col-span-3 row-span-1 bg-patagonia-surface/30 backdrop-blur-xl border border-white/10 rounded-card p-4 relative group cursor-pointer overflow-hidden"
+                className="col-span-1 md:col-span-3 bg-patagonia-surface/30 backdrop-blur-xl border border-white/10 rounded-card p-4 relative group cursor-pointer overflow-hidden min-h-[160px]"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-transparent z-10" />
                 <div className="absolute inset-0 flex items-center justify-center z-20">
@@ -195,7 +195,7 @@ const Consultancy = () => {
                     <Play className="w-4 h-4 text-black fill-current ml-1" />
                   </div>
                 </div>
-                <div className="absolute bottom-6 left-6 z-20">
+                <div className="absolute bottom-6 left-6 z-20 text-left">
                   <p className="text-[10px] font-bold tracking-[0.3em] uppercase">Video Case Study</p>
                   <p className="text-sm font-light text-white/60">Digital Mastery Implementation</p>
                 </div>

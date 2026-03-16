@@ -36,7 +36,7 @@ const Native3DLogo = () => {
 
   return (
     <div 
-      className="relative w-full h-[600px] flex items-center justify-center z-10" 
+      className="relative w-full h-[400px] md:h-[600px] flex items-center justify-center z-10" 
       style={{ perspective: 1200 }}
     >
       {/* Background Ambient Glows */}
@@ -53,7 +53,7 @@ const Native3DLogo = () => {
           rotateY,
           transformStyle: "preserve-3d",
         }}
-        className="relative w-80 h-80 rounded-full bg-patagonia-red shadow-[0_0_60px_rgba(240,20,10,0.6)] flex items-center justify-center cursor-grab active:cursor-grabbing border-2 border-white/10"
+        className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full bg-patagonia-red shadow-[0_0_60px_rgba(240,20,10,0.6)] flex items-center justify-center cursor-grab active:cursor-grabbing border-2 border-white/10"
       >
         {/* LAYER 0: Inner Depth Shadow */}
         <div 

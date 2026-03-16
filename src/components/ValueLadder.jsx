@@ -38,13 +38,13 @@ const ValueLadder = () => {
             onMouseEnter={() => setHoveredIndex(i)}
             onMouseLeave={() => setHoveredIndex(null)}
             data-cursor="VER MÁS"
-            className={`relative p-12 flex flex-col gap-8 transition-opacity duration-500 border-r border-white/5 last:border-r-0 ${
+            className={`relative p-8 md:p-12 flex flex-col gap-8 transition-opacity duration-500 border-b md:border-b-0 md:border-r border-white/5 last:border-b-0 last:border-r-0 ${
               hoveredIndex !== null && hoveredIndex !== i ? 'opacity-40 grayscale' : 'opacity-100'
             } bg-patagonia-surface/30 hover:bg-patagonia-surface/50`}
           >
             <div className="space-y-4">
               <div className="mb-4">{item.icon}</div>
-              <h3 className="text-3xl font-bold">{item.title}</h3>
+              <h3 className="text-2xl md:text-3xl font-bold">{item.title}</h3>
               <p className="text-patagonia-red font-heading text-sm tracking-widest">{item.subtitle}</p>
             </div>
             
@@ -79,7 +79,7 @@ const ValueLadder = () => {
                   exit={{ opacity: 0, y: 20 }}
                   className="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-patagonia-red/20 to-transparent pointer-events-none"
                 >
-                  <div className="text-[8rem] font-bold opacity-5 absolute -top-10 -right-10 leading-none">
+                  <div className="text-[6rem] md:text-[8rem] font-bold opacity-5 absolute -top-10 -right-10 leading-none">
                     0{i + 1}
                   </div>
                 </motion.div>
