@@ -12,7 +12,7 @@ const FloatingActions = () => {
   return (
     <div className="fixed bottom-8 right-8 z-[100] flex flex-col items-center gap-4">
       {/* AIChat is always mounted to allow for proactive greetings */}
-      <AIChat hideButton={true} forceOpen={isOpen && openChat} />
+      {/* <AIChat hideButton={true} forceOpen={isOpen && openChat} /> */}
       
       {/* Expanded Menu */}
       <AnimatePresence>
@@ -23,7 +23,7 @@ const FloatingActions = () => {
             exit={{ opacity: 0, y: 20, scale: 0.8 }}
             className="flex flex-col items-center gap-4 mb-2"
           >
-            {/* Custom AI Button for the menu */}
+            {/* Custom AI Button for the menu - TEMPORARILY DISABLED
             <motion.button
                whileHover={{ scale: 1.05 }}
                className="w-14 h-14 bg-patagonia-red rounded-full flex items-center justify-center border border-white/20 group"
@@ -31,6 +31,7 @@ const FloatingActions = () => {
             >
               <Bot className="w-6 h-6 text-white" />
             </motion.button>
+            */}
             <PhoneButton />
             <WhatsAppButton />
           </motion.div>

@@ -20,6 +20,7 @@ Este archivo sirve como memoria central para el desarrollo del ecosistema digita
 
 ### 🏗️ En Desarrollo (WIP)
 - **Automatización**: Configuración de Secrets en GitHub para el despliegue automático.
+- **AI Chat**: Deshabilitado temporalmente a petición del usuario para trabajar en otras áreas.
 
 ### 🧠 Contexto Estratégico (The Patagonia Protocol)
 - **Colores**: #F0140A (Rojo Patagonia), #00F0FF (Cian Digital), Fondo #000000 (Void).
