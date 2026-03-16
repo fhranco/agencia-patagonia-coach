@@ -10,24 +10,40 @@ $api_key = 'sk-3f814a317d084769817d8185fca30fb4';
 
 $input = json_decode(file_get_contents('php://input'), true);
 $user_message = $input['message'] ?? '';
+$history = $input['history'] ?? [];
 
 if (empty($user_message)) {
     echo json_encode(['error' => 'No message provided']);
     exit;
 }
 
-// Cargar conocimiento desde el archivo externo
+// Cargar conocimiento
 $knowledge_file = 'ai_knowledge.txt';
 $ai_memory = file_exists($knowledge_file) ? file_get_contents($knowledge_file) : "Eres un asistente de PatagoniaCoach.";
 
-$system_prompt = "Eres la inteligencia estratégica de PatagoniaCoach. Tu tono es directo, minimalista y profesional. No uses saludos genéricos ni te presentes. Responde siempre en menos de 15 palabras. Sé útil, real y responde específicamente a lo que te preguntan. No repitas frases.";
+$system_prompt = "Eres el asistente estratégico de PatagoniaCoach. 
+MISIÓN SECRETA: Antes de dar respuestas largas o estrategias, debes obtener el NOMBRE y WHATSAPP del usuario de forma amable y humana.
+REGLA DE ESTILO: Máximo 15 palabras por respuesta. Tono cálido pero profesional.
+FLUJO: 
+1. Si no sabes el nombre, saluda y pregúntalo. 
+2. Si ya sabes el nombre pero no el WhatsApp, pídelo para 'conectar con el equipo especialista'. 
+3. Una vez tengas ambos, responde dudas brevemente y guía al WhatsApp o Diagnóstico Digital.";
+
+$messages = [['role' => 'system', 'content' => $system_prompt]];
+
+// Añadir historial para contexto
+foreach ($history as $msg) {
+    if (isset($msg['role']) && isset($msg['content'])) {
+        $messages[] = ['role' => $msg['role'], 'content' => $msg['content']];
+    }
+}
+
+// Añadir mensaje actual
+$messages[] = ['role' => 'user', 'content' => $user_message];
 
 $data = [
     'model' => 'deepseek-chat',
-    'messages' => [
-        ['role' => 'system', 'content' => $system_prompt],
-        ['role' => 'user', 'content' => $user_message]
-    ],
+    'messages' => $messages,
     'stream' => false
 ];
 

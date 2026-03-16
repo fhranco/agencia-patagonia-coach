@@ -5,19 +5,9 @@ import { MessageSquare, X, Send, Bot, User, Loader2, Plus } from 'lucide-react';
 const AIChat = ({ hideButton = false, forceOpen = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(false);
-  const [step, setStep] = useState(() => {
-    return localStorage.getItem('patagonia_chat_lead_captured') === 'true' ? 'chat' : 'nombre';
-  });
-  const [userData, setUserData] = useState({ nombre: '', whatsapp: '' });
-  
   const [messages, setMessages] = useState(() => {
     const saved = localStorage.getItem('patagonia_chat_history');
-    if (saved) return JSON.parse(saved);
-    
-    const isCaptured = localStorage.getItem('patagonia_chat_lead_captured') === 'true';
-    return isCaptured 
-      ? [{ role: 'bot', content: '¿Qué escalamos hoy?' }]
-      : [{ role: 'bot', content: 'Hola, un gusto saludarte. Soy el asistente de Agencia PatagoniaCoach. ¿Con quién tengo el gusto de hablar?' }];
+    return saved ? JSON.parse(saved) : [{ role: 'bot', content: 'Hola. Soy el asistente de Agencia PatagoniaCoach. ¿Con quién hablo?' }];
   });
 
   const [input, setInput] = useState('');
@@ -43,14 +33,10 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
   }, [isOpen]);
 
   const clearHistory = () => {
-    const isCaptured = localStorage.getItem('patagonia_chat_lead_captured') === 'true';
-    const initialMsg = isCaptured 
-      ? [{ role: 'bot', content: '¿Qué escalamos hoy?' }]
-      : [{ role: 'bot', content: 'Hola, un gusto saludarte. Soy el asistente de Agencia PatagoniaCoach. ¿Con quién tengo el gusto de hablar?' }];
-    
+    const initialMsg = [{ role: 'bot', content: 'Hola. Soy el asistente de Agencia PatagoniaCoach. ¿Con quién hablo?' }];
     setMessages(initialMsg);
-    setStep(isCaptured ? 'chat' : 'nombre');
     localStorage.removeItem('patagonia_chat_history');
+    localStorage.removeItem('patagonia_chat_interacted');
   };
 
   useEffect(() => {
@@ -59,19 +45,6 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
     }
   }, [messages, isLoading]);
 
-  const saveLead = async (data) => {
-    try {
-      await fetch('/save_lead.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      localStorage.setItem('patagonia_chat_lead_captured', 'true');
-    } catch (e) {
-      console.error("Error saving lead", e);
-    }
-  };
-
   const handleSend = async (e) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
@@ -79,40 +52,17 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
     const userMsg = input.trim();
     setMessages(prev => [...prev, { role: 'user', content: userMsg }]);
     setInput('');
+    setIsLoading(true);
     localStorage.setItem('patagonia_chat_interacted', 'true');
 
-    // FLUJO DE CAPTURA
-    if (step === 'nombre') {
-      setUserData(prev => ({ ...prev, nombre: userMsg }));
-      setIsLoading(true);
-      setTimeout(() => {
-        setMessages(prev => [...prev, { role: 'bot', content: `Mucho gusto, ${userMsg.split(' ')[0]}. Para que alguien de nuestro equipo de especialistas te contacte, ¿me compartes tu WhatsApp?` }]);
-        setStep('whatsapp');
-        setIsLoading(false);
-      }, 1000);
-      return;
-    }
-
-    if (step === 'whatsapp') {
-      const updatedData = { ...userData, whatsapp: userMsg };
-      setUserData(updatedData);
-      setIsLoading(true);
-      await saveLead(updatedData); // Guardamos lead
-      setTimeout(() => {
-        setMessages(prev => [...prev, { role: 'bot', content: 'Listo. Ya estamos conectados. ¿En qué podemos ayudarte hoy?' }]);
-        setStep('chat');
-        setIsLoading(false);
-      }, 1000);
-      return;
-    }
-
-    // CHAT NORMAL CON IA
-    setIsLoading(true);
     try {
       const response = await fetch('/chat.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMsg })
+        body: JSON.stringify({ 
+          message: userMsg,
+          history: messages.slice(-5) // Enviamos un poco de contexto
+        })
       });
 
       const data = await response.json();
@@ -127,7 +77,7 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
         throw new Error();
       }
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'bot', content: 'Perdí la señal. Intenta de nuevo.' }]);
+      setMessages(prev => [...prev, { role: 'bot', content: 'Se cortó la señal. Reintenta.' }]);
       setIsLoading(false);
     }
   };
