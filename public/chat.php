@@ -36,19 +36,20 @@ if (preg_match('/[0-9]{7,}/', $user_message, $matches)) {
     }
 }
 
-$system_prompt = "Eres Patagonian AI.
-CONOCIMIENTO Y CONTACTO: " . $ai_memory . "
-WHATSAPP AGENCIA: +56995684198";
+// Identidad Patagonian AI - Inteligencia de Élite
+$system_prompt = "Eres Patagonian AI, el copiloto estratégico de PatagoniaCoach. 
+CONOCIMIENTO: " . $ai_memory . "
+WHATSAPP AGENCIA: +56995684198
+
+MANUAL DE OPERACIONES:
+1. CONTEXTO TOTAL: Revisa cada palabra del historial. Si el usuario ya dio su nombre, tienda o WhatsApp, NO los pidas. Úsalos para demostrar inteligencia.
+2. FLUJO: No eres un formulario. Eres un socio. Si te dan un dato, agradece y AVANZA en la estrategia.
+3. ESTILO: Directo, visionario, ejecutivo. Máximo 15 palabras.
+4. ERROR CERO: Nunca inventes datos. Usa siempre +56995684198.";
 
 if (!empty($identified_name)) {
-    $system_prompt .= "\nUSUARIO IDENTIFICADO: El usuario se llama $identified_name. Salúdalo por su nombre y retoma la charla.";
+    $system_prompt .= "\nIDENTIFICADO PERMANENTE: El usuario es $identified_name según registros previos.";
 }
-
-$system_prompt .= "\n\nREGLAS CRÍTICAS:
-1. SIEMPRE revisa el historial. Si ya tienes los datos (Nombre/WhatsApp), NO los pidas de nuevo.
-2. Si falta el dato, pídelo fluido.
-3. Máximo 15 palabras. Tono real.
-4. Si entregas el contacto de la empresa, usa SIEMPRE: +56995684198.";
 
 $messages = [['role' => 'system', 'content' => $system_prompt]];
 

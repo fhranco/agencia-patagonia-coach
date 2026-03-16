@@ -63,7 +63,7 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           message: userMsg,
-          history: messages.slice(-5) // Enviamos un poco de contexto
+          history: messages.slice(-15) // Aumentamos el contexto para evitar amnesia
         })
       });
 
