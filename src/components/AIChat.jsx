@@ -5,10 +5,21 @@ import { MessageSquare, X, Send, Bot, User, Loader2, Plus } from 'lucide-react';
 const AIChat = ({ hideButton = false, forceOpen = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(false);
+  const [step, setStep] = useState(() => {
+    return localStorage.getItem('patagonia_chat_lead_captured') === 'true' ? 'chat' : 'nombre';
+  });
+  const [userData, setUserData] = useState({ nombre: '', whatsapp: '' });
+  
   const [messages, setMessages] = useState(() => {
     const saved = localStorage.getItem('patagonia_chat_history');
-    return saved ? JSON.parse(saved) : [{ role: 'bot', content: '¿Qué escalamos hoy?' }];
+    if (saved) return JSON.parse(saved);
+    
+    const isCaptured = localStorage.getItem('patagonia_chat_lead_captured') === 'true';
+    return isCaptured 
+      ? [{ role: 'bot', content: '¿Qué escalamos hoy?' }]
+      : [{ role: 'bot', content: 'Para iniciar la consultoría, ¿cuál es tu nombre?' }];
   });
+
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef(null);
@@ -32,8 +43,13 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
   }, [isOpen]);
 
   const clearHistory = () => {
-    const initialMsg = [{ role: 'bot', content: '¿Qué escalamos hoy?' }];
+    const isCaptured = localStorage.getItem('patagonia_chat_lead_captured') === 'true';
+    const initialMsg = isCaptured 
+      ? [{ role: 'bot', content: '¿Qué escalamos hoy?' }]
+      : [{ role: 'bot', content: 'Para iniciar la consultoría, ¿cuál es tu nombre?' }];
+    
     setMessages(initialMsg);
+    setStep(isCaptured ? 'chat' : 'nombre');
     localStorage.removeItem('patagonia_chat_history');
   };
 
@@ -43,34 +59,72 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
     }
   }, [messages, isLoading]);
 
+  const saveLead = async (data) => {
+    try {
+      await fetch('/save_lead.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      localStorage.setItem('patagonia_chat_lead_captured', 'true');
+    } catch (e) {
+      console.error("Error saving lead", e);
+    }
+  };
+
   const handleSend = async (e) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
-    const userMessage = input.trim();
-    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    const userMsg = input.trim();
+    setMessages(prev => [...prev, { role: 'user', content: userMsg }]);
     setInput('');
-    setIsLoading(true);
     localStorage.setItem('patagonia_chat_interacted', 'true');
 
+    // FLUJO DE CAPTURA
+    if (step === 'nombre') {
+      setUserData(prev => ({ ...prev, nombre: userMsg }));
+      setIsLoading(true);
+      setTimeout(() => {
+        setMessages(prev => [...prev, { role: 'bot', content: `Hola ${userMsg.split(' ')[0]}. ¿Tu WhatsApp? (Para agendar luego).` }]);
+        setStep('whatsapp');
+        setIsLoading(false);
+      }, 1000);
+      return;
+    }
+
+    if (step === 'whatsapp') {
+      const updatedData = { ...userData, whatsapp: userMsg };
+      setUserData(updatedData);
+      setIsLoading(true);
+      await saveLead(updatedData); // Guardamos lead
+      setTimeout(() => {
+        setMessages(prev => [...prev, { role: 'bot', content: 'Perfecto. Sesión estratégica activada. ¿En qué trabajamos?' }]);
+        setStep('chat');
+        setIsLoading(false);
+      }, 1000);
+      return;
+    }
+
+    // CHAT NORMAL CON IA
+    setIsLoading(true);
     try {
       const response = await fetch('/chat.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMessage })
+        body: JSON.stringify({ message: userMsg })
       });
 
       const data = await response.json();
       
       if (data.reply) {
-        // Simulamos un tiempo de escritura basado en el largo de la respuesta
         const typingTime = Math.min(Math.max(data.reply.length * 15, 800), 2500);
         setTimeout(() => {
           setMessages(prev => [...prev, { role: 'bot', content: data.reply }]);
           setIsLoading(false);
         }, typingTime);
       } else {
-        throw new Error(data.error || 'Unknown error');
+        throw new Error();
       }
     } catch (error) {
       setMessages(prev => [...prev, { role: 'bot', content: 'Perdí la señal. Intenta de nuevo.' }]);
