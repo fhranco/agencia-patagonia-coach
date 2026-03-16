@@ -37,7 +37,10 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
     setMessages(initialMsg);
     localStorage.removeItem('patagonia_chat_history');
     localStorage.removeItem('patagonia_chat_interacted');
+    localStorage.removeItem('patagonia_chat_lead_captured');
+    window.location.reload(); // Forzamos recarga para limpiar estados internos de React si es necesario
   };
+ Lively 
 
   useEffect(() => {
     if (scrollRef.current) {
