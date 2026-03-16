@@ -34,7 +34,8 @@ $messages = [['role' => 'system', 'content' => $system_prompt]];
 // Añadir historial para contexto
 foreach ($history as $msg) {
     if (isset($msg['role']) && isset($msg['content'])) {
-        $messages[] = ['role' => $msg['role'], 'content' => $msg['content']];
+        $role = ($msg['role'] === 'bot') ? 'assistant' : $msg['role'];
+        $messages[] = ['role' => $role, 'content' => $msg['content']];
     }
 }
 
