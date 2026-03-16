@@ -68,6 +68,34 @@ if (curl_errno($ch)) {
     } else {
         $result = json_decode($response, true);
         $reply = $result['choices'][0]['message']['content'] ?? 'Lo siento, tuve un problema procesando eso.';
+        
+        // --- LOGICA DE REGISTRO DE LEADS ---
+        // Buscamos si el usuario envió algo que parezca un número o si la conversación es nueva
+        $full_chat_log = "";
+        foreach ($messages as $m) {
+            $full_chat_log .= "[" . strtoupper($m['role']) . "]: " . $m['content'] . "\n";
+        }
+        $full_chat_log .= "[BOT]: " . $reply;
+
+        // Intentar detectar si el usuario entregó datos (detección simple)
+        // Si hay un número de más de 7 dígitos en el mensaje del usuario
+        if (preg_match('/[0-9]{7,}/', $user_message)) {
+            $file = 'chat_leads_history.csv';
+            $date = date('Y-m-d H:i:s');
+            $line = "\"$date\", \"Detectado\", \"$user_message\", \"Chat AI History\"\n";
+            file_put_contents($file, $line, FILE_APPEND);
+            
+            // Enviar correo con la historia completa
+            $to = "franco@patagoniacoach.cl";
+            $subject = "🔥 LEADS DETECTADO EN CHAT";
+            $body = "Se ha detectado actividad de contacto en el chat:\n\n" . $full_chat_log;
+            $headers = "From: no-reply@agenciapatagoniacoach.cl";
+            mail($to, $subject, $body, $headers);
+        }
+
+        // Siempre guardar un log general de conversaciones para auditoría
+        file_put_contents('chat_audit.log', "\n--- " . date('Y-m-d H:i:s') . " ---\n" . $full_chat_log . "\n", FILE_APPEND);
+
         echo json_encode(['reply' => $reply]);
     }
 }
