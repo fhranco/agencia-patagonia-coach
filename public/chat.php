@@ -21,20 +21,38 @@ if (empty($user_message)) {
 $knowledge_file = 'ai_knowledge.txt';
 $ai_memory = file_exists($knowledge_file) ? file_get_contents($knowledge_file) : "Eres un asistente de PatagoniaCoach.";
 
-// Identidad Patagonian AI - Inteligente y Ejecutiva
+// --- LÓGICA DE MEMORIA POR WHATSAPP ---
+$identified_name = "";
+// Si el mensaje actual tiene un número de WhatsApp, buscamos quién es
+if (preg_match('/[0-9]{7,}/', $user_message, $matches)) {
+    $found_wa = $matches[0];
+    if (file_exists('chat_audit.log')) {
+        $log_content = file_get_contents('chat_audit.log');
+        // Buscar el último bloque donde aparezca este WhatsApp y tratar de extraer el nombre
+        // Esta es una búsqueda simple en el log de auditoría
+        if (preg_match_all('/\[USER\]: (.*?)\n.*?' . $found_wa . '/s', $log_content, $name_matches)) {
+            $identified_name = end($name_matches[1]);
+        }
+    }
+}
+
 $system_prompt = "Eres Patagonian AI.
 CONOCIMIENTO Y CONTACTO: " . $ai_memory . "
-WHATSAPP AGENCIA: +56995684198
+WHATSAPP AGENCIA: +56995684198";
 
-REGLAS CRÍTICAS:
-1. SIEMPRE revisa el historial. Si ya saludaste o ya tienes los datos (Nombre/WhatsApp), NO los pidas de nuevo.
-2. Si falta el dato, pídelo fluido (Ej: '¿Con quién hablo?', '¿Tu WhatsApp para Franco?').
-3. Máximo 15 palabras. Tono real, no robótico.
+if (!empty($identified_name)) {
+    $system_prompt .= "\nUSUARIO IDENTIFICADO: El usuario se llama $identified_name. Salúdalo por su nombre y retoma la charla.";
+}
+
+$system_prompt .= "\n\nREGLAS CRÍTICAS:
+1. SIEMPRE revisa el historial. Si ya tienes los datos (Nombre/WhatsApp), NO los pidas de nuevo.
+2. Si falta el dato, pídelo fluido.
+3. Máximo 15 palabras. Tono real.
 4. Si entregas el contacto de la empresa, usa SIEMPRE: +56995684198.";
 
 $messages = [['role' => 'system', 'content' => $system_prompt]];
 
-// Restauramos el historial para que no tenga amnesia
+// Añadir historial enviado desde el frontend
 foreach ($history as $msg) {
     if (isset($msg['role']) && isset($msg['content'])) {
         $role = ($msg['role'] === 'bot' || $msg['role'] === 'assistant') ? 'assistant' : 'user';
@@ -42,7 +60,6 @@ foreach ($history as $msg) {
     }
 }
 
-// Añadir mensaje actual
 $messages[] = ['role' => 'user', 'content' => $user_message];
 
 $data = [
@@ -74,32 +91,30 @@ if (curl_errno($ch)) {
         $result = json_decode($response, true);
         $reply = $result['choices'][0]['message']['content'] ?? 'Lo siento, tuve un problema procesando eso.';
         
-        // --- LOGICA DE REGISTRO DE LEADS ---
-        // Buscamos si el usuario envió algo que parezca un número o si la conversación es nueva
+        // --- LOGICA DE REGISTRO DE LEADS E HISTORIAL ---
         $full_chat_log = "";
         foreach ($messages as $m) {
-            $full_chat_log .= "[" . strtoupper($m['role']) . "]: " . $m['content'] . "\n";
+            $role_display = ($m['role'] === 'system') ? 'SYS' : strtoupper($m['role']);
+            $full_chat_log .= "[$role_display]: " . $m['content'] . "\n";
         }
         $full_chat_log .= "[BOT]: " . $reply;
 
-        // Intentar detectar si el usuario entregó datos (detección simple)
-        // Si hay un número de más de 7 dígitos en el mensaje del usuario
+        // Registro de Leads
         if (preg_match('/[0-9]{7,}/', $user_message)) {
             $file = 'chat_leads_history.csv';
             $date = date('Y-m-d H:i:s');
             $line = "\"$date\", \"Detectado\", \"$user_message\", \"Chat AI History\"\n";
             file_put_contents($file, $line, FILE_APPEND);
             
-            // Enviar correo con la historia completa
             $to = "contacto@agenciapatagoniacoach.cl";
             $subject = "🔥 LEADS DETECTADO EN CHAT";
-            $body = "Se ha detectado actividad de contacto en el chat:\n\n" . $full_chat_log;
+            $body = "Se ha detectado actividad de contacto:\n\n" . $full_chat_log;
             $headers = "From: no-reply@agenciapatagoniacoach.cl";
             mail($to, $subject, $body, $headers);
         }
 
-        // Siempre guardar un log general de conversaciones para auditoría
-        file_put_contents('chat_audit.log', "\n--- " . date('Y-m-d H:i:s') . " ---\n" . $full_chat_log . "\n", FILE_APPEND);
+        // Auditoría Perpetua
+        file_put_contents('chat_audit.log', "\n--- SESSION " . date('Y-m-d H:i:s') . " ---\n" . $full_chat_log . "\n", FILE_APPEND);
 
         echo json_encode(['reply' => $reply]);
     }
