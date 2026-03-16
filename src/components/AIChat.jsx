@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Bot, User, Loader2 } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, User, Loader2, Plus } from 'lucide-react';
 
 const AIChat = ({ hideButton = false, forceOpen = false }) => {
   const [isOpen, setIsOpen] = useState(false);
