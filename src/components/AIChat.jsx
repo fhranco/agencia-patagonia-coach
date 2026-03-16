@@ -17,7 +17,7 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
     const isCaptured = localStorage.getItem('patagonia_chat_lead_captured') === 'true';
     return isCaptured 
       ? [{ role: 'bot', content: '¿Qué escalamos hoy?' }]
-      : [{ role: 'bot', content: 'Para iniciar la consultoría, ¿cuál es tu nombre?' }];
+      : [{ role: 'bot', content: 'Hola, un gusto saludarte. Soy el asistente de Agencia PatagoniaCoach. ¿Con quién tengo el gusto de hablar?' }];
   });
 
   const [input, setInput] = useState('');
@@ -46,7 +46,7 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
     const isCaptured = localStorage.getItem('patagonia_chat_lead_captured') === 'true';
     const initialMsg = isCaptured 
       ? [{ role: 'bot', content: '¿Qué escalamos hoy?' }]
-      : [{ role: 'bot', content: 'Para iniciar la consultoría, ¿cuál es tu nombre?' }];
+      : [{ role: 'bot', content: 'Hola, un gusto saludarte. Soy el asistente de Agencia PatagoniaCoach. ¿Con quién tengo el gusto de hablar?' }];
     
     setMessages(initialMsg);
     setStep(isCaptured ? 'chat' : 'nombre');
@@ -86,7 +86,7 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
       setUserData(prev => ({ ...prev, nombre: userMsg }));
       setIsLoading(true);
       setTimeout(() => {
-        setMessages(prev => [...prev, { role: 'bot', content: `Hola ${userMsg.split(' ')[0]}. ¿Tu WhatsApp? (Para agendar luego).` }]);
+        setMessages(prev => [...prev, { role: 'bot', content: `Mucho gusto, ${userMsg.split(' ')[0]}. Para que alguien de nuestro equipo de especialistas te contacte, ¿me compartes tu WhatsApp?` }]);
         setStep('whatsapp');
         setIsLoading(false);
       }, 1000);
@@ -99,7 +99,7 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
       setIsLoading(true);
       await saveLead(updatedData); // Guardamos lead
       setTimeout(() => {
-        setMessages(prev => [...prev, { role: 'bot', content: 'Perfecto. Sesión estratégica activada. ¿En qué trabajamos?' }]);
+        setMessages(prev => [...prev, { role: 'bot', content: 'Listo. Ya estamos conectados. ¿En qué podemos ayudarte hoy?' }]);
         setStep('chat');
         setIsLoading(false);
       }, 1000);
