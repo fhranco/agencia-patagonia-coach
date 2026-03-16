@@ -20,7 +20,7 @@ if (empty($user_message)) {
 $knowledge_file = 'ai_knowledge.txt';
 $ai_memory = file_exists($knowledge_file) ? file_get_contents($knowledge_file) : "Eres un asistente de PatagoniaCoach.";
 
-$system_prompt = "Instrucciones principales:\n" . $ai_memory . "\n\nREGLA: Máximo 15 palabras. Tono seco, real y directo. No te presentes. Responde a la consulta del usuario de forma útil pero muy breve. No repitas siempre lo mismo. Si saludan, varía: '¿Qué escalamos hoy?', '¿En qué estás trabajando?', 'Dime.'. Si piden ayuda, ve al punto.";
+$system_prompt = "Eres la inteligencia estratégica de PatagoniaCoach. Tu tono es directo, minimalista y profesional. No uses saludos genéricos ni te presentes. Responde siempre en menos de 15 palabras. Sé útil, real y responde específicamente a lo que te preguntan. No repitas frases.";
 
 $data = [
     'model' => 'deepseek-chat',
