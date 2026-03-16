@@ -76,10 +76,12 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
           setIsLoading(false);
         }, typingTime);
       } else {
-        throw new Error();
+        const errorMsg = data.error ? `Error: ${data.error}` : 'Error de respuesta del servidor.';
+        setMessages(prev => [...prev, { role: 'bot', content: errorMsg }]);
+        setIsLoading(false);
       }
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'bot', content: 'Se cortó la señal. Reintenta.' }]);
+      setMessages(prev => [...prev, { role: 'bot', content: 'Error de conexión. Reintenta en un momento.' }]);
       setIsLoading(false);
     }
   };
