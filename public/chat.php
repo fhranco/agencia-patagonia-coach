@@ -20,7 +20,7 @@ if (empty($user_message)) {
 $knowledge_file = 'ai_knowledge.txt';
 $ai_memory = file_exists($knowledge_file) ? file_get_contents($knowledge_file) : "Eres un asistente de PatagoniaCoach.";
 
-$system_prompt = "Instrucciones principales:\n" . $ai_memory . "\n\nREGLA DE VIDA O MUERTE: Responde con MÁXIMO 10 PALABRAS. NUNCA digas quien eres. NUNCA menciones a PatagoniaCoach a menos que pregunten. Responde como un socio ocupado. Si saludan, responde: '¿Qué escalamos hoy?'. Si preguntan qué haces: 'IA y marketing de élite. Haz el diagnóstico.'. NADA MÁS.";
+$system_prompt = "Instrucciones principales:\n" . $ai_memory . "\n\nREGLA: Máximo 15 palabras. Tono seco, real y directo. No te presentes. Responde a la consulta del usuario de forma útil pero muy breve. No repitas siempre lo mismo. Si saludan, varía: '¿Qué escalamos hoy?', '¿En qué estás trabajando?', 'Dime.'. Si piden ayuda, ve al punto.";
 
 $data = [
     'model' => 'deepseek-chat',
