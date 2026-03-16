@@ -20,8 +20,8 @@ $date = date('Y-m-d H:i:s');
 $line = "\"$date\", \"$nombre\", \"$whatsapp\", \"$source\"\n";
 file_put_contents($file, $line, FILE_APPEND);
 
-// 2. Enviar por correo a Franco
-$to = "franco@patagoniacoach.cl"; // Ajusta el correo si es necesario
+// 2. Enviar por correo a la agencia
+$to = "contacto@agenciapatagoniacoach.cl"; // Ajusta el correo si es necesario
 $subject = "🚀 NUEVO LEAD - CHAT AI";
 $body = "Se ha capturado un nuevo interés desde el Chat AI:\n\n";
 $body .= "Nombre: $nombre\n";
