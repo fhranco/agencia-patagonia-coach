@@ -7,7 +7,7 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
   const [showGreeting, setShowGreeting] = useState(false);
   const [messages, setMessages] = useState(() => {
     const saved = localStorage.getItem('patagonia_chat_history');
-    return saved ? JSON.parse(saved) : [{ role: 'bot', content: 'Hola. Soy el asistente de Agencia PatagoniaCoach. ¿Con quién hablo?' }];
+    return saved ? JSON.parse(saved) : [{ role: 'bot', content: 'Hola, soy Patagonian AI. ¿Cómo te puedo ayudar a potenciar tu negocio hoy?' }];
   });
 
   const [input, setInput] = useState('');
@@ -33,7 +33,7 @@ const AIChat = ({ hideButton = false, forceOpen = false }) => {
   }, [isOpen]);
 
   const clearHistory = () => {
-    const initialMsg = [{ role: 'bot', content: 'Hola. Soy el asistente de Agencia PatagoniaCoach. ¿Con quién hablo?' }];
+    const initialMsg = [{ role: 'bot', content: 'Hola, soy Patagonian AI. ¿Cómo te puedo ayudar a potenciar tu negocio hoy?' }];
     setMessages(initialMsg);
     localStorage.removeItem('patagonia_chat_history');
     localStorage.removeItem('patagonia_chat_interacted');
