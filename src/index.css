@@ -4,51 +4,51 @@
 
 @layer base {
   body {
-    @apply font-body bg-patagonia-void text-white antialiased;
+    @apply font-body bg-patagonia-black text-patagonia-white antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading uppercase tracking-tight;
+    @apply font-heading tracking-[-0.04em] font-light leading-[0.95];
   }
 }
 
 @layer components {
   .section-container {
-    @apply max-w-7xl mx-auto px-6 py-16 md:py-24;
+    @apply max-w-7xl mx-auto px-6 py-20 md:py-32;
   }
 
   .btn-primary {
-    @apply relative overflow-hidden bg-patagonia-red text-white px-8 py-4 rounded-btn font-heading font-medium transition-all duration-300 hover:scale-105 active:scale-95;
+    @apply relative overflow-hidden bg-patagonia-gold text-black px-10 py-5 rounded-btn font-heading font-semibold uppercase tracking-widest text-[10px] transition-all duration-500 hover:scale-105 active:scale-95;
   }
 
   .btn-secondary {
-    @apply border border-white/20 hover:bg-white/10 text-white px-8 py-4 rounded-btn font-heading font-medium transition-all duration-300;
+    @apply border border-patagonia-white/20 hover:bg-white/5 text-patagonia-white px-10 py-5 rounded-btn font-heading font-semibold uppercase tracking-widest text-[10px] transition-all duration-500;
   }
 
   .glass-card {
-    @apply bg-patagonia-surface/50 backdrop-blur-xl border border-white/10 rounded-card p-8;
+    @apply bg-patagonia-surface/40 backdrop-blur-3xl border border-white/5 rounded-card p-10;
   }
 
-  .text-glow-cyan {
-    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+  .text-glow-accent {
+    text-shadow: 0 0 15px hsl(45, 100%, 50%, 0.3);
   }
 
-  .bg-glow-red {
-    box-shadow: 0 0 20px rgba(240, 20, 10, 0.3);
+  .bg-glow-gold {
+    box-shadow: 0 0 40px hsl(45, 100%, 50%, 0.15);
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-patagonia-void;
+  @apply bg-patagonia-black;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-white/10 rounded-full hover:bg-patagonia-red/50 transition-colors;
+  @apply bg-patagonia-surface rounded-full hover:bg-patagonia-gold/40 transition-colors;
 }
 
 /* Custom Cursor styles */

@@ -8,15 +8,17 @@ export default {
     extend: {
       colors: {
         patagonia: {
-          red: "#F0140A",
-          void: "#0F1729",
-          surface: "#1F2937",
-          cyan: "#00E5FF",
-          white: "#FFFFFF",
+          gold: "hsl(45, 100%, 50%)",
+          black: "hsl(0, 0%, 3%)",
+          surface: "hsl(0, 0%, 8%)",
+          red: "hsl(0, 100%, 20%)",
+          cyan: "hsl(180, 100%, 50%)",
+          white: "hsl(0, 0%, 98%)",
+          secondary: "hsl(0, 0%, 60%)",
         }
       },
       fontFamily: {
-        heading: ["'Space Grotesk'", "sans-serif"],
+        heading: ["'Outfit'", "sans-serif"],
         body: ["Inter", "sans-serif"],
       },
       borderRadius: {

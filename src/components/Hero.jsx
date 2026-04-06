@@ -35,33 +35,40 @@ const Hero = () => {
   }, []);
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden pt-20">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] hero-animation pointer-events-none" />
+    <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden pt-24 px-6 md:px-12 bg-patagonia-black">
+      {/* Background image med/high opacity gradient */}
+      <div className="absolute inset-0 z-0 opacity-40">
+        <img src="/patagonia_luxury_hero.png" alt="Patagonia Luxury Experience" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-patagonia-black via-patagonia-black/80 to-transparent" />
+      </div>
 
-      <div className="section-container grid md:grid-cols-2 gap-12 items-center relative z-10">
-        <div className="space-y-8">
+      <div className="section-container relative z-10 grid md:grid-cols-2 gap-16 items-center">
+        <div className="space-y-10">
+          <div className="inline-block px-4 py-1.5 border border-patagonia-gold/30 rounded-full">
+            <span className="text-[9px] uppercase tracking-[0.3em] font-semibold text-patagonia-gold">Ecosistemas de Alto Impacto</span>
+          </div>
           <h1 
             ref={titleRef}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] leading-[1.05] tracking-tight font-heading font-bold text-white text-balance"
+            className="text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.9] tracking-[-0.05em] font-heading font-light text-patagonia-white text-balance"
           >
-            Lidera la era de la IA con un Ecosistema Organizacional diseñado para escalar.
+            Donde la <span className="text-patagonia-gold italic">visión</span> se encuentra con la <span className="opacity-60">tecnología</span>.
           </h1>
-          <p className="hero-text text-lg sm:text-xl font-light text-white/70 max-w-lg leading-relaxed">
-            Ayudamos a las organizaciones a escalar sus resultados mediante la integración de capacidades digitales avanzadas y automatización.
+          <p className="hero-text text-lg sm:text-xl font-light text-patagonia-secondary max-w-lg leading-relaxed mix-blend-plus-lighter">
+            Ayudamos a las organizaciones a escalar sus resultados corporativos mediante el diseño de experiencias digitales de inmersión y capacidades tecnológicas avanzadas.
           </p>
-          <div className="hero-text flex flex-wrap gap-4 pt-4">
-            <a href="#contacto" className="btn-primary group inline-block">
-              Agendar Auditoría Estratégica
-              <span className="absolute inset-0 border-2 border-patagonia-red rounded-btn opacity-50 animate-ping group-hover:hidden" />
+          <div className="hero-text flex flex-wrap gap-6 pt-6">
+            <a href="#contacto" className="btn-primary group inline-block text-center min-w-[240px]">
+              Agendar Auditoría Elite
             </a>
-            <Link to="/academia" className="btn-secondary inline-block text-center">
+            <Link to="/academia" className="btn-secondary inline-block text-center min-w-[200px]">
               Explorar Academia
             </Link>
           </div>
         </div>
 
-        <Native3DLogo />
+        <div className="hidden md:block scale-110 opacity-90">
+          <Native3DLogo />
+        </div>
       </div>
     </section>
   );

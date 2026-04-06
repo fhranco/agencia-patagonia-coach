@@ -150,15 +150,14 @@ const ServiceMatrix = () => {
 
   const services = [
     {
-      title: "Marketing & Ecosistema Digital",
-      bgImage: "/matrix_marketing.webp",
+      title: "Arquitectura de Influencia",
+      bgImage: "/patagonia_luxury_hero.png",
       solutions: [
-        "Gestión de Redes Sociales",
-        "Publicidad de Alto Impacto",
-        "Análisis de Data Predictiva",
-        "Community Management",
-        "Estrategia de Crecimiento",
-        "Optimización de Conversión"
+        "Estrategia de Posicionamiento Elite",
+        "Publicidad de Inmersión Psicológica",
+        "Gestión de Reputación de Alto Nivel",
+        "Growth Marketing de Precisión",
+        "Ecosistemas de Conversión"
       ],
       icon: Share2,
       microUI: (hover) => (
@@ -166,23 +165,23 @@ const ServiceMatrix = () => {
           <motion.div
             animate={{ rotate: hover ? 360 : 0 }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 border border-dashed border-patagonia-cyan/30 rounded-full"
+            className="absolute inset-0 border border-dashed border-patagonia-gold/30 rounded-full"
           />
           <div className="relative z-10 flex gap-2">
-            <div className="w-2 h-2 bg-patagonia-cyan rounded-full animate-ping" />
-            <div className="w-2 h-2 bg-patagonia-red rounded-full animate-bounce" />
+            <div className="w-2 h-2 bg-patagonia-gold rounded-full animate-ping" />
+            <div className="w-2 h-2 bg-patagonia-white rounded-full animate-bounce" />
           </div>
         </div>
       )
     },
     {
-      title: "Storytelling & Visual Engine",
-      bgImage: "/matrix_storytelling.webp",
+      title: "Cinematografía & Artefactos",
+      bgImage: "/nano_banana_luxury.png",
       solutions: [
-        "Narrativa Transmedia",
-        "Fotografía Galardonada",
         "Producción Audiovisual 8K",
-        "Diseño con IA Generativa",
+        "Fotografía Galardonada",
+        "Diseño de Artefactos de Lujo",
+        "Narrativas Surrealistas con IA",
         "Branding Documental"
       ],
       icon: Camera,
@@ -193,19 +192,19 @@ const ServiceMatrix = () => {
               key={i}
               animate={{ height: hover ? [10, Math.random() * 40 + 10, 10] : 10 }}
               transition={{ repeat: Infinity, duration: 0.5 + Math.random(), ease: "easeInOut" }}
-              className="w-1 bg-patagonia-red rounded-full shadow-[0_0_8px_rgba(240,20,10,0.5)]"
+              className="w-1 bg-patagonia-gold rounded-full shadow-[0_0_8px_rgba(251,145,77,0.5)]"
             />
           ))}
         </div>
       )
     },
     {
-      title: "Arquitectura & Desarrollo Web",
-      bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop",
+      title: "Ecosistemas de Inmersión",
+      bgImage: "/luxury_watch_industrial.png",
       solutions: [
-        "Ecosistemas Web Escalables",
-        "E-commerce de Próxima Generación",
-        "SaaS & Plataformas Custom",
+        "Desarrollo Web de Próxima Generación",
+        "E-commerce de Lujo & Boutique",
+        "Plataformas SaaS de Alta Disponibilidad",
         "Optimización de Performance 100/100"
       ],
       icon: LayoutTemplate,
@@ -217,31 +216,31 @@ const ServiceMatrix = () => {
               initial={{ height: 0 }}
               animate={{ height: hover ? `${h}%` : '20%' }}
               transition={{ delay: i * 0.05, type: 'spring' }}
-              className="w-2 bg-patagonia-cyan rounded-t-sm shadow-[0_0_10px_rgba(0,229,255,0.4)]"
+              className="w-2 bg-patagonia-gold rounded-t-sm shadow-[0_0_10px_rgba(251,145,77,0.4)]"
             />
           ))}
         </div>
       )
     },
     {
-      title: "Inteligencia Artificial Aplicada",
-      bgImage: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2000&auto=format&fit=crop",
-      subtitle: "Automatizamos el 80% de sus tareas repetitivas para que su equipo se enfoque en la estrategia y la creatividad.",
+      title: "Inteligencia Estratégica",
+      bgImage: "/gourmet_dish_luxury.png",
+      subtitle: "Automatizamos la complejidad para liberar el potencial genio de su equipo.",
       solutions: [
-        "Modelos de IA Personalizados",
-        "Automatización de Workflows",
-        "Agentes de IA para Ventas",
-        "Análisis de Sentimiento"
+        "Modelos de IA de Propósito Específico",
+        "Automatización de Operaciones Críticas",
+        "Análisis de Data Predictiva",
+        "Agentes de IA de Alto Rendimiento"
       ],
       icon: Cpu,
       microUI: (hover) => (
         <div className="flex flex-col items-center gap-4 pointer-events-none">
           <div className="flex items-center gap-6">
-            <XCircle className={`w-5 h-5 transition-colors ${!hover ? 'text-patagonia-red' : 'text-white/20'}`} />
-            <div className={`w-12 h-6 rounded-full p-1 transition-colors ${hover ? 'bg-patagonia-cyan' : 'bg-white/10'}`}>
+            <XCircle className={`w-5 h-5 transition-colors ${!hover ? 'text-patagonia-white/20' : 'text-white/20'}`} />
+            <div className={`w-12 h-6 rounded-full p-1 transition-colors ${hover ? 'bg-patagonia-gold' : 'bg-white/10'}`}>
               <motion.div animate={{ x: hover ? 24 : 0 }} className="w-4 h-4 bg-white rounded-full shadow-lg" />
             </div>
-            <CheckCircle2 className={`w-5 h-5 transition-colors ${hover ? 'text-patagonia-cyan' : 'text-white/20'}`} />
+            <CheckCircle2 className={`w-5 h-5 transition-colors ${hover ? 'text-patagonia-gold' : 'text-white/20'}`} />
           </div>
           <span className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold">
             {hover ? 'Status: Autonomous' : 'Status: Manual'}
@@ -250,14 +249,14 @@ const ServiceMatrix = () => {
       )
     },
     {
-      title: "Consultoría de Transformación",
+      title: "Consultoría Elite",
       bgImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2000&auto=format&fit=crop",
-      subtitle: "Unificamos tecnología, cultura y estrategia en un solo ecosistema operativo diseñado para escalar sin fricciones.",
+      subtitle: "Unificamos tecnología y estrategia en un solo protocolo operativo diseñado para escalar.",
       solutions: [
-        "Reingeniería de Procesos",
         "Auditoría Tecnológica IA",
-        "Roadmap de Transformación",
-        "Cultura de Innovación"
+        "Roadmap de Expansión Corporativa",
+        "Reingeniería de Experiencia de Cliente",
+        "Protocolo Patagonia Coach"
       ],
       icon: Briefcase,
       microUI: (hover) => (
@@ -267,7 +266,7 @@ const ServiceMatrix = () => {
           </motion.div>
           <motion.div animate={{ opacity: hover ? 1 : 0, scale: hover ? 1 : 0.8 }} className="absolute inset-0 flex items-center justify-center">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-patagonia-red rounded-sm rotate-45 shadow-[0_0_15px_rgba(240,20,10,0.5)]" />
+              <div className="w-6 h-6 bg-patagonia-gold rounded-sm rotate-45 shadow-[0_0_15px_rgba(251,145,77,0.5)]" />
               <div className="h-2 w-12 bg-white/20 rounded-full" />
             </div>
           </motion.div>
@@ -275,27 +274,27 @@ const ServiceMatrix = () => {
       )
     },
     {
-      title: "Ecosistema de Formación",
+      title: "Academia de Alta Gerencia",
       bgImage: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2000&auto=format&fit=crop",
-      subtitle: "Capacitación continua para que su equipo no solo use la IA, sino que aprenda a evolucionar con ella.",
+      subtitle: "Capacitación continua para que su equipo no solo use la tecnología, sino que aprenda a evolucionar con ella.",
       solutions: [
         "Sprints Tácticos de IA",
-        "Bootcamps de Acción Directa",
-        "Programas de Liderazgo Digital",
-        "Mentoría Estratégica"
+        "Bootcamps de Inmersión Patagonia",
+        "Mastery en Liderazgo Tecnológico",
+        "Mentoría de Alto Impacto"
       ],
       icon: GraduationCap,
       microUI: (hover) => (
         <div className="relative flex flex-col items-center">
           <motion.div animate={{ rotate: hover ? 0 : -10, y: hover ? -5 : 0 }} className="relative">
-             <Lock className={`w-10 h-10 transition-colors ${hover ? 'text-patagonia-cyan' : 'text-white/20'}`} />
-             {hover && <motion.div layoutId="glow" className="absolute inset-0 bg-patagonia-cyan/20 blur-xl rounded-full" />}
+             <Lock className={`w-10 h-10 transition-colors ${hover ? 'text-patagonia-gold' : 'text-white/20'}`} />
+             {hover && <motion.div layoutId="glow" className="absolute inset-0 bg-patagonia-gold/20 blur-xl rounded-full" />}
           </motion.div>
           <AnimatePresence>
             {hover && (
               <motion.span 
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-                className="text-[10px] text-patagonia-cyan uppercase tracking-tighter mt-2 font-bold"
+                className="text-[10px] text-patagonia-gold uppercase tracking-tighter mt-2 font-bold"
               >
                 Access Granted
               </motion.span>
@@ -307,7 +306,7 @@ const ServiceMatrix = () => {
   ];
 
   return (
-    <section className="section-container relative bg-patagonia-void min-h-screen">
+    <section className="section-container relative bg-patagonia-black min-h-screen">
       {/* Cinematic Background Crossfade */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <AnimatePresence>
@@ -321,23 +320,25 @@ const ServiceMatrix = () => {
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${services[activeServiceHover].bgImage})` }}
             >
-              <div className="absolute inset-0 bg-patagonia-void/60 backdrop-blur-[2px]" />
+              <div className="absolute inset-0 bg-patagonia-black/60 backdrop-blur-[2px]" />
             </motion.div>
           )}
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-t from-patagonia-void via-patagonia-void/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-patagonia-void via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-patagonia-black via-patagonia-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-patagonia-black via-transparent to-transparent" />
       </div>
 
-      <div className="mb-24 space-y-6 relative z-10 pt-10">
-        <div className="flex items-center gap-4">
-          <div className="w-16 h-[1px] bg-gradient-to-r from-patagonia-red to-transparent" />
-          <span className="text-patagonia-red font-heading tracking-[0.6em] text-sm uppercase">Agencia PatagoniaCoach</span>
+      <div className="mb-24 space-y-10 relative z-10 pt-10">
+        <div className="flex items-center gap-6">
+          <div className="w-20 h-[1px] bg-gradient-to-r from-patagonia-gold to-transparent" />
+          <span className="text-patagonia-gold font-heading tracking-[0.8em] text-[10px] uppercase font-semibold">Matriz de Servicios Elite</span>
         </div>
-        <h2 className="text-[4rem] font-bold max-w-4xl leading-[1.1] text-balance">EL CENTRO DE COMANDO ESTRATÉGICO.</h2>
+        <h2 className="text-6xl md:text-[6rem] font-heading font-light max-w-5xl leading-[0.9] text-balance tracking-[-0.05em]">
+          Ecosistemas de <span className="text-patagonia-gold italic">valor</span> ininterrumpido.
+        </h2>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10" style={{ perspective: 2000 }}>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10" style={{ perspective: 2000 }}>
         {services.map((service, index) => (
           <ServiceCard 
             key={index} 

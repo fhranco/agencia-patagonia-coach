@@ -62,50 +62,51 @@ const LeadCommand = () => {
 
   return (
     <section className="section-container" id="contacto">
-      <div className="grid md:grid-cols-2 gap-16 items-center bg-patagonia-surface rounded-card p-12 md:p-24 border border-white/5 relative overflow-hidden">
-        {/* Abstract Background Element */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-patagonia-red/10 blur-[100px] -translate-y-1/2 translate-x-1/2" />
+      <div className="grid md:grid-cols-2 gap-20 items-center bg-patagonia-surface/30 rounded-[3rem] p-12 md:p-28 border border-white/5 relative overflow-hidden">
+        {/* Subtle Gold Glow */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-patagonia-gold/5 blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         
-        <div className="space-y-8 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-patagonia-red/10 border border-patagonia-red/20 text-patagonia-red text-xs font-heading tracking-widest uppercase">
-            <ShieldCheck className="w-4 h-4" /> Disponibilidad Limitada
+        <div className="space-y-10 relative z-10">
+          <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-patagonia-gold/10 border border-patagonia-gold/20 text-patagonia-gold text-[10px] font-heading tracking-[0.3em] uppercase font-bold">
+            <ShieldCheck className="w-4 h-4" /> Disponibilidad Restringida
           </div>
-          <h2 className="text-6xl font-bold leading-none">LEAD COMMAND</h2>
-          <p className="text-xl text-white/60 font-light leading-relaxed">
-            No aceptamos a todos los clientes. Buscamos organizaciones comprometidas con la transformación radical. 
-            <strong className="text-white"> Solicite su Auditoría Estratégica</strong> y nuestro equipo evaluará su caso en 48hs.
+          <h2 className="text-6xl md:text-[5rem] font-heading font-light leading-[0.9] tracking-[-0.05em] text-patagonia-white">SOLICITUD DE <br/><span className="text-patagonia-gold italic">AUDITORÍA ELITE</span>.</h2>
+          <p className="text-xl text-patagonia-secondary font-light leading-relaxed max-w-lg">
+            No aceptamos a todas las marcas. Buscamos organizaciones comprometidas con una <strong className="text-patagonia-gold">evolución radical</strong>. Nuestro comité senior evaluará su perfil en un lapso de 48 horas.
           </p>
           
-          <div className="pt-8 grid grid-cols-2 gap-8 border-t border-white/5">
+          <div className="pt-12 grid grid-cols-2 gap-12 border-t border-white/5">
             <div>
-              <p className="text-3xl font-bold">12</p>
-              <p className="text-[10px] text-white/40 uppercase tracking-widest mt-2">Slots Mensuales</p>
+              <p className="text-4xl font-heading font-light text-patagonia-white tracking-tighter">05</p>
+              <p className="text-[9px] text-patagonia-gold uppercase tracking-[0.5em] mt-3 font-black">Cupos Mensuales</p>
             </div>
             <div>
-              <p className="text-3xl font-bold">4.9/5</p>
-              <p className="text-[10px] text-white/40 uppercase tracking-widest mt-2">Satisfaction ROI</p>
+              <p className="text-4xl font-heading font-light text-patagonia-white tracking-tighter">100%</p>
+              <p className="text-[9px] text-patagonia-secondary/40 uppercase tracking-[0.5em] mt-3 font-black">Confidencialidad</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-patagonia-void p-8 md:p-12 rounded-card border border-white/10 relative z-10 shadow-2xl">
+        <div className="bg-patagonia-black/60 backdrop-blur-3xl p-10 md:p-14 rounded-[2.5rem] border border-white/10 relative z-10 shadow-[0_40px_100px_rgba(0,0,0,0.4)]">
           <AnimatePresence mode="wait">
             {status === 'success' ? (
               <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-12 space-y-6"
+                className="text-center py-16 space-y-8"
               >
-                <div className="w-20 h-20 bg-patagonia-cyan/20 rounded-full flex items-center justify-center mx-auto border border-patagonia-cyan/30">
-                  <CheckCircle2 className="w-10 h-10 text-patagonia-cyan" />
+                <div className="w-24 h-24 bg-patagonia-gold/10 rounded-full flex items-center justify-center mx-auto border border-patagonia-gold/30">
+                  <CheckCircle2 className="w-12 h-12 text-patagonia-gold" />
                 </div>
-                <h3 className="text-2xl font-bold">Solicitud Enviada</h3>
-                <p className="text-white/60">Gracias por su interés. Un consultor senior analizará su perfil y se contactará vía email en las próximas 48hs.</p>
+                <div className="space-y-4">
+                  <h3 className="text-3xl font-heading font-light text-patagonia-white">Requerimiento Procesado</h3>
+                  <p className="text-patagonia-secondary text-sm leading-relaxed max-w-[280px] mx-auto">Nuestro equipo de consultoría senior analizará su ecosistema y se contactará a la brevedad.</p>
+                </div>
                 <button 
                   onClick={() => setStatus('idle')}
-                  className="text-xs uppercase tracking-widest text-patagonia-red border-b border-patagonia-red/20 pb-1"
+                  className="text-[9px] uppercase tracking-[0.4em] font-black text-patagonia-white hover:text-patagonia-gold transition-colors pt-10"
                 >
-                  Enviar otra solicitud
+                  Nuevo Requerimiento
                 </button>
               </motion.div>
             ) : (
@@ -114,78 +115,80 @@ const LeadCommand = () => {
                 method="POST"
                 data-netlify="true"
                 onSubmit={handleSubmit}
-                className="space-y-6"
+                className="space-y-8"
               >
-                {/* Honeypot field for security */}
                 <input type="hidden" name="_honeypot" value={formData._honeypot} onChange={handleChange} style={{ display: 'none' }} />
                 
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-[0.2em] text-white/40">Nombre Completo</label>
+                <div className="space-y-3">
+                  <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Nombre & Cargo</label>
                   <input 
                     required
                     name="nombre"
                     value={formData.nombre}
                     onChange={handleChange}
                     type="text" 
-                    placeholder="Ej. John Doe"
-                    className="w-full bg-white/5 border border-white/10 rounded-btn p-4 focus:border-patagonia-cyan outline-none transition-all placeholder:text-white/10"
+                    placeholder="Ej. Alexander von Patagonia"
+                    className="w-full bg-white/5 border border-white/5 rounded-2xl p-5 focus:border-patagonia-gold/50 outline-none transition-all placeholder:text-white/10 font-light text-sm"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-[0.2em] text-white/40">Email Corporativo</label>
-                  <input 
-                    required
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    type="email" 
-                    placeholder="john@empresa.com"
-                    className="w-full bg-white/5 border border-white/10 rounded-btn p-4 focus:border-patagonia-cyan outline-none transition-all placeholder:text-white/10"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-[0.2em] text-white/40">Presupuesto Estimado (Anual)</label>
-                  <div className="relative">
-                    <select 
-                      name="presupuesto"
-                      value={formData.presupuesto}
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Email Corporativo</label>
+                    <input 
+                      required
+                      name="email"
+                      value={formData.email}
                       onChange={handleChange}
-                      className="w-full bg-white/5 border border-white/10 rounded-btn p-4 focus:border-patagonia-cyan outline-none transition-all appearance-none cursor-pointer"
-                    >
-                      <option className="bg-patagonia-void">$10k - $50k</option>
-                      <option className="bg-patagonia-void">$50k - $250k</option>
-                      <option className="bg-patagonia-void">$250k+</option>
-                    </select>
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none opacity-40">
-                      <ArrowRight className="w-4 h-4 rotate-90" />
+                      type="email" 
+                      placeholder="vip@empresa.com"
+                      className="w-full bg-white/5 border border-white/5 rounded-2xl p-5 focus:border-patagonia-gold/50 outline-none transition-all placeholder:text-white/10 font-light text-sm"
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Inversión Estimada</label>
+                    <div className="relative">
+                      <select 
+                        name="presupuesto"
+                        value={formData.presupuesto}
+                        onChange={handleChange}
+                        className="w-full bg-white/5 border border-white/5 rounded-2xl p-5 focus:border-patagonia-gold/50 outline-none transition-all appearance-none cursor-pointer font-light text-sm text-patagonia-white/60"
+                      >
+                        <option className="bg-patagonia-black text-white">$10.000 - $50.000 USD</option>
+                        <option className="bg-patagonia-black text-white">$50.000 - $250.000 USD</option>
+                        <option className="bg-patagonia-black text-white">$250.000+ USD</option>
+                      </select>
+                      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none opacity-20">
+                        <ArrowRight className="w-4 h-4 rotate-90" />
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-[0.2em] text-white/40">Desafío Principal</label>
+                <div className="space-y-3">
+                  <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Visión de Escalamiento</label>
                   <textarea 
                     required
                     name="mensaje"
                     value={formData.mensaje}
                     onChange={handleChange}
-                    rows="4"
-                    placeholder="Describa su situación actual..."
-                    className="w-full bg-white/5 border border-white/10 rounded-btn p-4 focus:border-patagonia-cyan outline-none transition-all placeholder:text-white/10 resize-none"
+                    rows="3"
+                    placeholder="Describa su ambición de mercado..."
+                    className="w-full bg-white/5 border border-white/5 rounded-2xl p-5 focus:border-patagonia-gold/50 outline-none transition-all placeholder:text-white/10 font-light text-sm resize-none"
                   ></textarea>
                 </div>
                 <button 
                   disabled={status === 'submitting'}
-                  className="btn-primary w-full flex items-center justify-center gap-3 py-6 shadow-[0_0_30px_rgba(240,20,10,0.2)] disabled:opacity-50 group"
+                  className="btn-primary w-full flex items-center justify-center gap-4 py-6 shadow-2xl disabled:opacity-50 group !text-[10px]"
                 >
                   {status === 'submitting' ? (
-                    <>PROCESANDO <Loader2 className="w-4 h-4 animate-spin" /></>
+                    <>ENCRIPTANDO DATOS <Loader2 className="w-4 h-4 animate-spin" /></>
                   ) : (
-                    <>SOLICITAR AUDITORIA <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></>
+                    <>SOLICITAR ACCESO ESTRATÉGICO <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></>
                   )}
                 </button>
-                <p className="text-[10px] text-center text-white/30 uppercase tracking-widest mt-4">
-                  Auditamos cultura, tecnología y potencial de mercado.
-                </p>
+                <div className="flex items-center justify-center gap-2 opacity-20 grayscale">
+                   <ShieldCheck className="w-3 h-3" />
+                   <span className="text-[8px] uppercase tracking-[0.4em] font-black">Encriptación de Nivel Bancario 256-bit</span>
+                </div>
               </form>
             )}
           </AnimatePresence>
