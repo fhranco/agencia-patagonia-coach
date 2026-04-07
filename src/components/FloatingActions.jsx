@@ -38,33 +38,40 @@ const FloatingActions = () => {
         )}
       </AnimatePresence>
 
-      {/* Editorial Sidebar Tab Button */}
+      {/* Editorial Sidebar Tab Button with Pulse */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ x: -10, scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className={`w-14 h-28 rounded-l-3xl flex flex-col items-center justify-center shadow-2xl transition-all border-y border-l border-white/20 backdrop-blur-3xl group ${
+        className={`w-14 h-48 rounded-l-[2rem] flex flex-col items-center justify-center shadow-2xl transition-all border-y border-l border-white/20 backdrop-blur-3xl group relative overflow-hidden ${
           isOpen 
             ? 'bg-white text-black' 
             : 'bg-patagonia-red text-white'
         }`}
       >
+        {/* Continuous Pulse Glow (Only when closed) */}
+        {!isOpen && (
+           <motion.div
+             animate={{ 
+               boxShadow: [
+                 'inset 0 0 0px rgba(255,191,0,0)', 
+                 'inset 0 0 30px rgba(255,191,0,0.3)', 
+                 'inset 0 0 0px rgba(255,191,0,0)'
+               ] 
+             }}
+             transition={{ repeat: Infinity, duration: 2.5 }}
+             className="absolute inset-0 z-0"
+           />
+        )}
+
         {isOpen ? (
           <X className="w-6 h-6" />
         ) : (
-          <div className="flex flex-col items-center gap-3">
-             <Share2 className="w-6 h-6 mb-2" />
-             <span className="[writing-mode:vertical-lr] rotate-180 text-[8px] uppercase tracking-[0.4em] font-black group-hover:tracking-[0.5em] transition-all">MASTER CENTER</span>
+          <div className="flex flex-col items-center gap-6 z-10">
+             <Bot className="w-5 h-5 text-patagonia-gold animate-pulse" />
+             <span className="[writing-mode:vertical-lr] rotate-180 text-[9px] uppercase tracking-[0.5em] font-black group-hover:tracking-[0.6em] transition-all">MASTER CENTER</span>
+             <Share2 className="w-5 h-5 opacity-40" />
           </div>
-        )}
-        
-        {/* Active Indicator Glow */}
-        {!isOpen && (
-          <motion.div 
-            animate={{ opacity: [0.3, 0.6, 0.3] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-patagonia-gold rounded-full blur-[2px]" 
-          />
         )}
       </motion.button>
 
