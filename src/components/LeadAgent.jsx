@@ -48,7 +48,7 @@ const LeadAgent = ({ isOpen, onClose }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed bottom-28 right-28 z-[510]">
+        <div className="fixed bottom-28 left-1/2 -translate-x-1/2 z-[510]">
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
