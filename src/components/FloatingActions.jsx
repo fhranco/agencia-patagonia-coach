@@ -10,7 +10,7 @@ const FloatingActions = () => {
   const [showChat, setShowChat] = useState(false);
 
   return (
-    <div className="fixed top-1/2 -translate-y-1/2 right-8 z-[500] flex flex-col items-center gap-4">
+    <div className="fixed top-1/2 -translate-y-1/2 right-0 z-[500] flex flex-col items-center gap-6">
       {/* Expanded Menu */}
       <AnimatePresence>
         {isOpen && (
@@ -18,7 +18,7 @@ const FloatingActions = () => {
             initial={{ opacity: 0, x: 20, scale: 0.8 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 20, scale: 0.8 }}
-            className="flex flex-col items-center gap-4 mb-2"
+            className="flex flex-col items-center gap-4 pr-6"
           >
             {/* AI Assistant Button */}
             <motion.button
@@ -38,28 +38,33 @@ const FloatingActions = () => {
         )}
       </AnimatePresence>
 
-      {/* Main Toggle Button */}
+      {/* Editorial Sidebar Tab Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all border border-white/20 backdrop-blur-xl ${
+        whileHover={{ x: -10, scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className={`w-14 h-28 rounded-l-3xl flex flex-col items-center justify-center shadow-2xl transition-all border-y border-l border-white/20 backdrop-blur-3xl group ${
           isOpen 
-            ? 'bg-white text-black rotate-45' 
-            : 'bg-patagonia-red shadow-[0_0_40px_rgba(255,23,33,0.4)] text-white'
+            ? 'bg-white text-black' 
+            : 'bg-patagonia-red text-white'
         }`}
       >
         {isOpen ? (
-          <Plus className="w-8 h-8 rotate-45 text-black" />
+          <X className="w-6 h-6" />
         ) : (
-          <div className="relative">
-            <Share2 className="w-8 h-8" />
-            <motion.div 
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="absolute -top-1 -right-1 w-3 h-3 bg-patagonia-gold rounded-full border-2 border-black" 
-            />
+          <div className="flex flex-col items-center gap-3">
+             <Share2 className="w-6 h-6 mb-2" />
+             <span className="[writing-mode:vertical-lr] rotate-180 text-[8px] uppercase tracking-[0.4em] font-black group-hover:tracking-[0.5em] transition-all">MASTER CENTER</span>
           </div>
+        )}
+        
+        {/* Active Indicator Glow */}
+        {!isOpen && (
+          <motion.div 
+            animate={{ opacity: [0.3, 0.6, 0.3] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-patagonia-gold rounded-full blur-[2px]" 
+          />
         )}
       </motion.button>
 
