@@ -5,6 +5,7 @@ import ValueLadder from '../components/ValueLadder';
 import QuickOffers from '../components/QuickOffers';
 import Consultancy from '../components/Consultancy';
 import ServiceMatrix from '../components/ServiceMatrix';
+import MasteryGallery from '../components/MasteryGallery';
 import CaseStudies from '../components/CaseStudies';
 import AcademyHub from '../components/AcademyHub';
 import Vision from '../components/Vision';
@@ -23,6 +24,7 @@ const MainLanding = () => {
         <QuickOffers />
         <Consultancy />
         <ServiceMatrix />
+        <MasteryGallery />
         <CaseStudies />
         <AcademyHub />
         <Vision />
