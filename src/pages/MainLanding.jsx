@@ -12,6 +12,7 @@ import Vision from '../components/Vision';
 import DigitalDiagnostic from '../components/DigitalDiagnostic';
 import LeadCommand from '../components/LeadCommand';
 import Footer from '../components/Footer';
+import LeadAgent from '../components/LeadAgent';
 
 const MainLanding = () => {
   return (
@@ -32,6 +33,7 @@ const MainLanding = () => {
         <LeadCommand />
       </main>
       <Footer />
+      <LeadAgent />
     </>
   );
 };
