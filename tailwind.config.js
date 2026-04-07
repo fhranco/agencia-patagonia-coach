@@ -11,11 +11,10 @@ export default {
           gold: "hsl(45, 100%, 50%)",
           black: "hsl(0, 0%, 3%)",
           surface: "hsl(0, 0%, 8%)",
-          red: "hsl(0, 100%, 20%)",
-          cyan: "hsl(180, 100%, 50%)",
+          red: "#ff1721",
           white: "hsl(0, 0%, 98%)",
           secondary: "hsl(0, 0%, 60%)",
-        }
+        },
       },
       fontFamily: {
         heading: ["'Outfit'", "sans-serif"],
