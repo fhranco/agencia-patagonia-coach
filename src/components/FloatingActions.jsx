@@ -10,14 +10,14 @@ const FloatingActions = () => {
   const [showChat, setShowChat] = useState(false);
 
   return (
-    <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[500] flex flex-col items-center gap-4">
+    <div className="fixed top-1/2 -translate-y-1/2 right-8 z-[500] flex flex-col items-center gap-4">
       {/* Expanded Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.8 }}
+            initial={{ opacity: 0, x: 20, scale: 0.8 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 20, scale: 0.8 }}
             className="flex flex-col items-center gap-4 mb-2"
           >
             {/* AI Assistant Button */}
