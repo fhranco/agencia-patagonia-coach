@@ -120,6 +120,91 @@ const projects = [
 
 const categories = ['Todos', 'Diseño Web', 'Redes Sociales', 'Inteligencia Artificial', 'Academia'];
 
+const ProjectCard = ({ project, onClick }) => {
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setCoords({ x, y });
+  };
+
+  return (
+    <motion.div
+      layout
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setCoords({ x: 0, y: 0 });
+      }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      style={{
+        perspective: 1000,
+        transformStyle: 'preserve-3d'
+      }}
+      onClick={() => onClick(project)}
+      className="group relative h-[450px] rounded-card overflow-hidden bg-patagonia-surface border border-white/5 hover:border-patagonia-gold/30 transition-all duration-700 cursor-pointer"
+    >
+      <motion.div
+        animate={{
+          rotateX: coords.y * 20,
+          rotateY: coords.x * -20,
+          scale: isHovered ? 1.05 : 1
+        }}
+        transition={{ type: 'spring', damping: 20, stiffness: 200, mass: 0.5 }}
+        className="w-full h-full relative"
+      >
+        {/* Dynamic Glint Effect */}
+        <motion.div
+          animate={{
+            background: isHovered 
+              ? `radial-gradient(circle at ${50 + coords.x * 100}% ${50 + coords.y * 100}%, rgba(255,255,255,0.15) 0%, transparent 60%)`
+              : 'none'
+          }}
+          className="absolute inset-0 z-30 pointer-events-none"
+        />
+
+        {/* Image Background */}
+        <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-1000">
+          <img src={project.image} alt={project.title} className="w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-opacity" />
+          <div className="absolute inset-0 bg-gradient-to-t from-patagonia-black via-patagonia-black/40 to-transparent" />
+        </div>
+
+        {/* Content Overlay */}
+        <div className="absolute inset-0 p-10 flex flex-col justify-between z-10">
+          <div className="flex justify-between items-start" style={{ transform: 'translateZ(50px)' }}>
+            <div className="p-3 bg-patagonia-black/60 rounded-xl backdrop-blur-xl border border-white/10 text-patagonia-gold">
+              {project.icon}
+            </div>
+            <div className="px-4 py-1.5 bg-patagonia-red rounded-full">
+              <span className="text-[9px] font-black text-white tracking-[0.2em] uppercase">{project.stats}</span>
+            </div>
+          </div>
+
+          <div className="space-y-4" style={{ transform: 'translateZ(80px)' }}>
+            <span className="text-[10px] uppercase tracking-[0.4em] text-patagonia-gold font-bold">{project.category}</span>
+            <h3 className="text-3xl font-heading text-patagonia-white font-light italic">
+              {project.title}
+            </h3>
+            <div className="pt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-300">
+              <button className="flex items-center gap-3 text-white text-[10px] font-black uppercase tracking-[0.3em] group/btn">
+                Explorar Maestría 
+                <div className="w-8 h-px bg-patagonia-red group-hover/btn:w-16 transition-all duration-500" />
+                <ChevronRight className="w-4 h-4 text-patagonia-red" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 const MasteryGallery = () => {
   const [activeCategory, setActiveCategory] = useState('Todos');
   const [selectedProject, setSelectedProject] = useState(null);
@@ -145,7 +230,6 @@ const MasteryGallery = () => {
             </h2>
           </div>
 
-          {/* Luxury Filter UI */}
           <div className="flex flex-wrap gap-4">
             {categories.map((cat) => (
               <button
@@ -169,47 +253,11 @@ const MasteryGallery = () => {
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                onClick={() => setSelectedProject(project)}
-                className="group relative h-[450px] rounded-card overflow-hidden bg-patagonia-surface border border-white/5 hover:border-patagonia-gold/30 transition-all duration-700 cursor-pointer"
-              >
-                {/* Image Background */}
-                <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-opacity" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-patagonia-black via-patagonia-black/40 to-transparent" />
-                </div>
-
-                {/* Content Overlay */}
-                <div className="absolute inset-0 p-10 flex flex-col justify-between z-10">
-                  <div className="flex justify-between items-start">
-                    <div className="p-3 bg-patagonia-black/60 rounded-xl backdrop-blur-xl border border-white/10 text-patagonia-gold">
-                      {project.icon}
-                    </div>
-                    <div className="px-4 py-1.5 bg-patagonia-red rounded-full">
-                      <span className="text-[9px] font-black text-white tracking-[0.2em] uppercase">{project.stats}</span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <span className="text-[10px] uppercase tracking-[0.4em] text-patagonia-gold font-bold">{project.category}</span>
-                    <h3 className="text-3xl font-heading text-patagonia-white translate-y-4 group-hover:translate-y-0 transition-transform duration-700 font-light italic">
-                      {project.title}
-                    </h3>
-                    <div className="pt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-300">
-                      <button className="flex items-center gap-3 text-white text-[10px] font-black uppercase tracking-[0.3em] group/btn">
-                        Ver Detalles 
-                        <div className="w-8 h-px bg-patagonia-red group-hover/btn:w-16 transition-all duration-500" />
-                        <ChevronRight className="w-4 h-4 text-patagonia-red" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+              <ProjectCard 
+                key={project.id} 
+                project={project} 
+                onClick={setSelectedProject} 
+              />
             ))}
           </AnimatePresence>
         </motion.div>

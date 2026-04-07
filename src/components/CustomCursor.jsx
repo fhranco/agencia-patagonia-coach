@@ -33,8 +33,16 @@ const CustomCursor = () => {
 
   return (
     <>
+      {/* Background Glow Follower */}
       <motion.div
-        className="custom-cursor"
+        className="fixed inset-0 pointer-events-none z-[-1]"
+        animate={{
+          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 191, 0, 0.05), transparent 80%)`
+        }}
+      />
+
+      <motion.div
+        className="custom-cursor hidden md:flex"
         animate={{
           x: mousePos.x - 10,
           y: mousePos.y - 10,
