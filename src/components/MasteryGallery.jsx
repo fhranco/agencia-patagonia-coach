@@ -3,42 +3,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Globe, Layout, Cpu, GraduationCap } from 'lucide-react';
 
 const projects = [
-  {
-    id: 1,
-    category: 'Diseño Web',
-    title: 'Marcela Cruz Boutique',
-    description: 'Arquitectura de lujo sensorial y UX de alta gama para joyería de autor.',
-    image: '/patagonia_luxury_hero.png',
-    icon: <Globe className="w-5 h-5" />,
-    stats: 'Ventas +180%'
-  },
-  {
-    id: 2,
-    category: 'Inteligencia Artificial',
-    title: 'BoostPatagonia',
-    description: 'Radar de Oportunidades y Calculadora de ROI mediante modelos predictivos.',
-    image: '/patagonia_luxury_hero.png',
-    icon: <Cpu className="w-5 h-5" />,
-    stats: 'ROI 15x Proyectado'
-  },
-  {
-    id: 3,
-    category: 'Redes Sociales',
-    title: 'Comercial Patagonia',
-    description: 'Estrategia de autoridad y diseño de influencia para Cemento Comodoro.',
-    icon: <Layout className="w-5 h-5" />,
-    image: '/patagonia_luxury_hero.png',
-    stats: 'Alcance +1.2M'
-  },
-  {
-    id: 4,
-    category: 'Academia',
-    title: 'Servisegpuq Academy',
-    description: 'Ecosistema de formación y consultoría técnica para seguridad privada.',
-    icon: <GraduationCap className="w-5 h-5" />,
-    image: '/patagonia_luxury_hero.png',
-    stats: '100% Eficiencia'
-  }
+  // Diseño Web
+  { id: 1, category: 'Diseño Web', title: 'BoostPatagonia.cl', description: 'Plataforma de marketing de alto impacto y conversión digital.', image: '/patagonia_luxury_hero.png', icon: <Globe className="w-5 h-5" />, stats: 'Mastery 2026' },
+  { id: 2, category: 'Diseño Web', title: 'Marcelacruz.cl', description: 'E-commerce de joyería de autor con estética Quiet Luxury.', image: '/patagonia_luxury_hero.png', icon: <Globe className="w-5 h-5" />, stats: 'Mastery 2026' },
+  { id: 3, category: 'Diseño Web', title: 'Servisegpuq.cl', description: 'Portal corporativo para seguridad e ingeniería de alto nivel.', image: '/patagonia_luxury_hero.png', icon: <Globe className="w-5 h-5" />, stats: 'Mastery 2026' },
+  { id: 4, category: 'Diseño Web', title: 'Yoganesha.cl', description: 'Arquitectura web para bienestar y expansión digital.', image: '/patagonia_luxury_hero.png', icon: <Globe className="w-5 h-5" />, stats: 'Mastery 2026' },
+  { id: 5, category: 'Diseño Web', title: 'ComercialPatagonia.cl', description: 'Ecosistema digital B2B para distribución mayorista.', image: '/patagonia_luxury_hero.png', icon: <Globe className="w-5 h-5" />, stats: 'Mastery 2026' },
+  { id: 6, category: 'Diseño Web', title: 'AgenciaPatagoniaCoach.cl', description: 'Este ecosistema de inmersión y maestría digital.', image: '/patagonia_luxury_hero.png', icon: <Globe className="w-5 h-5" />, stats: 'V 2.0 - 2026' },
+
+  // Redes Sociales
+  { id: 7, category: 'Redes Sociales', title: 'Parrilla y Fuego', description: 'Estrategia de contenido con identidad y estilo Magallánico.', image: '/patagonia_luxury_hero.png', icon: <Layout className="w-5 h-5" />, stats: 'Autoridad' },
+  { id: 8, category: 'Redes Sociales', title: 'Corcoran', description: 'Diseño de influencia y gestión de comunidad premium.', image: '/patagonia_luxury_hero.png', icon: <Layout className="w-5 h-5" />, stats: 'Impacto' },
+  { id: 9, category: 'Redes Sociales', title: 'Ruta9', description: 'Narrativa visual para el sector logístico y transporte.', image: '/patagonia_luxury_hero.png', icon: <Layout className="w-5 h-5" />, stats: 'Posicionamiento' },
+  { id: 10, category: 'Redes Sociales', title: 'TheHotdogStore', description: 'Activación digital y marketing de guerrilla en redes.', image: '/patagonia_luxury_hero.png', icon: <Layout className="w-5 h-5" />, stats: 'Engagement' },
+  { id: 11, category: 'Redes Sociales', title: 'Dra. Carla Witto', description: 'Personal Branding y autoridad en el sector salud.', image: '/patagonia_luxury_hero.png', icon: <Layout className="w-5 h-5" />, stats: 'Confianza' },
+
+  // IA
+  { id: 12, category: 'Inteligencia Artificial', title: 'Portal Clientes IA', description: 'App web táctica en clientes.agenciapatagoniacoach.cl.', image: '/patagonia_luxury_hero.png', icon: <Cpu className="w-5 h-5" />, stats: 'Predictive 2026' }
 ];
 
 const categories = ['Todos', 'Diseño Web', 'Redes Sociales', 'Inteligencia Artificial', 'Academia'];
