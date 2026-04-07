@@ -10,7 +10,7 @@ const FloatingActions = () => {
   const [showChat, setShowChat] = useState(false);
 
   return (
-    <div className="fixed bottom-8 right-8 z-[500] flex flex-col items-center gap-4">
+    <div className="fixed bottom-8 right-28 z-[500] flex flex-col items-center gap-4">
       {/* Expanded Menu */}
       <AnimatePresence>
         {isOpen && (
