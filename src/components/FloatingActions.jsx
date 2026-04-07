@@ -1,19 +1,14 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Phone, Bot, X, Share2, Plus } from 'lucide-react';
-import AIChat from './AIChat';
-import WhatsAppButton from './WhatsAppButton';
-import PhoneButton from './PhoneButton';
+import LeadAgent from './LeadAgent';
 
 const FloatingActions = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [openChat, setOpenChat] = useState(false);
+  const [showChat, setShowChat] = useState(false);
 
   return (
-    <div className="fixed bottom-8 right-8 z-[100] flex flex-col items-center gap-4">
-      {/* AIChat is always mounted to allow for proactive greetings */}
-      {/* <AIChat hideButton={true} forceOpen={isOpen && openChat} /> */}
-      
+    <div className="fixed bottom-8 right-8 z-[500] flex flex-col items-center gap-4">
       {/* Expanded Menu */}
       <AnimatePresence>
         {isOpen && (
@@ -23,15 +18,15 @@ const FloatingActions = () => {
             exit={{ opacity: 0, y: 20, scale: 0.8 }}
             className="flex flex-col items-center gap-4 mb-2"
           >
-            {/* Custom AI Button for the menu - TEMPORARILY DISABLED
+            {/* AI Assistant Button */}
             <motion.button
-               whileHover={{ scale: 1.05 }}
-               className="w-14 h-14 bg-patagonia-red rounded-full flex items-center justify-center border border-white/20 group"
-               onClick={() => setOpenChat(true)}
+               whileHover={{ scale: 1.1 }}
+               onClick={() => setShowChat(true)}
+               className="w-14 h-14 bg-patagonia-red rounded-full flex items-center justify-center border border-patagonia-gold/30 shadow-[0_0_20px_rgba(255,23,33,0.3)] group"
             >
-              <Bot className="w-6 h-6 text-white" />
+              <Bot className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
             </motion.button>
-            */}
+
             <PhoneButton />
             <WhatsAppButton />
           </motion.div>
@@ -46,7 +41,7 @@ const FloatingActions = () => {
         className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all border border-white/20 backdrop-blur-xl ${
           isOpen 
             ? 'bg-white text-black rotate-45' 
-            : 'bg-patagonia-red shadow-[0_0_40px_rgba(240,20,10,0.4)] text-white'
+            : 'bg-patagonia-red shadow-[0_0_40px_rgba(255,23,33,0.4)] text-white'
         }`}
       >
         {isOpen ? (
@@ -57,11 +52,17 @@ const FloatingActions = () => {
             <motion.div 
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ repeat: Infinity, duration: 2 }}
-              className="absolute -top-1 -right-1 w-3 h-3 bg-patagonia-cyan rounded-full border-2 border-black" 
+              className="absolute -top-1 -right-1 w-3 h-3 bg-patagonia-gold rounded-full border-2 border-black" 
             />
           </div>
         )}
       </motion.button>
+
+      {/* DeepSeek Agent Window */}
+      <LeadAgent 
+        isOpen={showChat} 
+        onClose={() => setShowChat(false)} 
+      />
     </div>
   );
 };

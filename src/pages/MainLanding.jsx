@@ -33,7 +33,6 @@ const MainLanding = () => {
         <LeadCommand />
       </main>
       <Footer />
-      <LeadAgent />
     </>
   );
 };
