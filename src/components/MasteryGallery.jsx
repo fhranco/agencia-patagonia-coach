@@ -6,56 +6,38 @@ const projects = [
   {
     id: 1,
     category: 'Diseño Web',
-    title: 'Boutique de Inmersión',
-    description: 'E-commerce de alto rendimiento con UX de lujo sensorial.',
-    image: '/patagonia_luxury_hero.png', // Fallback to hero for now
+    title: 'Marcela Cruz Boutique',
+    description: 'Arquitectura de lujo sensorial y UX de alta gama para joyería de autor.',
+    image: '/patagonia_luxury_hero.png',
     icon: <Globe className="w-5 h-5" />,
-    stats: '+140% Conversión'
+    stats: 'Ventas +180%'
   },
   {
     id: 2,
-    category: 'Redes Sociales',
-    title: 'Estrategia de Influencia',
-    description: 'Diseño de narrativa digital para marcas de autoridad regional.',
+    category: 'Inteligencia Artificial',
+    title: 'BoostPatagonia',
+    description: 'Radar de Oportunidades y Calculadora de ROI mediante modelos predictivos.',
     image: '/patagonia_luxury_hero.png',
-    icon: <Layout className="w-5 h-5" />,
-    stats: '+3.2M Alcance'
+    icon: <Cpu className="w-5 h-5" />,
+    stats: 'ROI 15x Proyectado'
   },
   {
     id: 3,
-    category: 'Inteligencia Artificial',
-    title: 'Predictores Neuronales',
-    description: 'Despliegue de modelos LLM personalizados para toma de decisiones.',
-    icon: <Cpu className="w-5 h-5" />,
+    category: 'Redes Sociales',
+    title: 'Comercial Patagonia',
+    description: 'Estrategia de autoridad y diseño de influencia para Cemento Comodoro.',
+    icon: <Layout className="w-5 h-5" />,
     image: '/patagonia_luxury_hero.png',
-    stats: '99% Precisión'
+    stats: 'Alcance +1.2M'
   },
   {
     id: 4,
     category: 'Academia',
-    title: 'Maestría Corporativa',
-    description: 'Programa de formación técnica avanzada para líderes B2B.',
+    title: 'Servisegpuq Academy',
+    description: 'Ecosistema de formación y consultoría técnica para seguridad privada.',
     icon: <GraduationCap className="w-5 h-5" />,
     image: '/patagonia_luxury_hero.png',
-    stats: '+500 Egresados'
-  },
-  {
-    id: 5,
-    category: 'Diseño Web',
-    title: 'Portal de Inversiones',
-    description: 'Fintech con interfaz de cristal y seguridad de grado militar.',
-    icon: <Globe className="w-5 h-5" />,
-    image: '/patagonia_luxury_hero.png',
-    stats: 'Velocidad < 0.8s'
-  },
-  {
-    id: 6,
-    category: 'Inteligencia Artificial',
-    title: 'Visión Computacional',
-    description: 'Control de calidad automatizado mediante redes convolucionales.',
-    icon: <Cpu className="w-5 h-5" />,
-    image: '/patagonia_luxury_hero.png',
-    stats: 'ROI 12 Mensual'
+    stats: '100% Eficiencia'
   }
 ];
 
