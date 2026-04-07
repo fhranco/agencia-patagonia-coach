@@ -38,39 +38,35 @@ const FloatingActions = () => {
         )}
       </AnimatePresence>
 
-      {/* Editorial Sidebar Tab Button with Pulse */}
+      {/* Editorial Sidebar Tab Button with Pulse (Slim Mode) */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ x: -10, scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className={`w-14 h-48 rounded-l-[2rem] flex flex-col items-center justify-center shadow-2xl transition-all border-y border-l border-white/20 backdrop-blur-3xl group relative overflow-hidden ${
+        whileHover={{ x: -5, scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        className={`w-10 h-48 rounded-l-2xl flex flex-col items-center justify-center shadow-2xl transition-all border-y border-l border-white/10 backdrop-blur-3xl group relative overflow-hidden ${
           isOpen 
             ? 'bg-white text-black' 
             : 'bg-patagonia-red text-white'
         }`}
       >
-        {/* Continuous Pulse Glow (Only when closed) */}
+        {/* Continuous Pulse Glow (Very Soft) */}
         {!isOpen && (
            <motion.div
              animate={{ 
-               boxShadow: [
-                 'inset 0 0 0px rgba(255,191,0,0)', 
-                 'inset 0 0 30px rgba(255,191,0,0.3)', 
-                 'inset 0 0 0px rgba(255,191,0,0)'
-               ] 
+               opacity: [0, 0.4, 0]
              }}
-             transition={{ repeat: Infinity, duration: 2.5 }}
-             className="absolute inset-0 z-0"
+             transition={{ repeat: Infinity, duration: 3 }}
+             className="absolute inset-0 bg-patagonia-gold/20 z-0"
            />
         )}
 
         {isOpen ? (
-          <X className="w-6 h-6" />
+          <X className="w-4 h-4" />
         ) : (
-          <div className="flex flex-col items-center gap-6 z-10">
-             <Bot className="w-5 h-5 text-patagonia-gold animate-pulse" />
-             <span className="[writing-mode:vertical-lr] rotate-180 text-[9px] uppercase tracking-[0.5em] font-black group-hover:tracking-[0.6em] transition-all">MASTER CENTER</span>
-             <Share2 className="w-5 h-5 opacity-40" />
+          <div className="flex flex-col items-center gap-8 z-10">
+             <Bot className="w-4 h-4 text-patagonia-gold opacity-80" />
+             <span className="[writing-mode:vertical-lr] rotate-180 text-[7px] uppercase tracking-[0.6em] font-black group-hover:tracking-[0.8em] transition-all whitespace-nowrap">MASTER CENTER</span>
+             <Share2 className="w-4 h-4 opacity-20" />
           </div>
         )}
       </motion.button>
