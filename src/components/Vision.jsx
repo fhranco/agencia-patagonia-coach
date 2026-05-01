@@ -79,20 +79,23 @@ const Vision = () => {
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-patagonia-red/30 p-1 flex items-center justify-center relative">
                     <div className="absolute inset-0 bg-gradient-to-tr from-patagonia-red to-patagonia-cyan opacity-20 animate-pulse" />
-                    <span className="text-2xl font-bold text-white relative z-10">FG</span>
+                    <div className="w-8 h-8 bg-patagonia-gold rounded-sm rotate-45 shadow-[0_0_20px_rgba(251,145,77,0.3)] relative z-10" />
                   </div>
                   <div>
-                    <p className="text-3xl font-bold tracking-tighter uppercase italic">Franco Gallardo</p>
+                    <p className="text-3xl font-heading font-light tracking-tight text-white/90">Franco Gallardo <span className="text-patagonia-red italic">S.</span></p>
                     <p className="text-[10px] uppercase tracking-[0.4em] text-white/30">Founder & Chief Ecosystem Architect</p>
                   </div>
                 </div>
               </div>
               
               <div className="flex gap-4">
-                <div className="px-6 py-3 rounded-full bg-white/5 border border-white/10 flex items-center gap-3 shadow-[0_0_20px_rgba(34,197,94,0.1)]">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-ping" />
-                  <span className="text-[10px] uppercase tracking-widest font-heading text-white/80">Consultoría VIP Disponible</span>
-                </div>
+                <button 
+                  onClick={() => window.dispatchEvent(new CustomEvent('open-ai-chat'))}
+                  className="px-6 py-3 rounded-full bg-white/5 border border-white/10 flex items-center gap-3 shadow-[0_0_20px_rgba(34,197,94,0.1)] hover:bg-white/10 transition-all group"
+                >
+                  <span className="w-2 h-2 rounded-full bg-patagonia-gold animate-ping" />
+                  <span className="text-[10px] uppercase tracking-widest font-heading text-white/80 group-hover:text-white">Iniciar Consultoría IA</span>
+                </button>
               </div>
             </div>
           </div>

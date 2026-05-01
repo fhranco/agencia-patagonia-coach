@@ -23,21 +23,21 @@ const Footer = () => {
           </div>
           
           <div className="md:col-span-2 space-y-10">
-            <h4 className="text-[9px] font-heading tracking-[0.5em] text-patagonia-white/30 uppercase font-black">Ecosistema</h4>
-            <ul className="space-y-6 text-patagonia-secondary font-light text-sm uppercase tracking-widest">
-              <li><a href="#agencia" className="hover:text-patagonia-gold transition-colors">Agencia</a></li>
-              <li><a href="#consultoria" className="hover:text-patagonia-gold transition-colors">Consultoría</a></li>
-              <li><a href="#academia" className="hover:text-patagonia-gold transition-colors">Academia</a></li>
-              <li><a href="#protocolo" className="hover:text-patagonia-gold transition-colors">Protocolo</a></li>
+            <h4 className="text-[9px] font-heading tracking-[0.5em] text-patagonia-white/30 uppercase font-black">Servicios</h4>
+            <ul className="space-y-6 text-patagonia-secondary font-light text-[10px] uppercase tracking-widest">
+              <li><a href="/servicios/desarrollo-web" className="hover:text-patagonia-gold transition-colors">Web Pro</a></li>
+              <li><a href="/servicios/seo-local-punta-arenas" className="hover:text-patagonia-gold transition-colors">SEO Local</a></li>
+              <li><a href="/servicios/automatizacion-con-ia" className="hover:text-patagonia-gold transition-colors">IA & Autom.</a></li>
+              <li><a href="/servicios/comunicacion-digital" className="hover:text-patagonia-gold transition-colors">Comunicación</a></li>
             </ul>
           </div>
 
           <div className="md:col-span-2 space-y-10">
-            <h4 className="text-[9px] font-heading tracking-[0.5em] text-patagonia-white/30 uppercase font-black">Legal</h4>
-            <ul className="space-y-6 text-patagonia-secondary font-light text-sm uppercase tracking-widest">
-              <li><a href="#" className="hover:text-patagonia-gold transition-colors">Privacidad</a></li>
-              <li><a href="#" className="hover:text-patagonia-gold transition-colors">Términos</a></li>
-              <li><a href="#" className="hover:text-patagonia-gold transition-colors">Disclaimer IA</a></li>
+            <h4 className="text-[9px] font-heading tracking-[0.5em] text-patagonia-white/30 uppercase font-black">Zonas</h4>
+            <ul className="space-y-6 text-patagonia-secondary font-light text-[10px] uppercase tracking-widest">
+              <li><a href="/zonas/punta-arenas" className="hover:text-patagonia-gold transition-colors">Punta Arenas</a></li>
+              <li><a href="/zonas/puerto-natales" className="hover:text-patagonia-gold transition-colors">Puerto Natales</a></li>
+              <li><a href="/zonas/magallanes" className="hover:text-patagonia-gold transition-colors">Magallanes</a></li>
             </ul>
           </div>
 

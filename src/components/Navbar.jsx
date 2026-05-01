@@ -8,10 +8,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Agencia', path: '/' },
-    { name: 'Evolución IA', path: '/ia', color: 'text-patagonia-gold' },
-    { name: 'Marketing', path: '/marketing' },
-    { name: 'Consultoría', path: '/consultoria' },
+    { name: 'Desarrollo Web', path: '/servicios/desarrollo-web' },
+    { name: 'Evolución IA', path: '/servicios/automatizacion-con-ia' },
     { name: 'Academia', path: '/academia' },
   ];
 
@@ -37,10 +35,6 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-6">
-          <button className="hidden sm:block px-8 py-3 bg-patagonia-red text-patagonia-white rounded-full font-black text-[9px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-[0_10px_30px_rgba(255,23,33,0.15)]">
-            ACCESO CLIENTE
-          </button>
-
           {/* Mobile Toggle */}
           <button 
             className="md:hidden p-2 text-patagonia-white hover:text-patagonia-gold transition-colors"
@@ -79,9 +73,6 @@ const Navbar = () => {
               >
                 Contacto
               </a>
-              <button className="w-[240px] mt-8 bg-patagonia-red text-patagonia-white py-5 rounded-full font-black text-[10px] uppercase tracking-[0.3em] shadow-2xl">
-                ACCESO CLIENTE
-              </button>
             </div>
           </motion.div>
         )}

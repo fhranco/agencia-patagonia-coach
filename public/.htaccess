@@ -13,7 +13,13 @@
   RewriteRule ^tienda/.*$ - [G,L]
   RewriteRule ^home/.*$ - [G,L]
 
-  # 3. SPA Fallback: Everything else to index.html
+  # 3. 301 Redirects for SEO Migration
+  Redirect 301 /ia /servicios/automatizacion-con-ia
+  Redirect 301 /marketing /servicios/comunicacion-digital
+  Redirect 301 /consultoria /servicios/consultoria-transformacion-digital
+  Redirect 301 /principios-editoriales-de-patagoniacoach /sobre-patagoniacoach
+
+  # 4. SPA Fallback: Everything else to index.html
   RewriteRule . /index.html [L]
 </IfModule>
 

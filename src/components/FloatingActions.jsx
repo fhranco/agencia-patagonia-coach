@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Phone, Bot, X, Share2, Plus } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
@@ -8,6 +8,16 @@ import LeadAgent from './LeadAgent';
 const FloatingActions = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showChat, setShowChat] = useState(false);
+
+  useEffect(() => {
+    const handleOpenChat = () => {
+      setShowChat(true);
+      setIsOpen(false);
+    };
+
+    window.addEventListener('open-ai-chat', handleOpenChat);
+    return () => window.removeEventListener('open-ai-chat', handleOpenChat);
+  }, []);
 
   return (
     <div className="fixed top-1/2 -translate-y-1/2 right-0 z-[500] flex flex-col items-center gap-6">

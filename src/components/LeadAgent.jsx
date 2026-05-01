@@ -121,7 +121,7 @@ const LeadAgent = ({ isOpen, onClose }) => {
                 </button>
               </div>
               <p className="text-center mt-4 text-[7px] uppercase tracking-[0.4em] text-patagonia-secondary font-black opacity-50">
-                Franco Gallardo | <span className="text-patagonia-gold">PatagoniaCoach</span>
+                Franco Gallardo S. | <span className="text-patagonia-gold">PatagoniaCoach</span>
               </p>
             </div>
           </motion.div>

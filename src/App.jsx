@@ -8,6 +8,11 @@ import MarketingLanding from './pages/MarketingLanding';
 import ConsultingLanding from './pages/ConsultingLanding';
 import AcademiaLanding from './pages/AcademiaLanding';
 
+// New SEO Architecture Pages
+import DesarrolloWeb from './pages/DesarrolloWeb';
+import SEOLocal from './pages/SEOLocal';
+import ZonaPuntaArenas from './pages/ZonaPuntaArenas';
+
 function App() {
   return (
     <Router>
@@ -18,6 +23,18 @@ function App() {
 
         <Routes>
           <Route path="/" element={<MainLanding />} />
+          
+          {/* Servicios */}
+          <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
+          <Route path="/servicios/seo-local-punta-arenas" element={<SEOLocal />} />
+          <Route path="/servicios/automatizacion-con-ia" element={<IALanding />} />
+          <Route path="/servicios/comunicacion-digital" element={<MarketingLanding />} />
+          <Route path="/servicios/consultoria-transformacion-digital" element={<ConsultingLanding />} />
+          
+          {/* Zonas */}
+          <Route path="/zonas/punta-arenas" element={<ZonaPuntaArenas />} />
+          
+          {/* Legacy & Others */}
           <Route path="/ia" element={<IALanding />} />
           <Route path="/marketing" element={<MarketingLanding />} />
           <Route path="/consultoria" element={<ConsultingLanding />} />
@@ -27,6 +44,7 @@ function App() {
     </Router>
   )
 }
+
 
 export default App
 

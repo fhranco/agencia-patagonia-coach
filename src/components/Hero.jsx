@@ -98,10 +98,10 @@ const Hero = () => {
             ref={titleRef}
             className="text-5xl md:text-7xl lg:text-[6.5rem] leading-[0.85] tracking-[-0.05em] font-heading font-light text-patagonia-white text-balance"
           >
-            Donde la <span className="text-patagonia-red italic">visión</span> se encuentra con la <span className="opacity-40">maestría</span>.
+            Transformación digital para empresas de <span className="text-patagonia-red italic">Magallanes</span>.
           </h1>
           <p className="hero-reveal text-xl font-light text-patagonia-secondary max-w-lg leading-relaxed mix-blend-plus-lighter">
-            Diseñamos arquitecturas digitales exponenciales que transforman la visión empresarial en resultados de alta rentabilidad.
+            Creamos sitios web, estrategias de comunicación, contenido profesional, SEO local y automatizaciones con inteligencia artificial para empresas que quieren crecer desde la Patagonia hacia el mundo.
           </p>
           <div className="hero-reveal flex flex-wrap gap-8 pt-4">
             <a href="#contacto" className="px-12 py-5 bg-patagonia-red text-patagonia-white rounded-full font-black text-xs tracking-[0.3em] hover:scale-105 transition-all shadow-[0_20px_50px_rgba(255,23,33,0.2)] text-center min-w-[260px]">

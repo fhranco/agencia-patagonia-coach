@@ -70,7 +70,10 @@ const LeadCommand = () => {
           <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-patagonia-gold/10 border border-patagonia-gold/20 text-patagonia-gold text-[10px] font-heading tracking-[0.3em] uppercase font-bold">
             <ShieldCheck className="w-4 h-4" /> Disponibilidad Restringida
           </div>
-          <h2 className="text-6xl md:text-[5rem] font-heading font-light leading-[0.9] tracking-[-0.05em] text-patagonia-white">SOLICITUD DE <br/><span className="text-patagonia-gold italic">AUDITORÍA ELITE</span>.</h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-light leading-[1.1] tracking-tight text-white/90">
+            SOLICITUD DE <br/>
+            <span className="italic opacity-60">AUDITORÍA ELITE</span>.
+          </h2>
           <p className="text-xl text-patagonia-secondary font-light leading-relaxed max-w-lg">
             No aceptamos a todas las marcas. Buscamos organizaciones comprometidas con una <strong className="text-patagonia-gold">evolución radical</strong>. Nuestro comité senior evaluará su perfil en un lapso de 48 horas.
           </p>

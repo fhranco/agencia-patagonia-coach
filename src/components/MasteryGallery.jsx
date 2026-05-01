@@ -220,15 +220,15 @@ const MasteryGallery = () => {
       
       <div className="section-container">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20">
-          <div className="space-y-6 max-w-2xl">
-            <div className="inline-block px-4 py-1.5 border border-patagonia-gold/20 rounded-full bg-white/5 backdrop-blur-sm">
-              <span className="text-[10px] uppercase tracking-[0.4em] font-black text-patagonia-gold">Galería de Maestría</span>
+            <div className="space-y-6 max-w-5xl">
+              <div className="inline-block px-4 py-1.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm">
+                <span className="text-[10px] uppercase tracking-[0.4em] font-black text-white/40">Galería de Maestría</span>
+              </div>
+              <h2 className="text-6xl md:text-[7rem] font-heading font-light text-white leading-[0.85] tracking-tighter whitespace-pre-line">
+                Proyectos de {"\n"}
+                <span className="italic opacity-80">Alto Impacto</span>.
+              </h2>
             </div>
-            <h2 className="text-5xl md:text-7xl font-heading font-light text-patagonia-white leading-[0.9]">
-              Proyectos de <br />
-              <span className="italic text-patagonia-gold underline decoration-patagonia-red/30 underline-offset-8">Alto Impacto</span>.
-            </h2>
-          </div>
 
           <div className="flex flex-wrap gap-4">
             {categories.map((cat) => (

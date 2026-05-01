@@ -17,121 +17,77 @@ import {
   Camera,
   LayoutTemplate,
   Briefcase,
-  GraduationCap
+  GraduationCap,
+  Gamepad2
 } from 'lucide-react';
 
-const ServiceCard = ({ title, bgImage, subtitle, solutions, icon: Icon, children, microUI, onHover, index, activeIndex }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef(null);
-
-  // Mouse Spotlight & 3D Tilt
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  
-  const mouseXSpring = useSpring(x, { stiffness: 60, damping: 20 });
-  const mouseYSpring = useSpring(y, { stiffness: 60, damping: 20 });
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
-
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    
-    // Values for 3D rotation (-0.5 to 0.5)
-    x.set(mouseX / width - 0.5);
-    y.set(mouseY / height - 0.5);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    onHover(null);
-    x.set(0);
-    y.set(0);
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    onHover(index);
-  };
-
-  // Dim the card if another one is hovered
-  const isDimmed = activeIndex !== null && activeIndex !== index;
+const ServiceCard = ({ title, subtitle, solutions, icon: Icon, index, activeIndex, onHover }) => {
+  const isHovered = activeIndex === index;
+  const isDimmed = activeIndex !== null && !isHovered;
 
   return (
     <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
-      initial={{ opacity: 0, y: 50 }}
+      onMouseEnter={() => onHover(index)}
+      onMouseLeave={() => onHover(null)}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, delay: index * 0.1 }}
-      className={`relative group bg-patagonia-surface border border-white/5 rounded-card p-10 flex flex-col gap-6 transition-all duration-700 hover:border-patagonia-cyan/50 hover:shadow-[0_0_80px_rgba(0,229,255,0.05)] overflow-hidden ${isDimmed ? 'opacity-30 scale-[0.98] grayscale-[50%]' : 'opacity-100 scale-100'}`}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay: index * 0.05 }}
+      className={`relative group min-h-[540px] rounded-[2.5rem] p-12 flex flex-col gap-10 transition-all duration-700 border overflow-hidden ${
+        isHovered 
+          ? 'bg-white/[0.05] border-white/20 scale-[1.01] z-20 shadow-[0_40px_100px_rgba(0,0,0,0.5)]' 
+          : 'bg-white/[0.01] border-white/5 z-10'
+      } ${isDimmed ? 'opacity-30 blur-[2px] scale-[0.98]' : 'opacity-100'}`}
     >
-      {/* Background Image Layer */}
-      <div 
-        className="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700 bg-cover bg-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-patagonia-void via-patagonia-void/80 to-transparent z-[1]" />
-
-      {/* Dynamic Mouse Spotlight Glow */}
-      <motion.div 
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[2]"
-        style={{
-          background: "radial-gradient(1000px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 229, 255, 0.04), transparent 40%)",
-        }}
-        onUpdate={() => {
-          if (!cardRef.current) return;
-          const rect = cardRef.current.getBoundingClientRect();
-          cardRef.current.style.setProperty('--mouse-x', `${x.get() * rect.width + rect.width / 2}px`);
-          cardRef.current.style.setProperty('--mouse-y', `${y.get() * rect.height + rect.height / 2}px`);
-        }}
-      />
+      {/* Subtle Frost Layer */}
+      <div className="absolute inset-0 backdrop-blur-3xl pointer-events-none" />
       
-      <div className="flex justify-between items-start relative z-10" style={{ transform: "translateZ(30px)" }}>
-        <div className={`p-4 rounded-xl bg-gradient-to-br from-white/10 to-transparent border border-white/5 shadow-2xl transition-all duration-500 ${isHovered ? 'bg-gradient-to-br from-patagonia-red/20 to-patagonia-void border-patagonia-red/30 scale-110' : ''}`}>
-          <Icon className={`w-8 h-8 transition-colors duration-500 ${isHovered ? 'text-patagonia-red' : 'text-white/40'}`} />
+      {/* Minimalist Header */}
+      <div className="flex justify-between items-start relative z-10">
+        <div className="space-y-2">
+          <span className="text-[9px] font-black tracking-[0.5em] text-white/20 uppercase italic">Codex 0{index + 1}</span>
+          <div className={`h-[1px] bg-white/20 transition-all duration-700 ${isHovered ? 'w-16' : 'w-8'}`} />
         </div>
-        <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0">
-          <TrendingUp className="w-5 h-5 text-patagonia-cyan" />
+        <div className={`p-3 rounded-xl border transition-all duration-500 ${isHovered ? 'bg-white/10 border-white/20' : 'bg-transparent border-transparent'}`}>
+          <Icon className={`w-6 h-6 transition-colors duration-500 ${isHovered ? 'text-white' : 'text-white/10'}`} />
         </div>
       </div>
 
-      <div className="space-y-4 relative z-10" style={{ transform: "translateZ(40px)" }}>
-        <h3 className="text-2xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">{title}</h3>
-        {subtitle && (
-          <p className="text-white/50 font-light text-sm leading-relaxed mb-4 group-hover:text-white/80 transition-colors">
-            {subtitle}
-          </p>
-        )}
+      {/* Content */}
+      <div className="space-y-8 relative z-10 flex-grow">
+        <div className="space-y-4">
+          <h3 className={`text-3xl md:text-4xl font-heading font-light tracking-tight leading-[1.1] transition-colors duration-500 ${isHovered ? 'text-white italic' : 'text-white/60'}`}>
+            {title}
+          </h3>
+          {subtitle && (
+            <p className="text-sm font-light text-white/40 leading-relaxed max-w-[95%]">
+              {subtitle}
+            </p>
+          )}
+        </div>
 
-        {solutions && solutions.length > 0 && (
-          <ul className="space-y-3 pt-4 border-t border-white/5">
+        {/* Minimalist Solutions */}
+        <div className="pt-10 border-t border-white/10">
+          <ul className="space-y-5">
             {solutions.map((sol, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm text-white/60 font-light group-hover:text-white/90 transition-colors">
-                <div className="w-1.5 h-1.5 bg-patagonia-cyan rounded-full mt-1.5 shrink-0 shadow-[0_0_10px_#00E5FF] opacity-50 group-hover:opacity-100 group-hover:scale-150 transition-all" />
+              <li 
+                key={i}
+                className={`text-[10px] uppercase tracking-[0.3em] font-medium transition-all duration-500 flex items-center gap-4 ${isHovered ? 'text-white/80 translate-x-2' : 'text-white/20'}`}
+              >
+                <div className={`w-1 h-px transition-all duration-500 ${isHovered ? 'bg-white w-4' : 'bg-white/20 w-2'}`} />
                 {sol}
               </li>
             ))}
           </ul>
-        )}
+        </div>
       </div>
 
-      {/* Micro-UI Area */}
-      <div className="mt-auto pt-10 h-28 flex items-center justify-center relative z-10" style={{ transform: "translateZ(60px)" }}>
-        {microUI(isHovered)}
+      {/* Final Detail */}
+      <div className="relative z-10 pt-6 opacity-0 group-hover:opacity-100 transition-all duration-700">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-px bg-white/10" />
+          <span className="text-[9px] font-black tracking-[0.6em] text-white/40 uppercase">Maestría Patagonia</span>
+        </div>
       </div>
     </motion.div>
   );
@@ -150,64 +106,41 @@ const ServiceMatrix = () => {
 
   const services = [
     {
-      title: "Arquitectura de Influencia",
-      bgImage: "/patagonia_luxury_hero.png",
+      title: "Desarrollo Web Profesional",
+      subtitle: "Sistemas web de alto rendimiento enfocados en resultados de negocio.",
       solutions: [
-        "Estrategia de Posicionamiento Elite",
-        "Publicidad de Inmersión Psicológica",
-        "Gestión de Reputación de Alto Nivel",
-        "Growth Marketing de Precisión",
-        "Ecosistemas de Conversión"
+        "Diseño Web Corporativo",
+        "E-commerce & Ventas Online",
+        "Landing Pages de Conversión",
+        "Mantenimiento Proactivo",
+        "Optimización de Rendimiento"
       ],
-      icon: Share2,
+      icon: LayoutTemplate,
       microUI: (hover) => (
         <div className="relative w-24 h-24 flex items-center justify-center">
           <motion.div
             animate={{ rotate: hover ? 360 : 0 }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 border border-dashed border-patagonia-gold/30 rounded-full"
+            className="absolute inset-0 border border-dashed border-patagonia-cyan/30 rounded-full"
           />
           <div className="relative z-10 flex gap-2">
-            <div className="w-2 h-2 bg-patagonia-gold rounded-full animate-ping" />
+            <div className="w-2 h-2 bg-patagonia-cyan rounded-full animate-ping" />
             <div className="w-2 h-2 bg-patagonia-white rounded-full animate-bounce" />
           </div>
         </div>
       )
     },
     {
-      title: "Cinematografía & Artefactos",
-      bgImage: "/nano_banana_luxury.png",
+      title: "SEO Local Magallanes",
+      subtitle: "Posicionamiento estratégico en Google para captar clientes locales en Magallanes.",
       solutions: [
-        "Producción Audiovisual 8K",
-        "Fotografía Galardonada",
-        "Diseño de Artefactos de Lujo",
-        "Narrativas Surrealistas con IA",
-        "Branding Documental"
+        "Posicionamiento en Google Maps",
+        "Auditoría SEO Técnica",
+        "Contenido Estratégico Local",
+        "Gestión de Perfil de Negocio",
+        "Análisis de Competencia"
       ],
-      icon: Camera,
-      microUI: (hover) => (
-        <div className="flex items-center gap-1">
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{ height: hover ? [10, Math.random() * 40 + 10, 10] : 10 }}
-              transition={{ repeat: Infinity, duration: 0.5 + Math.random(), ease: "easeInOut" }}
-              className="w-1 bg-patagonia-gold rounded-full shadow-[0_0_8px_rgba(251,145,77,0.5)]"
-            />
-          ))}
-        </div>
-      )
-    },
-    {
-      title: "Ecosistemas de Inmersión",
-      bgImage: "/luxury_watch_industrial.png",
-      solutions: [
-        "Desarrollo Web de Próxima Generación",
-        "E-commerce de Lujo & Boutique",
-        "Plataformas SaaS de Alta Disponibilidad",
-        "Optimización de Performance 100/100"
-      ],
-      icon: LayoutTemplate,
+      icon: Search,
       microUI: (hover) => (
         <div className="flex items-end gap-1 h-12">
           {[40, 70, 45, 90, 65, 80, 100].map((h, i) => (
@@ -216,31 +149,31 @@ const ServiceMatrix = () => {
               initial={{ height: 0 }}
               animate={{ height: hover ? `${h}%` : '20%' }}
               transition={{ delay: i * 0.05, type: 'spring' }}
-              className="w-2 bg-patagonia-gold rounded-t-sm shadow-[0_0_10px_rgba(251,145,77,0.4)]"
+              className="w-2 bg-patagonia-red rounded-t-sm shadow-[0_0_10px_#ff1721]"
             />
           ))}
         </div>
       )
     },
     {
-      title: "Inteligencia Estratégica",
-      bgImage: "/gourmet_dish_luxury.png",
-      subtitle: "Automatizamos la complejidad para liberar el potencial genio de su equipo.",
+      title: "Automatización con IA",
+      subtitle: "Implementación de IA para automatizar ventas, atención y procesos operativos.",
       solutions: [
-        "Modelos de IA de Propósito Específico",
-        "Automatización de Operaciones Críticas",
-        "Análisis de Data Predictiva",
-        "Agentes de IA de Alto Rendimiento"
+        "Chatbots de Atención 24/7",
+        "Automatización de Tareas",
+        "Análisis Predictivo de Datos",
+        "Integración de APIs de IA",
+        "Flujos de Trabajo Inteligentes"
       ],
       icon: Cpu,
       microUI: (hover) => (
         <div className="flex flex-col items-center gap-4 pointer-events-none">
           <div className="flex items-center gap-6">
-            <XCircle className={`w-5 h-5 transition-colors ${!hover ? 'text-patagonia-white/20' : 'text-white/20'}`} />
-            <div className={`w-12 h-6 rounded-full p-1 transition-colors ${hover ? 'bg-patagonia-gold' : 'bg-white/10'}`}>
+            <XCircle className="w-5 h-5 text-white/10" />
+            <div className={`w-12 h-6 rounded-full p-1 transition-colors ${hover ? 'bg-patagonia-cyan' : 'bg-white/10'}`}>
               <motion.div animate={{ x: hover ? 24 : 0 }} className="w-4 h-4 bg-white rounded-full shadow-lg" />
             </div>
-            <CheckCircle2 className={`w-5 h-5 transition-colors ${hover ? 'text-patagonia-gold' : 'text-white/20'}`} />
+            <CheckCircle2 className={`w-5 h-5 transition-colors ${hover ? 'text-patagonia-cyan' : 'text-white/10'}`} />
           </div>
           <span className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold">
             {hover ? 'Status: Autonomous' : 'Status: Manual'}
@@ -249,105 +182,172 @@ const ServiceMatrix = () => {
       )
     },
     {
-      title: "Consultoría Elite",
-      bgImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2000&auto=format&fit=crop",
-      subtitle: "Unificamos tecnología y estrategia en un solo protocolo operativo diseñado para escalar.",
+      title: "Gestión de Redes Sociales",
+      subtitle: "Estrategias de contenido y comunidad orientadas al crecimiento y autoridad de marca.",
       solutions: [
-        "Auditoría Tecnológica IA",
-        "Roadmap de Expansión Corporativa",
-        "Reingeniería de Experiencia de Cliente",
-        "Protocolo Patagonia Coach"
+        "Plan de Contenidos Mensual",
+        "Publicidad (Ads) en Meta/TikTok",
+        "Community Management Pro",
+        "Diseño Gráfico Publicitario",
+        "Reportes de Rendimiento"
       ],
-      icon: Briefcase,
+      icon: TrendingUp,
       microUI: (hover) => (
-        <div className="relative w-24 h-12">
-          <motion.div animate={{ opacity: hover ? 0 : 1 }} className="absolute inset-0 border border-dashed border-white/20 rounded-md flex items-center justify-center">
-            <div className="w-8 h-8 border border-white/10" />
-          </motion.div>
-          <motion.div animate={{ opacity: hover ? 1 : 0, scale: hover ? 1 : 0.8 }} className="absolute inset-0 flex items-center justify-center">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-patagonia-gold rounded-sm rotate-45 shadow-[0_0_15px_rgba(251,145,77,0.5)]" />
-              <div className="h-2 w-12 bg-white/20 rounded-full" />
-            </div>
+        <div className="flex items-center gap-1">
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={i}
+              animate={{ height: hover ? [10, Math.random() * 40 + 10, 10] : 10 }}
+              transition={{ repeat: Infinity, duration: 0.5 + Math.random(), ease: "easeInOut" }}
+              className="w-1 bg-patagonia-gold rounded-full shadow-[0_0_8px_#FFD700]"
+            />
+          ))}
+        </div>
+      )
+    },
+    {
+      title: "IA Generativa Visual",
+      subtitle: "Generación de activos visuales inteligentes para campañas publicitarias de alto impacto.",
+      solutions: [
+        "Generación de Fotos con IA",
+        "Optimización de Catálogos",
+        "Retoque Digital Avanzado",
+        "Identidad Visual con IA",
+        "Conceptualización Creativa"
+      ],
+      icon: Palette,
+      microUI: (hover) => (
+        <div className="relative w-24 h-24">
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={i}
+              animate={{ 
+                x: hover ? (i - 1) * 20 : 0,
+                rotate: hover ? (i - 1) * 10 : 0,
+                opacity: hover ? 1 - (i * 0.2) : 0.5 
+              }}
+              className="absolute inset-0 border border-patagonia-cyan/30 bg-patagonia-cyan/5 rounded-lg flex items-center justify-center"
+            >
+              <Palette className="w-6 h-6 text-patagonia-cyan/40" />
+            </motion.div>
+          ))}
+        </div>
+      )
+    },
+    {
+      title: "Tours Virtuales 360º",
+      subtitle: "Experiencias de realidad virtual 360º para empresas que buscan destacar su ubicación.",
+      solutions: [
+        "Recorridos 360º de Alta Calidad",
+        "Integración con Google Maps",
+        "Fotografía Profesional de Espacios",
+        "Tours Interactivos para Web",
+        "Video 360º Corporativo"
+      ],
+      icon: Camera,
+      microUI: (hover) => (
+        <div className="relative w-24 h-24 flex items-center justify-center">
+          <motion.div
+            animate={{ rotate: hover ? 360 : 0 }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 border border-patagonia-red/20 rounded-full"
+          />
+          <motion.div animate={{ scale: hover ? 1.2 : 1 }} className="flex gap-1 relative z-10">
+            <div className="w-2 h-2 bg-patagonia-red rounded-full animate-pulse" />
+            <div className="w-8 h-2 bg-white/10 rounded-full" />
           </motion.div>
         </div>
       )
     },
     {
-      title: "Academia de Alta Gerencia",
-      bgImage: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2000&auto=format&fit=crop",
-      subtitle: "Capacitación continua para que su equipo no solo use la tecnología, sino que aprenda a evolucionar con ella.",
+      title: "Academia Digital",
+      subtitle: "Formación técnica y estratégica para equipos que buscan liderar con tecnología actual.",
       solutions: [
-        "Sprints Tácticos de IA",
-        "Bootcamps de Inmersión Patagonia",
-        "Mastery en Liderazgo Tecnológico",
-        "Mentoría de Alto Impacto"
+        "Workshops de IA Aplicada",
+        "Tutoría en Transformación Digital",
+        "Capacitación en Herramientas Pro",
+        "Sprints de Innovación",
+        "Consultoría en Adopción Tecnológica"
       ],
       icon: GraduationCap,
       microUI: (hover) => (
         <div className="relative flex flex-col items-center">
-          <motion.div animate={{ rotate: hover ? 0 : -10, y: hover ? -5 : 0 }} className="relative">
-             <Lock className={`w-10 h-10 transition-colors ${hover ? 'text-patagonia-gold' : 'text-white/20'}`} />
+          <motion.div animate={{ y: hover ? -10 : 0 }} className="relative">
+             <GraduationCap className={`w-10 h-10 transition-colors ${hover ? 'text-patagonia-gold' : 'text-white/20'}`} />
              {hover && <motion.div layoutId="glow" className="absolute inset-0 bg-patagonia-gold/20 blur-xl rounded-full" />}
           </motion.div>
           <AnimatePresence>
             {hover && (
               <motion.span 
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-                className="text-[10px] text-patagonia-gold uppercase tracking-tighter mt-2 font-bold"
+                className="text-[10px] text-patagonia-gold uppercase tracking-widest mt-2 font-bold"
               >
-                Access Granted
+                Inscripciones Abiertas
               </motion.span>
             )}
           </AnimatePresence>
         </div>
       )
+    },
+    {
+      title: "Aplicaciones Web Pro",
+      subtitle: "Desarrollo de herramientas interactivas, sistemas de gestión y experiencias gamificadas.",
+      solutions: [
+        "Apps para Tótems y Eventos",
+        "Sistemas de Turnos Digitales",
+        "Cartas Digitales para Negocios",
+        "Plataformas de Gamificación",
+        "Desarrollo de PWA a Medida"
+      ],
+      icon: Gamepad2
+    },
+    {
+      title: "Consultoría & Estrategia",
+      subtitle: "Acompañamiento ejecutivo para definir el futuro digital y comercial de su organización.",
+      solutions: [
+        "Plan Maestro Digital",
+        "Estrategia de Crecimiento B2B",
+        "Auditoría de Ecosistema Digital",
+        "Acompañamiento Ejecutivo",
+        "Análisis de Retorno de Inversión"
+      ],
+      icon: Zap
     }
   ];
 
   return (
-    <section className="section-container relative bg-patagonia-black min-h-screen">
-      {/* Cinematic Background Crossfade */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <AnimatePresence>
-          {activeServiceHover !== null && (
-            <motion.div
-              key={activeServiceHover}
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{ opacity: 0.15, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${services[activeServiceHover].bgImage})` }}
-            >
-              <div className="absolute inset-0 bg-patagonia-black/60 backdrop-blur-[2px]" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-t from-patagonia-black via-patagonia-black/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-patagonia-black via-transparent to-transparent" />
+    <section className="w-full relative bg-patagonia-black min-h-screen overflow-hidden py-32 md:py-48 border-y border-white/5">
+      {/* Refined Static Background Accents - FULL WIDTH */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Monochromatic Accents */}
+        <div className="absolute top-0 -left-1/4 w-[800px] h-[800px] bg-white/[0.02] blur-[120px] rounded-full" />
+        
+        {/* Subtle Frosted Overlay */}
+        <div className="absolute inset-0 backdrop-blur-[60px] bg-patagonia-black/40" />
       </div>
 
-      <div className="mb-24 space-y-10 relative z-10 pt-10">
-        <div className="flex items-center gap-6">
-          <div className="w-20 h-[1px] bg-gradient-to-r from-patagonia-gold to-transparent" />
-          <span className="text-patagonia-gold font-heading tracking-[0.8em] text-[10px] uppercase font-semibold">Matriz de Servicios Elite</span>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="mb-32 space-y-8">
+          <div className="flex items-center gap-6">
+            <div className="w-12 h-px bg-white/20" />
+            <span className="text-white/20 font-heading tracking-[0.8em] text-[10px] uppercase font-semibold">Matriz de Servicios Elite</span>
+          </div>
+          <h2 className="text-6xl md:text-[6.5rem] font-heading font-light max-w-5xl leading-[0.9] text-balance tracking-tighter text-white/90">
+            Ecosistemas de <span className="italic">valor</span> ininterrumpido.
+          </h2>
         </div>
-        <h2 className="text-6xl md:text-[6rem] font-heading font-light max-w-5xl leading-[0.9] text-balance tracking-[-0.05em]">
-          Ecosistemas de <span className="text-patagonia-gold italic">valor</span> ininterrumpido.
-        </h2>
-      </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10" style={{ perspective: 2000 }}>
-        {services.map((service, index) => (
-          <ServiceCard 
-            key={index} 
-            index={index}
-            activeIndex={activeServiceHover}
-            onHover={setActiveServiceHover}
-            {...service} 
-          />
-        ))}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" style={{ perspective: 2000 }}>
+          {services.map((service, index) => (
+            <ServiceCard 
+              key={index} 
+              index={index}
+              activeIndex={activeServiceHover}
+              onHover={setActiveServiceHover}
+              {...service} 
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

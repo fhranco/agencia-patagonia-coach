@@ -179,10 +179,14 @@ const DigitalDiagnostic = () => {
   const whatsappUrl = `https://wa.me/56995684198?text=${encodeURIComponent(whatsappMsg)}`;
 
   return (
-    <section id="diagnostic" className="section-container bg-black py-32 relative overflow-hidden">
+    <section id="diagnostic" className="w-full relative bg-patagonia-black pt-48 pb-32 overflow-hidden border-t border-white/5">
+      {/* Visual Section Cut / Divider */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      
       {/* Background decoration */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-patagonia-cyan/5 blur-[160px] rounded-full" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.03)_0%,transparent_60%)]" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-patagonia-gold/5 blur-[160px] rounded-full" />
       </div>
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
