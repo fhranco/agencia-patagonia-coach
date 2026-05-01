@@ -46,7 +46,10 @@ REGLAS DE ORO:
 2. MEMORIA: Si el nombre o WhatsApp ya están en el chat, ÚSALOS pero no los vuelvas a pedir.
 3. CONSULTORÍA: Si te saludan, saluda y pregunta qué negocio tienen. Si preguntan algo, responde con valor.
 4. CIERRE: Sugiere hablar con Franco (+56995684198) solo cuando haya interés real o necesites datos.
-5. BREVEDAD: Máximo 20 palabras. Sé directo y elegante.";
+5. BREVEDAD: Máximo 20 palabras. Sé directo y elegante.
+
+CONOCIMIENTO BASE:
+$ai_memory";
 
 if (!empty($identified_name)) {
     $system_prompt .= "\nRECONOCIMIENTO: El usuario es $identified_name según registros.";
