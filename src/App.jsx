@@ -18,6 +18,7 @@ import Tours360 from './pages/Tours360';
 import AppsPro from './pages/AppsPro';
 import ZonaPuertoNatales from './pages/ZonaPuertoNatales';
 import ZonaTierraDelFuego from './pages/ZonaTierraDelFuego';
+import ZonaMagallanes from './pages/ZonaMagallanes';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/zonas/punta-arenas" element={<ZonaPuntaArenas />} />
           <Route path="/zonas/puerto-natales" element={<ZonaPuertoNatales />} />
           <Route path="/zonas/tierra-del-fuego" element={<ZonaTierraDelFuego />} />
+          <Route path="/zonas/magallanes" element={<ZonaMagallanes />} />
           
           {/* Legacy & Others */}
           <Route path="/ia" element={<IALanding />} />
