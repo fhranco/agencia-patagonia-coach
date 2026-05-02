@@ -25,6 +25,7 @@ const ServiceCard = ({ title, subtitle, solutions, icon: Icon, index, activeInde
   const isDimmed = activeIndex !== null && !isHovered;
 
   return (
+    <motion.div
       onMouseEnter={() => onHover(index)}
       onMouseLeave={() => onHover(null)}
       initial={{ opacity: 0, y: 20 }}
