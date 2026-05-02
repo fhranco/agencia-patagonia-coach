@@ -7,7 +7,6 @@ import Consultancy from '../components/Consultancy';
 import ServiceMatrix from '../components/ServiceMatrix';
 import ProjectShowcase from '../components/ProjectShowcase';
 import MasteryGallery from '../components/MasteryGallery';
-import AcademyHub from '../components/AcademyHub';
 import Vision from '../components/Vision';
 import DigitalDiagnostic from '../components/DigitalDiagnostic';
 import LeadCommand from '../components/LeadCommand';
@@ -61,7 +60,6 @@ const MainLanding = () => {
         </div>
         
         <MasteryGallery />
-        <AcademyHub />
         <Vision />
         <DigitalDiagnostic />
         <LeadCommand />
