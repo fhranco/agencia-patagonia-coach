@@ -52,7 +52,14 @@ const MainLanding = () => {
         <ValueLadder />
         <QuickOffers />
         <Consultancy />
-        <ServiceMatrix />
+        <div id="servicios">
+          <ServiceMatrix />
+        </div>
+
+        <div id="casos-de-exito">
+          <ProjectShowcase />
+        </div>
+        
         <MasteryGallery />
         <AcademyHub />
         <Vision />
