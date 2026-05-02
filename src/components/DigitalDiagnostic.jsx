@@ -10,77 +10,11 @@ import {
   Target, 
   Activity, 
   FileText,
-  ChevronRight 
+  ChevronRight,
+  TrendingUp,
+  Globe,
+  Settings
 } from 'lucide-react';
-
-const sectorQuestions = {
-  tourism: [
-    { id: 1, title: "¿Cómo gestionan hoy las consultas que llegan fuera de horario de oficina?", options: [{ text: "Quedan en espera hasta el día siguiente", score: 5 }, { text: "Mensaje automático genérico", score: 15 }, { text: "IA resuelve dudas y pre-califica la reserva", score: 30 }] },
-    { id: 2, title: "¿Cuánto tiempo pierde su equipo actualizando disponibilidad en distintos portales?", options: [{ text: "Es un proceso manual y propenso a errores", score: 5 }, { text: "Usamos un sistema pero requiere revisión manual", score: 15 }, { text: "Sincronización total automática en tiempo real", score: 30 }] },
-    { id: 3, title: "¿Cómo envían la información previa al viaje a sus huéspedes?", options: [{ text: "Enviamos archivos manuales por WhatsApp/Mail", score: 5 }, { text: "Tenemos plantillas pero el envío es manual", score: 15 }, { text: "Portal de cliente automático con toda la info", score: 30 }] },
-    { id: 4, title: "¿Cómo capturan fotos y videos de las experiencias de sus clientes?", options: [{ text: "Dependemos de lo que los guías suban", score: 5 }, { text: "Intentamos pedir material de vez en cuando", score: 15 }, { text: "Sistema de captura y curación automática", score: 30 }] },
-    { id: 5, title: "¿Cómo miden la satisfacción real después del tour/estadía?", options: [{ text: "Si no hay quejas, asumimos que todo está bien", score: 5 }, { text: "Pedimos reseña manualmente por WhatsApp", score: 15 }, { text: "Encuesta de satisfacción con reporte de IA", score: 30 }] },
-    { id: 6, title: "¿Qué pasa con los leads que preguntan precios y no vuelven a escribir?", options: [{ text: "Se pierden para siempre", score: 5 }, { text: "Intentamos re-contactar si hay tiempo", score: 15 }, { text: "Flujo de nutrición automático para cerrar la venta", score: 30 }] },
-    { id: 7, title: "¿Cómo gestionan las solicitudes especiales (dietas, traslados, etc)?", options: [{ text: "En cuadernos o chats de WhatsApp", score: 5 }, { text: "En una planilla Excel compartida", score: 15 }, { text: "Ficha digital única conectada a la operación", score: 30 }] },
-    { id: 8, title: "¿Su equipo habla inglés fluido para cerrar ventas internacionales?", options: [{ text: "Es una barrera crítica hoy", score: 5 }, { text: "Algunos lo manejan pero con lentitud", score: 15 }, { text: "IA bilingüe cierra ventas 24/7 sin errores", score: 30 }] },
-    { id: 9, title: "¿Cómo se ve su proceso de check-in hoy?", options: [{ text: "Llenado de fichas de papel al llegar", score: 5 }, { text: "Registro en computadora con el cliente delante", score: 15 }, { text: "Check-in digital previo al arribo", score: 30 }] },
-    { id: 10, title: "¿Cómo aseguran que los guías sigan el protocolo de marca?", options: [{ text: "Confiamos en su criterio personal", score: 5 }, { text: "Reuniones de coordinación semanales", score: 15 }, { text: "Checklist digital obligatorio por salida", score: 30 }] },
-    { id: 11, title: "¿Cuál es el costo de perder una reserva por no responder rápido?", options: [{ text: "No lo tenemos medido", score: 5 }, { text: "Sabemos que es alto pero no hay solución", score: 15 }, { text: "Eliminado: la respuesta es inmediata", score: 30 }] },
-    { id: 12, title: "¿Cómo promocionan sus servicios a clientes antiguos?", options: [{ text: "No tenemos una base de datos activa", score: 5 }, { text: "Enviamos un mail masivo de vez en cuando", score: 15 }, { text: "Ofertas personalizadas según su historial", score: 30 }] },
-    { id: 13, title: "¿Cómo gestionan las comisiones de sus agencias aliadas?", options: [{ text: "Cálculos manuales a fin de mes", score: 5 }, { text: "Planilla de control semi-manual", score: 15 }, { text: "Liquidación automática vía sistema", score: 30 }] },
-    { id: 14, title: "¿Qué tan difícil es cambiar un itinerario de último minuto?", options: [{ text: "Un caos de llamadas y mensajes", score: 5 }, { text: "Se logra pero con mucho estrés del equipo", score: 15 }, { text: "Actualización centralizada instantánea", score: 30 }] },
-    { id: 15, title: "¿Cómo atraen clientes de nicho (ej: Birdwatchers, Fotógrafos)?", options: [{ text: "No tenemos estrategia de nicho", score: 5 }, { text: "Publicidad genérica en redes sociales", score: 15 }, { text: "Embudos específicos para cada micro-segmento", score: 30 }] },
-    { id: 16, title: "¿Su equipo administrativo dedica tiempo a tareas de 'copiar y pegar'?", options: [{ text: "Casi todo el día", score: 5 }, { text: "Un par de horas al día", score: 15 }, { text: "Nada, todo está automatizado", score: 30 }] },
-    { id: 17, title: "¿Cómo protegen los datos de tarjetas de sus clientes?", options: [{ text: "Los anotamos o pedimos por foto", score: 5 }, { text: "Usamos pasarelas básicas", score: 15 }, { text: "Entorno encriptado de alta seguridad", score: 30 }] },
-    { id: 18, title: "¿Cómo sabe qué canal de venta es el más rentable hoy?", options: [{ text: "Por intuición", score: 5 }, { text: "Revisando reportes de fin de mes", score: 15 }, { text: "Atribución exacta en tiempo real", score: 30 }] },
-    { id: 19, title: "¿Su equipo se siente abrumado en temporada alta?", options: [{ text: "Siempre, al borde del colapso", score: 5 }, { text: "Es estresante pero se maneja", score: 15 }, { text: "Procesos fluidos gracias a la tecnología", score: 30 }] },
-    { id: 20, title: "¿Cuál es su mayor freno para duplicar sus ventas?", options: [{ text: "Falta de personal e infraestructura", score: 10 }, { text: "Falta de visibilidad internacional", score: 20 }, { text: "Falta de sistemas escalables", score: 30 }] }
-  ],
-  industry: [
-    { id: 1, title: "¿Cómo se reportan hoy las novedades desde el terreno/planta?", options: [{ text: "Llamadas, mensajes de voz o papel", score: 5 }, { text: "Grupo de WhatsApp corporativo", score: 15 }, { text: "Formulario digital con geolocalización e IA", score: 30 }] },
-    { id: 2, title: "¿Cuánto tiempo tarda la oficina en procesar un reporte de terreno?", options: [{ text: "Días hasta que llega el papel", score: 5 }, { text: "Horas, si alguien lo tipea rápido", score: 15 }, { text: "Cero: sincronización instantánea", score: 30 }] },
-    { id: 3, title: "¿Cómo gestionan el mantenimiento preventivo de sus activos?", options: [{ text: "Cuando algo falla (Reactivo)", score: 5 }, { text: "Calendario manual en la oficina", score: 15 }, { text: "Alertas predictivas automáticas", score: 30 }] },
-    { id: 4, title: "¿Cómo aseguran que se sigan los protocolos de seguridad (EPP)?", options: [{ text: "Inspecciones visuales aleatorias", score: 5 }, { text: "Charlas de seguridad matutinas", score: 15 }, { text: "Validación digital por tarea iniciada", score: 30 }] },
-    { id: 5, title: "¿Cómo se enteran los clientes del estado de su servicio/logística?", options: [{ text: "Nos tienen que llamar para preguntar", score: 5 }, { text: "Les enviamos un mail cuando podemos", score: 15 }, { text: "Portal de tracking en tiempo real", score: 30 }] },
-    { id: 6, title: "¿Qué pasa si se pierde una hoja de registro en el campo?", options: [{ text: "Se pierde la info y el rastro", score: 5 }, { text: "Intentamos reconstruirla de memoria", score: 15 }, { text: "Imposible: todo está respaldado en la nube", score: 30 }] },
-    { id: 7, title: "¿Cómo coordinan los turnos y descansos de su equipo?", options: [{ text: "Pizarra manual o cuadrícula impresa", score: 5 }, { text: "Excel compartido que pocos miran", score: 15 }, { text: "App de gestión de turnos centralizada", score: 30 }] },
-    { id: 8, title: "¿Cómo gestionan las órdenes de compra y facturación?", options: [{ text: "Proceso manual con carpetas físicas", score: 5 }, { text: "Digitalizado básico (PDFs sueltos)", score: 15 }, { text: "Flujo ERP automatizado de punta a punta", score: 30 }] },
-    { id: 9, title: "¿Cómo analizan las fallas recurrentes en su operación?", options: [{ text: "No tenemos registro histórico", score: 5 }, { text: "Revisando archivos viejos", score: 15 }, { text: "IA analiza patrones de error automáticamente", score: 30 }] },
-    { id: 10, title: "¿Cómo protegen la propiedad intelectual de sus procesos?", options: [{ text: "Está todo en la cabeza de los empleados", score: 5 }, { text: "Manuales impresos que nadie lee", score: 15 }, { text: "Wiki corporativa dinámica y protegida", score: 30 }] },
-    { id: 11, title: "¿Cuánto tiempo pierde su equipo en reuniones de coordinación?", options: [{ text: "Demasiado tiempo improductivo", score: 5 }, { text: "Lo justo, pero falta claridad", score: 15 }, { text: "Reuniones mínimas gracias a datos claros", score: 30 }] },
-    { id: 12, title: "¿Cómo gestionan el stock de insumos críticos?", options: [{ text: "Revisión visual cuando falta algo", score: 5 }, { text: "Planilla Excel manual", score: 15 }, { text: "Alertas de stock mínimo automáticas", score: 30 }] },
-    { id: 13, title: "¿Cómo atraen nuevos contratos industriales?", options: [{ text: "Solo por relaciones previas y licitaciones", score: 5 }, { text: "Presentaciones comerciales estándar", score: 15 }, { text: "Estrategia de autoridad técnica digital B2B", score: 30 }] },
-    { id: 14, title: "¿Qué tan rápido pueden generar un reporte para un cliente?", options: [{ text: "Días de recopilación de datos", score: 5 }, { text: "Horas de orden y diseño", score: 15 }, { text: "Segundos, con un solo clic", score: 30 }] },
-    { id: 15, title: "¿Cómo aseguran la continuidad si un operario clave renuncia?", options: [{ text: "Perdemos mucho conocimiento y tiempo", score: 5 }, { text: "El proceso se ralentiza por meses", score: 15 }, { text: "Conocimiento sistematizado, curva mínima", score: 30 }] },
-    { id: 16, title: "¿Sus equipos están conectados entre sí (Software/Hardware)?", options: [{ text: "Son islas de información separadas", score: 5 }, { text: "Algunas conexiones básicas", score: 15 }, { text: "Ecosistema totalmente integrado", score: 30 }] },
-    { id: 17, title: "¿Cómo monitorean el consumo de combustible o energía?", options: [{ text: "Revisando facturas a fin de mes", score: 5 }, { text: "Registro manual diario", score: 15 }, { text: "Telemetría en tiempo real", score: 30 }] },
-    { id: 18, title: "¿Cuál es el nivel de digitalización de sus proveedores?", options: [{ text: "Manual y tradicional", score: 5 }, { text: "Usan mail pero no sistemas", score: 15 }, { text: "Integrados digitalmente con nosotros", score: 30 }] },
-    { id: 19, title: "¿Su empresa es atractiva para el talento joven técnico?", options: [{ text: "No, nos ven como anticuados", score: 5 }, { text: "Estamos mejorando la imagen", score: 15 }, { text: "Sí, por nuestra cultura tecnológica", score: 30 }] },
-    { id: 20, title: "¿Cuál es su mayor riesgo operativo hoy?", options: [{ text: "Error humano y falta de datos", score: 10 }, { text: "Falta de repuestos o personal", score: 20 }, { text: "Inercia y falta de innovación", score: 30 }] }
-  ],
-  retail: [
-    { id: 1, title: "¿Cómo se sincroniza su inventario físico con su web?", options: [{ text: "A mano, producto por producto", score: 5 }, { text: "Carga masiva semanal", score: 15 }, { text: "Sincronización instantánea real", score: 30 }] },
-    { id: 2, title: "¿Qué pasa cuando un cliente abandona el carrito de compra?", options: [{ text: "Nada, se pierde la venta", score: 5 }, { text: "Enviamos un mail si tenemos el dato", score: 15 }, { text: "Flujo de recuperación de IA automático", score: 30 }] },
-    { id: 3, title: "¿Cómo gestionan las devoluciones o reclamos hoy?", options: [{ text: "Llamadas y discusiones eternas", score: 5 }, { text: "Ticketera básica de soporte", score: 15 }, { text: "Gestión autónoma vía portal de cliente", score: 30 }] },
-    { id: 4, title: "¿Cómo recomiendan productos a sus clientes actuales?", options: [{ text: "No hacemos recomendaciones", score: 5 }, { text: "Lo que el vendedor cree mejor", score: 15 }, { text: "Motor de IA basado en comportamiento", score: 30 }] },
-    { id: 5, title: "¿Cuánto tiempo pierde su equipo editando fotos de productos?", options: [{ text: "Horas de diseño manual por foto", score: 5 }, { text: "Usamos filtros pero es lento", score: 15 }, { text: "IA genera ambientes y retoques en segundos", score: 30 }] },
-    { id: 6, title: "¿Cómo capturan datos de clientes que compran en tienda física?", options: [{ text: "No capturamos datos", score: 5 }, { text: "Pedimos el mail en caja a veces", score: 15 }, { text: "Ecosistema unificado Omnicanal", score: 30 }] },
-    { id: 7, title: "¿Cuál es su estrategia de fidelización (lealtad)?", options: [{ text: "Ninguna, solo esperamos que vuelvan", score: 5 }, { text: "Descuentos esporádicos masivos", score: 15 }, { text: "Programa de recompensas inteligente", score: 30 }] },
-    { id: 8, title: "¿Cómo saben qué producto dejar de comprar por falta de rotación?", options: [{ text: "Por el espacio que sobra en bodega", score: 5 }, { text: "Reporte de ventas de fin de mes", score: 15 }, { text: "Análisis predictivo de stock", score: 30 }] },
-    { id: 9, title: "¿Cómo gestionan la pauta digital (FB/IG Ads)?", options: [{ text: "Botón 'Promocionar publicación' a veces", score: 5 }, { text: "Campañas estándar de tráfico", score: 15 }, { text: "Optimización por eventos de conversión real", score: 30 }] },
-    { id: 10, title: "¿Su equipo sabe cuánto vendió hoy antes de cerrar?", options: [{ text: "Hasta que cuadran la caja", score: 5 }, { text: "Revisando el sistema básico", score: 15 }, { text: "Dashboard móvil en tiempo real", score: 30 }] },
-    { id: 11, title: "¿Cómo atraen clientes nuevos de forma constante?", options: [{ text: "Dependemos de que pasen por fuera", score: 5 }, { text: "Posteamos en redes sociales diario", score: 15 }, { text: "Máquina de adquisición automatizada", score: 30 }] },
-    { id: 12, title: "¿Qué tan difícil es abrir una nueva sucursal o canal?", options: [{ text: "Meses de caos y configuración manual", score: 5 }, { text: "Es factible pero lento", score: 15 }, { text: "Proceso 'Plug & Play' escalable", score: 30 }] },
-    { id: 13, title: "¿Cómo se comunican con sus proveedores?", options: [{ text: "Llamadas y WhatsApp caóticos", score: 5 }, { text: "Correo electrónico formal", score: 15 }, { text: "Portal de proveedores automatizado", score: 30 }] },
-    { id: 14, title: "¿Cómo aseguran que sus vendedores sigan el speech de venta?", options: [{ text: "Confiamos en su carisma", score: 5 }, { text: "Auditorías presenciales aleatorias", score: 15 }, { text: "Entrenamiento asistido por IA", score: 30 }] },
-    { id: 15, title: "¿Qué porcentaje de sus ventas son recurrentes?", options: [{ text: "Muy bajo, siempre buscamos nuevos", score: 10 }, { text: "Alrededor del 20%", score: 20 }, { text: "Más del 50% (Lealtad alta)", score: 30 }] },
-    { id: 16, title: "¿Cómo gestionan los envíos a última milla?", options: [{ text: "Enviamos a alguien del equipo a mano", score: 5 }, { text: "Usamos empresas externas manualmente", score: 15 }, { text: "Integración logística total automatizada", score: 30 }] },
-    { id: 17, title: "¿Su web carga en menos de 2 segundos?", options: [{ text: "No, es muy lenta", score: 5 }, { text: "Carga bien pero podría mejorar", score: 15 }, { text: "Velocidad de élite optimizada", score: 30 }] },
-    { id: 18, title: "¿Cómo protegen su marca de copias o competencia desleal?", options: [{ text: "No hacemos nada", score: 5 }, { text: "Monitoreo manual básico", score: 15 }, { text: "Vigilancia digital activa", score: 30 }] },
-    { id: 19, title: "¿Cuál es el valor promedio de vida de su cliente (LTV)?", options: [{ text: "No tengo idea", score: 5 }, { text: "Lo calculamos anualmente", score: 15 }, { text: "Dato clave optimizado a diario", score: 30 }] },
-    { id: 20, title: "¿Qué le impide ser el líder absoluto de su rubro?", options: [{ text: "Falta de capital", score: 10 }, { text: "Falta de ubicación física", score: 20 }, { text: "Falta de ecosistema digital", score: 30 }] }
-  ]
-};
 
 const businessNiches = {
   tourism: [
@@ -97,6 +31,210 @@ const businessNiches = {
     { id: 'fashion', name: "Tiendas de Moda & Hogar", icon: <Target className="w-5 h-5 text-patagonia-cyan" /> },
     { id: 'tech', name: "Tecnología & Equipamiento", icon: <Zap className="w-5 h-5 text-patagonia-cyan" /> },
     { id: 'services', name: "Servicios Profesionales & B2B", icon: <MessageSquare className="w-5 h-5 text-patagonia-cyan" /> }
+  ]
+};
+
+const nicheQuestions = {
+  // --- SECTOR TURISMO ---
+  hotel: [
+    { id: 1, title: "¿Cómo se sincroniza su disponibilidad real con Booking/Expedia hoy?", options: [{ text: "Manual (Entramos a cada portal a mano)", score: 5 }, { text: "Channel Manager básico con lagunas", score: 15 }, { text: "Sincronización instantánea centralizada", score: 30 }] },
+    { id: 2, title: "¿Qué sucede cuando un cliente pregunta por WhatsApp a las 11 PM?", options: [{ text: "Nada hasta que el recepcionista despierte", score: 5 }, { text: "Un mensaje automático que pide esperar", score: 15 }, { text: "Una IA resuelve dudas y confirma disponibilidad", score: 30 }] },
+    { id: 3, title: "¿Cómo capturan los datos de sus huéspedes para futuras campañas?", options: [{ text: "En cuadernos o fichas de papel sueltas", score: 5 }, { text: "Excel manual post-estadía", score: 15 }, { text: "Base de datos unificada en tiempo real", score: 30 }] },
+    { id: 4, title: "¿Cuál es su estrategia para aumentar las reservas directas (sin pagar comisión)?", options: [{ text: "No tenemos estrategia de venta directa", score: 5 }, { text: "Un botón básico de reserva en la web", score: 15 }, { text: "Ecosistema de incentivos y motor de reservas pro", score: 30 }] },
+    { id: 5, title: "¿Cómo gestionan la limpieza y mantenimiento de habitaciones?", options: [{ text: "Gritos por radio o mensajes de WhatsApp", score: 5 }, { text: "Planillas impresas diarias", score: 15 }, { text: "App de gestión operativa en tiempo real", score: 30 }] },
+    { id: 6, title: "¿Cómo informan a sus huéspedes sobre servicios adicionales (Excursiones, Spa, etc)?", options: [{ text: "Con folletos impresos en la habitación", score: 5 }, { text: "El recepcionista les cuenta al llegar", score: 15 }, { text: "Conserje digital interactivo 24/7", score: 30 }] },
+    { id: 7, title: "¿Qué pasa con los clientes que dejaron sus datos pero no reservaron?", options: [{ text: "Se pierden en el olvido", score: 5 }, { text: "Intentamos llamarlos si hay tiempo", score: 15 }, { text: "Marketing de retención automático (IA)", score: 30 }] },
+    { id: 8, title: "¿Cómo miden la reputación de su Lodge en TripAdvisor/Google?", options: [{ text: "Revisamos de vez en cuando si hay quejas", score: 10 }, { text: "Respondemos manualmente lo que podemos", score: 20 }, { text: "Monitoreo y respuesta asistida por IA", score: 30 }] },
+    { id: 9, title: "¿Cómo aseguran que el equipo de cocina sepa de dietas especiales?", options: [{ text: "Avisamos verbalmente si nos acordamos", score: 5 }, { text: "Lo anotamos en la comanda", score: 15 }, { text: "Ficha de huésped compartida digitalmente", score: 30 }] },
+    { id: 10, title: "¿Cómo es su proceso de check-out?", options: [{ text: "Lento, esperando que revisen el minibar", score: 5 }, { text: "Rápido pero manual", score: 15 }, { text: "Check-out express digital", score: 30 }] },
+    { id: 11, title: "¿Su equipo habla inglés fluido para vender servicios extra?", options: [{ text: "Es una barrera crítica", score: 5 }, { text: "Algunos lo manejan básico", score: 15 }, { text: "Asistente de IA bilingüe operativo", score: 30 }] },
+    { id: 12, title: "¿Cómo gestionan los inventarios de blancos y amenities?", options: [{ text: "Cuando vemos que falta algo", score: 5 }, { text: "Inventario manual semanal", score: 15 }, { text: "Control de stock digital con alertas", score: 30 }] },
+    { id: 13, title: "¿Cómo atraen al mercado de lujo internacional?", options: [{ text: "Solo por portales (Booking)", score: 5 }, { text: "Publicidad genérica en FB", score: 15 }, { text: "Embudos de autoridad de nicho", score: 30 }] },
+    { id: 14, title: "¿Qué tan difícil es sacar un reporte de ocupación real ahora?", options: [{ text: "Horas de orden y cálculo", score: 5 }, { text: "Revisando el PMS básico", score: 15 }, { text: "Un clic, datos en tiempo real", score: 30 }] },
+    { id: 15, title: "¿Cómo capacitan a su nuevo personal?", options: [{ text: "Mirando cómo trabaja el resto", score: 5 }, { text: "Manuales impresos viejos", score: 15 }, { text: "Plataforma de formación continua", score: 30 }] },
+    { id: 16, title: "¿Sus huéspedes pueden reservar tours sin ir a recepción?", options: [{ text: "No, deben ir físicamente", score: 5 }, { text: "Por WhatsApp pero es lento", score: 15 }, { text: "Autogestión digital instantánea", score: 30 }] },
+    { id: 17, title: "¿Cómo sabe cuánta energía gasta cada habitación?", options: [{ text: "No tenemos cómo saberlo", score: 5 }, { text: "Revisando el medidor general", score: 15 }, { text: "Monitoreo inteligente (IOT)", score: 30 }] },
+    { id: 18, title: "¿Su web es usable desde un teléfono móvil?", options: [{ text: "No, es vieja y lenta", score: 5 }, { text: "Se ve aceptable", score: 15 }, { text: "Experiencia Mobile-First de élite", score: 30 }] },
+    { id: 19, title: "¿Cómo protegen la privacidad de sus huéspedes?", options: [{ text: "Confiamos en nuestro equipo", score: 10 }, { text: "Cumplimos con la ley básica", score: 20 }, { text: "Protocolos de seguridad digital avanzados", score: 30 }] },
+    { id: 20, title: "¿Cuál es su mayor freno para crecer hoy?", options: [{ text: "Falta de personal e infraestructura", score: 10 }, { text: "Dependencia de las OTAs (Comisiones)", score: 20 }, { text: "Falta de sistemas escalables", score: 30 }] }
+  ],
+  operator: [
+    { id: 1, title: "¿Cómo coordinan hoy la logística de los guías en terreno?", options: [{ text: "Llamadas y mensajes de WhatsApp caóticos", score: 5 }, { text: "Reunión matutina diaria", score: 15 }, { text: "Panel de control logístico en tiempo real", score: 30 }] },
+    { id: 2, title: "¿Cómo envían los vouchers y políticas de cancelación?", options: [{ text: "Enviamos PDFs manuales por Mail", score: 5 }, { text: "Link genérico en la web", score: 15 }, { text: "Entrega automática tras pago", score: 30 }] },
+    { id: 3, title: "¿Cómo aseguran que se sigan los protocolos de seguridad en montaña/mar?", options: [{ text: "Confiamos en el criterio del guía", score: 5 }, { text: "Bitácora de papel diaria", score: 15 }, { text: "Validación digital de checklist obligatorio", score: 30 }] },
+    { id: 4, title: "¿Cómo atraen clientes internacionales de forma directa?", options: [{ text: "No tenemos estrategia digital", score: 5 }, { text: "Publicidad básica en IG", score: 15 }, { text: "Ecosistema de autoridad global", score: 30 }] },
+    { id: 5, title: "¿Qué sucede si un guía pierde la conexión en terreno?", options: [{ text: "Queda incomunicado totalmente", score: 5 }, { text: "Usamos radio pero es ineficiente", score: 15 }, { text: "Sistemas Offline-First con sincronización", score: 30 }] },
+    { id: 6, title: "¿Cómo capturan contenido visual de calidad durante los tours?", options: [{ text: "Dependemos de la buena voluntad de los guías", score: 5 }, { text: "Pedimos fotos de vez en cuando", score: 15 }, { text: "Estrategia de captura y curación automatizada", score: 30 }] },
+    { id: 7, title: "¿Cómo miden el ROI de cada una de sus excursiones?", options: [{ text: "Por la sensación de ventas", score: 5 }, { text: "Cálculo manual de fin de mes", score: 15 }, { text: "Reporte de rentabilidad por tour real", score: 30 }] },
+    { id: 8, title: "¿Cómo es su proceso de pago para clientes extranjeros?", options: [{ text: "Transferencias lentas o efectivo", score: 5 }, { text: "Pasarela básica de pagos", score: 15 }, { text: "Multi-moneda con integración total", score: 30 }] },
+    { id: 9, title: "¿Cómo gestionan las listas de pasajeros para seguros?", options: [{ text: "Tipeamos a mano cada nombre", score: 5 }, { text: "Planilla Excel semi-manual", score: 15 }, { text: "Importación y envío automático", score: 30 }] },
+    { id: 10, title: "¿Sus tours tienen una narrativa de marca consistente?", options: [{ text: "Cada guía cuenta su propia historia", score: 5 }, { text: "Pauta básica impresa", score: 15 }, { text: "Entrenamiento dinámico en narrativa", score: 30 }] },
+    { id: 11, title: "¿Cómo saben si un equipo (carpas, botes, etc) necesita reparación?", options: [{ text: "Cuando se rompe en medio del tour", score: 5 }, { text: "Revisión visual ocasional", score: 15 }, { text: "Control de activos con mantenimiento", score: 30 }] },
+    { id: 12, title: "¿Cómo responden a las reseñas negativas en portales?", options: [{ text: "Las ignoramos o discutimos", score: 5 }, { text: "Respondemos con un texto estándar", score: 15 }, { text: "Análisis y respuesta estratégica IA", score: 30 }] },
+    { id: 13, title: "¿Cómo gestionan las reservas de último minuto?", options: [{ text: "Diciendo 'No' porque es un caos coordinar", score: 5 }, { text: "Intentando acomodar a mano", score: 15 }, { text: "Sistema de disponibilidad dinámica", score: 30 }] },
+    { id: 14, title: "¿Cuál es su mayor costo operativo hoy?", options: [{ text: "Horas hombre en oficina", score: 10 }, { text: "Marketing ineficiente", score: 20 }, { text: "Falta de escala tecnológica", score: 30 }] },
+    { id: 15, title: "¿Cómo aseguran que el cliente vuelva el próximo año?", options: [{ text: "Esperamos que nos recuerden", score: 5 }, { text: "Enviamos mail masivo en navidad", score: 15 }, { text: "Nutrición personalizada de leads", score: 30 }] },
+    { id: 16, title: "¿Su sitio web carga rápido en conexiones rurales?", options: [{ text: "No, es muy pesado", score: 5 }, { text: "Funciona regular", score: 15 }, { text: "Optimización extrema de velocidad", score: 30 }] },
+    { id: 17, title: "¿Cómo gestionan los convenios con agencias locales?", options: [{ text: "Anotamos todo en una libreta", score: 5 }, { text: "Excel compartido", score: 15 }, { text: "Portal de aliados automatizado", score: 30 }] },
+    { id: 18, title: "¿Qué tan automatizado está su proceso de facturación?", options: [{ text: "100% manual por contador", score: 5 }, { text: "Sistema básico separado", score: 15 }, { text: "Integrado con la reserva", score: 30 }] },
+    { id: 19, title: "¿Cómo protegen los datos médicos de sus clientes?", options: [{ text: "Están en los mails de los guías", score: 5 }, { text: "En carpetas locales", score: 15 }, { text: "Cifrado y acceso restringido", score: 30 }] },
+    { id: 20, title: "¿Cuál es su meta de escala para este año?", options: [{ text: "Mantener la operación actual", score: 10 }, { text: "Crecer un poco", score: 20 }, { text: "Escalado total vía sistemas", score: 30 }] }
+  ],
+  gastronomy: [
+    { id: 1, title: "¿Cómo gestionan hoy las reservas de mesas?", options: [{ text: "Libro de reservas manual en el mesón", score: 5 }, { text: "WhatsApp o Google Form básico", score: 15 }, { text: "Plataforma de reservas inteligente", score: 30 }] },
+    { id: 2, title: "¿Cómo se enteran de las quejas antes de que lleguen a Google?", options: [{ text: "Solo cuando vemos el mal comentario", score: 5 }, { text: "Encuesta manual ocasional", score: 15 }, { text: "Sistema de feedback instantáneo", score: 30 }] },
+    { id: 3, title: "¿Cómo atraen clientes los días de baja rotación?", options: [{ text: "No tenemos estrategia activa", score: 5 }, { text: "Publicidad genérica diaria", score: 15 }, { text: "Marketing predictivo para llenar mesas", score: 30 }] },
+    { id: 4, title: "¿Cómo gestionan su inventario de insumos perecederos?", options: [{ text: "Por 'ojo' y experiencia del chef", score: 5 }, { text: "Control manual semanal", score: 15 }, { text: "Control de stock digital automático", score: 30 }] },
+    { id: 5, title: "¿Cómo es su proceso de pedido online (Delivery/Pickup)?", options: [{ text: "Dependemos 100% de apps (UberEats)", score: 5 }, { text: "Un WhatsApp con catálogo manual", score: 15 }, { text: "Canal propio de alta rentabilidad", score: 30 }] },
+    { id: 6, title: "¿Cómo capturan los datos de los clientes que comen en el local?", options: [{ text: "No los capturamos", score: 5 }, { text: "Sorteos con papelitos", score: 15 }, { text: "WiFi social o QR inteligente", score: 30 }] },
+    { id: 7, title: "¿Cuánto tiempo pierde el equipo explicando la carta a extranjeros?", options: [{ text: "Demasiado, es un cuello de botella", score: 5 }, { text: "Lo justo, pero con dificultad", score: 15 }, { text: "Menú interactivo multi-idioma IA", score: 30 }] },
+    { id: 8, title: "¿Cómo aseguran la consistencia de sus platos en cada turno?", options: [{ text: "Confianza en el chef de turno", score: 5 }, { text: "Fichas técnicas impresas", score: 15 }, { text: "Sistematización operativa digital", score: 30 }] },
+    { id: 9, title: "¿Cómo gestionan la pauta digital para turistas?", options: [{ text: "No hacemos publicidad segmentada", score: 5 }, { text: "Buscamos influencers locales", score: 15 }, { text: "Publicidad geolocalizada hiper-nicho", score: 30 }] },
+    { id: 10, title: "¿Cómo calculan el costo real por plato hoy?", options: [{ text: "Estimación general por inflación", score: 5 }, { text: "Excel manual desactualizado", score: 15 }, { text: "Escandallo digital en tiempo real", score: 30 }] },
+    { id: 11, title: "¿Su equipo de sala está capacitado en venta sugestiva?", options: [{ text: "Toman pedidos reactivamente", score: 5 }, { text: "Tienen instrucciones básicas", score: 15 }, { text: "Protocolo de aumento de ticket", score: 30 }] },
+    { id: 12, title: "¿Qué pasa con los leads que preguntan por eventos corporativos?", options: [{ text: "A veces se nos olvida responder", score: 5 }, { text: "Respondemos mail con PDF", score: 15 }, { text: "Embudo de conversión de eventos", score: 30 }] },
+    { id: 13, title: "¿Cómo gestionan las mermas y desperdicios?", options: [{ text: "No tenemos un registro claro", score: 5 }, { text: "Anotamos lo que se bota", score: 15 }, { text: "Análisis de eficiencia operativa", score: 30 }] },
+    { id: 14, title: "¿Qué tan rápido se actualizan sus precios digitales?", options: [{ text: "Un caos cambiar en web y apps", score: 5 }, { text: "Lo hacemos una vez al mes", score: 15 }, { text: "Sincronización total instantánea", score: 30 }] },
+    { id: 15, title: "¿Cuál es su nivel de fidelización de clientes locales?", options: [{ text: "Muy bajo, dependemos del turismo", score: 5 }, { text: "Tenemos clientes habituales", score: 15 }, { text: "Club de fidelización automatizado", score: 30 }] },
+    { id: 16, title: "¿Su personal administrativo pierde tiempo con facturas manuales?", options: [{ text: "Casi todo el tiempo", score: 5 }, { text: "Lo normal", score: 15 }, { text: "Automatización administrativa", score: 30 }] },
+    { id: 17, title: "¿Cómo atraen al mercado de 'foodies' internacionales?", options: [{ text: "Esperando aparecer en guías", score: 5 }, { text: "Fotos en Instagram de vez en cuando", score: 15 }, { text: "Estrategia de autoridad gastronómica", score: 30 }] },
+    { id: 18, title: "¿Cómo gestionan la rotación de su personal?", options: [{ text: "Un problema constante y caótico", score: 5 }, { text: "Se maneja pero es difícil", score: 15 }, { text: "Protocolos de inducción rápidos", score: 30 }] },
+    { id: 19, title: "¿Cómo protegen la higiene y seguridad alimentaria?", options: [{ text: "Cumplimos con lo que pide el inspector", score: 5 }, { text: "Registro manual ocasional", score: 15 }, { text: "Bitácora digital inviolable", score: 30 }] },
+    { id: 20, title: "¿Cuál es su meta de rentabilidad para este año?", options: [{ text: "Sobrevivir a la temporada", score: 10 }, { text: "Mejorar los márgenes", score: 20 }, { text: "Maximizar eficiencia vía sistemas", score: 30 }] }
+  ],
+  // --- SECTOR INDUSTRIA ---
+  logistics: [
+    { id: 1, title: "¿Cómo se rastrean hoy sus unidades en tiempo real?", options: [{ text: "Llamando por teléfono al conductor", score: 5 }, { text: "GPS básico sin integración", score: 15 }, { text: "Telemetría avanzada integrada", score: 30 }] },
+    { id: 2, title: "¿Cómo se reportan las fallas mecánicas en ruta?", options: [{ text: "El conductor avisa cuando puede", score: 5 }, { text: "WhatsApp o llamada matutina", score: 15 }, { text: "Reporte digital con alerta inmediata", score: 30 }] },
+    { id: 3, title: "¿Cómo gestionan las hojas de ruta y despachos?", options: [{ text: "Papeles impresos y carpetas físicas", score: 5 }, { text: "Excel que se actualiza al final del día", score: 15 }, { text: "Gestión digital nativa en tiempo real", score: 30 }] },
+    { id: 4, title: "¿Cómo saben el costo exacto por kilómetro de cada unidad?", options: [{ text: "No lo sabemos con precisión", score: 5 }, { text: "Cálculo aproximado manual", score: 15 }, { text: "Análisis de costos automatizado", score: 30 }] },
+    { id: 5, title: "¿Cómo aseguran que los conductores sigan las normas de seguridad?", options: [{ text: "Confiamos en su experiencia", score: 5 }, { text: "Charlas de seguridad mensuales", score: 15 }, { text: "Monitoreo de comportamiento digital", score: 30 }] },
+    { id: 6, title: "¿Qué pasa si se pierde un comprobante de entrega?", options: [{ text: "Problemas de facturación y cobro", score: 5 }, { text: "Intentamos que el cliente firme otro", score: 15 }, { text: "Prueba de entrega digital (POD) instantánea", score: 30 }] },
+    { id: 7, title: "¿Cómo coordinan los descansos y relevos del equipo?", options: [{ text: "Pizarra o Excel manual", score: 5 }, { text: "Grupo de WhatsApp", score: 15 }, { text: "Algoritmo de gestión de turnos", score: 30 }] },
+    { id: 8, title: "¿Cómo gestionan el stock de repuestos críticos?", options: [{ text: "Revisión visual ocasional", score: 5 }, { text: "Planilla Excel manual", score: 15 }, { text: "Alertas de stock automático", score: 30 }] },
+    { id: 9, title: "¿Cómo se comunican con sus clientes sobre retrasos?", options: [{ text: "El cliente nos llama para reclamar", score: 5 }, { text: "Enviamos mail si nos acordamos", score: 15 }, { text: "Notificaciones automáticas proactivas", score: 30 }] },
+    { id: 10, title: "¿Cómo analizan la eficiencia de sus rutas actuales?", options: [{ text: "No tenemos análisis de rutas", score: 5 }, { text: "Por el tiempo que demoran", score: 15 }, { text: "Optimización por IA de rutas", score: 30 }] },
+    { id: 11, title: "¿Cómo gestionan el mantenimiento preventivo de su flota?", options: [{ text: "Cuando algo suena mal", score: 5 }, { text: "Cada ciertos meses (Manual)", score: 15 }, { text: "Mantenimiento basado en datos reales", score: 30 }] },
+    { id: 12, title: "¿Qué tan fácil es escalar su flota en un 50%?", options: [{ text: "Un colapso administrativo total", score: 5 }, { text: "Requeriría mucha gente nueva", score: 15 }, { text: "Escalado Plug & Play vía sistemas", score: 30 }] },
+    { id: 13, title: "¿Cómo atraen nuevos contratos corporativos?", options: [{ text: "Por contactos personales únicamente", score: 5 }, { text: "Presentaciones comerciales", score: 15 }, { text: "Estrategia de autoridad B2B", score: 30 }] },
+    { id: 14, title: "¿Cómo protegen su información logística sensible?", options: [{ text: "Está en las computadoras de la oficina", score: 5 }, { text: "Contraseñas básicas", score: 15 }, { text: "Arquitectura de seguridad robusta", score: 30 }] },
+    { id: 15, title: "¿Su equipo administrativo pierde tiempo tipeando facturas?", options: [{ text: "Casi todo el día", score: 5 }, { text: "Lo normal", score: 15 }, { text: "Integración ERP automatizada", score: 30 }] },
+    { id: 16, title: "¿Cómo gestionan las multas y seguros de la flota?", options: [{ text: "Cuando llegan los cobros", score: 5 }, { text: "Excel de vencimientos manual", score: 15 }, { text: "Gestión proactiva centralizada", score: 30 }] },
+    { id: 17, title: "¿Cómo saben si su operación es rentable por cliente?", options: [{ text: "No lo sabemos individualmente", score: 5 }, { text: "Cálculo aproximado", score: 15 }, { text: "P&L por cliente en tiempo real", score: 30 }] },
+    { id: 18, title: "¿Cómo es su proceso de selección de nuevos conductores?", options: [{ text: "Por recomendación directa", score: 5 }, { text: "Entrevistas estándar", score: 15 }, { text: "Evaluación técnica sistematizada", score: 30 }] },
+    { id: 19, title: "¿Su empresa proyecta una imagen de alta tecnología?", options: [{ text: "No, nos ven como tradicionales", score: 5 }, { text: "Estamos en transición", score: 15 }, { text: "Sí, somos líderes tecnológicos", score: 30 }] },
+    { id: 20, title: "¿Cuál es su meta de facturación para el próximo año?", options: [{ text: "Mantener lo que tenemos", score: 10 }, { text: "Crecimiento lineal", score: 20 }, { text: "Crecimiento exponencial vía sistemas", score: 30 }] }
+  ],
+  energy: [
+    { id: 1, title: "¿Cómo se capturan hoy los reportes de inspección en terreno?", options: [{ text: "Papel y lápiz, luego se transcriben", score: 5 }, { text: "Grupo de WhatsApp corporativo", score: 15 }, { text: "App de captura digital estructurada", score: 30 }] },
+    { id: 2, title: "¿Cuánto tiempo tarda la gerencia en ver un dato crítico de planta?", options: [{ text: "Días, hasta que se arma el reporte", score: 5 }, { text: "Horas, vía mail", score: 15 }, { text: "Segundos, vía dashboard en vivo", score: 30 }] },
+    { id: 3, title: "¿Cómo aseguran que se sigan los protocolos de seguridad industrial?", options: [{ text: "Confiamos en el entrenamiento previo", score: 5 }, { text: "Supervisión visual ocasional", score: 15 }, { text: "Checklist digital obligatorio por tarea", score: 30 }] },
+    { id: 4, title: "¿Cómo gestionan el mantenimiento de equipos de alta complejidad?", options: [{ text: "Cuando fallan (Mantenimiento reactivo)", score: 5 }, { text: "Programación manual en Excel", score: 15 }, { text: "Mantenimiento predictivo basado en datos", score: 30 }] },
+    { id: 5, title: "¿Cómo documentan la 'memoria técnica' de sus ingenieros?", options: [{ text: "Está en la cabeza de los veteranos", score: 5 }, { text: "Manuales impresos y archivos sueltos", score: 15 }, { text: "Ecosistema de conocimiento digital (Wiki)", score: 30 }] },
+    { id: 6, title: "¿Cómo coordinan los trabajos con contratistas externos?", options: [{ text: "Correos y llamadas interminables", score: 5 }, { text: "Excel compartido", score: 15 }, { text: "Portal de gestión de proveedores", score: 30 }] },
+    { id: 7, title: "¿Cómo monitorean la eficiencia energética de sus propias plantas?", options: [{ text: "Revisando costos de facturación", score: 5 }, { text: "Registro manual matutino", score: 15 }, { text: "Telemetría avanzada e IA", score: 30 }] },
+    { id: 8, title: "¿Qué pasa si hay un incidente de seguridad ahora?", options: [{ text: "Caos de llamadas para entender qué pasó", score: 5 }, { text: "Activación manual de protocolos", score: 15 }, { text: "Protocolo digital con alerta multicanal", score: 30 }] },
+    { id: 9, title: "¿Cómo gestionan los inventarios de repuestos de emergencia?", options: [{ text: "Por inspección visual", score: 5 }, { text: "Inventario manual mensual", score: 15 }, { text: "Control de stock con alertas críticas", score: 30 }] },
+    { id: 10, title: "¿Cómo atraen inversión o nuevos contratos estatales/privados?", options: [{ text: "Solo por relaciones previas", score: 5 }, { text: "Presentaciones comerciales", score: 15 }, { text: "Plataforma de autoridad técnica", score: 30 }] },
+    { id: 11, title: "¿Cómo analizan la rentabilidad por pozo/planta/unidad?", options: [{ text: "Cálculo global de la empresa", score: 5 }, { text: "Reporte manual por unidad", score: 15 }, { text: "Análisis de rentabilidad granulado IA", score: 30 }] },
+    { id: 12, title: "¿Cómo es su proceso de capacitación continua?", options: [{ text: "Nulo o muy esporádico", score: 5 }, { text: "Capacitaciones externas presenciales", score: 15 }, { text: "LMS propio (Formación digital)", score: 30 }] },
+    { id: 13, title: "¿Cómo aseguran que la información operativa sea soberana?", options: [{ text: "Dependemos de software de terceros", score: 5 }, { text: "Tenemos servidores locales básicos", score: 15 }, { text: "Infraestructura propia robusta", score: 30 }] },
+    { id: 14, title: "¿Qué tan fácil es integrar una nueva planta a su sistema?", options: [{ text: "Meses de configuración manual", score: 5 }, { text: "Es factible pero lento", score: 15 }, { text: "Escalado modular automático", score: 30 }] },
+    { id: 15, title: "¿Cómo gestionan los reportes de impacto ambiental?", options: [{ text: "Documentos manuales para cumplir", score: 5 }, { text: "Excel de seguimiento", score: 15 }, { text: "Dashboard de sustentabilidad real", score: 30 }] },
+    { id: 16, title: "¿Cómo se protege contra ciberataques industriales?", options: [{ text: "No tenemos protocolos específicos", score: 5 }, { text: "Antivirus básico", score: 15 }, { text: "Ciberseguridad industrial avanzada", score: 30 }] },
+    { id: 17, title: "¿Cómo proyecta su empresa en el mercado global?", options: [{ text: "Empresa local tradicional", score: 5 }, { text: "Tenemos presencia básica", score: 15 }, { text: "Autoridad técnica internacional", score: 30 }] },
+    { id: 18, title: "¿Cómo gestionan la logística de personal a zonas remotas?", options: [{ text: "Planilla manual y llamadas", score: 5 }, { text: "Excel de coordinación", score: 15 }, { text: "Gestión logística integrada", score: 30 }] },
+    { id: 19, title: "¿Cómo saben si su equipo está operando al 100%?", options: [{ text: "Si no hay quejas, está bien", score: 5 }, { text: "Reporte de producción diario", score: 15 }, { text: "OEE (Eficiencia General) en vivo", score: 30 }] },
+    { id: 20, title: "¿Cuál es su meta de innovación para este año?", options: [{ text: "Mantener lo que funciona", score: 10 }, { text: "Explorar nuevas tecnologías", score: 20 }, { text: "Digitalización total operativa", score: 30 }] }
+  ],
+  construction: [
+    { id: 1, title: "¿Cómo se lleva hoy el control de asistencia y HH en obra?", options: [{ text: "Libro de firmas o planillas de papel", score: 5 }, { text: "WhatsApp o Excel manual", score: 15 }, { text: "Control biométrico digital integrado", score: 30 }] },
+    { id: 2, title: "¿Cómo se reportan los avances de obra desde el terreno?", options: [{ text: "Llamadas o visitas semanales del dueño", score: 5 }, { text: "Fotos por WhatsApp", score: 15 }, { text: "Reporte digital con certificación", score: 30 }] },
+    { id: 3, title: "¿Cómo gestionan el stock de materiales críticos (cemento, fierro)?", options: [{ text: "Revisión visual matutina", score: 5 }, { text: "Vale de bodega de papel", score: 15 }, { text: "Gestión de inventario digital alertas", score: 30 }] },
+    { id: 4, title: "¿Cómo aseguran que se cumpla el cronograma (Carta Gantt)?", options: [{ text: "Está pegada en la pared y no se cumple", score: 5 }, { text: "Actualización semanal en Excel", score: 15 }, { text: "Gestión dinámica de proyectos IA", score: 30 }] },
+    { id: 5, title: "¿Cómo coordinan los cambios de último minuto en planos?", options: [{ text: "Gritos y dibujos sobre la marcha", score: 5 }, { text: "Planos impresos marcados a mano", score: 15 }, { text: "Visualización de planos digitalizada", score: 30 }] },
+    { id: 6, title: "¿Cómo gestionan los subcontratistas y sus pagos?", options: [{ text: "Un desorden de facturas y deudas", score: 5 }, { text: "Planilla de control manual", score: 15 }, { text: "Portal de gestión de subcontratos", score: 30 }] },
+    { id: 7, title: "¿Cómo capturan el 'antes y después' de cada etapa?", options: [{ text: "Fotos en los celulares de los capataces", score: 5 }, { text: "Carpeta de fotos desordenada", score: 15 }, { text: "Archivo visual de obra inteligente", score: 30 }] },
+    { id: 8, title: "¿Cómo miden la rentabilidad real de cada proyecto hoy?", options: [{ text: "Cuando terminamos y vemos si sobró plata", score: 5 }, { text: "Estimación por Excel", score: 15 }, { text: "Control de costos en tiempo real", score: 30 }] },
+    { id: 9, title: "¿Cómo atraen nuevas licitaciones o clientes?", options: [{ text: "Por contactos históricos únicamente", score: 5 }, { text: "Presentaciones comerciales estándar", score: 15 }, { text: "Portafolio de autoridad técnica digital", score: 30 }] },
+    { id: 10, title: "¿Cómo gestionan las herramientas y maquinaria?", options: [{ text: "Se pierden o se rompen sin rastro", score: 5 }, { text: "Control de herramientas manual", score: 15 }, { text: "Gestión de activos con trazabilidad", score: 30 }] },
+    { id: 11, title: "¿Cómo capacitican a su personal en nuevos métodos?", options: [{ text: "No tenemos capacitación estructurada", score: 5 }, { text: "Charlas informales", score: 15 }, { text: "Capacitación digital por módulos", score: 30 }] },
+    { id: 12, title: "¿Cómo gestionan los reclamos de post-venta?", options: [{ text: "WhatsApp y correos que se pierden", score: 5 }, { text: "Ticketera básica", score: 15 }, { text: "Gestión de post-venta automatizada", score: 30 }] },
+    { id: 13, title: "¿Qué tan difícil es abrir una nueva obra hoy?", options: [{ text: "Meses de caos administrativo", score: 5 }, { text: "Un esfuerzo manual agotador", score: 15 }, { text: "Proceso sistematizado escalable", score: 30 }] },
+    { id: 14, title: "¿Cómo protegen su información estratégica (presupuestos)?", options: [{ text: "Está en las PCs de la oficina", score: 5 }, { text: "Archivos con contraseña básica", score: 15 }, { text: "Seguridad digital de clase empresarial", score: 30 }] },
+    { id: 15, title: "¿Su oficina dedica tiempo a transcribir reportes de obra?", options: [{ text: "Casi todo el tiempo", score: 5 }, { text: "Lo normal", score: 15 }, { text: "Cero: reporte digital directo", score: 30 }] },
+    { id: 16, title: "¿Cómo aseguran la calidad de los materiales recibidos?", options: [{ text: "Firma rápida de la guía de despacho", score: 5 }, { text: "Revisión visual básica", score: 15 }, { text: "Certificación digital de recepción", score: 30 }] },
+    { id: 17, title: "¿Su empresa es percibida como 'Tech-Ready'?", options: [{ text: "No, somos tradicionales", score: 5 }, { text: "Estamos intentando mejorar", score: 15 }, { text: "Sí, somos innovadores en el rubro", score: 30 }] },
+    { id: 18, title: "¿Cómo gestionan la seguridad y EPP en terreno?", options: [{ text: "Visualmente cuando el prevencionista va", score: 5 }, { text: "Checklist de papel", score: 15 }, { text: "Control digital diario obligatorio", score: 30 }] },
+    { id: 19, title: "¿Cómo sabe si un proyecto va atrasado antes de que sea tarde?", options: [{ text: "Por instinto o quejas del cliente", score: 5 }, { text: "Revisión de Gantt mensual", score: 15 }, { text: "Alertas tempranas automáticas", score: 30 }] },
+    { id: 20, title: "¿Cuál es su meta de expansión para este año?", options: [{ text: "Terminar lo que tenemos", score: 10 }, { text: "Crecimiento lineal", score: 20 }, { text: "Crecimiento exponencial vía sistemas", score: 30 }] }
+  ],
+  // --- SECTOR RETAIL ---
+  fashion: [
+    { id: 1, title: "¿Cómo se sincroniza su stock de tienda con su web hoy?", options: [{ text: "Manual (Tipeamos cada venta en ambos lados)", score: 5 }, { text: "Carga masiva semanal", score: 15 }, { text: "Sincronización instantánea real", score: 30 }] },
+    { id: 2, title: "¿Qué pasa con los clientes que abandonan su carrito online?", options: [{ text: "Se pierden para siempre", score: 5 }, { text: "Enviamos mail si el sistema lo permite", score: 15 }, { text: "Flujo de recuperación IA de alta conversión", score: 30 }] },
+    { id: 3, title: "¿Cómo recomiendan productos basados en compras anteriores?", options: [{ text: "No hacemos recomendaciones", score: 5 }, { text: "Por 'ojo' del vendedor en tienda", score: 15 }, { text: "Motor de recomendaciones IA personalizado", score: 30 }] },
+    { id: 4, title: "¿Cómo capturan los datos de los clientes que compran físico?", options: [{ text: "No capturamos datos", score: 5 }, { text: "Pedimos mail para la boleta a veces", score: 15 }, { text: "Ecosistema unificado Omnicanal", score: 30 }] },
+    { id: 5, title: "¿Cuánto tiempo dedica su equipo a editar fotos de productos?", options: [{ text: "Días de diseño y retoque manual", score: 5 }, { text: "Usamos filtros pero es lento", score: 15 }, { text: "IA genera ambientes y retoques en segundos", score: 30 }] },
+    { id: 6, title: "¿Cómo gestionan las devoluciones y cambios hoy?", options: [{ text: "Un proceso manual y frustrante para el cliente", score: 5 }, { text: "Ticketera básica de soporte", score: 15 }, { text: "Gestión autónoma vía portal de cliente", score: 30 }] },
+    { id: 7, title: "¿Cuál es su estrategia de fidelización (Club de Puntos)?", options: [{ text: "Ninguna", score: 5 }, { text: "Descuento en la próxima compra a mano", score: 15 }, { text: "Programa de recompensas automatizado", score: 30 }] },
+    { id: 8, title: "¿Cómo saben qué productos dejar de comprar por baja rotación?", options: [{ text: "Por el espacio que sobra en bodega", score: 5 }, { text: "Reporte de ventas mensual", score: 15 }, { text: "Análisis predictivo de inventario", score: 30 }] },
+    { id: 9, title: "¿Cómo gestionan su pauta digital en redes sociales?", options: [{ text: "Botón 'Promocionar' esporádico", score: 5 }, { text: "Campaña básica de tráfico", score: 15 }, { text: "Optimización por eventos de venta real", score: 30 }] },
+    { id: 10, title: "¿Su equipo sabe cuánto vendió antes de cerrar la tienda?", options: [{ text: "Hasta que cuadran la caja", score: 5 }, { text: "Revisando el sistema básico", score: 15 }, { text: "Dashboard en tiempo real móvil", score: 30 }] },
+    { id: 11, title: "¿Cómo atraen clientes nuevos cada semana?", options: [{ text: "Dependemos de que pasen por fuera", score: 5 }, { text: "Posteamos diario en IG", score: 15 }, { text: "Máquina de adquisición automatizada", score: 30 }] },
+    { id: 12, title: "¿Qué tan difícil es abrir una nueva sucursal o canal online?", options: [{ text: "Meses de caos administrativo", score: 5 }, { text: "Es factible pero lento", score: 15 }, { text: "Proceso 'Plug & Play' escalable", score: 30 }] },
+    { id: 13, title: "¿Cómo se comunican con sus proveedores de stock?", options: [{ text: "WhatsApp y llamadas caóticas", score: 5 }, { text: "Correo electrónico formal", score: 15 }, { text: "Portal de proveedores automatizado", score: 30 }] },
+    { id: 14, title: "¿Cómo aseguran que sus vendedores sigan el speech de marca?", options: [{ text: "Confiamos en su carisma", score: 5 }, { text: "Auditorías presenciales", score: 15 }, { text: "Entrenamiento asistido por IA", score: 30 }] },
+    { id: 15, title: "¿Qué porcentaje de sus ventas son recurrentes?", options: [{ text: "Muy bajo, siempre clientes nuevos", score: 10 }, { text: "Alrededor del 20%", score: 20 }, { text: "Más del 50% (Lealtad alta)", score: 30 }] },
+    { id: 16, title: "¿Cómo gestionan los envíos a todo Chile?", options: [{ text: "Vamos al correo nosotros mismos", score: 5 }, { text: "Cargamos datos manuales en courier", score: 15 }, { text: "Integración logística total", score: 30 }] },
+    { id: 17, title: "¿Su web carga en menos de 2 segundos?", options: [{ text: "No, es muy lenta", score: 5 }, { text: "Funciona bien pero se puede mejorar", score: 15 }, { text: "Velocidad de élite optimizada", score: 30 }] },
+    { id: 18, title: "¿Cómo protegen su marca de imitaciones digitales?", options: [{ text: "No hacemos nada", score: 5 }, { text: "Monitoreo manual básico", score: 15 }, { text: "Vigilancia digital activa", score: 30 }] },
+    { id: 19, title: "¿Cuál es el valor promedio de vida de su cliente (LTV)?", options: [{ text: "No tengo idea", score: 5 }, { text: "Lo calculamos anualmente", score: 15 }, { text: "Dato clave optimizado a diario", score: 30 }] },
+    { id: 20, title: "¿Cuál es su meta de rentabilidad para este año?", options: [{ text: "Sobrevivir", score: 10 }, { text: "Mejorar los márgenes", score: 20 }, { text: "Escalabilidad total vía sistemas", score: 30 }] }
+  ],
+  tech: [
+    { id: 1, title: "¿Cómo gestionan hoy las especificaciones técnicas en su web?", options: [{ text: "Copiamos y pegamos de otros sitios", score: 5 }, { text: "Tipeamos cada ficha a mano", score: 15 }, { text: "Importación automática de catálogos", score: 30 }] },
+    { id: 2, title: "¿Cómo es su proceso de soporte técnico post-venta?", options: [{ text: "Llamadas y mails que se pierden", score: 5 }, { text: "WhatsApp básico", score: 15 }, { text: "Ticketera de soporte automatizada", score: 30 }] },
+    { id: 3, title: "¿Cómo informan sobre la garantía y estado de reparación?", options: [{ text: "El cliente debe llamar para preguntar", score: 5 }, { text: "Enviamos mail si hay novedades", score: 15 }, { text: "Portal de seguimiento en tiempo real", score: 30 }] },
+    { id: 4, title: "¿Cómo atraen clientes B2B (empresas) de forma digital?", options: [{ text: "No tenemos estrategia corporativa", score: 5 }, { text: "Buscamos licitaciones activamente", score: 15 }, { text: "Estrategia de autoridad técnica B2B", score: 30 }] },
+    { id: 5, title: "¿Cómo gestionan su stock de repuestos y accesorios?", options: [{ text: "Desordenado en bodega", score: 5 }, { text: "Excel de control manual", score: 15 }, { text: "Gestión de inventario con alertas", score: 30 }] },
+    { id: 6, title: "¿Qué sucede con los leads que preguntan por cotizaciones?", options: [{ text: "Respondemos cuando tenemos tiempo", score: 5 }, { text: "Enviamos un PDF manual", score: 15 }, { text: "Generación automática de propuestas", score: 30 }] },
+    { id: 7, title: "¿Cómo se comparan sus precios con el mercado dinámico?", options: [{ text: "Ni idea de la competencia", score: 5 }, { text: "Revisamos a mano una vez por semana", score: 15 }, { text: "Monitoreo de precios automático", score: 30 }] },
+    { id: 8, title: "¿Cómo capturan reseñas técnicas de sus productos?", options: [{ text: "No tenemos reseñas", score: 5 }, { text: "Esperamos que el cliente escriba", score: 15 }, { text: "Sistema de captura de autoridad IA", score: 30 }] },
+    { id: 9, title: "¿Cómo aseguran que su equipo esté actualizado en tecnología?", options: [{ text: "Cada uno aprende como puede", score: 5 }, { text: "Capacitaciones ocasionales", score: 15 }, { text: "Plataforma de formación continua", score: 30 }] },
+    { id: 10, title: "¿Su web permite comparar productos técnicamente?", options: [{ text: "No, solo verlos por separado", score: 5 }, { text: "Tabla comparativa estática", score: 15 }, { text: "Comparador dinámico avanzado", score: 30 }] },
+    { id: 11, title: "¿Cómo gestionan los proyectos de instalación compleja?", options: [{ text: "WhatsApp y cuadernos", score: 5 }, { text: "Excel de gestión de proyectos", score: 15 }, { text: "Gestión operativa sistematizada", score: 30 }] },
+    { id: 12, title: "¿Cómo saben qué productos están por quedar obsoletos?", options: [{ text: "Cuando dejan de venderse", score: 5 }, { text: "Revisión manual de stock", score: 15 }, { text: "Análisis de ciclo de vida IA", score: 30 }] },
+    { id: 13, title: "¿Cuál es su nivel de automatización en facturación B2B?", options: [{ text: "100% manual", score: 5 }, { text: "Sistema básico separado", score: 15 }, { text: "Integración total con la venta", score: 30 }] },
+    { id: 14, title: "¿Cómo atraen al cliente que busca 'calidad' sobre 'precio'?", options: [{ text: "Solo bajando precios", score: 5 }, { text: "Publicidad en redes sociales", score: 15 }, { text: "Estrategia de autoridad técnica", score: 30 }] },
+    { id: 15, title: "¿Qué tan fácil es integrar un nuevo proveedor a su web?", options: [{ text: "Meses de trabajo técnico manual", score: 5 }, { text: "Es posible pero lento", score: 15 }, { text: "Integración vía APIs automática", score: 30 }] },
+    { id: 16, title: "¿Cómo protegen su información de clientes y ventas?", options: [{ text: "PCs de oficina sin seguridad extra", score: 5 }, { text: "Respaldos manuales", score: 15 }, { text: "Seguridad digital de clase élite", score: 30 }] },
+    { id: 17, title: "¿Su empresa proyecta una imagen de líder tecnológico?", options: [{ text: "No, somos tradicionales", score: 5 }, { text: "En proceso de cambio", score: 15 }, { text: "Sí, somos referentes absolutos", score: 30 }] },
+    { id: 18, title: "¿Cómo gestionan la logística de entrega de equipos pesados?", options: [{ text: "Llamando a fleteros a mano", score: 5 }, { text: "Planilla de coordinación", score: 15 }, { text: "Logística integrada automatizada", score: 30 }] },
+    { id: 19, title: "¿Cómo saben si un cliente B2B está a punto de cambiarse?", options: [{ text: "Cuando deja de comprar", score: 5 }, { text: "Por intuición del vendedor", score: 15 }, { text: "Análisis de comportamiento predictivo", score: 30 }] },
+    { id: 20, title: "¿Cuál es su meta de facturación para el próximo año?", options: [{ text: "Mantenerse", score: 10 }, { text: "Crecimiento lineal", score: 20 }, { text: "Crecimiento exponencial vía sistemas", score: 30 }] }
+  ],
+  services: [
+    { id: 1, title: "¿Cómo califican y priorizan hoy a sus nuevos prospectos (Leads)?", options: [{ text: "Al que escribe último", score: 5 }, { text: "Por sensación del vendedor", score: 15 }, { text: "Lead Scoring automático IA", score: 30 }] },
+    { id: 2, title: "¿Cuánto tiempo pierde su equipo redactando propuestas comerciales?", options: [{ text: "Horas o días por cada propuesta", score: 5 }, { text: "Copiamos y pegamos plantillas", score: 15 }, { text: "Generación dinámica en segundos", score: 30 }] },
+    { id: 3, title: "¿Cómo gestionan el seguimiento de proyectos en curso?", options: [{ text: "WhatsApp y correos interminables", score: 5 }, { text: "Excel o Trello básico", score: 15 }, { text: "Ecosistema de gestión integrada", score: 30 }] },
+    { id: 4, title: "¿Cómo saben cuántas horas reales dedica su equipo a cada cliente?", options: [{ text: "No tenemos medición de tiempo", score: 5 }, { text: "Registro manual aproximado", score: 15 }, { text: "Time-tracking integrado automático", score: 30 }] },
+    { id: 5, title: "¿Cómo atraen clientes de alta rentabilidad (High-Ticket)?", options: [{ text: "Esperando recomendaciones boca a boca", score: 5 }, { text: "Publicidad masiva genérica", score: 15 }, { text: "Estrategia de autoridad de nicho", score: 30 }] },
+    { id: 6, title: "¿Qué sucede con la información si un consultor clave renuncia?", options: [{ text: "Se lleva el conocimiento con él", score: 5 }, { text: "Está en sus mails corporativos", score: 15 }, { text: "Conocimiento sistematizado en Wiki", score: 30 }] },
+    { id: 7, title: "¿Cómo miden la rentabilidad real de cada servicio que ofrecen?", options: [{ text: "Por la sensación de facturación", score: 5 }, { text: "Cálculo manual de fin de mes", score: 15 }, { text: "P&L por servicio en tiempo real", score: 30 }] },
+    { id: 8, title: "¿Cómo es su proceso de cobranza y facturación?", options: [{ text: "Recordando y cobrando a mano", score: 5 }, { text: "Mail con PDF adjunto", score: 15 }, { text: "Cobranza automática recurrente", score: 30 }] },
+    { id: 9, title: "¿Cómo aseguran que el tono de marca sea el mismo en cada consultoría?", options: [{ text: "Depende de quién entregue el servicio", score: 5 }, { text: "Manual de estilo impreso", score: 15 }, { text: "Sistematización de narrativa IA", score: 30 }] },
+    { id: 10, title: "¿Cómo gestionan el feedback y testimonios de sus clientes?", options: [{ text: "No pedimos feedback formal", score: 5 }, { text: "Encuesta ocasional por mail", score: 15 }, { text: "Captura de autoridad automatizada", score: 30 }] },
+    { id: 11, title: "¿Qué porcentaje de su facturación es recurrente (Retainers)?", options: [{ text: "Menos del 10%, siempre cazando", score: 5 }, { text: "Alrededor del 30%", score: 15 }, { text: "Más del 60% (Ingreso estable)", score: 30 }] },
+    { id: 12, title: "¿Cómo capacitan a su equipo en nuevas metodologías?", options: [{ text: "Ensayando con clientes reales", score: 5 }, { text: "Capacitaciones externas anuales", score: 15 }, { text: "Protocolo de maestría continua", score: 30 }] },
+    { id: 13, title: "¿Qué tan fácil es delegar su cargo hoy en la empresa?", options: [{ text: "Imposible, colapsa todo sin mí", score: 5 }, { text: "Requiere mi supervisión constante", score: 15 }, { text: "Estructura autónoma sistematizada", score: 30 }] },
+    { id: 14, title: "¿Cómo protegen la propiedad intelectual de sus procesos?", options: [{ text: "No tenemos protección específica", score: 5 }, { text: "Contratos de confidencialidad", score: 15 }, { text: "Wiki corporativa protegida", score: 30 }] },
+    { id: 15, title: "¿Cómo atraen al mercado internacional (exportación de servicios)?", options: [{ text: "No tenemos presencia internacional", score: 5 }, { text: "Web bilingüe básica", score: 15 }, { text: "Estrategia de autoridad global", score: 30 }] },
+    { id: 16, title: "¿Su empresa es percibida como líder en tecnología de su rubro?", options: [{ text: "No, somos tradicionales", score: 5 }, { text: "Estamos en transición", score: 15 }, { text: "Sí, somos referentes tecnológicos", score: 30 }] },
+    { id: 17, title: "¿Cómo gestionan las reuniones y agenda del equipo?", options: [{ text: "WhatsApp y coordinaciones manuales", score: 5 }, { text: "Calendarios compartidos básicos", score: 15 }, { text: "Agendamiento automático inteligente", score: 30 }] },
+    { id: 18, title: "¿Cómo saben si un cliente está insatisfecho antes de que renuncie?", options: [{ text: "Cuando nos avisa que se va", score: 5 }, { text: "Por intuición del ejecutivo", score: 15 }, { text: "Análisis de salud de cliente IA", score: 30 }] },
+    { id: 19, title: "¿Qué tan automatizado está su marketing de contenidos?", options: [{ text: "Nulo, posteamos cuando podemos", score: 5 }, { text: "Programamos una vez al mes", score: 15 }, { text: "Fábrica de contenidos asistida IA", score: 30 }] },
+    { id: 20, title: "¿Cuál es su meta de rentabilidad para el próximo año?", options: [{ text: "Mantener la operación", score: 10 }, { text: "Mejorar los márgenes", score: 20 }, { text: "Escalabilidad exponencial", score: 30 }] }
   ]
 };
 
@@ -120,7 +258,7 @@ const DigitalDiagnostic = () => {
   };
 
   const handleOptionSelect = (optionText, score) => {
-    setAnswers(prev => [...prev, { q: sectorQuestions[currentSector][currentQuestion].title, a: optionText }]);
+    setAnswers(prev => [...prev, { q: nicheQuestions[currentNiche.id][currentQuestion].title, a: optionText }]);
 
     let dim = 'flow';
     if (currentQuestion >= 5 && currentQuestion < 10) dim = 'comm';
@@ -129,7 +267,7 @@ const DigitalDiagnostic = () => {
 
     setDimensionScores(prev => ({ ...prev, [dim]: prev[dim] + score }));
     
-    if (currentQuestion < sectorQuestions[currentSector].length - 1) {
+    if (currentQuestion < nicheQuestions[currentNiche.id].length - 1) {
       setCurrentQuestion(prev => prev + 1);
     } else {
       setStep('lead');
@@ -271,9 +409,9 @@ const DigitalDiagnostic = () => {
                     <motion.div className="h-full bg-patagonia-gold" animate={{ width: `${((currentQuestion + 1) / 20) * 100}%` }} />
                   </div>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-heading font-light text-white leading-tight">{sectorQuestions[currentSector][currentQuestion].title}</h3>
+                <h3 className="text-3xl md:text-4xl font-heading font-light text-white leading-tight">{nicheQuestions[currentNiche.id][currentQuestion].title}</h3>
                 <div className="grid gap-4">
-                  {sectorQuestions[currentSector][currentQuestion].options.map((opt, idx) => (
+                  {nicheQuestions[currentNiche.id][currentQuestion].options.map((opt, idx) => (
                     <button key={idx} onClick={() => handleOptionSelect(opt.text, opt.score)} className="w-full text-left p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-patagonia-gold/30 hover:bg-patagonia-gold/5 transition-all group flex justify-between items-center">
                       <span className="text-lg font-light text-patagonia-secondary group-hover:text-white">{opt.text}</span>
                       <ArrowRight className="w-5 h-5 text-patagonia-gold opacity-0 group-hover:opacity-100 transition-all" />
@@ -299,7 +437,7 @@ const DigitalDiagnostic = () => {
                 <div className="space-y-4">
                   <div className="w-16 h-16 bg-patagonia-gold/20 rounded-full flex items-center justify-center mx-auto mb-6"><FileText className="w-8 h-8 text-patagonia-gold" /></div>
                   <h3 className="text-4xl font-heading font-light text-white leading-tight">Auditoría Finalizada.</h3>
-                  <p className="text-patagonia-secondary max-w-md mx-auto font-light italic">Su reporte estratégico de {labels.label} está listo para ser generado.</p>
+                  <p className="text-patagonia-secondary max-w-md mx-auto font-light italic">Su reporte estratégico de {currentNiche?.name} está listo para ser generado.</p>
                 </div>
                 <form onSubmit={handleLeadSubmit} className="max-w-md mx-auto space-y-4">
                   <input required type="text" placeholder="Nombre completo" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none text-white focus:border-patagonia-gold" onChange={e => setLeadData({...leadData, nombre: e.target.value})} />
