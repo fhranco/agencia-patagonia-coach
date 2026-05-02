@@ -20,8 +20,11 @@ import {
   GraduationCap,
   Gamepad2
 } from 'lucide-react';
+const ServiceCard = ({ title, subtitle, solutions, icon: Icon, index, activeIndex, onHover, href }) => {
+  const isHovered = activeIndex === index;
+  const isDimmed = activeIndex !== null && !isHovered;
 
-    <motion.div
+  return (
       onMouseEnter={() => onHover(index)}
       onMouseLeave={() => onHover(null)}
       initial={{ opacity: 0, y: 20 }}
