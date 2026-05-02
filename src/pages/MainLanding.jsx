@@ -5,6 +5,7 @@ import ValueLadder from '../components/ValueLadder';
 import QuickOffers from '../components/QuickOffers';
 import Consultancy from '../components/Consultancy';
 import ServiceMatrix from '../components/ServiceMatrix';
+import ProjectShowcase from '../components/ProjectShowcase';
 import MasteryGallery from '../components/MasteryGallery';
 import AcademyHub from '../components/AcademyHub';
 import Vision from '../components/Vision';

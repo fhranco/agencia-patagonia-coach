@@ -12,6 +12,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Desarrollo Web', path: '/servicios/desarrollo-web' },
     { name: 'Evolución IA', path: '/servicios/automatizacion-con-ia' },
+    { name: 'Casos de Éxito', path: '/#casos-de-exito' },
     { name: 'Academia', path: '/academia' },
   ];
 
