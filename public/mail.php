@@ -60,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $body .= "Enviado automáticamente desde agenciapatagoniacoach.cl\n";
 
     $headers = "From: webmaster@agenciapatagoniacoach.cl\r\n";
+    $headers .= "Cc: fgallardo@agenciapatagoniacoach.cl\r\n";
     if ($email) {
         $headers .= "Reply-To: $email\r\n";
     }
