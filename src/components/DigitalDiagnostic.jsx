@@ -82,24 +82,46 @@ const sectorQuestions = {
   ]
 };
 
+const businessNiches = {
+  tourism: [
+    { id: 'hotel', name: "Hotelería & Lodges de Lujo", icon: <Target className="w-5 h-5 text-[#FF7A18]" /> },
+    { id: 'operator', name: "Operadores de Tours & Expediciones", icon: <Activity className="w-5 h-5 text-[#FF7A18]" /> },
+    { id: 'gastronomy', name: "Gastronomía & Restaurantes", icon: <FileText className="w-5 h-5 text-[#FF7A18]" /> }
+  ],
+  industry: [
+    { id: 'logistics', name: "Logística & Transporte Pesado", icon: <Zap className="w-5 h-5 text-patagonia-red" /> },
+    { id: 'energy', name: "Energía & Oil/Gas", icon: <BarChart3 className="w-5 h-5 text-patagonia-red" /> },
+    { id: 'construction', name: "Construcción & Ingeniería", icon: <ShieldCheck className="w-5 h-5 text-patagonia-red" /> }
+  ],
+  retail: [
+    { id: 'fashion', name: "Tiendas de Moda & Hogar", icon: <Target className="w-5 h-5 text-patagonia-cyan" /> },
+    { id: 'tech', name: "Tecnología & Equipamiento", icon: <Zap className="w-5 h-5 text-patagonia-cyan" /> },
+    { id: 'services', name: "Servicios Profesionales & B2B", icon: <MessageSquare className="w-5 h-5 text-patagonia-cyan" /> }
+  ]
+};
+
 const DigitalDiagnostic = () => {
-  const [step, setStep] = useState('sector'); // 'sector', 'audit', 'processing', 'lead', 'result'
+  const [step, setStep] = useState('sector'); // 'sector', 'niche', 'audit', 'processing', 'lead', 'result'
   const [currentSector, setCurrentSector] = useState(null);
+  const [currentNiche, setCurrentNiche] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [dimensionScores, setDimensionScores] = useState({ flow: 0, comm: 0, sales: 0, scale: 0 });
-  const [answers, setAnswers] = useState([]); // Store all 20 answers
+  const [answers, setAnswers] = useState([]);
   const [leadData, setLeadData] = useState({ nombre: '', email: '', whatsapp: '' });
 
   const handleSectorSelect = (sector) => {
     setCurrentSector(sector);
+    setStep('niche');
+  };
+
+  const handleNicheSelect = (niche) => {
+    setCurrentNiche(niche);
     setStep('audit');
   };
 
   const handleOptionSelect = (optionText, score) => {
-    // Store answer for Franco
     setAnswers(prev => [...prev, { q: sectorQuestions[currentSector][currentQuestion].title, a: optionText }]);
 
-    // Determine dimension
     let dim = 'flow';
     if (currentQuestion >= 5 && currentQuestion < 10) dim = 'comm';
     else if (currentQuestion >= 10 && currentQuestion < 15) dim = 'sales';
@@ -159,8 +181,8 @@ const DigitalDiagnostic = () => {
       formData.append('whatsapp', leadData.whatsapp);
       formData.append('score', totalScore);
       formData.append('sector', currentSector);
+      formData.append('nicho', currentNiche.name);
       formData.append('diagnostico', report.title);
-      // Send all raw answers as a JSON string
       formData.append('full_audit_data', JSON.stringify(answers));
       
       fetch('/mail.php', { method: 'POST', body: formData });
@@ -184,7 +206,9 @@ const DigitalDiagnostic = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-patagonia-gold/10 border border-patagonia-gold/20 mb-4">
             <Activity className="w-4 h-4 text-patagonia-gold" />
             <span className="text-[10px] uppercase tracking-[0.3em] font-black text-patagonia-gold">
-               {step === 'sector' ? "Iniciando Protocolo de Auditoría" : `Auditoría en Curso: ${labels.label}`}
+               {step === 'sector' ? "Iniciando Protocolo" : 
+                step === 'niche' ? `Sector: ${labels.label}` :
+                `Auditoría: ${currentNiche?.name}`}
             </span>
           </div>
           <h2 className="text-5xl md:text-7xl font-heading font-light tracking-tight text-white italic leading-tight">
@@ -198,7 +222,7 @@ const DigitalDiagnostic = () => {
               <motion.div key="sector" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="space-y-12">
                 <div className="text-center space-y-4">
                   <h3 className="text-3xl font-heading font-light text-white">Seleccione su área de operación</h3>
-                  <p className="text-patagonia-secondary text-sm">Cargaremos el protocolo de auditoría específico para su nicho.</p>
+                  <p className="text-patagonia-secondary text-sm">Iniciaremos el protocolo macro de su industria.</p>
                 </div>
                 <div className="grid gap-4">
                   {[
@@ -215,6 +239,27 @@ const DigitalDiagnostic = () => {
                     </button>
                   ))}
                 </div>
+              </motion.div>
+            )}
+
+            {step === 'niche' && (
+              <motion.div key="niche" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-12">
+                <div className="text-center space-y-4">
+                  <h3 className="text-3xl font-heading font-light text-white">Especifique su modelo de negocio</h3>
+                  <p className="text-patagonia-secondary text-sm">Esto permitirá que el motor de IA ajuste las soluciones objetivas.</p>
+                </div>
+                <div className="grid gap-4">
+                  {businessNiches[currentSector].map(n => (
+                    <button key={n.id} onClick={() => handleNicheSelect(n)} className="w-full p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-patagonia-gold/40 transition-all flex items-center justify-between group">
+                      <div className="flex items-center gap-6">
+                        <div className="p-4 rounded-2xl bg-white/5 group-hover:bg-patagonia-gold/10 transition-all">{n.icon}</div>
+                        <span className="text-xl font-heading font-light text-white">{n.name}</span>
+                      </div>
+                      <ChevronRight className="w-6 h-6 text-white/20 group-hover:text-patagonia-gold transition-all" />
+                    </button>
+                  ))}
+                </div>
+                <button onClick={() => setStep('sector')} className="w-full text-center text-[10px] uppercase tracking-widest text-white/20 hover:text-white transition-all font-bold">← Volver al sector anterior</button>
               </motion.div>
             )}
 
@@ -280,7 +325,7 @@ const DigitalDiagnostic = () => {
                   </div>
                   <div className="space-y-4 text-center md:text-left">
                     <h3 className="text-3xl md:text-5xl font-heading font-light text-white leading-tight">Estado: <span className={`italic ${labels.color}`}>{report.title}</span></h3>
-                    <p className="text-patagonia-secondary font-light italic leading-relaxed text-lg">"{report.narrative}"</p>
+                    <p className="text-patagonia-secondary font-light italic leading-relaxed text-lg">"Su operación de <span className="text-white">{currentNiche?.name}</span> presenta fugas de rentabilidad por procesos manuales que podrían ser resueltos con arquitectura digital."</p>
                     
                     <div className="mt-6 p-4 rounded-2xl bg-patagonia-gold/10 border border-patagonia-gold/20 flex items-start gap-4">
                       <FileText className="w-5 h-5 text-patagonia-gold flex-shrink-0 mt-1" />
@@ -310,7 +355,7 @@ const DigitalDiagnostic = () => {
                   <div className="p-8 rounded-[3rem] bg-patagonia-gold text-black flex flex-col justify-center items-center text-center space-y-6">
                     <ShieldCheck className="w-12 h-12" />
                     <h4 className="text-2xl font-heading font-bold leading-tight">¿Listo para ejecutar este Roadmap?</h4>
-                    <a href={`https://wa.me/56995684198?text=Franco, obtuve el reporte de ${labels.label}: ${report.title}. Me interesan las soluciones de ${report.solutions[0]}.`} className="w-full py-5 bg-black text-white rounded-full text-[10px] tracking-[0.3em] font-black uppercase hover:scale-105 transition-all">Agendar Sesión de Despliegue</a>
+                    <a href={`https://wa.me/56995684198?text=Franco, obtuve el reporte de ${currentNiche?.name}: ${report.title}. Me interesan las soluciones de ${report.solutions[0]}.`} className="w-full py-5 bg-black text-white rounded-full text-[10px] tracking-[0.3em] font-black uppercase hover:scale-105 transition-all">Agendar Sesión de Despliegue</a>
                     <p className="text-[8px] uppercase font-bold tracking-widest opacity-60">Consultoría Estratégica sin costo para Magallanes</p>
                   </div>
                 </div>
