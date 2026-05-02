@@ -20,7 +20,9 @@ import {
   BarChart,
   Layout,
   Cpu,
-  Layers
+  Layers,
+  Mail,
+  Loader2
 } from 'lucide-react';
 
 const businessNiches = {
@@ -83,7 +85,7 @@ const nicheQuestions = {
     { id: 16, title: "¿Su sitio web carga rápido en conexiones rurales?", options: [{ text: "No, es muy pesado", score: 5 }, { text: "Funciona regular", score: 15 }, { text: "Optimización extrema de velocidad", score: 30 }] },
     { id: 17, title: "¿Cómo gestionan los convenios con agencias locales?", options: [{ text: "Anotamos todo en una libreta", score: 5 }, { text: "Excel compartido", score: 15 }, { text: "Portal de aliados automatizado", score: 30 }] },
     { id: 18, title: "¿Qué tan automatizado está su proceso de facturación?", options: [{ text: "100% manual por contador", score: 5 }, { text: "Sistema básico separado", score: 15 }, { text: "Integrado con la reserva", score: 30 }] },
-    { id: 19, title: "¿Cómo protegen los datos médicos de sus clientes?", options: [{ text: "Están en los mails de los guías", score: 5 }, { text: "En carpetas locales", score: 15 }, { text: "Cifrado y acceso restringido", score: 30 }] },
+    { id: 19, title: "¿Cómo protegen la privacidad de sus clientes?", options: [{ text: "Están en los mails de los guías", score: 5 }, { text: "En carpetas locales", score: 15 }, { text: "Cifrado y acceso restringido", score: 30 }] },
     { id: 20, title: "¿Cuál es su meta de escala para este año?", options: [{ text: "Mantener la operación actual", score: 10 }, { text: "Crecer un poco", score: 20 }, { text: "Escalado total vía sistemas", score: 30 }] }
   ],
   gastronomy: [
@@ -127,7 +129,7 @@ const nicheQuestions = {
     { id: 16, title: "¿Cómo gestionan las multas y seguros de la flota?", options: [{ text: "Cuando llegan los cobros", score: 5 }, { text: "Excel de vencimientos manual", score: 15 }, { text: "Gestión proactiva centralizada", score: 30 }] },
     { id: 17, title: "¿Cómo saben si su operación es rentable por cliente?", options: [{ text: "No lo sabemos individualmente", score: 5 }, { text: "Cálculo aproximado", score: 15 }, { text: "P&L por cliente en tiempo real", score: 30 }] },
     { id: 18, title: "¿Cómo es su proceso de selección de nuevos conductores?", options: [{ text: "Por recomendación directa", score: 5 }, { text: "Entrevistas estándar", score: 15 }, { text: "Evaluación técnica sistematizada", score: 30 }] },
-    { id: 19, title: "¿Su empresa proyecta una imagen de alta tecnología?", options: [{ text: "No, nos ven como tradicionales", score: 5 }, { text: "Estamos en transición", score: 15 }, { text: "Sí, somos líderes tecnológicos", score: 30 }] },
+    { id: 19, title: "¿Cómo empresa proyecta una imagen de alta tecnología?", options: [{ text: "No, nos ven como tradicionales", score: 5 }, { text: "Estamos en transición", score: 15 }, { text: "Sí, somos líderes tecnológicos", score: 30 }] },
     { id: 20, title: "¿Cuál es su meta de facturación para el próximo año?", options: [{ text: "Mantener lo que tenemos", score: 10 }, { text: "Crecimiento lineal", score: 20 }, { text: "Crecimiento exponencial vía sistemas", score: 30 }] }
   ],
   energy: [
@@ -250,6 +252,7 @@ const DigitalDiagnostic = ({ isModal = false }) => {
   const [dimensionScores, setDimensionScores] = useState({ flow: 0, comm: 0, sales: 0, scale: 0 });
   const [answers, setAnswers] = useState([]);
   const [leadData, setLeadData] = useState({ nombre: '', email: '', whatsapp: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSectorSelect = (sector) => {
     setCurrentSector(sector);
@@ -262,7 +265,8 @@ const DigitalDiagnostic = ({ isModal = false }) => {
   };
 
   const handleOptionSelect = (optionText, score) => {
-    setAnswers(prev => [...prev, { q: nicheQuestions[currentNiche.id][currentQuestion].title, a: optionText }]);
+    const question = nicheQuestions[currentNiche.id][currentQuestion].title;
+    setAnswers(prev => [...prev, { q: question, a: optionText }]);
 
     let dim = 'flow';
     if (currentQuestion >= 5 && currentQuestion < 10) dim = 'comm';
@@ -282,7 +286,7 @@ const DigitalDiagnostic = ({ isModal = false }) => {
   const scorePercentage = Math.min((totalScore / 600) * 100, 100);
 
   const getDimensionAnalyses = () => {
-    const dimData = {
+    return {
       flow: {
         label: "Flujo de Trabajo",
         icon: <Layers className="w-4 h-4" />,
@@ -308,13 +312,13 @@ const DigitalDiagnostic = ({ isModal = false }) => {
         analysis: dimensionScores.scale < 75 ? "Estructura Frágil: El crecimiento actual pone en riesgo la calidad." : "Arquitectura de Escala: Listo para duplicar volumen."
       }
     };
-    return dimData;
   };
 
   const analyses = getDimensionAnalyses();
 
-  const handleLeadSubmit = (e) => {
+  const handleLeadSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     setStep('processing');
     
     try {
@@ -326,10 +330,16 @@ const DigitalDiagnostic = ({ isModal = false }) => {
       formData.append('sector', currentSector);
       formData.append('nicho', currentNiche.name);
       formData.append('full_audit_data', JSON.stringify(answers));
-      fetch('/mail.php', { method: 'POST', body: formData });
-    } catch (e) {}
-
-    setTimeout(() => setStep('result'), 3000);
+      
+      await fetch('/mail.php', { method: 'POST', body: formData });
+    } catch (err) {
+      console.error("Error enviando auditoría:", err);
+    } finally {
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setStep('result');
+      }, 2000);
+    }
   };
 
   const getSectorLabels = () => {
@@ -428,31 +438,41 @@ const DigitalDiagnostic = ({ isModal = false }) => {
               <motion.div key="processing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center justify-center space-y-8 py-20 text-center">
                 <div className="relative w-24 h-24">
                   <motion.div className="absolute inset-0 border-2 border-patagonia-gold rounded-full" animate={{ scale: [1, 1.2, 1], opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 2 }} />
-                  <Zap className="w-10 h-10 text-patagonia-gold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse" />
+                  <Loader2 className="w-10 h-10 text-patagonia-gold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin" />
                 </div>
-                <h4 className="text-xl font-heading text-white italic">Generando Dashboard de Inteligencia Operativa...</h4>
-                <p className="text-[8px] uppercase tracking-[0.5em] text-white/20 font-black">Auditando flujos de trabajo en Magallanes</p>
+                <div className="space-y-2">
+                  <h4 className="text-xl font-heading text-white italic">Transmitiendo radiografía operativa...</h4>
+                  <p className="text-patagonia-gold/60 text-xs animate-pulse">Generando reporte extendido de 20+ páginas</p>
+                </div>
               </motion.div>
             )}
 
             {step === 'lead' && (
               <motion.div key="lead" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center space-y-12">
                 <div className="space-y-4">
-                  <div className="w-16 h-16 bg-patagonia-gold/20 rounded-full flex items-center justify-center mx-auto mb-6"><FileText className="w-8 h-8 text-patagonia-gold" /></div>
+                  <div className="w-16 h-16 bg-patagonia-gold/20 rounded-full flex items-center justify-center mx-auto mb-6"><Mail className="w-8 h-8 text-patagonia-gold" /></div>
                   <h3 className="text-4xl font-heading font-light text-white leading-tight">Auditoría Finalizada.</h3>
-                  <p className="text-patagonia-secondary max-w-md mx-auto font-light italic">Su reporte táctico de {currentNiche?.name} está listo para ser generado.</p>
+                  <p className="text-patagonia-secondary max-w-md mx-auto font-light italic">Sus respuestas han sido capturadas. Ingrese sus datos para recibir el **Informe Táctico Completo** en su email.</p>
                 </div>
                 <form onSubmit={handleLeadSubmit} className="max-w-md mx-auto space-y-4">
                   <input required type="text" placeholder="Nombre completo" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none text-white focus:border-patagonia-gold" onChange={e => setLeadData({...leadData, nombre: e.target.value})} />
                   <input required type="email" placeholder="Email corporativo" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none text-white focus:border-patagonia-gold" onChange={e => setLeadData({...leadData, email: e.target.value})} />
                   <input required type="tel" placeholder="WhatsApp" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none text-white focus:border-patagonia-gold" onChange={e => setLeadData({...leadData, whatsapp: e.target.value})} />
-                  <button className="btn-primary w-full py-5 text-[10px] tracking-[0.4em] font-black uppercase">Obtener Reporte de Inteligencia</button>
+                  <button disabled={isSubmitting} className="btn-primary w-full py-5 text-[10px] tracking-[0.4em] font-black uppercase disabled:opacity-50">
+                    {isSubmitting ? "Transmitiendo..." : "Obtener Reporte de Inteligencia"}
+                  </button>
                 </form>
               </motion.div>
             )}
 
             {step === 'result' && (
               <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-12">
+                {/* Alerta de Informe en Email */}
+                <div className="p-4 rounded-2xl bg-patagonia-gold text-black flex items-center gap-4 animate-bounce">
+                  <Mail className="w-6 h-6 flex-shrink-0" />
+                  <p className="text-[10px] font-black uppercase tracking-widest">Su Informe Detallado (20+ páginas) está siendo enviado a su email.</p>
+                </div>
+
                 {/* Header Resultado */}
                 <div className="flex flex-col md:flex-row gap-12 items-center">
                   <div className="relative w-40 h-40 flex-shrink-0">
@@ -467,7 +487,7 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                   </div>
                   <div className="space-y-4 text-center md:text-left">
                     <h3 className="text-3xl md:text-5xl font-heading font-light text-white leading-tight">Estado: <span className={`italic ${labels.color}`}>{scorePercentage > 75 ? "Élite Operativa" : scorePercentage > 50 ? "Tracción Media" : "Fricción Crítica"}</span></h3>
-                    <p className="text-patagonia-secondary font-light italic leading-relaxed text-lg">"Su ecosistema de <span className="text-white">{currentNiche?.name}</span> ha sido analizado en 4 dimensiones estratégicas. A continuación, su radiografía de madurez digital."</p>
+                    <p className="text-patagonia-secondary font-light italic leading-relaxed text-lg">"Su ecosistema de <span className="text-white">{currentNiche?.name}</span> presenta oportunidades de optimización inmediata a través de arquitectura IA."</p>
                   </div>
                 </div>
 
@@ -490,36 +510,35 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                   ))}
                 </div>
 
-                {/* Soluciones y CTA */}
-                <div className="grid md:grid-cols-2 gap-8 pt-8">
-                  <div className="p-8 rounded-[3rem] bg-white/5 border border-white/5 space-y-6">
-                    <div className="flex items-center gap-3">
-                      <TrendingUp className="w-5 h-5 text-patagonia-gold" />
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Hoja de Ruta Inmediata</h4>
-                    </div>
-                    <ul className="space-y-4">
-                      {[
-                        "Despliegue de Agentes de IA para atención 24/7",
-                        "Sistematización de procesos manuales en Nube",
-                        "Arquitectura de Datos para métricas en tiempo real"
-                      ].map((sol, i) => (
-                        <li key={i} className="flex gap-4 items-start text-patagonia-secondary group">
-                          <CheckCircle2 className="w-4 h-4 text-patagonia-gold mt-0.5 flex-shrink-0" />
-                          <span className="text-sm font-light leading-relaxed group-hover:text-white transition-all">{sol}</span>
-                        </li>
-                      ))}
-                    </ul>
+                {/* Hoja de Ruta */}
+                <div className="p-8 rounded-[3rem] bg-white/5 border border-white/5 space-y-6">
+                  <div className="flex items-center gap-3">
+                    <TrendingUp className="w-5 h-5 text-patagonia-gold" />
+                    <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Roadmap Táctico Propuesto</h4>
                   </div>
-
-                  <div className="p-8 rounded-[3rem] bg-patagonia-gold text-black flex flex-col justify-center items-center text-center space-y-6">
-                    <ShieldCheck className="w-12 h-12" />
-                    <h4 className="text-2xl font-heading font-bold leading-tight">¿Listo para ejecutar este Roadmap?</h4>
-                    <a href={`https://wa.me/56995684198?text=Franco, obtuve el reporte de ${currentNiche?.name} con un ${Math.round(scorePercentage)}% de madurez. Me interesa implementar el roadmap de soluciones.`} className="w-full py-5 bg-black text-white rounded-full text-[10px] tracking-[0.3em] font-black uppercase hover:scale-105 transition-all">Agendar Sesión de Despliegue</a>
-                    <p className="text-[8px] uppercase font-bold tracking-widest opacity-60 italic">Reporte extendido de 20+ páginas en proceso...</p>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    {[
+                      { t: "Fase 1: Inmediata", d: "Sistematización de atención vía IA 24/7." },
+                      { t: "Fase 2: Estructural", d: "Digitalización de flujos operativos en Nube." },
+                      { t: "Fase 3: Escala", d: "Dashboard de Inteligencia y ROI en vivo." }
+                    ].map((f, i) => (
+                      <div key={i} className="space-y-2">
+                        <span className="text-[8px] font-black uppercase text-patagonia-gold tracking-widest">{f.t}</span>
+                        <p className="text-xs text-patagonia-secondary font-light leading-relaxed">{f.d}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Footer Navegación */}
+                {/* CTA Final */}
+                <div className="p-8 rounded-[3rem] bg-patagonia-gold text-black flex flex-col justify-center items-center text-center space-y-6 shadow-[0_20px_50px_rgba(250,204,21,0.2)]">
+                  <ShieldCheck className="w-12 h-12" />
+                  <h4 className="text-2xl font-heading font-bold leading-tight">¿Listo para ejecutar esta transformación?</h4>
+                  <a href={`https://wa.me/56995684198?text=Franco, obtuve un ${Math.round(scorePercentage)}% en mi auditoría de ${currentNiche?.name}. Quiero agendar la sesión de despliegue para las 3 fases.`} className="w-full py-5 bg-black text-white rounded-full text-[10px] tracking-[0.4em] font-black uppercase hover:scale-105 transition-all">Agendar Sesión de Despliegue</a>
+                  <p className="text-[8px] uppercase font-bold tracking-widest opacity-60">Consultoría sin costo para empresas de Magallanes</p>
+                </div>
+
+                {/* Footer Regreso */}
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-center gap-8">
                    <button onClick={() => setStep('sector')} className="text-white/20 text-[10px] tracking-[0.3em] uppercase hover:text-patagonia-gold transition-all font-bold">Reiniciar Auditoría</button>
                    <button 
