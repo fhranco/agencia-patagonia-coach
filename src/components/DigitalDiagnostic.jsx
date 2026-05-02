@@ -13,7 +13,14 @@ import {
   ChevronRight,
   TrendingUp,
   Globe,
-  Settings
+  Settings,
+  Home,
+  CheckCircle2,
+  AlertCircle,
+  BarChart,
+  Layout,
+  Cpu,
+  Layers
 } from 'lucide-react';
 
 const businessNiches = {
@@ -35,7 +42,6 @@ const businessNiches = {
 };
 
 const nicheQuestions = {
-  // --- SECTOR TURISMO ---
   hotel: [
     { id: 1, title: "¿Cómo se sincroniza su disponibilidad real con Booking/Expedia hoy?", options: [{ text: "Manual (Entramos a cada portal a mano)", score: 5 }, { text: "Channel Manager básico con lagunas", score: 15 }, { text: "Sincronización instantánea centralizada", score: 30 }] },
     { id: 2, title: "¿Qué sucede cuando un cliente pregunta por WhatsApp a las 11 PM?", options: [{ text: "Nada hasta que el recepcionista despierte", score: 5 }, { text: "Un mensaje automático que pide esperar", score: 15 }, { text: "Una IA resuelve dudas y confirma disponibilidad", score: 30 }] },
@@ -102,7 +108,6 @@ const nicheQuestions = {
     { id: 19, title: "¿Cómo protegen la higiene y seguridad alimentaria?", options: [{ text: "Cumplimos con lo que pide el inspector", score: 5 }, { text: "Registro manual ocasional", score: 15 }, { text: "Bitácora digital inviolable", score: 30 }] },
     { id: 20, title: "¿Cuál es su meta de rentabilidad para este año?", options: [{ text: "Sobrevivir a la temporada", score: 10 }, { text: "Mejorar los márgenes", score: 20 }, { text: "Maximizar eficiencia vía sistemas", score: 30 }] }
   ],
-  // --- SECTOR INDUSTRIA ---
   logistics: [
     { id: 1, title: "¿Cómo se rastrean hoy sus unidades en tiempo real?", options: [{ text: "Llamando por teléfono al conductor", score: 5 }, { text: "GPS básico sin integración", score: 15 }, { text: "Telemetría avanzada integrada", score: 30 }] },
     { id: 2, title: "¿Cómo se reportan las fallas mecánicas en ruta?", options: [{ text: "El conductor avisa cuando puede", score: 5 }, { text: "WhatsApp o llamada matutina", score: 15 }, { text: "Reporte digital con alerta inmediata", score: 30 }] },
@@ -169,7 +174,6 @@ const nicheQuestions = {
     { id: 19, title: "¿Cómo sabe si un proyecto va atrasado antes de que sea tarde?", options: [{ text: "Por instinto o quejas del cliente", score: 5 }, { text: "Revisión de Gantt mensual", score: 15 }, { text: "Alertas tempranas automáticas", score: 30 }] },
     { id: 20, title: "¿Cuál es su meta de expansión para este año?", options: [{ text: "Terminar lo que tenemos", score: 10 }, { text: "Crecimiento lineal", score: 20 }, { text: "Crecimiento exponencial vía sistemas", score: 30 }] }
   ],
-  // --- SECTOR RETAIL ---
   fashion: [
     { id: 1, title: "¿Cómo se sincroniza su stock de tienda con su web hoy?", options: [{ text: "Manual (Tipeamos cada venta en ambos lados)", score: 5 }, { text: "Carga masiva semanal", score: 15 }, { text: "Sincronización instantánea real", score: 30 }] },
     { id: 2, title: "¿Qué pasa con los clientes que abandonan su carrito online?", options: [{ text: "Se pierden para siempre", score: 5 }, { text: "Enviamos mail si el sistema lo permite", score: 15 }, { text: "Flujo de recuperación IA de alta conversión", score: 30 }] },
@@ -277,36 +281,37 @@ const DigitalDiagnostic = ({ isModal = false }) => {
   const totalScore = Object.values(dimensionScores).reduce((a, b) => a + b, 0);
   const scorePercentage = Math.min((totalScore / 600) * 100, 100);
 
-  const getDetailedReport = () => {
-    const minDim = Object.keys(dimensionScores).reduce((a, b) => dimensionScores[a] < dimensionScores[b] ? a : b);
-    
-    const reports = {
+  const getDimensionAnalyses = () => {
+    const dimData = {
       flow: {
-        title: "Colapso por Trabajo Hormiga",
-        narrative: "Su operación depende excesivamente del esfuerzo humano manual. Hemos detectado fugas críticas de tiempo en tareas de 'copiar y pegar' que están asfixiando su crecimiento.",
-        solutions: ["Implementación de Arquitectura de Datos Unificada", "Automatización de Flujos entre Sistemas (Integración total)", "Protocolos de Operación Estándar Digitalizados"]
+        label: "Flujo de Trabajo",
+        icon: <Layers className="w-4 h-4" />,
+        score: Math.round((dimensionScores.flow / 150) * 100),
+        analysis: dimensionScores.flow < 75 ? "Colapso Manual: Su operación depende de tareas repetitivas." : "Eficiencia Estándar: Procesos en vía de automatización."
       },
       comm: {
-        title: "Atención Reactiva y Fragmentada",
-        narrative: "Su comunicación con el mercado es intermitente. La falta de una respuesta inmediata y el tono inconsistente le están haciendo perder clientes frente a competidores más ágiles.",
-        solutions: ["Despliegue de Agentes de IA Bilingües 24/7", "Entrenamiento de Modelo de Tono de Marca Propietario", "Sistema de Respuesta Centralizada Omnicanal"]
+        label: "Comunicación",
+        icon: <MessageSquare className="w-4 h-4" />,
+        score: Math.round((dimensionScores.comm / 150) * 100),
+        analysis: dimensionScores.comm < 75 ? "Respuesta Reactiva: El mercado avanza más rápido que su equipo." : "Conectividad Activa: Buena base de interacción digital."
       },
       sales: {
-        title: "Ventas Sin Inteligencia de Datos",
-        narrative: "Usted vende por intuición, no por datos. No sabe quién es su mejor cliente ni por qué abandona, lo que hace que su inversión en marketing sea una apuesta y no una ciencia.",
-        solutions: ["Configuración de CRM Estratégico con Lead Scoring", "Dashboard de ROI y Atribución en Tiempo Real", "Embudos de Nutrición Automáticos de Alta Conversión"]
+        label: "Ventas & Datos",
+        icon: <TrendingUp className="w-4 h-4" />,
+        score: Math.round((dimensionScores.sales / 150) * 100),
+        analysis: dimensionScores.sales < 75 ? "Venta Intuitiva: Fuga de rentabilidad por falta de métricas." : "Tracción Inteligente: Decisiones basadas en comportamiento."
       },
       scale: {
-        title: "Estructura Frágil no Escalable",
-        narrative: "Su empresa está en riesgo. La información reside en los WhatsApp de sus empleados y no en activos de la empresa, lo que impide duplicar su operación sin duplicar sus problemas.",
-        solutions: ["Migración a Ecosistema Digital Soberano", "Sistematización de Conocimiento (Wiki de Élite)", "Infraestructura de Nube con Redundancia y Seguridad"]
+        label: "Escalabilidad",
+        icon: <Cpu className="w-4 h-4" />,
+        score: Math.round((dimensionScores.scale / 150) * 100),
+        analysis: dimensionScores.scale < 75 ? "Estructura Frágil: El crecimiento actual pone en riesgo la calidad." : "Arquitectura de Escala: Listo para duplicar volumen."
       }
     };
-
-    return reports[minDim];
+    return dimData;
   };
 
-  const report = getDetailedReport();
+  const analyses = getDimensionAnalyses();
 
   const handleLeadSubmit = (e) => {
     e.preventDefault();
@@ -320,9 +325,7 @@ const DigitalDiagnostic = ({ isModal = false }) => {
       formData.append('score', totalScore);
       formData.append('sector', currentSector);
       formData.append('nicho', currentNiche.name);
-      formData.append('diagnostico', report.title);
       formData.append('full_audit_data', JSON.stringify(answers));
-      
       fetch('/mail.php', { method: 'POST', body: formData });
     } catch (e) {}
 
@@ -346,7 +349,7 @@ const DigitalDiagnostic = ({ isModal = false }) => {
             <span className="text-[10px] uppercase tracking-[0.3em] font-black text-patagonia-gold">
                {step === 'sector' ? "Iniciando Protocolo" : 
                 step === 'niche' ? `Sector: ${labels.label}` :
-                `Auditoría: ${currentNiche?.name}`}
+                step === 'result' ? "Reporte Final de Inteligencia" : `Auditoría: ${currentNiche?.name}`}
             </span>
           </div>
           <h2 className="text-5xl md:text-7xl font-heading font-light tracking-tight text-white italic leading-tight">
@@ -427,7 +430,7 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                   <motion.div className="absolute inset-0 border-2 border-patagonia-gold rounded-full" animate={{ scale: [1, 1.2, 1], opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 2 }} />
                   <Zap className="w-10 h-10 text-patagonia-gold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse" />
                 </div>
-                <h4 className="text-xl font-heading text-white italic">Analizando fricción operativa...</h4>
+                <h4 className="text-xl font-heading text-white italic">Generando Dashboard de Inteligencia Operativa...</h4>
                 <p className="text-[8px] uppercase tracking-[0.5em] text-white/20 font-black">Auditando flujos de trabajo en Magallanes</p>
               </motion.div>
             )}
@@ -437,7 +440,7 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                 <div className="space-y-4">
                   <div className="w-16 h-16 bg-patagonia-gold/20 rounded-full flex items-center justify-center mx-auto mb-6"><FileText className="w-8 h-8 text-patagonia-gold" /></div>
                   <h3 className="text-4xl font-heading font-light text-white leading-tight">Auditoría Finalizada.</h3>
-                  <p className="text-patagonia-secondary max-w-md mx-auto font-light italic">Su reporte estratégico de {currentNiche?.name} está listo para ser generado.</p>
+                  <p className="text-patagonia-secondary max-w-md mx-auto font-light italic">Su reporte táctico de {currentNiche?.name} está listo para ser generado.</p>
                 </div>
                 <form onSubmit={handleLeadSubmit} className="max-w-md mx-auto space-y-4">
                   <input required type="text" placeholder="Nombre completo" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none text-white focus:border-patagonia-gold" onChange={e => setLeadData({...leadData, nombre: e.target.value})} />
@@ -450,6 +453,7 @@ const DigitalDiagnostic = ({ isModal = false }) => {
 
             {step === 'result' && (
               <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-12">
+                {/* Header Resultado */}
                 <div className="flex flex-col md:flex-row gap-12 items-center">
                   <div className="relative w-40 h-40 flex-shrink-0">
                     <svg className="w-full h-full transform -rotate-90">
@@ -458,32 +462,49 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                     </svg>
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
                       <span className="text-3xl font-heading text-white">{Math.round(scorePercentage)}%</span>
-                      <span className="text-[6px] uppercase tracking-widest text-patagonia-gold font-bold">Madurez</span>
+                      <span className="text-[6px] uppercase tracking-widest text-patagonia-gold font-bold">Madurez Total</span>
                     </div>
                   </div>
                   <div className="space-y-4 text-center md:text-left">
-                    <h3 className="text-3xl md:text-5xl font-heading font-light text-white leading-tight">Estado: <span className={`italic ${labels.color}`}>{report.title}</span></h3>
-                    <p className="text-patagonia-secondary font-light italic leading-relaxed text-lg">"Su operación de <span className="text-white">{currentNiche?.name}</span> presenta fugas de rentabilidad por procesos manuales que podrían ser resueltos con arquitectura digital."</p>
-                    
-                    <div className="mt-6 p-4 rounded-2xl bg-patagonia-gold/10 border border-patagonia-gold/20 flex items-start gap-4">
-                      <FileText className="w-5 h-5 text-patagonia-gold flex-shrink-0 mt-1" />
-                      <p className="text-xs text-patagonia-gold font-light leading-relaxed">
-                        <span className="font-bold">INFORME EXTENDIDO EN PROCESO:</span> Nuestro motor de inteligencia está generando su Reporte Táctico Detallado (20+ páginas). Lo recibirá en su email en menos de 24 horas.
-                      </p>
-                    </div>
+                    <h3 className="text-3xl md:text-5xl font-heading font-light text-white leading-tight">Estado: <span className={`italic ${labels.color}`}>{scorePercentage > 75 ? "Élite Operativa" : scorePercentage > 50 ? "Tracción Media" : "Fricción Crítica"}</span></h3>
+                    <p className="text-patagonia-secondary font-light italic leading-relaxed text-lg">"Su ecosistema de <span className="text-white">{currentNiche?.name}</span> ha sido analizado en 4 dimensiones estratégicas. A continuación, su radiografía de madurez digital."</p>
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                {/* Dashboard Dimensional */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {Object.values(analyses).map((dim, i) => (
+                    <div key={i} className="p-6 rounded-3xl bg-white/5 border border-white/5 space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 rounded-lg bg-patagonia-gold/10 text-patagonia-gold">{dim.icon}</div>
+                          <span className="text-[10px] font-black uppercase tracking-widest text-white">{dim.label}</span>
+                        </div>
+                        <span className="text-xl font-heading text-patagonia-gold">{dim.score}%</span>
+                      </div>
+                      <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                        <motion.div className="h-full bg-patagonia-gold" initial={{ width: 0 }} animate={{ width: `${dim.score}%` }} transition={{ delay: i * 0.2 }} />
+                      </div>
+                      <p className="text-[11px] text-patagonia-secondary font-light italic">{dim.analysis}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Soluciones y CTA */}
+                <div className="grid md:grid-cols-2 gap-8 pt-8">
                   <div className="p-8 rounded-[3rem] bg-white/5 border border-white/5 space-y-6">
                     <div className="flex items-center gap-3">
-                      <Target className="w-5 h-5 text-patagonia-gold" />
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Soluciones Objetivas</h4>
+                      <TrendingUp className="w-5 h-5 text-patagonia-gold" />
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Hoja de Ruta Inmediata</h4>
                     </div>
                     <ul className="space-y-4">
-                      {report.solutions.map((sol, i) => (
+                      {[
+                        "Despliegue de Agentes de IA para atención 24/7",
+                        "Sistematización de procesos manuales en Nube",
+                        "Arquitectura de Datos para métricas en tiempo real"
+                      ].map((sol, i) => (
                         <li key={i} className="flex gap-4 items-start text-patagonia-secondary group">
-                          <div className="w-1.5 h-1.5 rounded-full bg-patagonia-gold mt-2 flex-shrink-0 group-hover:scale-150 transition-all" />
+                          <CheckCircle2 className="w-4 h-4 text-patagonia-gold mt-0.5 flex-shrink-0" />
                           <span className="text-sm font-light leading-relaxed group-hover:text-white transition-all">{sol}</span>
                         </li>
                       ))}
@@ -493,18 +514,18 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                   <div className="p-8 rounded-[3rem] bg-patagonia-gold text-black flex flex-col justify-center items-center text-center space-y-6">
                     <ShieldCheck className="w-12 h-12" />
                     <h4 className="text-2xl font-heading font-bold leading-tight">¿Listo para ejecutar este Roadmap?</h4>
-                    <a href={`https://wa.me/56995684198?text=Franco, obtuve el reporte de ${currentNiche?.name}: ${report.title}. Me interesan las soluciones de ${report.solutions[0]}.`} className="w-full py-5 bg-black text-white rounded-full text-[10px] tracking-[0.3em] font-black uppercase hover:scale-105 transition-all">Agendar Sesión de Despliegue</a>
-                    <p className="text-[8px] uppercase font-bold tracking-widest opacity-60">Consultoría Estratégica sin costo para Magallanes</p>
+                    <a href={`https://wa.me/56995684198?text=Franco, obtuve el reporte de ${currentNiche?.name} con un ${Math.round(scorePercentage)}% de madurez. Me interesa implementar el roadmap de soluciones.`} className="w-full py-5 bg-black text-white rounded-full text-[10px] tracking-[0.3em] font-black uppercase hover:scale-105 transition-all">Agendar Sesión de Despliegue</a>
+                    <p className="text-[8px] uppercase font-bold tracking-widest opacity-60 italic">Reporte extendido de 20+ páginas en proceso...</p>
                   </div>
                 </div>
 
+                {/* Footer Navegación */}
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-center gap-8">
                    <button onClick={() => setStep('sector')} className="text-white/20 text-[10px] tracking-[0.3em] uppercase hover:text-patagonia-gold transition-all font-bold">Reiniciar Auditoría</button>
                    <button 
                     onClick={() => {
                       if (isModal) {
-                        // This will be handled by a prop or just navigating home
-                        window.location.href = '/';
+                        window.location.reload();
                       } else {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }
@@ -512,7 +533,7 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                     className="flex items-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px] tracking-[0.3em] uppercase hover:bg-white/10 hover:text-white transition-all font-black"
                    >
                      <Home className="w-3 h-3" />
-                     Finalizar y Volver
+                     Finalizar y Volver al Inicio
                    </button>
                 </div>
               </motion.div>
