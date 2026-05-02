@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ClipboardCheck, ArrowRight, BarChart3, ShieldCheck, Zap, MessageSquare, Target, Activity, FileText } from 'lucide-react';
 
 const questions = [
+  // DIMENSIÓN 1: ARQUITECTURA & DATOS
   {
     id: 1,
     title: "¿Cuál es el sector principal de su ecosistema?",
@@ -14,38 +15,176 @@ const questions = [
   },
   {
     id: 2,
-    title: "¿Qué nivel de automatización tiene su marketing?",
+    title: "¿Posee un repositorio centralizado de datos (Single Source of Truth)?",
     options: [
-      { text: "Manual (Dependo de mi tiempo y memoria)", score: 5 },
-      { text: "Básica (Email simple, posteos manuales)", score: 15 },
-      { text: "Avanzada (CRM, flujos automáticos de nutrición)", score: 30 }
+      { text: "Datos fragmentados en múltiples plataformas", score: 5 },
+      { text: "CRM básico con integraciones limitadas", score: 15 },
+      { text: "Data Warehouse unificado y estructurado", score: 30 }
     ]
   },
   {
     id: 3,
-    title: "¿Utiliza IA en su flujo de trabajo diario?",
+    title: "¿Cómo se sincronizan sus datos operativos con su marketing?",
     options: [
-      { text: "No, aún estamos investigando", score: 5 },
-      { text: "Uso herramientas básicas (ChatGPT, Midjourney)", score: 15 },
-      { text: "IA Integrada y entrenada en nuestros procesos", score: 30 }
+      { text: "Carga manual de bases de datos", score: 5 },
+      { text: "Sincronización vía Webhooks o APIs básicas", score: 15 },
+      { text: "Fusión bidireccional en tiempo real", score: 30 }
     ]
   },
   {
     id: 4,
-    title: "¿Cómo gestiona los datos de sus clientes?",
+    title: "¿Cuál es el nivel de salud de su base de contactos actual?",
     options: [
-      { text: "Excel / Agendas / WhatsApp personal", score: 5 },
-      { text: "CRM centralizado pero poco utilizado", score: 20 },
-      { text: "Ecosistema de datos conectado e inteligente", score: 30 }
+      { text: "Baja tasa de apertura y datos desactualizados", score: 5 },
+      { text: "Segmentación básica por compras anteriores", score: 15 },
+      { text: "Segmentación predictiva basada en comportamiento", score: 30 }
     ]
   },
   {
     id: 5,
-    title: "¿Cuál es su velocidad de respuesta a nuevos leads?",
+    title: "¿Sus activos digitales son propiedad soberana o dependen de terceros?",
     options: [
-      { text: "Más de 24 horas (o perdemos el rastro)", score: 5 },
-      { text: "Entre 1 y 4 horas (Vía humana)", score: 15 },
-      { text: "Inmediata e IA-Incentivada (24/7)", score: 30 }
+      { text: "Dependencia total de Marketplaces / Redes", score: 5 },
+      { text: "Híbrido con plataforma propia limitada", score: 15 },
+      { text: "Ecosistema propietario de alta resiliencia", score: 30 }
+    ]
+  },
+  // DIMENSIÓN 2: INTELIGENCIA ARTIFICIAL
+  {
+    id: 6,
+    title: "¿Utiliza modelos de lenguaje (LLMs) para la creación de contenido?",
+    options: [
+      { text: "Uso esporádico y manual", score: 5 },
+      { text: "Uso asistido con Prompts estructurados", score: 15 },
+      { text: "Flujos de contenido 100% asistidos por IA", score: 30 }
+    ]
+  },
+  {
+    id: 7,
+    title: "¿Ha entrenado una IA con el tono y datos de su propia marca?",
+    options: [
+      { text: "No, usamos IA genérica", score: 5 },
+      { text: "Estamos en fase de entrenamiento", score: 15 },
+      { text: "IA Personalizada operativa en producción", score: 30 }
+    ]
+  },
+  {
+    id: 8,
+    title: "¿Aplica IA Generativa para activos visuales o catálogos?",
+    options: [
+      { text: "Stock genérico o fotos tradicionales", score: 5 },
+      { text: "Retoque asistido por IA", score: 15 },
+      { text: "Generación completa de activos visuales de élite", score: 30 }
+    ]
+  },
+  {
+    id: 9,
+    title: "¿Su equipo utiliza agentes de IA para tareas administrativas?",
+    options: [
+      { text: "Cero integración de agentes", score: 5 },
+      { text: "Uso de bots básicos de respuesta", score: 15 },
+      { text: "Agentes autónomos para flujos de trabajo", score: 30 }
+    ]
+  },
+  {
+    id: 10,
+    title: "¿Cómo califica la cultura de 'IA-First' en su organización?",
+    options: [
+      { text: "Resistencia o desconocimiento total", score: 5 },
+      { text: "Adopción temprana por algunos líderes", score: 20 },
+      { text: "ADN tecnológico en todos los niveles", score: 30 }
+    ]
+  },
+  // DIMENSIÓN 3: AUTOMATIZACIÓN DE DEMANDA
+  {
+    id: 11,
+    title: "¿Cuál es el tiempo de respuesta promedio ante un Lead?",
+    options: [
+      { text: "Más de 12 horas", score: 5 },
+      { text: "Menos de 1 hora (Esfuerzo humano)", score: 15 },
+      { text: "Inmediato (Segundos vía IA)", score: 30 }
+    ]
+  },
+  {
+    id: 12,
+    title: "¿Posee embudos de venta automatizados (Funneling)?",
+    options: [
+      { text: "Venta directa lineal únicamente", score: 5 },
+      { text: "Embudo básico con seguimiento por email", score: 15 },
+      { text: "Ecosistema de conversión dinámico y multi-paso", score: 30 }
+    ]
+  },
+  {
+    id: 13,
+    title: "¿Utiliza Lead Scoring para priorizar sus ventas?",
+    options: [
+      { text: "Tratamos a todos los leads por igual", score: 5 },
+      { text: "Calificación manual post-llamada", score: 15 },
+      { text: "Score automático basado en interacciones", score: 30 }
+    ]
+  },
+  {
+    id: 14,
+    title: "¿Cómo gestiona las reseñas y la reputación online?",
+    options: [
+      { text: "Reactivo: solo si hay quejas", score: 5 },
+      { text: "Solicitud manual a clientes felices", score: 15 },
+      { text: "Sistema automático de captura de autoridad", score: 30 }
+    ]
+  },
+  {
+    id: 15,
+    title: "¿Su publicidad online está conectada con su CRM?",
+    options: [
+      { text: "Datos desconectados (Solo vemos clics)", score: 5 },
+      { text: "Importación manual de leads", score: 15 },
+      { text: "Cierre de bucle: Pauta optimizada por ventas reales", score: 30 }
+    ]
+  },
+  // DIMENSIÓN 4: SOBERANÍA OPERATIVA
+  {
+    id: 16,
+    title: "¿Qué tan escalable es su modelo de entrega de servicio?",
+    options: [
+      { text: "Dependencia total de Horas Hombre", score: 5 },
+      { text: "Procesos semi-estandarizados", score: 20 },
+      { text: "Escalabilidad total vía sistemas propietarios", score: 30 }
+    ]
+  },
+  {
+    id: 17,
+    title: "¿Su equipo cuenta con capacitación técnica recurrente?",
+    options: [
+      { text: "Capacitación nula o esporádica", score: 5 },
+      { text: "Capacitación por proyectos específicos", score: 15 },
+      { text: "Protocolo de maestría continua activado", score: 30 }
+    ]
+  },
+  {
+    id: 18,
+    title: "¿Cómo monitorea el ROI de sus acciones digitales?",
+    options: [
+      { text: "Por 'sensación' de ventas", score: 5 },
+      { text: "Reportes mensuales estáticos", score: 15 },
+      { text: "Dashboard de Inteligencia en tiempo real", score: 30 }
+    ]
+  },
+  {
+    id: 19,
+    title: "¿Posee protocolos de seguridad y respaldo de datos?",
+    options: [
+      { text: "Confiamos en las nubes de terceros", score: 10 },
+      { text: "Respaldos manuales periódicos", score: 20 },
+      { text: "Arquitectura resiliente con redundancia", score: 30 }
+    ]
+  },
+  {
+    id: 20,
+    title: "¿Cuál es su meta de crecimiento para este año?",
+    options: [
+      { text: "Mantener la estabilidad actual", score: 10 },
+      { text: "Crecimiento lineal (10-30%)", score: 20 },
+      { text: "Escalado exponencial (+100%) vía sistemas", score: 30 }
     ]
   }
 ];
@@ -117,7 +256,7 @@ const DigitalDiagnostic = () => {
     return roadmaps[selectedSector] || roadmaps.general;
   };
 
-  const scorePercentage = Math.min((totalScore / 140) * 100, 100);
+  const scorePercentage = Math.min((totalScore / 580) * 100, 100);
   const roadmap = getRoadmap();
 
   return (
