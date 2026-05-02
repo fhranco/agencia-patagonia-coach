@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CustomCursor from './components/CustomCursor';
 import FloatingActions from './components/FloatingActions';
 import FloatingAudit from './components/FloatingAudit';
+import SmartHomeButton from './components/SmartHomeButton';
 import ScrollToTop from './components/ScrollToTop';
 import MainLanding from './pages/MainLanding';
 import IALanding from './pages/IALanding';
@@ -26,6 +27,7 @@ function App() {
     <Router>
       <div className="relative">
         <CustomCursor />
+        <SmartHomeButton />
         <FloatingActions />
         <FloatingAudit />
         <ScrollToTop />
