@@ -21,11 +21,6 @@ import {
   Gamepad2
 } from 'lucide-react';
 
-const ServiceCard = ({ title, subtitle, solutions, icon: Icon, index, activeIndex, onHover }) => {
-  const isHovered = activeIndex === index;
-  const isDimmed = activeIndex !== null && !isHovered;
-
-  return (
     <motion.div
       onMouseEnter={() => onHover(index)}
       onMouseLeave={() => onHover(null)}
@@ -33,11 +28,12 @@ const ServiceCard = ({ title, subtitle, solutions, icon: Icon, index, activeInde
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: index * 0.05 }}
-      className={`relative group min-h-[540px] rounded-[2.5rem] p-12 flex flex-col gap-10 transition-all duration-700 border overflow-hidden ${
+      className={`relative group min-h-[540px] rounded-[2.5rem] p-12 flex flex-col gap-10 transition-all duration-700 border overflow-hidden cursor-pointer ${
         isHovered 
           ? 'bg-white/[0.05] border-white/20 scale-[1.01] z-20 shadow-[0_40px_100px_rgba(0,0,0,0.5)]' 
           : 'bg-white/[0.01] border-white/5 z-10'
       } ${isDimmed ? 'opacity-30 blur-[2px] scale-[0.98]' : 'opacity-100'}`}
+      onClick={() => window.location.href = href}
     >
       {/* Subtle Frost Layer */}
       <div className="absolute inset-0 backdrop-blur-3xl pointer-events-none" />
@@ -83,11 +79,12 @@ const ServiceCard = ({ title, subtitle, solutions, icon: Icon, index, activeInde
       </div>
 
       {/* Final Detail */}
-      <div className="relative z-10 pt-6 opacity-0 group-hover:opacity-100 transition-all duration-700">
+      <div className="relative z-10 pt-6 flex justify-between items-center group-hover:translate-x-2 transition-transform duration-700">
         <div className="flex items-center gap-4">
           <div className="w-12 h-px bg-white/10" />
-          <span className="text-[9px] font-black tracking-[0.6em] text-white/40 uppercase">Maestría Patagonia</span>
+          <span className="text-[9px] font-black tracking-[0.6em] text-white/40 uppercase group-hover:text-patagonia-gold transition-colors">Maestría Patagonia</span>
         </div>
+        <Play className="w-4 h-4 text-white/0 group-hover:text-patagonia-gold transition-all" />
       </div>
     </motion.div>
   );
@@ -107,6 +104,7 @@ const ServiceMatrix = () => {
   const services = [
     {
       title: "Desarrollo Web Profesional",
+      href: "/servicios/desarrollo-web",
       subtitle: "Sistemas web de alto rendimiento enfocados en resultados de negocio.",
       solutions: [
         "Diseño Web Corporativo",
@@ -115,23 +113,11 @@ const ServiceMatrix = () => {
         "Mantenimiento Proactivo",
         "Optimización de Rendimiento"
       ],
-      icon: LayoutTemplate,
-      microUI: (hover) => (
-        <div className="relative w-24 h-24 flex items-center justify-center">
-          <motion.div
-            animate={{ rotate: hover ? 360 : 0 }}
-            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 border border-dashed border-patagonia-cyan/30 rounded-full"
-          />
-          <div className="relative z-10 flex gap-2">
-            <div className="w-2 h-2 bg-patagonia-cyan rounded-full animate-ping" />
-            <div className="w-2 h-2 bg-patagonia-white rounded-full animate-bounce" />
-          </div>
-        </div>
-      )
+      icon: LayoutTemplate
     },
     {
       title: "SEO Local Magallanes",
+      href: "/servicios/seo-local-punta-arenas",
       subtitle: "Posicionamiento estratégico en Google para captar clientes locales en Magallanes.",
       solutions: [
         "Posicionamiento en Google Maps",
@@ -140,23 +126,11 @@ const ServiceMatrix = () => {
         "Gestión de Perfil de Negocio",
         "Análisis de Competencia"
       ],
-      icon: Search,
-      microUI: (hover) => (
-        <div className="flex items-end gap-1 h-12">
-          {[40, 70, 45, 90, 65, 80, 100].map((h, i) => (
-            <motion.div
-              key={i}
-              initial={{ height: 0 }}
-              animate={{ height: hover ? `${h}%` : '20%' }}
-              transition={{ delay: i * 0.05, type: 'spring' }}
-              className="w-2 bg-patagonia-red rounded-t-sm shadow-[0_0_10px_#ff1721]"
-            />
-          ))}
-        </div>
-      )
+      icon: Search
     },
     {
       title: "Automatización con IA",
+      href: "/servicios/automatizacion-con-ia",
       subtitle: "Implementación de IA para automatizar ventas, atención y procesos operativos.",
       solutions: [
         "Chatbots de Atención 24/7",
@@ -165,24 +139,11 @@ const ServiceMatrix = () => {
         "Integración de APIs de IA",
         "Flujos de Trabajo Inteligentes"
       ],
-      icon: Cpu,
-      microUI: (hover) => (
-        <div className="flex flex-col items-center gap-4 pointer-events-none">
-          <div className="flex items-center gap-6">
-            <XCircle className="w-5 h-5 text-white/10" />
-            <div className={`w-12 h-6 rounded-full p-1 transition-colors ${hover ? 'bg-patagonia-cyan' : 'bg-white/10'}`}>
-              <motion.div animate={{ x: hover ? 24 : 0 }} className="w-4 h-4 bg-white rounded-full shadow-lg" />
-            </div>
-            <CheckCircle2 className={`w-5 h-5 transition-colors ${hover ? 'text-patagonia-cyan' : 'text-white/10'}`} />
-          </div>
-          <span className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold">
-            {hover ? 'Status: Autonomous' : 'Status: Manual'}
-          </span>
-        </div>
-      )
+      icon: Cpu
     },
     {
       title: "Gestión de Redes Sociales",
+      href: "/servicios/comunicacion-digital",
       subtitle: "Estrategias de contenido y comunidad orientadas al crecimiento y autoridad de marca.",
       solutions: [
         "Plan de Contenidos Mensual",
@@ -191,22 +152,11 @@ const ServiceMatrix = () => {
         "Diseño Gráfico Publicitario",
         "Reportes de Rendimiento"
       ],
-      icon: TrendingUp,
-      microUI: (hover) => (
-        <div className="flex items-center gap-1">
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{ height: hover ? [10, Math.random() * 40 + 10, 10] : 10 }}
-              transition={{ repeat: Infinity, duration: 0.5 + Math.random(), ease: "easeInOut" }}
-              className="w-1 bg-patagonia-gold rounded-full shadow-[0_0_8px_#FFD700]"
-            />
-          ))}
-        </div>
-      )
+      icon: TrendingUp
     },
     {
       title: "IA Generativa Visual",
+      href: "/servicios/ia-generativa-visual",
       subtitle: "Generación de activos visuales inteligentes para campañas publicitarias de alto impacto.",
       solutions: [
         "Generación de Fotos con IA",
@@ -215,27 +165,11 @@ const ServiceMatrix = () => {
         "Identidad Visual con IA",
         "Conceptualización Creativa"
       ],
-      icon: Palette,
-      microUI: (hover) => (
-        <div className="relative w-24 h-24">
-          {[...Array(3)].map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{ 
-                x: hover ? (i - 1) * 20 : 0,
-                rotate: hover ? (i - 1) * 10 : 0,
-                opacity: hover ? 1 - (i * 0.2) : 0.5 
-              }}
-              className="absolute inset-0 border border-patagonia-cyan/30 bg-patagonia-cyan/5 rounded-lg flex items-center justify-center"
-            >
-              <Palette className="w-6 h-6 text-patagonia-cyan/40" />
-            </motion.div>
-          ))}
-        </div>
-      )
+      icon: Palette
     },
     {
       title: "Tours Virtuales 360º",
+      href: "/servicios/tours-virtuales-360",
       subtitle: "Experiencias de realidad virtual 360º para empresas que buscan destacar su ubicación.",
       solutions: [
         "Recorridos 360º de Alta Calidad",
@@ -244,23 +178,11 @@ const ServiceMatrix = () => {
         "Tours Interactivos para Web",
         "Video 360º Corporativo"
       ],
-      icon: Camera,
-      microUI: (hover) => (
-        <div className="relative w-24 h-24 flex items-center justify-center">
-          <motion.div
-            animate={{ rotate: hover ? 360 : 0 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 border border-patagonia-red/20 rounded-full"
-          />
-          <motion.div animate={{ scale: hover ? 1.2 : 1 }} className="flex gap-1 relative z-10">
-            <div className="w-2 h-2 bg-patagonia-red rounded-full animate-pulse" />
-            <div className="w-8 h-2 bg-white/10 rounded-full" />
-          </motion.div>
-        </div>
-      )
+      icon: Camera
     },
     {
       title: "Academia Digital",
+      href: "/academia",
       subtitle: "Formación técnica y estratégica para equipos que buscan liderar con tecnología actual.",
       solutions: [
         "Workshops de IA Aplicada",
@@ -269,28 +191,11 @@ const ServiceMatrix = () => {
         "Sprints de Innovación",
         "Consultoría en Adopción Tecnológica"
       ],
-      icon: GraduationCap,
-      microUI: (hover) => (
-        <div className="relative flex flex-col items-center">
-          <motion.div animate={{ y: hover ? -10 : 0 }} className="relative">
-             <GraduationCap className={`w-10 h-10 transition-colors ${hover ? 'text-patagonia-gold' : 'text-white/20'}`} />
-             {hover && <motion.div layoutId="glow" className="absolute inset-0 bg-patagonia-gold/20 blur-xl rounded-full" />}
-          </motion.div>
-          <AnimatePresence>
-            {hover && (
-              <motion.span 
-                initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-                className="text-[10px] text-patagonia-gold uppercase tracking-widest mt-2 font-bold"
-              >
-                Inscripciones Abiertas
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </div>
-      )
+      icon: GraduationCap
     },
     {
       title: "Aplicaciones Web Pro",
+      href: "/servicios/aplicaciones-web-pro",
       subtitle: "Desarrollo de herramientas interactivas, sistemas de gestión y experiencias gamificadas.",
       solutions: [
         "Apps para Tótems y Eventos",
@@ -303,6 +208,7 @@ const ServiceMatrix = () => {
     },
     {
       title: "Consultoría & Estrategia",
+      href: "/servicios/consultoria-transformacion-digital",
       subtitle: "Acompañamiento ejecutivo para definir el futuro digital y comercial de su organización.",
       solutions: [
         "Plan Maestro Digital",
@@ -350,6 +256,7 @@ const ServiceMatrix = () => {
         </div>
       </div>
     </section>
+
   );
 };
 

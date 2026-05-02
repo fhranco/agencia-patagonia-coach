@@ -1,27 +1,27 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, Zap, Users, Sparkles, ArrowRight, ShieldCheck, BookOpen, Trophy } from 'lucide-react';
+import { Gamepad2, Code, Zap, ArrowRight, ShieldCheck, Cpu, Smartphone } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DigitalDiagnostic from '../components/DigitalDiagnostic';
 import LeadCommand from '../components/LeadCommand';
 import SEO from '../components/SEO';
 
-const AcademiaLanding = () => {
+const AppsPro = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://agenciapatagoniacoach.cl/academia/#service",
-    "name": "Academia Digital PatagoniaCoach",
+    "@id": "https://agenciapatagoniacoach.cl/servicios/aplicaciones-web-pro/#service",
+    "name": "Aplicaciones Web & Sistemas Pro",
     "provider": { "@id": "https://agenciapatagoniacoach.cl/#organization" },
     "areaServed": { "@type": "AdministrativeArea", "name": "Región de Magallanes" },
-    "description": "Programas de inmersión técnica y estratégica para equipos corporativos en la Patagonia. Formación avanzada en IA, SEO y Automatización."
+    "description": "Desarrollo de herramientas interactivas, sistemas de gestión y experiencias gamificadas para empresas en la Patagonia."
   };
 
   return (
     <div className="bg-patagonia-black text-patagonia-white min-h-screen">
       <SEO 
-        title="Academia Digital & Formación IA en Magallanes | PatagoniaCoach"
-        description="Capacite a su equipo para liderar la era digital. Programas de inmersión técnica en Punta Arenas enfocados en IA, productividad y estrategia corporativa."
+        title="Aplicaciones Web Pro en Magallanes | PatagoniaCoach: Sistemas a Medida"
+        description="Soluciones interactivas para su negocio. Desarrollo de aplicaciones web, sistemas de gestión y PWAs en Punta Arenas optimizadas para rendimiento."
         schema={schema}
       />
       <Navbar />
@@ -29,54 +29,54 @@ const AcademiaLanding = () => {
       {/* Hero Section */}
       <section className="pt-40 pb-24 px-6 relative overflow-hidden text-center">
         <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
-          <img src="/patagonia_luxury_hero.png" alt="High-End Training" className="w-full h-full object-cover" />
+          <img src="/patagonia_luxury_hero.png" alt="High-Performance Apps" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-patagonia-black via-transparent to-patagonia-black" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 mb-12 bg-white/5 backdrop-blur-md"
           >
-            <GraduationCap className="w-4 h-4 text-patagonia-gold" />
-            <span className="text-[10px] uppercase tracking-[0.4em] font-black">Ecosistema de Formación Superior</span>
+            <Cpu className="w-4 h-4 text-patagonia-gold" />
+            <span className="text-[10px] uppercase tracking-[0.4em] font-black">Ingeniería de Software de Alto Impacto</span>
           </motion.div>
           
           <h1 className="text-6xl md:text-[7.5rem] font-heading font-light tracking-[-0.05em] mb-10 leading-[0.85] text-balance">
-            Domine la <span className="text-patagonia-gold italic">Frontera.</span>
+            Sistemas <span className="text-patagonia-gold italic">Vivos.</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto font-light leading-relaxed mb-16 px-4">
-            No impartimos cursos; <span className="text-white font-normal">diseñamos protocolos de inmersión técnica</span>. Elevamos las capacidades de su equipo para que la tecnología no sea una herramienta, sino una ventaja competitiva soberana.
+            No desarrollamos software estático; <span className="text-white font-normal">creamos ecosistemas interactivos</span> que resuelven cuellos de botella operativos. Aplicaciones Web Pro diseñadas para la logística, el comercio y la industria de Magallanes.
           </p>
           
           <div className="flex justify-center">
-             <a href="#programs" className="btn-primary min-w-[300px]">
-                Explorar Programas de Inmersión
+             <a href="#apps" className="btn-primary min-w-[300px]">
+                Explorar Soluciones Interactivas
              </a>
           </div>
         </div>
       </section>
 
       {/* Strategic Pillars */}
-      <section id="programs" className="py-40 px-6 bg-patagonia-black border-t border-white/5">
+      <section id="apps" className="py-40 px-6 bg-patagonia-black border-t border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
             {[
               {
+                icon: Smartphone,
+                title: "PWAs de Alto Vuelo",
+                desc: "Aplicaciones web progresivas que funcionan como apps nativas pero sin fricción de descarga. Ideales para sistemas de turnos, catálogos interactivos y herramientas de campo."
+              },
+              {
+                icon: Gamepad2,
+                title: "Gamificación & Tótems",
+                desc: "Experiencias interactivas para eventos, museos y puntos de venta en la Zona Franca. Convertimos la información en una experiencia de inmersión lúdica y memorable."
+              },
+              {
                 icon: Zap,
-                title: "Talleres de Ejecución",
-                desc: "Sprints intensivos de 2 a 4 horas diseñados para resolver desafíos operativos específicos mediante la integración inmediata de IA y automatización."
-              },
-              {
-                icon: Users,
-                title: "Workshops Corporativos",
-                desc: "Inmersión estratégica para equipos directivos y operativos. Rediseñamos los flujos de trabajo de su empresa en Magallanes bajo estándares de alta eficiencia."
-              },
-              {
-                icon: Trophy,
-                title: "Mentoring de Maestría",
-                desc: "Acompañamiento senior in-house. Un protocolo personalizado para organizaciones que buscan liderar su industria mediante la maestría tecnológica continua."
+                title: "Sistemas de Gestión",
+                desc: "Desarrollamos herramientas a medida para optimizar su logística sureña. Desde paneles de control internos hasta plataformas de comunicación con clientes en tiempo real."
               }
             ].map((f, i) => (
               <div key={i} className="group p-12 bg-patagonia-surface/20 border border-white/5 rounded-[3rem] hover:border-patagonia-gold/20 transition-all duration-700">
@@ -90,38 +90,38 @@ const AcademiaLanding = () => {
         </div>
       </section>
 
-      {/* Visual Knowledge Showcase */}
+      {/* Visual App Showcase */}
       <section className="py-40 px-6 bg-patagonia-surface/10 border-y border-white/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-24 items-center">
           <div className="flex-1 w-full aspect-square relative group">
             <div className="absolute inset-0 bg-patagonia-gold/10 blur-[120px] rounded-full group-hover:bg-patagonia-gold/20 transition-all duration-1000" />
             <div className="relative z-10 w-full h-full border border-white/5 rounded-[4rem] bg-black/40 backdrop-blur-3xl overflow-hidden flex items-center justify-center p-8">
               <img 
-                src="/images/academia-core.png" 
-                alt="Digital Knowledge Mastery" 
-                className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-transform duration-[6000ms] ease-out"
+                src="/images/apps-pro.png" 
+                alt="Web Apps Pro Mastery Visual" 
+                className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-transform duration-[6000ms] ease-out opacity-90"
               />
             </div>
           </div>
 
           <div className="flex-1 space-y-12">
-            <span className="text-[10px] uppercase tracking-[0.5em] text-patagonia-gold font-black">La Frontera Neural</span>
-            <h2 className="text-5xl md:text-7xl font-heading font-light tracking-tight leading-[1.1]">Evolución que <span className="italic text-patagonia-gold">Impacta</span> el ROI.</h2>
+            <span className="text-[10px] uppercase tracking-[0.5em] text-patagonia-gold font-black">La Evolución del Software</span>
+            <h2 className="text-5xl md:text-7xl font-heading font-light tracking-tight leading-[1.1]">Potencia en <span className="italic text-patagonia-gold">Cada Píxel.</span></h2>
             <div className="space-y-8 text-lg text-patagonia-secondary font-light leading-relaxed">
               <p>
-                Para los equipos de logística, turismo y servicios industriales de Magallanes, la formación técnica es el puente hacia la competitividad global.
+                Un sistema a medida es la mayor ventaja competitiva que una organización puede poseer. Diseñamos aplicaciones que se integran con sus procesos actuales para acelerar el crecimiento.
               </p>
               <p>
-                No enseñamos teoría; entregamos capacidades operativas reales. Desde el uso avanzado de LLMs hasta la automatización de reportes críticos, su equipo será el más eficiente de la región.
+                Utilizamos tecnologías de última generación para asegurar que su inversión sea escalable, segura y capaz de manejar altos volúmenes de datos sin comprometer la velocidad.
               </p>
             </div>
             
             <div className="pt-10">
               <div className="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10 max-w-sm">
-                <ShieldCheck className="w-10 h-10 text-patagonia-gold" />
+                <Code className="w-10 h-10 text-patagonia-gold" />
                 <div>
-                  <h4 className="text-white font-bold text-sm tracking-widest">ACTIVOS INTELECTUALES</h4>
-                  <p className="text-[10px] text-patagonia-secondary uppercase tracking-wider">Protocolos de formación soberanos.</p>
+                  <h4 className="text-white font-bold text-sm tracking-widest">CÓDIGO DE AUTOR</h4>
+                  <p className="text-[10px] text-patagonia-secondary uppercase tracking-wider">Arquitectura robusta y escalable.</p>
                 </div>
               </div>
             </div>
@@ -139,4 +139,4 @@ const AcademiaLanding = () => {
   );
 };
 
-export default AcademiaLanding;
+export default AppsPro;
