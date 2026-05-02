@@ -91,30 +91,110 @@ const ProjectShowcase = () => {
           ))}
         </div>
 
-        {/* Global Visual Bridge */}
+        {/* Global Visual Bridge with Testimonials Overlay */}
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="mt-32 w-full aspect-[21/9] rounded-[4rem] border border-white/5 bg-black/40 overflow-hidden relative group"
+          className="mt-32 w-full rounded-[4rem] border border-white/5 bg-black/40 overflow-hidden relative group"
         >
-          <img 
-            src="/images/projects-showcase.png" 
-            alt="PatagoniaCoach Success Stories Gallery" 
-            className="w-full h-full object-cover opacity-60 scale-105 group-hover:scale-110 transition-transform duration-[10000ms] ease-out"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-patagonia-black via-transparent to-transparent" />
-          <div className="absolute bottom-12 left-12 right-12 flex flex-col md:flex-row justify-between items-end gap-8">
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="/images/projects-showcase.png" 
+              alt="PatagoniaCoach Success Stories Gallery" 
+              className="w-full h-full object-cover opacity-30 scale-105 group-hover:scale-110 transition-transform duration-[10000ms] ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-patagonia-black via-patagonia-black/40 to-transparent" />
+          </div>
+
+          <div className="relative z-10 p-12 md:p-24 flex flex-col gap-20">
             <div className="space-y-4 max-w-xl text-left">
-              <h4 className="text-3xl font-heading font-light text-white">Ingeniería de Clase Mundial</h4>
-              <p className="text-patagonia-secondary text-sm font-light">Cada proyecto es una declaración de principios técnicos y estéticos. No aceptamos menos que la excelencia.</p>
+              <h4 className="text-4xl md:text-5xl font-heading font-light text-white leading-tight">Ingeniería de <br/><span className="italic text-patagonia-gold">Clase Mundial.</span></h4>
+              <p className="text-patagonia-secondary text-base font-light max-w-md">Cada proyecto es una declaración de principios técnicos y estéticos. No aceptamos menos que la excelencia.</p>
             </div>
-            <a href="#contacto" className="btn-primary min-w-[240px]">
-              Iniciar mi Proyecto Elite
-            </a>
+
+            {/* Testimonials Carousel */}
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="relative h-[200px]">
+                <TestimonialCarousel />
+              </div>
+              <div className="flex justify-end items-end">
+                <a href="#contacto" className="btn-primary min-w-[280px]">
+                  Iniciar mi Proyecto Elite
+                </a>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
     </section>
+  );
+};
+
+const TestimonialCarousel = () => {
+  const [index, setIndex] = useState(0);
+  const testimonials = [
+    {
+      text: "La transformación de nuestro portal B2B superó todas las expectativas. La navegación SPA instantánea ha cambiado las reglas del juego para nuestros clientes mayoristas.",
+      author: "Cristian A.",
+      role: "Director Ejecutivo, Comercial de la Patagonia",
+      avatar: "CA"
+    },
+    {
+      text: "La precisión técnica y el nivel de diseño de PatagoniaCoach es algo que no habíamos visto en la región. Han elevado nuestra marca a un estándar global.",
+      author: "Karla S.",
+      role: "Gerente de Operaciones, Logística Austral",
+      avatar: "KS"
+    },
+    {
+      text: "Insta-Planner ha disciplinado nuestra comunicación digital. La integración de IA estratégica nos ha ahorrado cientos de horas de trabajo operativo.",
+      author: "Andrés B.",
+      role: "Estratega de Marca, Ecosistema Digital",
+      avatar: "AB"
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative h-full flex flex-col justify-center">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.8, ease: "circOut" }}
+          className="space-y-6"
+        >
+          <p className="text-xl md:text-2xl text-white/90 font-light italic leading-relaxed">
+            "{testimonials[index].text}"
+          </p>
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 rounded-full bg-patagonia-gold/20 border border-patagonia-gold/40 flex items-center justify-center text-[10px] font-black text-patagonia-gold">
+              {testimonials[index].avatar}
+            </div>
+            <div>
+              <p className="text-sm font-bold text-white">{testimonials[index].author}</p>
+              <p className="text-[10px] uppercase tracking-widest text-patagonia-secondary">{testimonials[index].role}</p>
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+      
+      <div className="absolute -bottom-8 left-0 flex gap-2">
+        {testimonials.map((_, i) => (
+          <div 
+            key={i} 
+            className={`h-[2px] transition-all duration-700 ${i === index ? 'w-8 bg-patagonia-gold' : 'w-2 bg-white/10'}`} 
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 
