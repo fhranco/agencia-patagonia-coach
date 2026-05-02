@@ -86,7 +86,7 @@ const DigitalDiagnostic = () => {
   const [step, setStep] = useState('sector'); // 'sector', 'audit', 'processing', 'lead', 'result'
   const [currentSector, setCurrentSector] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [totalScore, setTotalScore] = useState(0);
+  const [dimensionScores, setDimensionScores] = useState({ flow: 0, comm: 0, sales: 0, scale: 0 });
   const [leadData, setLeadData] = useState({ nombre: '', email: '', whatsapp: '' });
 
   const handleSectorSelect = (sector) => {
@@ -95,8 +95,13 @@ const DigitalDiagnostic = () => {
   };
 
   const handleOptionSelect = (score) => {
-    const nextScore = totalScore + score;
-    setTotalScore(nextScore);
+    // Determine dimension
+    let dim = 'flow';
+    if (currentQuestion >= 5 && currentQuestion < 10) dim = 'comm';
+    else if (currentQuestion >= 10 && currentQuestion < 15) dim = 'sales';
+    else if (currentQuestion >= 15) dim = 'scale';
+
+    setDimensionScores(prev => ({ ...prev, [dim]: prev[dim] + score }));
     
     if (currentQuestion < sectorQuestions[currentSector].length - 1) {
       setCurrentQuestion(prev => prev + 1);
@@ -105,11 +110,44 @@ const DigitalDiagnostic = () => {
     }
   };
 
+  const totalScore = Object.values(dimensionScores).reduce((a, b) => a + b, 0);
+  const scorePercentage = Math.min((totalScore / 600) * 100, 100);
+
+  const getDetailedReport = () => {
+    const minDim = Object.keys(dimensionScores).reduce((a, b) => dimensionScores[a] < dimensionScores[b] ? a : b);
+    
+    const reports = {
+      flow: {
+        title: "Colapso por Trabajo Hormiga",
+        narrative: "Su operación depende excesivamente del esfuerzo humano manual. Hemos detectado fugas críticas de tiempo en tareas de 'copiar y pegar' que están asfixiando su crecimiento.",
+        solutions: ["Implementación de Arquitectura de Datos Unificada", "Automatización de Flujos entre Sistemas (Integración total)", "Protocolos de Operación Estándar Digitalizados"]
+      },
+      comm: {
+        title: "Atención Reactiva y Fragmentada",
+        narrative: "Su comunicación con el mercado es intermitente. La falta de una respuesta inmediata y el tono inconsistente le están haciendo perder clientes frente a competidores más ágiles.",
+        solutions: ["Despliegue de Agentes de IA Bilingües 24/7", "Entrenamiento de Modelo de Tono de Marca Propietario", "Sistema de Respuesta Centralizada Omnicanal"]
+      },
+      sales: {
+        title: "Ventas Sin Inteligencia de Datos",
+        narrative: "Usted vende por intuición, no por datos. No sabe quién es su mejor cliente ni por qué abandona, lo que hace que su inversión en marketing sea una apuesta y no una ciencia.",
+        solutions: ["Configuración de CRM Estratégico con Lead Scoring", "Dashboard de ROI y Atribución en Tiempo Real", "Embudos de Nutrición Automáticos de Alta Conversión"]
+      },
+      scale: {
+        title: "Estructura Frágil no Escalable",
+        narrative: "Su empresa está en riesgo. La información reside en los WhatsApp de sus empleados y no en activos de la empresa, lo que impide duplicar su operación sin duplicar sus problemas.",
+        solutions: ["Migración a Ecosistema Digital Soberano", "Sistematización de Conocimiento (Wiki de Élite)", "Infraestructura de Nube con Redundancia y Seguridad"]
+      }
+    };
+
+    return reports[minDim];
+  };
+
+  const report = getDetailedReport();
+
   const handleLeadSubmit = (e) => {
     e.preventDefault();
     setStep('processing');
     
-    // Background mail dispatch
     try {
       const formData = new FormData();
       formData.append('nombre', leadData.nombre);
@@ -117,14 +155,12 @@ const DigitalDiagnostic = () => {
       formData.append('whatsapp', leadData.whatsapp);
       formData.append('score', totalScore);
       formData.append('sector', currentSector);
-      formData.append('form_type', `Auditoría ${currentSector}`);
+      formData.append('diagnostico', report.title);
       fetch('/mail.php', { method: 'POST', body: formData });
     } catch (e) {}
 
     setTimeout(() => setStep('result'), 3000);
   };
-
-  const scorePercentage = Math.min((totalScore / 600) * 100, 100);
 
   const getSectorLabels = () => {
     if (currentSector === 'tourism') return { label: "Turismo de Élite", color: "text-[#FF7A18]" };
@@ -223,7 +259,7 @@ const DigitalDiagnostic = () => {
             )}
 
             {step === 'result' && (
-              <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-12 text-center md:text-left">
+              <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-12">
                 <div className="flex flex-col md:flex-row gap-12 items-center">
                   <div className="relative w-40 h-40 flex-shrink-0">
                     <svg className="w-full h-full transform -rotate-90">
@@ -232,17 +268,41 @@ const DigitalDiagnostic = () => {
                     </svg>
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
                       <span className="text-3xl font-heading text-white">{Math.round(scorePercentage)}%</span>
-                      <span className="text-[6px] uppercase tracking-widest text-patagonia-gold font-bold">Eficiencia</span>
+                      <span className="text-[6px] uppercase tracking-widest text-patagonia-gold font-bold">Madurez</span>
                     </div>
                   </div>
-                  <div className="space-y-4">
-                    <h3 className="text-3xl md:text-5xl font-heading font-light text-white leading-tight">Estado: <span className={`italic ${labels.color}`}>{scorePercentage > 70 ? "Élite Operativa" : "Fricción Crítica"}</span></h3>
-                    <p className="text-patagonia-secondary font-light italic leading-relaxed">"Su operación en {labels.label} presenta fugas de rentabilidad por procesos manuales que podrían ser resueltos con arquitectura digital."</p>
+                  <div className="space-y-4 text-center md:text-left">
+                    <h3 className="text-3xl md:text-5xl font-heading font-light text-white leading-tight">Estado: <span className={`italic ${labels.color}`}>{report.title}</span></h3>
+                    <p className="text-patagonia-secondary font-light italic leading-relaxed text-lg">"{report.narrative}"</p>
                   </div>
                 </div>
-                <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row gap-6 justify-center">
-                   <a href={`https://wa.me/56995684198?text=Franco, acabo de completar la auditoría de ${labels.label} con un score de ${Math.round(scorePercentage)}%. Me interesa implementar el roadmap.`} className="btn-primary px-12 py-5 text-[10px] tracking-[0.3em] font-black uppercase text-center">Agendar Sesión Estratégica</a>
-                   <button onClick={() => setStep('sector')} className="px-12 py-5 rounded-full border border-white/10 text-white/40 text-[10px] tracking-[0.3em] uppercase hover:text-white transition-all">Reiniciar Auditoría</button>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="p-8 rounded-[3rem] bg-white/5 border border-white/5 space-y-6">
+                    <div className="flex items-center gap-3">
+                      <Target className="w-5 h-5 text-patagonia-gold" />
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Soluciones Objetivas</h4>
+                    </div>
+                    <ul className="space-y-4">
+                      {report.solutions.map((sol, i) => (
+                        <li key={i} className="flex gap-4 items-start text-patagonia-secondary group">
+                          <div className="w-1.5 h-1.5 rounded-full bg-patagonia-gold mt-2 flex-shrink-0 group-hover:scale-150 transition-all" />
+                          <span className="text-sm font-light leading-relaxed group-hover:text-white transition-all">{sol}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="p-8 rounded-[3rem] bg-patagonia-gold text-black flex flex-col justify-center items-center text-center space-y-6">
+                    <ShieldCheck className="w-12 h-12" />
+                    <h4 className="text-2xl font-heading font-bold leading-tight">¿Listo para ejecutar este Roadmap?</h4>
+                    <a href={`https://wa.me/56995684198?text=Franco, obtuve el reporte de ${labels.label}: ${report.title}. Me interesan las soluciones de ${report.solutions[0]}.`} className="w-full py-5 bg-black text-white rounded-full text-[10px] tracking-[0.3em] font-black uppercase hover:scale-105 transition-all">Agendar Sesión de Despliegue</a>
+                    <p className="text-[8px] uppercase font-bold tracking-widest opacity-60">Consultoría Estratégica sin costo para Magallanes</p>
+                  </div>
+                </div>
+
+                <div className="pt-8 border-t border-white/5 flex justify-center">
+                   <button onClick={() => setStep('sector')} className="text-white/20 text-[10px] tracking-[0.3em] uppercase hover:text-patagonia-gold transition-all font-bold">Reiniciar Auditoría Estratégica</button>
                 </div>
               </motion.div>
             )}
