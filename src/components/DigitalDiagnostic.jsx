@@ -1,3 +1,18 @@
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  ClipboardCheck, 
+  ArrowRight, 
+  BarChart3, 
+  ShieldCheck, 
+  Zap, 
+  MessageSquare, 
+  Target, 
+  Activity, 
+  FileText,
+  ChevronRight 
+} from 'lucide-react';
+
 const sectorQuestions = {
   tourism: [
     { id: 1, title: "¿Cómo gestionan hoy las consultas que llegan fuera de horario de oficina?", options: [{ text: "Quedan en espera hasta el día siguiente", score: 5 }, { text: "Mensaje automático genérico", score: 15 }, { text: "IA resuelve dudas y pre-califica la reserva", score: 30 }] },
@@ -230,15 +245,6 @@ const DigitalDiagnostic = () => {
                    <button onClick={() => setStep('sector')} className="px-12 py-5 rounded-full border border-white/10 text-white/40 text-[10px] tracking-[0.3em] uppercase hover:text-white transition-all">Reiniciar Auditoría</button>
                 </div>
               </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default DigitalDiagnostic;iv>
             )}
           </AnimatePresence>
         </div>
