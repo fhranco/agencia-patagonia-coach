@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ClipboardCheck, ArrowRight, BarChart3, ShieldCheck, Zap, MessageSquare, Target, Activity, FileText } from 'lucide-react';
 
 const questions = [
-  // DIMENSIÓN 1: ARQUITECTURA & DATOS
+  // DIMENSIÓN 1: FLUJO DE TRABAJO DIARIO
   {
     id: 1,
-    title: "¿Cuál es el sector principal de su ecosistema?",
+    title: "¿Cuál es el sector principal donde su equipo opera hoy?",
     options: [
       { text: "Turismo de Lujo / Intereses Especiales", sector: "tourism", score: 20 },
       { text: "Industria / Logística / Energía", sector: "industry", score: 20 },
@@ -15,176 +15,176 @@ const questions = [
   },
   {
     id: 2,
-    title: "¿Posee un repositorio centralizado de datos (Single Source of Truth)?",
+    title: "¿Cómo se entera su equipo cuando un cliente nuevo tiene interés?",
     options: [
-      { text: "Datos fragmentados en múltiples plataformas", score: 5 },
-      { text: "CRM básico con integraciones limitadas", score: 15 },
-      { text: "Data Warehouse unificado y estructurado", score: 30 }
+      { text: "Revisamos manualmente WhatsApp o correos", score: 5 },
+      { text: "Llega una notificación pero no hay registro", score: 15 },
+      { text: "El sistema lo asigna y registra automáticamente", score: 30 }
     ]
   },
   {
     id: 3,
-    title: "¿Cómo se sincronizan sus datos operativos con su marketing?",
+    title: "¿Cuántas veces deben copiar y pegar datos antes de concretar una venta?",
     options: [
-      { text: "Carga manual de bases de datos", score: 5 },
-      { text: "Sincronización vía Webhooks o APIs básicas", score: 15 },
-      { text: "Fusión bidireccional en tiempo real", score: 30 }
+      { text: "Varias veces en distintos archivos (Excel/Word)", score: 5 },
+      { text: "Una vez, pero el proceso es manual", score: 15 },
+      { text: "Cero, los datos fluyen solos entre sistemas", score: 30 }
     ]
   },
   {
     id: 4,
-    title: "¿Cuál es el nivel de salud de su base de contactos actual?",
+    title: "Si hoy usted no está, ¿su equipo sabe exactamente qué hacer con un lead?",
     options: [
-      { text: "Baja tasa de apertura y datos desactualizados", score: 5 },
-      { text: "Segmentación básica por compras anteriores", score: 15 },
-      { text: "Segmentación predictiva basada en comportamiento", score: 30 }
+      { text: "No, dependen de mis instrucciones directas", score: 5 },
+      { text: "Tienen una idea general pero no un protocolo", score: 15 },
+      { text: "Hay un flujo automático que los guía paso a paso", score: 30 }
     ]
   },
   {
     id: 5,
-    title: "¿Sus activos digitales son propiedad soberana o dependen de terceros?",
+    title: "¿Cómo se ve el final del día en su oficina?",
     options: [
-      { text: "Dependencia total de Marketplaces / Redes", score: 5 },
-      { text: "Híbrido con plataforma propia limitada", score: 15 },
-      { text: "Ecosistema propietario de alta resiliencia", score: 30 }
+      { text: "Caos de mensajes, papeles y tareas pendientes", score: 5 },
+      { text: "Ordenado pero con mucho trabajo manual hecho", score: 15 },
+      { text: "Sistemas corriendo solos y reportes listos", score: 30 }
     ]
   },
-  // DIMENSIÓN 2: INTELIGENCIA ARTIFICIAL
+  // DIMENSIÓN 2: COMUNICACIÓN Y CONTENIDO
   {
     id: 6,
-    title: "¿Utiliza modelos de lenguaje (LLMs) para la creación de contenido?",
+    title: "¿Cuánto tiempo le toma a su equipo crear y subir contenido hoy?",
     options: [
-      { text: "Uso esporádico y manual", score: 5 },
-      { text: "Uso asistido con Prompts estructurados", score: 15 },
-      { text: "Flujos de contenido 100% asistidos por IA", score: 30 }
+      { text: "Horas o días de diseño y redacción manual", score: 5 },
+      { text: "Usamos plantillas pero es un proceso lento", score: 15 },
+      { text: "Minutos, asistidos por sistemas de IA entrenados", score: 30 }
     ]
   },
   {
     id: 7,
-    title: "¿Ha entrenado una IA con el tono y datos de su propia marca?",
+    title: "¿Cómo responden a las dudas frecuentes de sus clientes?",
     options: [
-      { text: "No, usamos IA genérica", score: 5 },
-      { text: "Estamos en fase de entrenamiento", score: 15 },
-      { text: "IA Personalizada operativa en producción", score: 30 }
+      { text: "Escribimos la misma respuesta una y otra vez", score: 5 },
+      { text: "Copiamos y pegamos desde un documento", score: 15 },
+      { text: "Una IA entrenada responde por nosotros 24/7", score: 30 }
     ]
   },
   {
     id: 8,
-    title: "¿Aplica IA Generativa para activos visuales o catálogos?",
+    title: "Si un cliente escribe a las 3 AM, ¿qué sucede?",
     options: [
-      { text: "Stock genérico o fotos tradicionales", score: 5 },
-      { text: "Retoque asistido por IA", score: 15 },
-      { text: "Generación completa de activos visuales de élite", score: 30 }
+      { text: "Nada hasta que alguien despierte", score: 5 },
+      { text: "Un mensaje automático que pide esperar", score: 15 },
+      { text: "Una IA resuelve sus dudas y lo pre-vende", score: 30 }
     ]
   },
   {
     id: 9,
-    title: "¿Su equipo utiliza agentes de IA para tareas administrativas?",
+    title: "¿Cómo aseguran que el tono de marca sea el mismo en cada mensaje?",
     options: [
-      { text: "Cero integración de agentes", score: 5 },
-      { text: "Uso de bots básicos de respuesta", score: 15 },
-      { text: "Agentes autónomos para flujos de trabajo", score: 30 }
+      { text: "Depende del ánimo de quien responda", score: 5 },
+      { text: "Tratamos de seguir una pauta básica", score: 15 },
+      { text: "La IA está entrenada con nuestro ADN exacto", score: 30 }
     ]
   },
   {
     id: 10,
-    title: "¿Cómo califica la cultura de 'IA-First' en su organización?",
+    title: "¿Cuánto esfuerzo requiere actualizar sus precios o catálogo?",
     options: [
-      { text: "Resistencia o desconocimiento total", score: 5 },
-      { text: "Adopción temprana por algunos líderes", score: 20 },
-      { text: "ADN tecnológico en todos los niveles", score: 30 }
+      { text: "Un trabajo manual agotador página por página", score: 5 },
+      { text: "Actualizamos una base y replicamos a mano", score: 15 },
+      { text: "Se sincroniza automáticamente en todo el ecosistema", score: 30 }
     ]
   },
-  // DIMENSIÓN 3: AUTOMATIZACIÓN DE DEMANDA
+  // DIMENSIÓN 3: SEGUIMIENTO Y VENTAS
   {
     id: 11,
-    title: "¿Cuál es el tiempo de respuesta promedio ante un Lead?",
+    title: "¿Cómo saben si un vendedor está haciendo bien su trabajo?",
     options: [
-      { text: "Más de 12 horas", score: 5 },
-      { text: "Menos de 1 hora (Esfuerzo humano)", score: 15 },
-      { text: "Inmediato (Segundos vía IA)", score: 30 }
+      { text: "Por la 'sensación' de cuánto dinero entra", score: 5 },
+      { text: "Revisando reportes manuales semanales", score: 15 },
+      { text: "Dashboard en tiempo real con datos exactos", score: 30 }
     ]
   },
   {
     id: 12,
-    title: "¿Posee embudos de venta automatizados (Funneling)?",
+    title: "¿Qué pasa con los clientes que consultaron pero no compraron?",
     options: [
-      { text: "Venta directa lineal únicamente", score: 5 },
-      { text: "Embudo básico con seguimiento por email", score: 15 },
-      { text: "Ecosistema de conversión dinámico y multi-paso", score: 30 }
+      { text: "Se pierden en el olvido", score: 5 },
+      { text: "Intentamos llamarlos si nos acordamos", score: 15 },
+      { text: "El sistema les hace seguimiento automático", score: 30 }
     ]
   },
   {
     id: 13,
-    title: "¿Utiliza Lead Scoring para priorizar sus ventas?",
+    title: "¿Cómo decide a qué cliente llamar primero?",
     options: [
-      { text: "Tratamos a todos los leads por igual", score: 5 },
-      { text: "Calificación manual post-llamada", score: 15 },
-      { text: "Score automático basado en interacciones", score: 30 }
+      { text: "Al que escribió último", score: 5 },
+      { text: "Al que me parece más importante", score: 15 },
+      { text: "Al que el sistema marcó con mayor interés", score: 30 }
     ]
   },
   {
     id: 14,
-    title: "¿Cómo gestiona las reseñas y la reputación online?",
+    title: "¿Cómo capturan las buenas experiencias de sus clientes?",
     options: [
-      { text: "Reactivo: solo si hay quejas", score: 5 },
-      { text: "Solicitud manual a clientes felices", score: 15 },
-      { text: "Sistema automático de captura de autoridad", score: 30 }
+      { text: "Esperamos que nos recomienden por voluntad propia", score: 5 },
+      { text: "Pedimos una reseña de vez en cuando a mano", score: 15 },
+      { text: "El sistema pide y publica la reseña automáticamente", score: 30 }
     ]
   },
   {
     id: 15,
-    title: "¿Su publicidad online está conectada con su CRM?",
+    title: "¿Qué tan difícil es saber cuánto le costó conseguir el último cliente?",
     options: [
-      { text: "Datos desconectados (Solo vemos clics)", score: 5 },
-      { text: "Importación manual de leads", score: 15 },
-      { text: "Cierre de bucle: Pauta optimizada por ventas reales", score: 30 }
+      { text: "Imposible de calcular con precisión", score: 5 },
+      { text: "Hacemos un cálculo aproximado a fin de mes", score: 15 },
+      { text: "Lo sé al centavo en tiempo real", score: 30 }
     ]
   },
-  // DIMENSIÓN 4: SOBERANÍA OPERATIVA
+  // DIMENSIÓN 4: ESCALABILIDAD Y FUTURO
   {
     id: 16,
-    title: "¿Qué tan escalable es su modelo de entrega de servicio?",
+    title: "Si mañana duplica sus clientes, ¿qué pasaría?",
     options: [
-      { text: "Dependencia total de Horas Hombre", score: 5 },
-      { text: "Procesos semi-estandarizados", score: 20 },
-      { text: "Escalabilidad total vía sistemas propietarios", score: 30 }
+      { text: "Colapsamos por falta de manos", score: 5 },
+      { text: "Tendría que contratar mucha gente rápido", score: 15 },
+      { text: "El sistema procesa el doble sin esfuerzo extra", score: 30 }
     ]
   },
   {
     id: 17,
-    title: "¿Su equipo cuenta con capacitación técnica recurrente?",
+    title: "¿Cómo aprende su equipo nuevas formas de trabajar?",
     options: [
-      { text: "Capacitación nula o esporádica", score: 5 },
-      { text: "Capacitación por proyectos específicos", score: 15 },
-      { text: "Protocolo de maestría continua activado", score: 30 }
+      { text: "Ensayando y errando por su cuenta", score: 5 },
+      { text: "Cuando tengo tiempo de enseñarles algo", score: 15 },
+      { text: "Tenemos un protocolo de formación continua", score: 30 }
     ]
   },
   {
     id: 18,
-    title: "¿Cómo monitorea el ROI de sus acciones digitales?",
+    title: "¿Dónde están guardados hoy los datos de sus clientes?",
     options: [
-      { text: "Por 'sensación' de ventas", score: 5 },
-      { text: "Reportes mensuales estáticos", score: 15 },
-      { text: "Dashboard de Inteligencia en tiempo real", score: 30 }
+      { text: "En el WhatsApp personal de cada vendedor", score: 5 },
+      { text: "En una cuenta de correo o archivo local", score: 15 },
+      { text: "En un activo digital que pertenece a la empresa", score: 30 }
     ]
   },
   {
     id: 19,
-    title: "¿Posee protocolos de seguridad y respaldo de datos?",
+    title: "¿Cuántas tareas repetitivas hace su equipo al día?",
     options: [
-      { text: "Confiamos en las nubes de terceros", score: 10 },
-      { text: "Respaldos manuales periódicos", score: 20 },
-      { text: "Arquitectura resiliente con redundancia", score: 30 }
+      { text: "La mayor parte del día es 'trabajo hormiga'", score: 5 },
+      { text: "Algunas tareas están estandarizadas", score: 15 },
+      { text: "Casi nada, el sistema hace el trabajo repetitivo", score: 30 }
     ]
   },
   {
     id: 20,
-    title: "¿Cuál es su meta de crecimiento para este año?",
+    title: "¿Cuál es su mayor freno para crecer hoy?",
     options: [
-      { text: "Mantener la estabilidad actual", score: 10 },
-      { text: "Crecimiento lineal (10-30%)", score: 20 },
-      { text: "Escalado exponencial (+100%) vía sistemas", score: 30 }
+      { text: "Me falta tiempo y organización", score: 10 },
+      { text: "Me falta personal capacitado", score: 20 },
+      { text: "Me faltan sistemas que escalen mi esfuerzo", score: 30 }
     ]
   }
 ];
