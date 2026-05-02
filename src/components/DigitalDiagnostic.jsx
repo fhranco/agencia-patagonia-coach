@@ -87,6 +87,7 @@ const DigitalDiagnostic = () => {
   const [currentSector, setCurrentSector] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [dimensionScores, setDimensionScores] = useState({ flow: 0, comm: 0, sales: 0, scale: 0 });
+  const [answers, setAnswers] = useState([]); // Store all 20 answers
   const [leadData, setLeadData] = useState({ nombre: '', email: '', whatsapp: '' });
 
   const handleSectorSelect = (sector) => {
@@ -94,7 +95,10 @@ const DigitalDiagnostic = () => {
     setStep('audit');
   };
 
-  const handleOptionSelect = (score) => {
+  const handleOptionSelect = (optionText, score) => {
+    // Store answer for Franco
+    setAnswers(prev => [...prev, { q: sectorQuestions[currentSector][currentQuestion].title, a: optionText }]);
+
     // Determine dimension
     let dim = 'flow';
     if (currentQuestion >= 5 && currentQuestion < 10) dim = 'comm';
@@ -156,6 +160,9 @@ const DigitalDiagnostic = () => {
       formData.append('score', totalScore);
       formData.append('sector', currentSector);
       formData.append('diagnostico', report.title);
+      // Send all raw answers as a JSON string
+      formData.append('full_audit_data', JSON.stringify(answers));
+      
       fetch('/mail.php', { method: 'POST', body: formData });
     } catch (e) {}
 
@@ -222,7 +229,7 @@ const DigitalDiagnostic = () => {
                 <h3 className="text-3xl md:text-4xl font-heading font-light text-white leading-tight">{sectorQuestions[currentSector][currentQuestion].title}</h3>
                 <div className="grid gap-4">
                   {sectorQuestions[currentSector][currentQuestion].options.map((opt, idx) => (
-                    <button key={idx} onClick={() => handleOptionSelect(opt.score)} className="w-full text-left p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-patagonia-gold/30 hover:bg-patagonia-gold/5 transition-all group flex justify-between items-center">
+                    <button key={idx} onClick={() => handleOptionSelect(opt.text, opt.score)} className="w-full text-left p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-patagonia-gold/30 hover:bg-patagonia-gold/5 transition-all group flex justify-between items-center">
                       <span className="text-lg font-light text-patagonia-secondary group-hover:text-white">{opt.text}</span>
                       <ArrowRight className="w-5 h-5 text-patagonia-gold opacity-0 group-hover:opacity-100 transition-all" />
                     </button>
@@ -274,6 +281,13 @@ const DigitalDiagnostic = () => {
                   <div className="space-y-4 text-center md:text-left">
                     <h3 className="text-3xl md:text-5xl font-heading font-light text-white leading-tight">Estado: <span className={`italic ${labels.color}`}>{report.title}</span></h3>
                     <p className="text-patagonia-secondary font-light italic leading-relaxed text-lg">"{report.narrative}"</p>
+                    
+                    <div className="mt-6 p-4 rounded-2xl bg-patagonia-gold/10 border border-patagonia-gold/20 flex items-start gap-4">
+                      <FileText className="w-5 h-5 text-patagonia-gold flex-shrink-0 mt-1" />
+                      <p className="text-xs text-patagonia-gold font-light leading-relaxed">
+                        <span className="font-bold">INFORME EXTENDIDO EN PROCESO:</span> Nuestro motor de inteligencia está generando su Reporte Táctico Detallado (20+ páginas). Lo recibirá en su email en menos de 24 horas.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
