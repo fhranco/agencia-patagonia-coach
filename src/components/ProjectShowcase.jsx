@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, ArrowRight, ShieldCheck, Zap, Globe, Cpu } from 'lucide-react';
 
 const ProjectShowcase = () => {
