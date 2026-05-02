@@ -88,14 +88,14 @@ const ZonaMagallanes = () => {
             <h2 className="text-5xl md:text-8xl font-heading font-light tracking-tight leading-[0.9]">Arquitectura Digital para un <br/><span className="italic text-patagonia-gold">Continente Digital.</span></h2>
           </div>
 
-          <div className="w-full aspect-[21/9] relative group rounded-[4rem] overflow-hidden border border-white/5">
+          <div className="w-full max-w-5xl aspect-square relative group rounded-[4rem] overflow-hidden border border-white/5 bg-black/60 shadow-[0_0_100px_rgba(0,0,0,0.5)]">
             <div className="absolute inset-0 bg-patagonia-gold/5 blur-[120px] rounded-full group-hover:bg-patagonia-gold/10 transition-all duration-1000" />
             <img 
               src="/images/magallanes-authority.png" 
               alt="Unified Magallanes Region Strategic Map" 
-              className="w-full h-full object-cover opacity-80 scale-100 group-hover:scale-105 transition-transform duration-[12000ms] ease-out"
+              className="w-full h-full object-contain p-8 opacity-90 scale-100 group-hover:scale-105 transition-transform duration-[12000ms] ease-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-patagonia-black via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-patagonia-black/40 via-transparent to-transparent pointer-events-none" />
           </div>
 
           <div className="grid md:grid-cols-3 gap-16 max-w-5xl">
