@@ -151,6 +151,48 @@ const TestimonialCarousel = () => {
       author: "Andrés B.",
       role: "Estratega de Marca, Ecosistema Digital",
       avatar: "AB"
+    },
+    {
+      text: "Nuestros sistemas de reserva y los tours 360 han triplicado las consultas directas. Una inversión que se pagó sola en el primer mes de temporada.",
+      author: "Patricia M.",
+      role: "Propietaria, Lodge Altura Natales",
+      avatar: "PM"
+    },
+    {
+      text: "En Tierra del Fuego necesitábamos una agencia que entendiera la industria. Sus sistemas para monitoreo energético son robustos y confiables.",
+      author: "Jorge R.",
+      role: "Gerente Técnico, Energía Fueguina",
+      avatar: "JR"
+    },
+    {
+      text: "La calidad de los renders e identidad visual con IA nos permitió vender el 80% del proyecto inmobiliario antes de la primera piedra.",
+      author: "Elena V.",
+      role: "Directora Comercial, Inmobiliaria Austral",
+      avatar: "EV"
+    },
+    {
+      text: "Implementar IA para nuestra atención al cliente fue la mejor decisión del año. El chatbot resuelve el 90% de las dudas en segundos.",
+      author: "Ricardo T.",
+      role: "CEO, Retail Magallánico",
+      avatar: "RT"
+    },
+    {
+      text: "Nuestra tienda online finalmente escala. El SEO local en Punta Arenas nos puso por encima de la competencia nacional en búsquedas clave.",
+      author: "Sofía L.",
+      role: "Fundadora, E-commerce Boutique",
+      avatar: "SL"
+    },
+    {
+      text: "La capacitación de la Academia en IA Aplicada transformó a nuestro equipo de marketing de reactivo a proactivo. Imprescindible.",
+      author: "Manuel P.",
+      role: "Director de RRHH, Holding Regional",
+      avatar: "MP"
+    },
+    {
+      text: "Para el turismo de intereses especiales, necesitábamos un enfoque de nicho. PatagoniaCoach diseñó el embudo perfecto para expediciones extremas.",
+      author: "Valentina D.",
+      role: "Guía Senior, Expediciones Tierra del Fuego",
+      avatar: "VD"
     }
   ];
 
