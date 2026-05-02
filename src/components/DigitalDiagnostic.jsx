@@ -1,15 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ClipboardCheck, ArrowRight, BarChart3, ShieldCheck, Zap, MessageSquare } from 'lucide-react';
+import { ClipboardCheck, ArrowRight, BarChart3, ShieldCheck, Zap, MessageSquare, Target, Activity, FileText } from 'lucide-react';
 
 const questions = [
   {
     id: 1,
-    title: "¿Cuál es el tamaño actual de su ecosistema?",
+    title: "¿Cuál es el sector principal de su ecosistema?",
     options: [
-      { text: "Individual / Profesional Independiente", score: 10 },
-      { text: "PYME en crecimiento (5-20 personas)", score: 20 },
-      { text: "Gran Empresa / Corporación (+50 personas)", score: 30 }
+      { text: "Turismo de Lujo / Intereses Especiales", sector: "tourism", score: 20 },
+      { text: "Industria / Logística / Energía", sector: "industry", score: 20 },
+      { text: "Retail / Servicios Profesionales B2B", sector: "retail", score: 20 }
     ]
   },
   {
@@ -47,63 +47,21 @@ const questions = [
       { text: "Entre 1 y 4 horas (Vía humana)", score: 15 },
       { text: "Inmediata e IA-Incentivada (24/7)", score: 30 }
     ]
-  },
-  {
-    id: 6,
-    title: "¿Cuán escalable es su modelo de entrega actual?",
-    options: [
-      { text: "Dependencia 100% de Horas Hombre (HH)", score: 5 },
-      { text: "Procesos semi-estandarizados", score: 20 },
-      { text: "Escalabilidad total vía sistemas y software", score: 30 }
-    ]
-  },
-  {
-    id: 7,
-    title: "¿Qué porcentaje de ventas proviene de canales digitales?",
-    options: [
-      { text: "Menos del 10% (Principalmente referidos)", score: 10 },
-      { text: "Entre 10% y 40% (Crecimiento inestable)", score: 20 },
-      { text: "Más del 50% (Motor de adquisición masiva)", score: 30 }
-    ]
-  },
-  {
-    id: 8,
-    title: "¿Cuál es la cultura de innovación de su equipo?",
-    options: [
-      { text: "Resistencia al cambio tecnológico", score: 5 },
-      { text: "Aprendizaje autodidacta por necesidad", score: 15 },
-      { text: "Mentalidad 'Exponencial' y capacitación constante", score: 30 }
-    ]
-  },
-  {
-    id: 9,
-    title: "¿Invierten actualmente en I+D o Software especializado?",
-    options: [
-      { text: "Inversión nula o reactiva", score: 5 },
-      { text: "Inversión básica para operar", score: 15 },
-      { text: "Inversión estratégica para dominar el mercado", score: 30 }
-    ]
-  },
-  {
-    id: 10,
-    title: "¿Cuál es su prioridad estratégica para los próximos 6 meses?",
-    options: [
-      { text: "Sobrevivir / Ordenar el caos interno", score: 10 },
-      { text: "Aumentar Leads / Ventas rápidamente", score: 20 },
-      { text: "Automatización total y expansión masiva", score: 30 }
-    ]
   }
 ];
 
 const DigitalDiagnostic = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
+  const [selectedSector, setSelectedSector] = useState('general');
   const [isFinished, setIsFinished] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
   const [showResult, setShowResult] = useState(false);
-  const [leadData, setLeadData] = useState({ nombre: '', whatsapp: '' });
+  const [leadData, setLeadData] = useState({ nombre: '', email: '', whatsapp: '' });
 
-  const handleOptionSelect = (score) => {
-    const nextScore = totalScore + score;
+  const handleOptionSelect = (option) => {
+    if (option.sector) setSelectedSector(option.sector);
+    const nextScore = totalScore + option.score;
     setTotalScore(nextScore);
     
     if (currentStep < questions.length - 1) {
@@ -115,99 +73,70 @@ const DigitalDiagnostic = () => {
 
   const handleLeadSubmit = async (e) => {
     e.preventDefault();
+    setIsProcessing(true);
     
-    // Anti-spam check
-    if (leadData._honeypot) return;
+    // Simulate audit processing
+    setTimeout(() => {
+      setIsProcessing(false);
+      setShowResult(true);
+    }, 3000);
 
+    // Send data to mail.php (Background)
     try {
       const formData = new FormData();
       formData.append('nombre', leadData.nombre);
+      formData.append('email', leadData.email);
       formData.append('whatsapp', leadData.whatsapp);
       formData.append('score', totalScore);
-      formData.append('form_type', 'Diagnóstico Digital');
-      formData.append('_honeypot', leadData._honeypot || '');
+      formData.append('sector', selectedSector);
+      formData.append('form_type', 'Auditoría Estratégica');
       
-      await fetch('/mail.php', {
-        method: 'POST',
-        body: formData
-      });
-    } catch (error) {
-      console.error('Error sending diagnostic lead:', error);
-    }
-
-    setShowResult(true);
-    // Track conversion in Analytics
-    if (typeof window.gtag !== 'undefined') {
-        window.gtag('event', 'unlock_diagnostic', {
-          'nombre': leadData.nombre,
-          'whatsapp': leadData.whatsapp,
-          'score': totalScore
-        });
-    }
+      fetch('/mail.php', { method: 'POST', body: formData });
+    } catch (e) { console.error(e); }
   };
 
-  const getResult = () => {
-    if (totalScore < 130) return {
-      status: "Ecosistema Emergente",
-      message: "Su negocio tiene un potencial de digitalización gigante. Actualmente está perdiendo eficiencia y oportunidades que la IA podría capturar.",
-      focus: "Recomendación: Iniciarse en el 'Patagonia Protocol: Architecture' para diseñar su base digital.",
-      color: "text-patagonia-red"
+  const getRoadmap = () => {
+    const roadmaps = {
+      tourism: {
+        steps: ["Implementar Tour Virtual 360º", "Automatizar Reservas via WhatsApp", "SEO Global de Nicho"],
+        priority: "Visibilidad y Conversión Instantánea"
+      },
+      industry: {
+        steps: ["Digitalización de Logística", "Telemetría de Datos IA", "Soberanía de Infraestructura"],
+        priority: "Eficiencia Operativa y Control"
+      },
+      retail: {
+        steps: ["Portal B2B de Alta Velocidad", "Fusión CRM + IA", "Marketing de Retención Automático"],
+        priority: "Escalabilidad de Ventas"
+      },
+      general: {
+        steps: ["Arquitectura Web Pro", "Integración de IA Básica", "Estrategia de Contenidos"],
+        priority: "Fundación Digital"
+      }
     };
-    if (totalScore < 230) return {
-      status: "Ecosistema en Proceso",
-      message: "Ya tiene bases digitales, pero falta 'Fusión'. Sus herramientas no están hablando entre sí para maximizar su rentabilidad.",
-      focus: "Recomendación: Integración táctica de IA y automatización de marketing B2B.",
-      color: "text-patagonia-cyan"
-    };
-    return {
-      status: "Ecosistema Avanzado",
-      message: "Está en la vanguardia. Para mantenerse como líder, necesita optimizar su IA actual y escalar de forma masiva.",
-      focus: "Recomendación: Mantenimiento de élite y expansión de flujos de trabajo con 'Evolution'.",
-      color: "text-white"
-    };
+    return roadmaps[selectedSector] || roadmaps.general;
   };
 
-  const restart = () => {
-    setCurrentStep(0);
-    setTotalScore(0);
-    setIsFinished(false);
-    setShowResult(false);
-  };
-
-  const result = getResult();
-  const whatsappMsg = `Hola Franco! Acabo de completar el Diagnóstico Digital en la web. Mi ecosistema es: *${result.status}*. Me gustaría agendar la sesión estratégica de 15 min.`;
-  const whatsappUrl = `https://wa.me/56995684198?text=${encodeURIComponent(whatsappMsg)}`;
+  const scorePercentage = Math.min((totalScore / 140) * 100, 100);
+  const roadmap = getRoadmap();
 
   return (
-    <section id="diagnostic" className="w-full relative bg-patagonia-black pt-48 pb-32 overflow-hidden border-t border-white/5">
-      {/* Visual Section Cut / Divider */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-      
-      {/* Background decoration */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.03)_0%,transparent_60%)]" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-patagonia-gold/5 blur-[160px] rounded-full" />
-      </div>
-
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6"
-          >
-            <ClipboardCheck className="w-4 h-4 text-patagonia-red" />
-            <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Diagnóstico de Ecosistema v1.0</span>
-          </motion.div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 italic">
-            Mide tu <span className="text-patagonia-cyan">Potencial Digital.</span>
+    <section id="diagnostico" className="py-40 px-6 bg-patagonia-black relative overflow-hidden border-t border-white/5">
+      <div className="max-w-4xl mx-auto relative z-10">
+        <div className="text-center mb-20 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-patagonia-gold/10 border border-patagonia-gold/20 mb-4">
+            <Activity className="w-4 h-4 text-patagonia-gold" />
+            <span className="text-[10px] uppercase tracking-[0.3em] font-black text-patagonia-gold">Auditoría Táctica de Madurez Digital</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-heading font-light tracking-tight text-white italic">
+            Mide tu <span className="text-patagonia-gold">Potencial.</span>
           </h2>
-          <p className="text-white/40 text-lg font-light max-w-2xl mx-auto">
-            Descubre en 60 segundos el estado real de tu empresa frente a la IA.
+          <p className="text-patagonia-secondary text-lg font-light max-w-xl mx-auto leading-relaxed">
+            Obtén un reporte de madurez digital personalizado y descubre las brechas críticas de tu ecosistema en Magallanes.
           </p>
         </div>
 
-        <div className="glass-card min-h-[400px] flex flex-col justify-center p-8 md:p-16 border-white/10 bg-white/[0.02] backdrop-blur-3xl relative">
+        <div className="relative min-h-[500px] bg-patagonia-surface/10 rounded-[4rem] border border-white/5 p-8 md:p-16 backdrop-blur-3xl overflow-hidden shadow-2xl">
           <AnimatePresence mode="wait">
             {!isFinished ? (
               <motion.div
@@ -215,118 +144,151 @@ const DigitalDiagnostic = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                className="space-y-10"
+                className="space-y-12"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-patagonia-red text-xs font-bold tracking-widest uppercase">Pregunta {currentStep + 1} de {questions.length}</span>
-                  <div className="flex gap-1">
-                    {questions.map((_, i) => (
-                      <div key={i} className={`h-1 w-8 rounded-full transition-all ${i <= currentStep ? 'bg-patagonia-red' : 'bg-white/10'}`} />
-                    ))}
+                  <span className="text-[10px] uppercase tracking-widest text-white/20 font-bold">Protocolo {currentStep + 1} / {questions.length}</span>
+                  <div className="w-48 h-1 bg-white/5 rounded-full overflow-hidden">
+                    <motion.div 
+                      className="h-full bg-patagonia-gold" 
+                      initial={{ width: 0 }}
+                      animate={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
+                    />
                   </div>
                 </div>
-
-                <h3 className="text-2xl md:text-3xl font-bold italic">{questions[currentStep].title}</h3>
-
+                <h3 className="text-3xl md:text-4xl font-heading font-light text-white leading-tight">{questions[currentStep].title}</h3>
                 <div className="grid gap-4">
-                  {questions[currentStep].options.map((option, idx) => (
-                    <motion.button
+                  {questions[currentStep].options.map((opt, idx) => (
+                    <button
                       key={idx}
-                      whileHover={{ x: 10 }}
-                      onClick={() => handleOptionSelect(option.score)}
-                      className="group flex items-center justify-between p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-patagonia-cyan/50 hover:bg-patagonia-cyan/5 transition-all text-left"
+                      onClick={() => handleOptionSelect(opt)}
+                      className="w-full text-left p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-patagonia-gold/30 hover:bg-patagonia-gold/5 transition-all group flex justify-between items-center"
                     >
-                      <span className="text-lg font-light group-hover:text-patagonia-cyan transition-colors">{option.text}</span>
-                      <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all text-patagonia-cyan" />
-                    </motion.button>
+                      <span className="text-lg font-light text-patagonia-secondary group-hover:text-white transition-colors">{opt.text}</span>
+                      <ArrowRight className="w-5 h-5 text-patagonia-gold opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0" />
+                    </button>
                   ))}
+                </div>
+              </motion.div>
+            ) : isProcessing ? (
+              <motion.div
+                key="processing"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="flex flex-col items-center justify-center h-full text-center space-y-8 py-20"
+              >
+                <div className="relative w-24 h-24">
+                  <motion.div 
+                    className="absolute inset-0 border-2 border-patagonia-gold rounded-full"
+                    animate={{ scale: [1, 1.2, 1], opacity: [0.3, 1, 0.3] }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Zap className="w-10 h-10 text-patagonia-gold animate-pulse" />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="text-xl font-heading text-white">Generando Inteligencia...</h4>
+                  <p className="text-xs uppercase tracking-[0.4em] text-white/20 animate-pulse">Cruzando datos con estándares globales de la industria</p>
                 </div>
               </motion.div>
             ) : !showResult ? (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-center space-y-8"
+                key="lead"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center space-y-12"
               >
-                <div className="w-16 h-16 bg-patagonia-cyan/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <ShieldCheck className="w-8 h-8 text-patagonia-cyan" />
+                <div className="space-y-4">
+                  <div className="w-16 h-16 bg-patagonia-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <FileText className="w-8 h-8 text-patagonia-gold" />
+                  </div>
+                  <h3 className="text-4xl font-heading font-light text-white leading-tight">Su Diagnóstico está listo.</h3>
+                  <p className="text-patagonia-secondary max-w-md mx-auto font-light">Complete sus datos para desbloquear el **Reporte Estratégico Completo** y su Roadmap táctico personalizado.</p>
                 </div>
-                <h3 className="text-3xl font-bold">Diagnóstico Completado.</h3>
-                <p className="text-white/40 max-w-md mx-auto">Ingresa tus datos para desbloquear tu Reporte Estratégico y los pasos a seguir.</p>
-                
                 <form onSubmit={handleLeadSubmit} className="max-w-md mx-auto space-y-4">
-                    {/* Anti-spam Honeypot */}
-                    <input 
-                      type="text" 
-                      name="_honeypot" 
-                      style={{ display: 'none' }} 
-                      tabIndex="-1" 
-                      autoComplete="off" 
-                      onChange={(e) => setLeadData({...leadData, _honeypot: e.target.value})}
-                    />
-                    
-                    <input 
-                        required
-                        type="text" 
-                        placeholder="Nombre completo"
-                        className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:border-patagonia-cyan outline-none"
-                        value={leadData.nombre}
-                        onChange={(e) => setLeadData({...leadData, nombre: e.target.value})}
-                    />
-                    <input 
-                        required
-                        type="tel" 
-                        placeholder="WhatsApp (Ej: +569...)"
-                        className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:border-patagonia-cyan outline-none"
-                        value={leadData.whatsapp}
-                        onChange={(e) => setLeadData({...leadData, whatsapp: e.target.value})}
-                    />
-                    <button className="btn-primary w-full py-4 text-sm font-bold shadow-[0_0_30px_rgba(240,20,10,0.3)]">
-                        VER MI RESULTADO <ArrowRight className="inline ml-2 w-4 h-4" />
-                    </button>
-                    <p className="text-[10px] text-white/20 uppercase tracking-widest italic font-medium">Recibirás una copia de tu estrategia personalizada.</p>
+                  <input 
+                    required type="text" placeholder="Nombre completo" 
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-patagonia-gold outline-none text-white"
+                    onChange={(e) => setLeadData({...leadData, nombre: e.target.value})}
+                  />
+                  <input 
+                    required type="email" placeholder="Email corporativo" 
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-patagonia-gold outline-none text-white"
+                    onChange={(e) => setLeadData({...leadData, email: e.target.value})}
+                  />
+                  <input 
+                    required type="tel" placeholder="WhatsApp (Ej: +569...)" 
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-patagonia-gold outline-none text-white"
+                    onChange={(e) => setLeadData({...leadData, whatsapp: e.target.value})}
+                  />
+                  <button className="btn-primary w-full py-5 text-[10px] tracking-[0.3em] font-black shadow-[0_0_50px_rgba(212,175,55,0.2)]">
+                    DESBLOQUEAR MI REPORTE ESTRATÉGICO <ArrowRight className="inline ml-2 w-4 h-4" />
+                  </button>
+                  <p className="text-[10px] text-white/10 uppercase tracking-widest italic">Recibirá una copia digital protegida en su email.</p>
                 </form>
               </motion.div>
             ) : (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center space-y-10"
+                key="result"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="space-y-16"
               >
-                <div className="space-y-4">
-                  <div className="inline-block p-4 rounded-full bg-white/5 mb-4">
-                    <BarChart3 className="w-12 h-12 text-patagonia-red" />
-                  </div>
-                  <h3 className={`text-4xl font-bold italic ${result.color}`}>{result.status}</h3>
-                  <p className="text-xl text-white/70 max-w-xl mx-auto font-light leading-relaxed italic">
-                    {result.message}
-                  </p>
-                </div>
-
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 max-w-xl mx-auto">
-                    <div className="flex items-start gap-4 text-left">
-                        <Zap className="w-6 h-6 text-patagonia-cyan flex-shrink-0" />
-                        <p className="text-sm text-patagonia-cyan font-bold leading-relaxed italic">
-                            {result.focus}
-                        </p>
+                <div className="flex flex-col md:flex-row gap-12 items-center">
+                  <div className="relative w-48 h-48 flex-shrink-0">
+                    <svg className="w-full h-full transform -rotate-90">
+                      <circle cx="96" cy="96" r="88" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-white/5" />
+                      <motion.circle 
+                        cx="96" cy="96" r="88" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-patagonia-gold"
+                        strokeDasharray={552.92}
+                        initial={{ strokeDashoffset: 552.92 }}
+                        animate={{ strokeDashoffset: 552.92 - (552.92 * scorePercentage) / 100 }}
+                        transition={{ duration: 2, ease: "easeOut" }}
+                      />
+                    </svg>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <span className="text-4xl font-heading font-light text-white">{Math.round(scorePercentage)}%</span>
+                      <span className="text-[8px] uppercase tracking-widest text-patagonia-gold font-bold">Madurez Digital</span>
                     </div>
+                  </div>
+                  <div className="space-y-6 text-left">
+                    <h3 className="text-3xl md:text-5xl font-heading font-light text-white leading-tight">Estado: <span className="italic text-patagonia-gold">{scorePercentage > 70 ? "Ecosistema de Élite" : scorePercentage > 40 ? "Ecosistema en Desarrollo" : "Ecosistema Crítico"}</span></h3>
+                    <p className="text-patagonia-secondary font-light text-lg italic leading-relaxed">
+                      "Su organización cuenta con una base funcional, pero requiere una **unificación arquitectónica** para evitar fugas de eficiencia en el sector de {selectedSector}."
+                    </p>
+                  </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                  <a 
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-8 py-4 bg-[#25D366] text-white rounded-full font-bold hover:scale-105 transition-all shadow-[0_0_30px_rgba(37,211,102,0.3)] flex items-center justify-center gap-2"
-                  >
-                    SESIÓN ESTRATÉGICA YA <MessageSquare className="w-5 h-5" />
-                  </a>
-                  <button 
-                    onClick={restart}
-                    className="px-8 py-4 bg-white/5 text-white/50 hover:text-white rounded-full font-medium transition-all"
-                  >
-                    Repetir Test
-                  </button>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/5 space-y-6">
+                    <div className="flex items-center gap-3">
+                      <Target className="w-5 h-5 text-patagonia-gold" />
+                      <h4 className="text-sm font-bold uppercase tracking-widest text-white">Prioridad Táctica</h4>
+                    </div>
+                    <p className="text-xl font-heading font-light text-patagonia-gold leading-tight">{roadmap.priority}</p>
+                    <ul className="space-y-4 pt-4 border-t border-white/5">
+                      {roadmap.steps.map((step, i) => (
+                        <li key={i} className="flex items-center gap-3 text-sm text-patagonia-secondary">
+                          <div className="w-1 h-1 rounded-full bg-patagonia-gold" />
+                          {step}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="flex flex-col justify-center items-center p-8 rounded-[2.5rem] bg-patagonia-gold text-black text-center space-y-6">
+                    <ShieldCheck className="w-12 h-12" />
+                    <h4 className="text-2xl font-heading font-bold leading-tight">¿Listo para ejecutar este Roadmap?</h4>
+                    <a 
+                      href={`https://wa.me/56995684198?text=Hola Franco! Acabo de obtener mi reporte de madurez (${Math.round(scorePercentage)}%). Mi prioridad es ${roadmap.priority}. Agendemos la sesión estratégica.`}
+                      target="_blank" rel="noopener noreferrer"
+                      className="w-full py-4 bg-black text-white rounded-full font-black text-[10px] tracking-[0.3em] uppercase hover:scale-105 transition-all"
+                    >
+                      AGENDAR SESIÓN DE DESPLIEGUE
+                    </a>
+                    <p className="text-[9px] uppercase font-bold tracking-widest opacity-60">Sesión de 15 minutos sin costo para Magallanes.</p>
+                  </div>
                 </div>
               </motion.div>
             )}
