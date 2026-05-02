@@ -498,8 +498,22 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                   </div>
                 </div>
 
-                <div className="pt-8 border-t border-white/5 flex justify-center">
-                   <button onClick={() => setStep('sector')} className="text-white/20 text-[10px] tracking-[0.3em] uppercase hover:text-patagonia-gold transition-all font-bold">Reiniciar Auditoría Estratégica</button>
+                <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-center gap-8">
+                   <button onClick={() => setStep('sector')} className="text-white/20 text-[10px] tracking-[0.3em] uppercase hover:text-patagonia-gold transition-all font-bold">Reiniciar Auditoría</button>
+                   <button 
+                    onClick={() => {
+                      if (isModal) {
+                        // This will be handled by a prop or just navigating home
+                        window.location.href = '/';
+                      } else {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
+                    }}
+                    className="flex items-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px] tracking-[0.3em] uppercase hover:bg-white/10 hover:text-white transition-all font-black"
+                   >
+                     <Home className="w-3 h-3" />
+                     Finalizar y Volver
+                   </button>
                 </div>
               </motion.div>
             )}
