@@ -62,36 +62,36 @@ const LeadCommand = ({ isModal = false, onClose }) => {
 
 
   return (
-    <section className={isModal ? "" : "section-container"} id={isModal ? "" : "contacto"}>
-      <div className={`grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-20 items-center ${isModal ? 'p-0' : 'bg-patagonia-surface/30 rounded-3xl md:rounded-[4rem] p-8 md:p-20 border border-white/5'} relative overflow-hidden`}>
+    <section className={isModal ? "" : "section-container py-32 md:py-48"} id={isModal ? "" : "contacto"}>
+      <div className={`grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-16 lg:gap-24 items-center ${isModal ? 'p-0' : 'bg-patagonia-surface/20 rounded-3xl md:rounded-[5rem] p-10 md:p-24 border border-white/5'} relative overflow-hidden`}>
         {/* Subtle Gold Glow */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-patagonia-gold/5 blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-patagonia-gold/5 blur-[150px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         
-        <div className="space-y-10 relative z-10">
-          <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-patagonia-gold/10 border border-patagonia-gold/20 text-patagonia-gold text-[10px] font-heading tracking-[0.3em] uppercase font-bold">
-            <ShieldCheck className="w-4 h-4" /> Protocolo de Admisión Selectiva
+        <div className="space-y-12 relative z-10">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-patagonia-gold/5 border border-patagonia-gold/10 text-patagonia-gold text-[9px] font-heading tracking-[0.4em] uppercase font-black">
+            <ShieldCheck className="w-4 h-4 opacity-50" /> Protocolo de Admisión Selectiva
           </div>
-          <h2 className="text-4xl md:text-5xl font-heading font-light leading-[1.1] tracking-tight text-white/90 text-balance">
+          <h2 className="text-5xl md:text-7xl font-heading font-light leading-[1] tracking-tight text-white/90 text-balance">
             SOLICITUD DE <br/>
-            <span className="italic text-patagonia-gold">AUDITORÍA TÁCTICA</span>.
+            <span className="italic text-patagonia-gold">AUDITORÍA.</span>
           </h2>
-          <p className="text-xl text-patagonia-secondary font-light leading-relaxed max-w-lg">
-            No somos una agencia masiva; somos una unidad de intervención estratégica. Evaluamos solicitudes de empresas con visión de liderazgo en <strong className="text-white">Magallanes</strong> y proyección global.
+          <p className="text-xl md:text-2xl text-patagonia-secondary font-light leading-relaxed max-w-xl">
+            Iniciamos procesos de transformación solo con organizaciones que buscan <span className="text-white font-normal">liderazgo absoluto</span> en su nicho.
           </p>
           
-          <div className="pt-12 grid grid-cols-2 gap-12 border-t border-white/5">
+          <div className="pt-16 grid grid-cols-2 gap-16 border-t border-white/5 max-w-md">
             <div>
-              <p className="text-4xl font-heading font-light text-patagonia-white tracking-tighter">03</p>
-              <p className="text-[9px] text-patagonia-gold uppercase tracking-[0.5em] mt-3 font-black">Cupos Senior Disponibles</p>
+              <p className="text-5xl font-heading font-light text-patagonia-white tracking-tighter">03</p>
+              <p className="text-[8px] text-patagonia-gold uppercase tracking-[0.5em] mt-4 font-black opacity-60">Cupos Senior Disponibles</p>
             </div>
             <div>
-              <p className="text-4xl font-heading font-light text-patagonia-white tracking-tighter">AES</p>
-              <p className="text-[9px] text-patagonia-secondary/40 uppercase tracking-[0.5em] mt-3 font-black">Protocolo de Seguridad</p>
+              <p className="text-5xl font-heading font-light text-patagonia-white tracking-tighter">AES</p>
+              <p className="text-[8px] text-patagonia-secondary/40 uppercase tracking-[0.5em] mt-4 font-black">Protocolo de Seguridad</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-patagonia-black/60 backdrop-blur-3xl p-8 md:p-14 rounded-3xl md:rounded-[2.5rem] border border-white/10 relative z-10 shadow-[0_40px_100px_rgba(0,0,0,0.4)]">
+        <div className="bg-patagonia-black/40 backdrop-blur-3xl p-10 md:p-16 rounded-3xl md:rounded-[3.5rem] border border-white/5 relative z-10 shadow-[0_60px_120px_rgba(0,0,0,0.5)]">
           <AnimatePresence mode="wait">
             {status === 'success' ? (
               <motion.div 
