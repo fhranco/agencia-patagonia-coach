@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, ArrowRight, Loader2, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Loader2, CheckCircle2, X } from 'lucide-react';
 
 const LeadCommand = ({ isModal = false, onClose }) => {
   const [formData, setFormData] = useState({
@@ -64,6 +64,16 @@ const LeadCommand = ({ isModal = false, onClose }) => {
   return (
     <section className={isModal ? "" : "section-container py-32 md:py-48"} id={isModal ? "" : "contacto"}>
       <div className={`grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-16 lg:gap-24 items-center ${isModal ? 'p-0' : 'bg-patagonia-surface/20 rounded-3xl md:rounded-[5rem] p-10 md:p-24 border border-white/5'} relative overflow-hidden`}>
+        {/* Close Button for Modal */}
+        {isModal && (
+          <button 
+            onClick={onClose}
+            className="absolute top-8 right-8 z-50 p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white/40 hover:text-white transition-all"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
+        
         {/* Subtle Gold Glow */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-patagonia-gold/5 blur-[150px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         
