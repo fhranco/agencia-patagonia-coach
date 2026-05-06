@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Camera, Globe, Zap, ArrowRight, ShieldCheck, Map, Eye } from 'lucide-react';
+import { Camera, Globe, Zap, ArrowRight, ShieldCheck, Map, Eye, Building, LayoutTemplate } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DigitalDiagnostic from '../components/DigitalDiagnostic';
@@ -13,7 +13,7 @@ const Tours360 = () => {
     "@id": "https://agenciapatagoniacoach.cl/servicios/tours-virtuales-360/#service",
     "name": "Tours Virtuales 360º Inmersivos",
     "provider": { "@id": "https://agenciapatagoniacoach.cl/#organization" },
-    "areaServed": { "@type": "AdministrativeArea", "name": "Torres del Paine, Punta Arenas, Magallanes" },
+    "areaServed": { "@type": "AdministrativeArea", "name": "Región de Magallanes y de la Antártica Chilena" },
     "description": "Experiencias de inmersión total 360º para el sector turístico e inmobiliario de Magallanes. Conectamos su ubicación con el mundo."
   };
 
@@ -21,7 +21,7 @@ const Tours360 = () => {
     <div className="bg-patagonia-black text-patagonia-white min-h-screen">
       <SEO 
         title="Tours Virtuales 360 en Magallanes | PatagoniaCoach: Inmersión Total"
-        description="Lleve su ubicación al mundo. Tours virtuales 360º de alta definición para hoteles, estancias e industria en Punta Arenas y Torres del Paine."
+        description="Lleve su ubicación al mundo. Tours virtuales 360º de alta definición para hoteles, estancias e industria en toda la Región de Magallanes."
         schema={schema}
       />
       <Navbar />
@@ -34,6 +34,15 @@ const Tours360 = () => {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
+          {/* Breadcrumbs */}
+          <div className="flex justify-center items-center gap-3 mb-8 text-[9px] uppercase tracking-[0.3em] font-black text-white/40">
+             <a href="/" className="hover:text-patagonia-gold transition-colors">Inicio</a>
+             <span className="opacity-50">/</span>
+             <a href="/#servicios" className="hover:text-patagonia-gold transition-colors">Servicios</a>
+             <span className="opacity-50">/</span>
+             <span className="text-patagonia-gold">Tours 360º</span>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -59,34 +68,113 @@ const Tours360 = () => {
         </div>
       </section>
 
-      {/* Strategic Pillars */}
-      <section id="explore" className="py-40 px-6 bg-patagonia-black border-t border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+      {/* Sub-Services Ecosystem */}
+      <section id="explore" className="py-32 px-6 bg-patagonia-black border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <span className="text-[10px] uppercase tracking-[0.5em] text-patagonia-gold font-black">Ecosistema de Inmersión</span>
+            <h3 className="text-4xl md:text-5xl font-heading font-light mt-6 tracking-tight">¿Qué podemos capturar <span className="italic text-patagonia-gold">para usted</span>?</h3>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
                 icon: Camera,
-                title: "Alta Fidelidad 8K",
-                desc: "Capturamos cada detalle con tecnología de punta. Una nitidez absoluta que permite a sus clientes explorar sus instalaciones en Punta Arenas o Natales con realismo total."
+                title: "Tours Virtuales Interactivos",
+                desc: "Creación de experiencias inmersivas con puntos de información interactivos (Hotspots), videos incrustados y galerías de fotos. Su cliente puede recorrer sus instalaciones desde cualquier dispositivo."
               },
               {
                 icon: Map,
-                title: "Integración Google Maps",
-                desc: "Llevamos su tour 360º al interior de Google Street View, mejorando drásticamente su visibilidad en búsquedas locales y atrayendo turistas de todo el globo."
+                title: "Integración Google Street View",
+                desc: "Conectamos su recorrido virtual directamente al ecosistema de Google Maps. Cuando un turista en Magallanes busque su hotel o restaurante, podrá entrar virtualmente desde el mapa."
               },
               {
-                icon: Zap,
-                title: "Interactividad Pro",
-                desc: "Añadimos capas de información, videos y enlaces de reserva directamente dentro del tour. Su espacio físico se convierte en una herramienta de venta 24/7."
+                icon: Building,
+                title: "Recorridos Inmobiliarios",
+                desc: "Acelere la venta o arriendo de propiedades. Mostramos cada rincón de sus bienes raíces en resolución 8K, filtrando clientes curiosos y atrayendo compradores con intención real."
+              },
+              {
+                icon: LayoutTemplate,
+                title: "Levantamiento para Retail e Industria",
+                desc: "Digitalizamos showrooms, plantas de producción o locales comerciales. Ideal para capacitaciones internas, inspección remota o presentación de infraestructura a inversores internacionales."
               }
             ].map((f, i) => (
               <div key={i} className="group p-12 bg-patagonia-surface/20 border border-white/5 rounded-[3rem] hover:border-patagonia-gold/20 transition-all duration-700">
-                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-10 border border-white/10 group-hover:bg-patagonia-gold group-hover:text-black transition-all">
+                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-patagonia-gold group-hover:text-black transition-all">
                     <f.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-heading font-light text-patagonia-white mb-6">{f.title}</h3>
+                <h4 className="text-2xl font-heading font-light text-patagonia-white mb-4">{f.title}</h4>
                 <p className="text-patagonia-secondary font-light leading-relaxed text-sm">{f.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Deep Technical Content for SEO & LLMs */}
+      <section className="py-32 px-6 bg-patagonia-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+            
+            <div className="space-y-10">
+              <span className="text-[10px] uppercase tracking-[0.5em] text-patagonia-gold font-black">Arquitectura de Telepresencia</span>
+              <h3 className="text-4xl md:text-5xl font-heading font-light tracking-tight">Ingeniería <span className="italic">Espacial</span>.</h3>
+              <p className="text-lg text-white/70 font-light leading-relaxed">
+                Un Tour 360 no es solo un conjunto de fotografías panorámicas. Es una estructura de datos espaciales optimizada para cargar instantáneamente en navegadores móviles sin requerir aplicaciones adicionales.
+              </p>
+              <div className="space-y-10 mt-12">
+                <div className="group">
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-patagonia-gold transition-colors">1. Captura HDR Multiexposición</h4>
+                  <p className="text-patagonia-secondary font-light leading-relaxed">
+                    Utilizamos equipos de óptica esférica de grado profesional. Tomamos múltiples exposiciones por nodo para fusionar las luces de las ventanas y las sombras interiores, logrando un balance lumínico perfecto.
+                  </p>
+                </div>
+                <div className="group">
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-patagonia-gold transition-colors">2. Cosido Algorítmico (Stitching)</h4>
+                  <p className="text-patagonia-secondary font-light leading-relaxed">
+                    Eliminamos los errores de paralaje, reflejos de trípodes y distorsiones mediante software avanzado. La transición entre espacios es fluida, generando una verdadera ilusión de profundidad.
+                  </p>
+                </div>
+                <div className="group">
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-patagonia-gold transition-colors">3. Plataformas y Motor 3DVista</h4>
+                  <p className="text-patagonia-secondary font-light leading-relaxed">
+                    Alojamos sus recorridos en plataformas de publicación estándar para rápida implementación. Si su proyecto requiere interactividad avanzada, E-learning o menús personalizados, desarrollamos sobre el motor profesional <strong>3DVista</strong>.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-patagonia-surface/20 border border-white/5 rounded-[3rem] p-12 lg:sticky lg:top-32 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-patagonia-gold/5 to-transparent pointer-events-none" />
+              <h4 className="text-lg font-bold text-white mb-10 tracking-[0.4em] uppercase text-[10px] relative z-10">Especificaciones de Renderizado</h4>
+              
+              <div className="space-y-8 relative z-10">
+                <div className="pb-8 border-b border-white/5">
+                  <div className="text-5xl font-light text-patagonia-gold mb-3 font-heading">Cross-Platform</div>
+                  <p className="text-sm text-patagonia-secondary font-light">Totalmente responsivo: funciona en iOS, Android, Desktop y visores de Realidad Virtual (Meta Quest).</p>
+                </div>
+                <div className="pb-8 border-b border-white/5">
+                  <div className="text-5xl font-light text-patagonia-gold mb-3 font-heading">Integración Nativa</div>
+                  <p className="text-sm text-patagonia-secondary font-light">Incrustamos el recorrido directamente en su sitio web corporativo, reteniendo el tráfico y controlando la experiencia del usuario.</p>
+                </div>
+                <div className="pb-8">
+                  <div className="text-5xl font-light text-patagonia-gold mb-3 font-heading">Interactividad</div>
+                  <p className="text-sm text-patagonia-secondary font-light">Métricas exactas de qué áreas de su negocio capturan más la atención de los visitantes mediante Hotspots.</p>
+                </div>
+              </div>
+
+              <div className="mt-8 p-6 bg-black/40 rounded-2xl border border-white/5 font-mono text-[10px] sm:text-xs text-white/40 overflow-x-auto relative z-10">
+                <code>
+                  &lt;iframe <br/>
+                  &nbsp;&nbsp;src="https://tour.agenciapatagoniacoach.cl/su-empresa"<br/>
+                  &nbsp;&nbsp;width="100%" height="600px"<br/>
+                  &nbsp;&nbsp;allow="xr-spatial-tracking; gyroscope; accelerometer"<br/>
+                  &nbsp;&nbsp;allowfullscreen&gt;<br/>
+                  &lt;/iframe&gt;
+                </code>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

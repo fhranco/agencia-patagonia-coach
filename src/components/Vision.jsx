@@ -3,7 +3,7 @@ import { Compass, Globe } from 'lucide-react';
 
 const Vision = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-black py-24">
+    <section id="metodologia" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-black py-24">
       {/* Immersive Background Elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-patagonia-red/5 blur-[160px] rounded-full" />

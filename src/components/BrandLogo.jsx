@@ -3,7 +3,7 @@ import React from 'react';
 const BrandLogo = ({ className = "" }) => {
   return (
     <div className={`flex items-center gap-4 ${className} drop-shadow-lg`}>
-      <svg viewBox="0 0 3508 2481" className="h-12 w-auto" preserveAspectRatio="xMinYMid meet">
+      <svg viewBox="0 0 3508 2481" className="h-12 w-auto" preserveAspectRatio="xMinYMid meet" aria-hidden="true">
         <g>
           {/* Logo Mark */}
           {/* Background Circle */}
@@ -18,10 +18,7 @@ const BrandLogo = ({ className = "" }) => {
           <path d="M1362.659,1190.307c26.196,28.599 28.391,63.585 6.517,89.965c-18.689,22.539 -55.061,28.444 -80.792,13.118c-31.158,-18.559 -40.502,-59.677 -20.506,-90.238c20.198,-30.87 60.489,-36.717 94.78,-12.845Z" fill="#ff1721"/>
         </g>
         
-        {/* Texts - Fallback if Eight One font is missing, but SVG retains it visually best if we just use the SVG text */}
-        <text x="1900.253px" y="1167.973px" style={{fontFamily:"'EightOne', 'Eight One', sans-serif", fontSize:"685.036px", fill:"#fff"}}>pata</text>
-        <text x="1900.253px" y="1543.205px" style={{fontFamily:"'EightOne', 'Eight One', sans-serif", fontSize:"652.13px", fill:"#fff"}}>gonia</text>
-        <text x="2923.353px" y="1695.419px" style={{fontFamily:"'EightOne', 'Eight One', sans-serif", fontSize:"172.263px", fill:"#fff"}}>coach</text>
+        {/* Textos eliminados del DOM para evitar que Google los lea como 'pata gonia coach' */}
       </svg>
     </div>
   );

@@ -35,22 +35,31 @@ const SmartHomeButton = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: -100, opacity: 0 }}
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 100, opacity: 0 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           onClick={handleClick}
-          className="fixed top-8 left-8 z-[150] flex items-center gap-3 px-6 py-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full group hover:bg-white/10 transition-all shadow-2xl"
+          className="fixed right-8 bottom-8 z-[150] w-14 h-14 rounded-full flex items-center justify-center bg-[#00D4FF] text-black shadow-[0_0_40px_rgba(0,212,255,0.3)] transition-all border border-white/20 backdrop-blur-3xl group overflow-hidden"
         >
-          <div className="p-2 rounded-full bg-patagonia-gold/20 group-hover:bg-patagonia-gold transition-all">
+          {/* Symmetrical Radar/Pulse Effect */}
+          <motion.div
+            animate={{ 
+              scale: [1, 1.6, 1],
+              opacity: [0.3, 0, 0.3]
+            }}
+            transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+            className="absolute inset-0 bg-white/40 rounded-full z-0"
+          />
+          
+          <div className="relative z-10 flex items-center justify-center">
             {isHome ? (
-              <ArrowUp className="w-4 h-4 text-patagonia-gold group-hover:text-black transition-all" />
+              <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
             ) : (
-              <Home className="w-4 h-4 text-patagonia-gold group-hover:text-black transition-all" />
+              <Home className="w-6 h-6 group-hover:scale-110 transition-transform" />
             )}
           </div>
-          <span className="text-[10px] uppercase tracking-[0.3em] font-black text-white/60 group-hover:text-white transition-all">
-            {isHome ? "Subir" : "Inicio"}
-          </span>
         </motion.button>
       )}
     </AnimatePresence>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Gamepad2, Code, Zap, ArrowRight, ShieldCheck, Cpu, Smartphone } from 'lucide-react';
+import { Gamepad2, Code, Zap, ArrowRight, ShieldCheck, Cpu, Smartphone, Database, Terminal, LayoutDashboard } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DigitalDiagnostic from '../components/DigitalDiagnostic';
@@ -13,8 +13,8 @@ const AppsPro = () => {
     "@id": "https://agenciapatagoniacoach.cl/servicios/aplicaciones-web-pro/#service",
     "name": "Aplicaciones Web & Sistemas Pro",
     "provider": { "@id": "https://agenciapatagoniacoach.cl/#organization" },
-    "areaServed": { "@type": "AdministrativeArea", "name": "Región de Magallanes" },
-    "description": "Desarrollo de herramientas interactivas, sistemas de gestión y experiencias gamificadas para empresas en la Patagonia."
+    "areaServed": { "@type": "AdministrativeArea", "name": "Región de Magallanes y de la Antártica Chilena" },
+    "description": "Desarrollo de herramientas interactivas, sistemas de gestión y experiencias gamificadas para empresas en la Patagonia Chilena."
   };
 
   return (
@@ -34,6 +34,15 @@ const AppsPro = () => {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
+          {/* Breadcrumbs */}
+          <div className="flex justify-center items-center gap-3 mb-8 text-[9px] uppercase tracking-[0.3em] font-black text-white/40">
+             <a href="/" className="hover:text-patagonia-gold transition-colors">Inicio</a>
+             <span className="opacity-50">/</span>
+             <a href="/#servicios" className="hover:text-patagonia-gold transition-colors">Servicios</a>
+             <span className="opacity-50">/</span>
+             <span className="text-patagonia-gold">Apps Pro</span>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -59,70 +68,111 @@ const AppsPro = () => {
         </div>
       </section>
 
-      {/* Strategic Pillars */}
-      <section id="apps" className="py-40 px-6 bg-patagonia-black border-t border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+      {/* Sub-Services Ecosystem */}
+      <section id="apps" className="py-32 px-6 bg-patagonia-black border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <span className="text-[10px] uppercase tracking-[0.5em] text-patagonia-gold font-black">Ecosistema de Software</span>
+            <h3 className="text-4xl md:text-5xl font-heading font-light mt-6 tracking-tight">¿Qué podemos programar <span className="italic text-patagonia-gold">para usted</span>?</h3>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
                 icon: Smartphone,
-                title: "PWAs de Alto Vuelo",
-                desc: "Aplicaciones web progresivas que funcionan como apps nativas pero sin fricción de descarga. Ideales para sistemas de turnos, catálogos interactivos y herramientas de campo."
+                title: "Progressive Web Apps (PWA)",
+                desc: "Aplicaciones que se instalan directamente desde el navegador de su cliente. Navegación offline, notificaciones push y máxima velocidad sin las barreras comerciales de la App Store o Google Play."
+              },
+              {
+                icon: LayoutDashboard,
+                title: "Software as a Service (SaaS)",
+                desc: "Plataformas de gestión B2B hechas a la medida de la logística magallánica. Digitalizamos el núcleo operativo de su empresa, desde el control de flotas hasta portales de clientes y proveedores."
               },
               {
                 icon: Gamepad2,
-                title: "Gamificación & Tótems",
-                desc: "Experiencias interactivas para eventos, museos y puntos de venta en la Zona Franca. Convertimos la información en una experiencia de inmersión lúdica y memorable."
+                title: "Experiencias de Gamificación",
+                desc: "Motores de lealtad e interfaces lúdicas. Diseñamos trivias, sistemas de recompensas y cuponeras digitales para capturar la atención del cliente final en puntos de venta y eventos."
               },
               {
-                icon: Zap,
-                title: "Sistemas de Gestión",
-                desc: "Desarrollamos herramientas a medida para optimizar su logística sureña. Desde paneles de control internos hasta plataformas de comunicación con clientes en tiempo real."
+                icon: Terminal,
+                title: "Interfaces para Tótems Físicos",
+                desc: "Desarrollo de pantallas interactivas de alto rendimiento para recepciones de hoteles, ferias comerciales o la Zona Franca. Diseño táctil intuitivo conectado en tiempo real a sus bases de datos."
               }
             ].map((f, i) => (
               <div key={i} className="group p-12 bg-patagonia-surface/20 border border-white/5 rounded-[3rem] hover:border-patagonia-gold/20 transition-all duration-700">
-                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-10 border border-white/10 group-hover:bg-patagonia-gold group-hover:text-black transition-all">
+                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-patagonia-gold group-hover:text-black transition-all">
                     <f.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-heading font-light text-patagonia-white mb-6">{f.title}</h3>
+                <h4 className="text-2xl font-heading font-light text-patagonia-white mb-4">{f.title}</h4>
                 <p className="text-patagonia-secondary font-light leading-relaxed text-sm">{f.desc}</p>
               </div>
             ))}
+          </div>
         </div>
       </section>
 
-      {/* Visual App Showcase */}
-      <section className="py-40 px-6 bg-patagonia-surface/10 border-y border-white/5 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-24 items-center">
-          <div className="flex-1 w-full aspect-square relative group">
-            <div className="absolute inset-0 bg-patagonia-gold/10 blur-[120px] rounded-full group-hover:bg-patagonia-gold/20 transition-all duration-1000" />
-            <div className="relative z-10 w-full h-full border border-white/5 rounded-[4rem] bg-black/40 backdrop-blur-3xl overflow-hidden flex items-center justify-center p-8">
-              <img 
-                src="/images/apps-pro.png" 
-                alt="Web Apps Pro Mastery Visual" 
-                className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-transform duration-[6000ms] ease-out opacity-90"
-              />
-            </div>
-          </div>
-
-          <div className="flex-1 space-y-12">
-            <span className="text-[10px] uppercase tracking-[0.5em] text-patagonia-gold font-black">La Evolución del Software</span>
-            <h2 className="text-5xl md:text-7xl font-heading font-light tracking-tight leading-[1.1]">Potencia en <span className="italic text-patagonia-gold">Cada Píxel.</span></h2>
-            <div className="space-y-8 text-lg text-patagonia-secondary font-light leading-relaxed">
-              <p>
-                Un sistema a medida es la mayor ventaja competitiva que una organización puede poseer. Diseñamos aplicaciones que se integran con sus procesos actuales para acelerar el crecimiento.
-              </p>
-              <p>
-                Utilizamos tecnologías de última generación para asegurar que su inversión sea escalable, segura y capaz de manejar altos volúmenes de datos sin comprometer la velocidad.
-              </p>
-            </div>
+      {/* Deep Technical Content for SEO & LLMs */}
+      <section className="py-32 px-6 bg-patagonia-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
             
-            <div className="pt-10">
-              <div className="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10 max-w-sm">
-                <Code className="w-10 h-10 text-patagonia-gold" />
-                <div>
-                  <h4 className="text-white font-bold text-sm tracking-widest">CÓDIGO DE AUTOR</h4>
-                  <p className="text-[10px] text-patagonia-secondary uppercase tracking-wider">Arquitectura robusta y escalable.</p>
+            <div className="space-y-10">
+              <span className="text-[10px] uppercase tracking-[0.5em] text-patagonia-gold font-black">Arquitectura Frontend & Backend</span>
+              <h3 className="text-4xl md:text-5xl font-heading font-light tracking-tight">Ingeniería <span className="italic">Reactiva</span>.</h3>
+              <p className="text-lg text-white/70 font-light leading-relaxed">
+                Un sistema corporativo no puede depender de constructores de sitios básicos. Programamos arquitecturas desacopladas (Headless) utilizando React.js y bases de datos escalables para garantizar que la operatividad de su empresa nunca se detenga.
+              </p>
+              <div className="space-y-10 mt-12">
+                <div className="group">
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-patagonia-gold transition-colors">1. React & Vite Frameworks</h4>
+                  <p className="text-patagonia-secondary font-light leading-relaxed">
+                    Construimos interfaces SPA (Single Page Applications) ultra-rápidas. Al no tener que recargar la página en cada clic, la experiencia del usuario final se percibe instantánea, igual a una aplicación nativa.
+                  </p>
                 </div>
+                <div className="group">
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-patagonia-gold transition-colors">2. Bases de Datos NoSQL en Tiempo Real</h4>
+                  <p className="text-patagonia-secondary font-light leading-relaxed">
+                    Conectamos el frontend con soluciones en la nube (como Firebase o Supabase) para reflejar cambios de inventario, puntajes o reservas en tiempo real a todos los usuarios conectados.
+                  </p>
+                </div>
+                <div className="group">
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-patagonia-gold transition-colors">3. Infraestructura Offline-First</h4>
+                  <p className="text-patagonia-secondary font-light leading-relaxed">
+                    Sabemos que en la Patagonia la conectividad puede fallar. Diseñamos sistemas con Service Workers que almacenan datos en la caché del dispositivo, permitiendo operar sin internet y sincronizando automáticamente al recuperar la señal.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-patagonia-surface/20 border border-white/5 rounded-[3rem] p-12 lg:sticky lg:top-32 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-patagonia-gold/5 to-transparent pointer-events-none" />
+              <h4 className="text-lg font-bold text-white mb-10 tracking-[0.4em] uppercase text-[10px] relative z-10">Métricas de Rendimiento</h4>
+              
+              <div className="space-y-8 relative z-10">
+                <div className="pb-8 border-b border-white/5">
+                  <div className="text-5xl font-light text-patagonia-gold mb-3 font-heading">Lighthouse 99+</div>
+                  <p className="text-sm text-patagonia-secondary font-light">Optimización algorítmica para superar las métricas más estrictas de rendimiento de Google.</p>
+                </div>
+                <div className="pb-8 border-b border-white/5">
+                  <div className="text-5xl font-light text-patagonia-gold mb-3 font-heading">Fricción Cero</div>
+                  <p className="text-sm text-patagonia-secondary font-light">Eliminamos el paso por la App Store. Sus clientes ingresan al link y ya tienen la App instalada en el inicio de su teléfono.</p>
+                </div>
+                <div className="pb-8">
+                  <div className="text-5xl font-light text-patagonia-gold mb-3 font-heading">Seguridad B2B</div>
+                  <p className="text-sm text-patagonia-secondary font-light">Autenticación basada en Tokens (JWT) y cifrado de datos corporativos sensibles.</p>
+                </div>
+              </div>
+
+              <div className="mt-8 p-6 bg-black/40 rounded-2xl border border-white/5 font-mono text-[10px] sm:text-xs text-white/40 overflow-x-auto relative z-10">
+                <code>
+                  const manifest = {"{"}<br/>
+                  &nbsp;&nbsp;name: 'Portal Patagonia',<br/>
+                  &nbsp;&nbsp;short_name: 'Portal',<br/>
+                  &nbsp;&nbsp;display: 'standalone',<br/>
+                  &nbsp;&nbsp;background_color: '#000000',<br/>
+                  &nbsp;&nbsp;theme_color: '#B69A5D'<br/>
+                  {"}"};
+                </code>
               </div>
             </div>
           </div>

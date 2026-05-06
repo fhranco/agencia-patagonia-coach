@@ -34,6 +34,15 @@ const DesarrolloWeb = () => {
         </div>
 
         <div className="max-w-7xl mx-auto text-center relative z-10">
+          {/* Breadcrumbs */}
+          <div className="flex justify-center items-center gap-3 mb-8 text-[9px] uppercase tracking-[0.3em] font-black text-white/40">
+             <a href="/" className="hover:text-patagonia-gold transition-colors">Inicio</a>
+             <span className="opacity-50">/</span>
+             <a href="/#servicios" className="hover:text-patagonia-gold transition-colors">Servicios</a>
+             <span className="opacity-50">/</span>
+             <span className="text-patagonia-gold">Desarrollo Web Profesional</span>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -43,9 +52,12 @@ const DesarrolloWeb = () => {
             <span className="text-[10px] uppercase tracking-[0.4em] font-black">Arquitectura Digital de Autor</span>
           </motion.div>
           
-          <h1 className="text-6xl md:text-[7.5rem] font-heading font-light tracking-[-0.05em] mb-10 leading-[0.85] text-balance">
+          {/* SEO H1 Hidden - Para que Google reconozca el servicio */}
+          <h1 className="sr-only">Servicio de Desarrollo Web Corporativo y Arquitectura Digital en Punta Arenas</h1>
+          
+          <h2 className="text-6xl md:text-[7.5rem] font-heading font-light tracking-[-0.05em] mb-10 leading-[0.85] text-balance">
             Estructura <span className="text-patagonia-gold italic">Impecable.</span>
-          </h1>
+          </h2>
           
           <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto font-light leading-relaxed mb-16 px-4">
             No creamos simples sitios web; <span className="text-white font-normal">construimos activos digitales de alto rendimiento</span> que funcionan como herramientas de venta ininterrumpidas. Diseño de inmersión para marcas que lideran.
@@ -59,34 +71,111 @@ const DesarrolloWeb = () => {
         </div>
       </section>
 
-      {/* Strategic Pillars */}
-      <section id="masterplan" className="py-40 px-6 bg-patagonia-black border-t border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+      {/* Sub-Services Ecosystem */}
+      <section id="masterplan" className="py-32 px-6 bg-patagonia-black border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <span className="text-[10px] uppercase tracking-[0.5em] text-patagonia-gold font-black">Ecosistema de Soluciones Web</span>
+            <h3 className="text-4xl md:text-5xl font-heading font-light mt-6 tracking-tight">¿Qué podemos construir <span className="italic text-patagonia-gold">para usted</span>?</h3>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
                 icon: Layout,
-                title: "Diseño de Inmersión",
-                desc: "Interfaces que proyectan autoridad instantánea. Cada píxel está diseñado para guiar al usuario hacia la conversión con una estética de Lujo Silencioso."
+                title: "Tiendas Virtuales (E-commerce)",
+                desc: "Plataformas de venta online robustas (Shopify Headless, WooCommerce) optimizadas para alta conversión, gestión de inventario sincronizada y pasarelas de pago seguras. Su negocio abierto 24/7."
+              },
+              {
+                icon: Code,
+                title: "Sistemas B2B a Medida",
+                desc: "Desarrollo de software desde cero para digitalizar los procesos operativos únicos de su empresa. Intranets corporativas, sistemas de reservas complejos y paneles de administración exclusivos."
               },
               {
                 icon: Rocket,
-                title: "Velocidad de Élite",
-                desc: "Optimización extrema para los estándares de conectividad de la Patagonia. Carga instantánea que reduce la tasa de rebote y mejora el SEO orgánico."
+                title: "Aplicaciones Web Pro (PWA)",
+                desc: "Plataformas híbridas que funcionan como una app nativa en el teléfono de su cliente. Permiten navegación offline, notificaciones push y máxima velocidad sin la fricción de descargar desde una App Store."
               },
               {
-                icon: Shield,
-                title: "Seguridad Soberana",
-                desc: "Protocolos de seguridad avanzada y arquitectura robusta. Protegemos su integridad digital y la privacidad de sus clientes en cada interacción."
+                icon: Globe,
+                title: "Sitios Corporativos Dinámicos",
+                desc: "Páginas web de alto impacto visual (Lujo Silencioso) equipadas con herramientas especiales: calculadoras de presupuesto, integración de Tours 360, cotizadores en tiempo real y chatbots impulsados por IA."
               }
             ].map((f, i) => (
               <div key={i} className="group p-12 bg-patagonia-surface/20 border border-white/5 rounded-[3rem] hover:border-patagonia-gold/20 transition-all duration-700">
-                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-10 border border-white/10 group-hover:bg-patagonia-gold group-hover:text-black transition-all">
+                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-patagonia-gold group-hover:text-black transition-all">
                     <f.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-heading font-light text-patagonia-white mb-6">{f.title}</h3>
+                <h4 className="text-2xl font-heading font-light text-patagonia-white mb-4">{f.title}</h4>
                 <p className="text-patagonia-secondary font-light leading-relaxed text-sm">{f.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Deep Technical Content for SEO & LLMs */}
+      <section className="py-32 px-6 bg-patagonia-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+            
+            <div className="space-y-10">
+              <span className="text-[10px] uppercase tracking-[0.5em] text-patagonia-gold font-black">Arquitectura Frontend & Backend</span>
+              <h3 className="text-4xl md:text-5xl font-heading font-light tracking-tight">Estructura <span className="italic">Técnica</span> del Ecosistema.</h3>
+              <p className="text-lg text-white/70 font-light leading-relaxed">
+                No usamos plantillas prefabricadas. Construimos aplicaciones web para negocios locales ambiciosos utilizando stacks tecnológicos modernos (React, Next.js, Headless CMS) que aseguran escalabilidad, seguridad de primer nivel y tiempos de carga instantáneos para maximizar la conversión.
+              </p>
+              <div className="space-y-10 mt-12">
+                <div className="group">
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-patagonia-gold transition-colors">1. React & Server-Side Rendering (SSR)</h4>
+                  <p className="text-patagonia-secondary font-light leading-relaxed">
+                    Utilizamos arquitecturas basadas en componentes y renderizado dinámico del lado del servidor (Next.js). Esto significa que Google y los LLMs pueden leer su sitio e indexarlo inmediatamente, mientras que los usuarios experimentan interfaces de usuario (UI) fluidas, sin recargas de página (SPA).
+                  </p>
+                </div>
+                <div className="group">
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-patagonia-gold transition-colors">2. Headless CMS y APIs E-commerce</h4>
+                  <p className="text-patagonia-secondary font-light leading-relaxed">
+                    Desacoplamos el frontend visual del backend de contenido. Mediante arquitecturas Headless e integraciones API, garantizamos que su catálogo de productos y la información de su negocio sea rápida, segura y escalable para servir simultáneamente a la web y a tótems físicos.
+                  </p>
+                </div>
+                <div className="group">
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-patagonia-gold transition-colors">3. Infraestructura Cloud y Edge Computing</h4>
+                  <p className="text-patagonia-secondary font-light leading-relaxed">
+                    Desplegamos los activos en redes globales descentralizadas (Edge). Su código se ejecuta en los nodos más cercanos al usuario, reduciendo la latencia de red a mínimos absolutos, blindando la plataforma contra ataques cibernéticos y garantizando un 99.99% de Uptime operativo.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-patagonia-surface/20 border border-white/5 rounded-[3rem] p-12 lg:sticky lg:top-32 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-patagonia-gold/5 to-transparent pointer-events-none" />
+              <h4 className="text-lg font-bold text-white mb-10 tracking-[0.4em] uppercase text-[10px] relative z-10">Métricas de Arquitectura Web</h4>
+              
+              <div className="space-y-8 relative z-10">
+                <div className="pb-8 border-b border-white/5">
+                  <div className="text-5xl font-light text-patagonia-gold mb-3 font-heading">SSR Core</div>
+                  <p className="text-sm text-patagonia-secondary font-light">Renderizado desde el servidor para máxima indexación SEO (Frameworks modernos).</p>
+                </div>
+                <div className="pb-8 border-b border-white/5">
+                  <div className="text-5xl font-light text-patagonia-gold mb-3 font-heading">API REST</div>
+                  <p className="text-sm text-patagonia-secondary font-light">Consultas de datos eficientes para evitar la sobrecarga y lentitud del frontend.</p>
+                </div>
+                <div className="pb-8">
+                  <div className="text-5xl font-light text-patagonia-gold mb-3 font-heading">99.99% Uptime</div>
+                  <p className="text-sm text-patagonia-secondary font-light">Mantenimiento continuo y despliegue en infraestructuras Cloud de clase mundial.</p>
+                </div>
+              </div>
+
+              <div className="mt-8 p-6 bg-black/40 rounded-2xl border border-white/5 font-mono text-[10px] sm:text-xs text-white/40 overflow-x-auto relative z-10">
+                <code>
+                  export const getServerSideProps = async () =&gt; {"{"}<br/>
+                  &nbsp;&nbsp;const data = await fetchBusinessData();<br/>
+                  &nbsp;&nbsp;return {"{"} props: {"{"} data {"}"} {"}"};<br/>
+                  {"}"};
+                </code>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -112,7 +201,7 @@ const DesarrolloWeb = () => {
                 Un sitio web corporativo es su declaración de autoridad ante el mundo. En la era de la IA, su presencia digital debe ser impecable, rápida y estratégicamente estructurada.
               </p>
               <p>
-                Diseñamos sistemas que se adaptan a cualquier dispositivo, garantizando una experiencia de usuario de primer nivel desde Punta Arenas hasta cualquier rincón del globo.
+                Diseñamos sistemas que se adaptan a cualquier dispositivo, garantizando una experiencia de usuario de primer nivel desde Magallanes hasta cualquier rincón del globo.
               </p>
             </div>
             

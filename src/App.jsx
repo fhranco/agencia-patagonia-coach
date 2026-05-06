@@ -3,7 +3,7 @@ import CustomCursor from './components/CustomCursor';
 import FloatingActions from './components/FloatingActions';
 import FloatingAudit from './components/FloatingAudit';
 import SmartHomeButton from './components/SmartHomeButton';
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToHash from './components/ScrollToHash';
 import MainLanding from './pages/MainLanding';
 import IALanding from './pages/IALanding';
 import MarketingLanding from './pages/MarketingLanding';
@@ -26,18 +26,15 @@ function App() {
   return (
     <Router>
       <div className="relative">
+        <ScrollToHash />
         <CustomCursor />
-        <SmartHomeButton />
         <FloatingActions />
-        <FloatingAudit />
-        <ScrollToTop />
-
         <Routes>
           <Route path="/" element={<MainLanding />} />
           
           {/* Servicios */}
           <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
-          <Route path="/servicios/seo-local-punta-arenas" element={<SEOLocal />} />
+          <Route path="/servicios/seo-local-magallanes" element={<SEOLocal />} />
           <Route path="/servicios/automatizacion-con-ia" element={<IALanding />} />
           <Route path="/servicios/comunicacion-digital" element={<MarketingLanding />} />
           <Route path="/servicios/consultoria-transformacion-digital" element={<ConsultingLanding />} />

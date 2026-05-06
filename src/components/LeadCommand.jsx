@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, ArrowRight, Loader2, CheckCircle2 } from 'lucide-react';
 
-const LeadCommand = () => {
+const LeadCommand = ({ isModal = false, onClose }) => {
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
-    presupuesto: '$10k - $50k',
+    whatsapp: '',
+    presupuesto: '$10M - $30M CLP',
     mensaje: '',
     _honeypot: '' // Anti-spam field
   });
@@ -61,8 +62,8 @@ const LeadCommand = () => {
 
 
   return (
-    <section className="section-container" id="contacto">
-      <div className="grid md:grid-cols-2 gap-20 items-center bg-patagonia-surface/30 rounded-[3rem] p-12 md:p-28 border border-white/5 relative overflow-hidden">
+    <section className={isModal ? "" : "section-container"} id={isModal ? "" : "contacto"}>
+      <div className={`grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-20 items-center ${isModal ? 'p-0' : 'bg-patagonia-surface/30 rounded-3xl md:rounded-[4rem] p-8 md:p-20 border border-white/5'} relative overflow-hidden`}>
         {/* Subtle Gold Glow */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-patagonia-gold/5 blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         
@@ -90,7 +91,7 @@ const LeadCommand = () => {
           </div>
         </div>
 
-        <div className="bg-patagonia-black/60 backdrop-blur-3xl p-10 md:p-14 rounded-[2.5rem] border border-white/10 relative z-10 shadow-[0_40px_100px_rgba(0,0,0,0.4)]">
+        <div className="bg-patagonia-black/60 backdrop-blur-3xl p-8 md:p-14 rounded-3xl md:rounded-[2.5rem] border border-white/10 relative z-10 shadow-[0_40px_100px_rgba(0,0,0,0.4)]">
           <AnimatePresence mode="wait">
             {status === 'success' ? (
               <motion.div 
@@ -129,7 +130,7 @@ const LeadCommand = () => {
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-3">
-                    <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Canal de Contacto</label>
+                    <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Canal de Contacto (Email)</label>
                     <input 
                       required
                       name="email"
@@ -141,7 +142,21 @@ const LeadCommand = () => {
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Escala de Inversión</label>
+                    <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">WhatsApp de Contacto</label>
+                    <input 
+                      required
+                      name="whatsapp"
+                      value={formData.whatsapp || ''}
+                      onChange={handleChange}
+                      type="tel" 
+                      placeholder="+56 9 XXXX XXXX"
+                      className="w-full bg-white/5 border border-white/5 rounded-2xl p-5 focus:border-patagonia-gold/50 outline-none transition-all placeholder:text-white/10 font-light text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="grid md:grid-cols-1 gap-6">
+                  <div className="space-y-3">
+                    <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Escala de Inversión Estimada</label>
                     <div className="relative">
                       <select 
                         name="presupuesto"

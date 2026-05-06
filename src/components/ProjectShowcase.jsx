@@ -34,7 +34,7 @@ const ProjectShowcase = () => {
   ];
 
   return (
-    <section className="py-48 px-6 bg-patagonia-black relative overflow-hidden">
+    <section id="casos-de-exito" className="py-48 px-6 bg-patagonia-black relative overflow-hidden">
       {/* Background visual accent */}
       <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-patagonia-gold/[0.03] blur-[150px] rounded-full -translate-y-1/2 translate-x-1/3" />
       

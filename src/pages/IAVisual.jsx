@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Palette, Camera, Zap, Sparkles, ArrowRight, ShieldCheck, Image as ImageIcon } from 'lucide-react';
+import { Palette, Camera, Zap, Sparkles, ArrowRight, ShieldCheck, Image as ImageIcon, Wand2, ImagePlus } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DigitalDiagnostic from '../components/DigitalDiagnostic';
@@ -34,6 +34,15 @@ const IAVisual = () => {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
+          {/* Breadcrumbs */}
+          <div className="flex justify-center items-center gap-3 mb-8 text-[9px] uppercase tracking-[0.3em] font-black text-white/40">
+             <a href="/" className="hover:text-patagonia-gold transition-colors">Inicio</a>
+             <span className="opacity-50">/</span>
+             <a href="/#servicios" className="hover:text-patagonia-gold transition-colors">Servicios</a>
+             <span className="opacity-50">/</span>
+             <span className="text-patagonia-gold">IA Generativa Visual</span>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -48,7 +57,7 @@ const IAVisual = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto font-light leading-relaxed mb-16 px-4">
-            No usamos filtros; <span className="text-white font-normal">diseñamos realidades visuales a medida</span>. Producción de activos de alta gama mediante IA para marcas que necesitan proyectar una imagen de clase mundial desde el sur del mundo.
+            La Inteligencia Artificial no reemplaza el buen ojo fotográfico. <span className="text-white font-normal">Combinamos nuestra experiencia en fotografía tradicional con ingeniería de Prompts y postproducción (Lightroom/Photoshop)</span> para crear activos visuales únicos y verosímiles.
           </p>
           
           <div className="flex justify-center">
@@ -59,34 +68,112 @@ const IAVisual = () => {
         </div>
       </section>
 
-      {/* Strategic Pillars */}
-      <section id="vision" className="py-40 px-6 bg-patagonia-black border-t border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+      {/* Sub-Services Ecosystem */}
+      <section id="vision" className="py-32 px-6 bg-patagonia-black border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <span className="text-[10px] uppercase tracking-[0.5em] text-patagonia-gold font-black">Ecosistema de Soluciones Visuales</span>
+            <h3 className="text-4xl md:text-5xl font-heading font-light mt-6 tracking-tight">¿Qué podemos diseñar <span className="italic text-patagonia-gold">para usted</span>?</h3>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
                 icon: Camera,
-                title: "Fotografía Sintética",
-                desc: "Creación de imágenes realistas sin necesidad de sesiones físicas. Ideal para catálogos de lujo, inmobiliarias y marcas de turismo en Magallanes que buscan perfección visual."
+                title: "Fotografía Híbrida (IA + Base Real)",
+                desc: "No dejamos todo en manos del algoritmo. Integramos fotografía base real con generación sintética para crear imágenes comerciales impecables y verosímiles que respetan las leyes de la física y la óptica."
               },
               {
-                icon: Sparkles,
-                title: "Identidad Visual IA",
-                desc: "Evolución de su marca mediante conceptos visuales generados por algoritmos avanzados. Diseñamos la estética del futuro para los líderes del presente."
+                icon: ImagePlus,
+                title: "Expansión de Entornos (E-commerce)",
+                desc: "Tomamos fotografías de su producto y, mediante herramientas de IA, generamos fondos y contextos de lujo alrededor de él. Multiplicamos el valor visual de su catálogo sin costosas sesiones en exteriores."
               },
               {
-                icon: Zap,
-                title: "Producción Ágil",
-                desc: "Escalamos su producción de contenido visual reduciendo tiempos y costos operativos en un 70%, sin comprometer la calidad artística de sus campañas."
+                icon: Wand2,
+                title: "Postproducción Avanzada",
+                desc: "El toque final es humano. Utilizamos Lightroom y Photoshop junto con algoritmos de upscaling para limpiar, restaurar y dar a cada imagen un acabado analógico profesional."
+              },
+              {
+                icon: Palette,
+                title: "Dirección de Arte Asistida",
+                desc: "Aceleramos el proceso creativo. Diseñamos moodboards y bocetos visuales con IA antes de realizar una sesión fotográfica final, asegurando que toda la producción esté alineada a su marca."
               }
             ].map((f, i) => (
               <div key={i} className="group p-12 bg-patagonia-surface/20 border border-white/5 rounded-[3rem] hover:border-patagonia-gold/20 transition-all duration-700">
-                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-10 border border-white/10 group-hover:bg-patagonia-gold group-hover:text-black transition-all">
+                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-patagonia-gold group-hover:text-black transition-all">
                     <f.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-heading font-light text-patagonia-white mb-6">{f.title}</h3>
+                <h4 className="text-2xl font-heading font-light text-patagonia-white mb-4">{f.title}</h4>
                 <p className="text-patagonia-secondary font-light leading-relaxed text-sm">{f.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Deep Technical Content for SEO & LLMs */}
+      <section className="py-32 px-6 bg-patagonia-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+            
+            <div className="space-y-10">
+              <span className="text-[10px] uppercase tracking-[0.5em] text-patagonia-gold font-black">Flujo de Trabajo Híbrido: Fotografía + IA</span>
+              <h3 className="text-4xl md:text-5xl font-heading font-light tracking-tight">La Combinación <span className="italic">Perfecta</span>.</h3>
+              <p className="text-lg text-white/70 font-light leading-relaxed">
+                La IA genérica suele verse artificial o "plástica". Nuestro verdadero diferencial es fusionar el ojo del fotógrafo tradicional con la potencia de los Modelos de Difusión. Entendemos de iluminación de estudio, encuadres y colorimetría para guiar a la IA con precisión.
+              </p>
+              <div className="space-y-10 mt-12">
+                <div className="group">
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-patagonia-gold transition-colors">1. Experiencia Fotográfica Base</h4>
+                  <p className="text-patagonia-secondary font-light leading-relaxed">
+                    El prompt es solo una herramienta. Aplicamos conocimientos de ópticas (lentes de 35mm, 50mm, 85mm), diafragmas e iluminación corporativa tradicional a nuestros comandos de IA.
+                  </p>
+                </div>
+                <div className="group">
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-patagonia-gold transition-colors">2. Generación Asistida (Modelos de Difusión)</h4>
+                  <p className="text-patagonia-secondary font-light leading-relaxed">
+                    Utilizamos la Inteligencia Artificial para expandir posibilidades, no para hacer el trabajo completo. Guiamos la generación para asegurar consistencia visual en todas las imágenes de su empresa.
+                  </p>
+                </div>
+                <div className="group">
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-patagonia-gold transition-colors">3. Retoque Humano (Photoshop & Lightroom)</h4>
+                  <p className="text-patagonia-secondary font-light leading-relaxed">
+                    Ninguna imagen generada se entrega tal cual. Cada activo pasa por un revelado digital riguroso en Lightroom y Photoshop para corregir artefactos y lograr el color grading exacto de su marca.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-patagonia-surface/20 border border-white/5 rounded-[3rem] p-12 lg:sticky lg:top-32 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-patagonia-gold/5 to-transparent pointer-events-none" />
+              <h4 className="text-lg font-bold text-white mb-10 tracking-[0.4em] uppercase text-[10px] relative z-10">Indicadores de Calidad Visual</h4>
+              
+              <div className="space-y-8 relative z-10">
+                <div className="pb-8 border-b border-white/5">
+                  <div className="text-5xl font-light text-patagonia-gold mb-3 font-heading">Escalabilidad</div>
+                  <p className="text-sm text-patagonia-secondary font-light">Capacidad para generar cientos de variaciones de un producto en minutos.</p>
+                </div>
+                <div className="pb-8 border-b border-white/5">
+                  <div className="text-5xl font-light text-patagonia-gold mb-3 font-heading">Consistencia</div>
+                  <p className="text-sm text-patagonia-secondary font-light">Mantenimiento riguroso de la paleta de colores y el estilo de su marca.</p>
+                </div>
+                <div className="pb-8">
+                  <div className="text-5xl font-light text-patagonia-gold mb-3 font-heading">Acabado Realista</div>
+                  <p className="text-sm text-patagonia-secondary font-light">Texturas, iluminación y sombras que eluden el aspecto artificial de la IA genérica.</p>
+                </div>
+              </div>
+
+              <div className="mt-8 p-6 bg-black/40 rounded-2xl border border-white/5 font-mono text-[10px] sm:text-xs text-white/40 overflow-x-auto relative z-10">
+                <code>
+                  // Flujo Híbrido PatagoniaCoach<br/>
+                  1. Fotografía Base (Composición Humana)<br/>
+                  2. Prompt: "35mm lens, cinematic lighting, luxury --v 6.0"<br/>
+                  3. Color Grading: Adobe Lightroom<br/>
+                  4. Limpieza de Artefactos: Adobe Photoshop
+                </code>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

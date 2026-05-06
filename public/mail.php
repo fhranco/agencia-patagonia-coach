@@ -11,34 +11,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $to = "contacto@agenciapatagoniacoach.cl";
     
-    // Captura de datos básicos
+    // Captura de datos universales
+    $form_type = strip_tags($_POST['form_type'] ?? 'Auditoría General');
     $nombre = strip_tags($_POST['nombre'] ?? 'Sin nombre');
     $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
     $whatsapp = strip_tags($_POST['whatsapp'] ?? 'No provisto');
+    
+    // Campos específicos de Auditoría Profunda
     $nicho = strip_tags($_POST['nicho'] ?? 'No especificado');
-    $diagnostico = strip_tags($_POST['diagnostico'] ?? 'N/A');
     $score = strip_tags($_POST['score'] ?? '0');
     
-    $subject = "🔥 NUEVA AUDITORÍA: $nicho - $nombre ($score/600)";
+    // Campos específicos de Formulario de Contacto Simple
+    $presupuesto = strip_tags($_POST['presupuesto'] ?? 'No especificado');
+    $mensaje = strip_tags($_POST['mensaje'] ?? '');
 
-    // Cabecera del correo
+    $subject = "🔥 [$form_type] $nombre - $nicho";
+    if ($score > 0) {
+        $subject .= " ($score/600)";
+    }
+
+    // Cuerpo del mensaje
     $body = "====================================================\n";
-    $body .= "   NUEVA AUDITORÍA ESTRATÉGICA - PATAGONIA COACH    \n";
+    $body .= "   REQUERIMIENTO RECIBIDO - AGENCIA PATAGONIACOACH  \n";
     $body .= "====================================================\n\n";
     
-    $body .= "DATOS DEL CLIENTE:\n";
+    $body .= "DATOS DE IDENTIDAD:\n";
     $body .= "----------------------------------------------------\n";
-    $body .= "Nombre:    $nombre\n";
-    $body .= "Email:     $email\n";
-    $body .= "WhatsApp:  $whatsapp\n\n";
+    $body .= "Nombre/Empresa: $nombre\n";
+    $body .= "Email:          $email\n";
+    $body .= "WhatsApp:       $whatsapp\n\n";
 
-    $body .= "RESULTADO DEL DIAGNÓSTICO:\n";
-    $body .= "----------------------------------------------------\n";
-    $body .= "Nicho:       $nicho\n";
-    $body .= "Diagnóstico: $diagnostico\n";
-    $body .= "Madurez:     $score / 600\n\n";
+    if ($form_type === 'Auditoría Estratégica (Formulario)') {
+        $body .= "DETALLES DEL PROYECTO:\n";
+        $body .= "----------------------------------------------------\n";
+        $body .= "Presupuesto:    $presupuesto\n";
+        $body .= "Mensaje/Reto:   $mensaje\n\n";
+    }
 
-    // Decodificar la Radiografía Completa (Las 20 respuestas)
+    if ($score > 0) {
+        $body .= "RESULTADO DEL DIAGNÓSTICO:\n";
+        $body .= "----------------------------------------------------\n";
+        $body .= "Nicho:          $nicho\n";
+        $body .= "Madurez:        $score / 600\n\n";
+    }
+
+    // Decodificar la Radiografía Completa si existe
     if (isset($_POST['full_audit_data'])) {
         $audit_data = json_decode($_POST['full_audit_data'], true);
         
@@ -57,7 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $body .= "----------------------------------------------------\n";
-    $body .= "Enviado automáticamente desde agenciapatagoniacoach.cl\n";
+    $body .= "Origen: https://agenciapatagoniacoach.cl\n";
+    $body .= "Timestamp: " . date("Y-m-d H:i:s") . "\n";
 
     $headers = "From: webmaster@agenciapatagoniacoach.cl\r\n";
     $headers .= "Cc: fgallardo@agenciapatagoniacoach.cl\r\n";
@@ -68,10 +86,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $headers .= "X-Mailer: PHP/" . phpversion();
 
     if (mail($to, $subject, $body, $headers)) {
-        echo json_encode(["status" => "success", "message" => "Auditoría recibida correctamente"]);
+        echo json_encode(["status" => "success", "message" => "Datos inyectados correctamente al sistema"]);
     } else {
         http_response_code(500);
-        echo json_encode(["status" => "error", "message" => "Error al procesar el envío"]);
+        echo json_encode(["status" => "error", "message" => "Error en la inyección de datos"]);
     }
 } else {
     http_response_code(405);

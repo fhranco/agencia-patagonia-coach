@@ -25,10 +25,10 @@ const Footer = () => {
           <div className="md:col-span-2 space-y-10">
             <h4 className="text-[9px] font-heading tracking-[0.5em] text-patagonia-white/30 uppercase font-black">Servicios</h4>
             <ul className="space-y-6 text-patagonia-secondary font-light text-[10px] uppercase tracking-widest">
-              <li><a href="/servicios/desarrollo-web" className="hover:text-patagonia-gold transition-colors">Web Pro</a></li>
-              <li><a href="/servicios/seo-local-punta-arenas" className="hover:text-patagonia-gold transition-colors">SEO Local</a></li>
-              <li><a href="/servicios/automatizacion-con-ia" className="hover:text-patagonia-gold transition-colors">IA & Autom.</a></li>
-              <li><a href="/servicios/comunicacion-digital" className="hover:text-patagonia-gold transition-colors">Comunicación</a></li>
+              <li><a href="/servicios/desarrollo-web" className="hover:text-patagonia-gold transition-colors">diseño web</a></li>
+              <li><a href="/servicios/seo-local-magallanes" className="hover:text-patagonia-gold transition-colors">SEO Local</a></li>
+              <li><a href="/servicios/automatizacion-con-ia" className="hover:text-patagonia-gold transition-colors">Inteligencia Artificial</a></li>
+              <li><a href="/servicios/comunicacion-digital" className="hover:text-patagonia-gold transition-colors">redes sociales</a></li>
             </ul>
           </div>
 
