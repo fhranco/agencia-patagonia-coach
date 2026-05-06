@@ -128,8 +128,8 @@ const LeadCommand = ({ isModal = false, onClose }) => {
                     className="w-full bg-white/5 border border-white/5 rounded-2xl p-5 focus:border-patagonia-gold/50 outline-none transition-all placeholder:text-white/10 font-light text-sm"
                   />
                 </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-3">
+                <div className="space-y-8">
+                  <div className="space-y-4">
                     <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Canal de Contacto (Email)</label>
                     <input 
                       required
@@ -138,10 +138,10 @@ const LeadCommand = ({ isModal = false, onClose }) => {
                       onChange={handleChange}
                       type="email" 
                       placeholder="email@corporativo.com"
-                      className="w-full bg-white/5 border border-white/5 rounded-2xl p-5 focus:border-patagonia-gold/50 outline-none transition-all placeholder:text-white/10 font-light text-sm"
+                      className="w-full bg-white/5 border border-white/5 rounded-2xl p-6 focus:border-patagonia-gold/50 outline-none transition-all placeholder:text-white/10 font-light text-base"
                     />
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">WhatsApp de Contacto</label>
                     <input 
                       required
@@ -150,7 +150,7 @@ const LeadCommand = ({ isModal = false, onClose }) => {
                       onChange={handleChange}
                       type="tel" 
                       placeholder="+56 9 XXXX XXXX"
-                      className="w-full bg-white/5 border border-white/5 rounded-2xl p-5 focus:border-patagonia-gold/50 outline-none transition-all placeholder:text-white/10 font-light text-sm"
+                      className="w-full bg-white/5 border border-white/5 rounded-2xl p-6 focus:border-patagonia-gold/50 outline-none transition-all placeholder:text-white/10 font-light text-base"
                     />
                   </div>
                 </div>
