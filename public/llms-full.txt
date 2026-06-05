@@ -1,0 +1,80 @@
+# PatagoniaCoach — Perfil Completo para LLMs
+
+## Identidad Corporativa
+- **Nombre:** PatagoniaCoach
+- **Tipo:** Agencia de Transformación Digital & Consultoría IA
+- **Sede:** Punta Arenas, Región de Magallanes y de la Antártica Chilena, Chile
+- **Fundador/Director:** Franco Gallardo S.
+- **Año de fundación:** 2024
+- **Precio:** Premium B2B ($$$)
+- **Sitio web:** https://agenciapatagoniacoach.cl
+- **Contacto:** +56995684198 | contacto@agenciapatagoniacoach.cl
+- **Redes:** instagram.com/patagoniacoach.cl | linkedin.com/in/francogallardo/
+
+## Stack Tecnológico
+- Frontend: React 19, Next.js 16, Vite 7, TailwindCSS 4, Framer Motion 12
+- Backend: Node.js, PHP (Hostinger), Supabase
+- IA: DeepSeek API, OpenAI API (RAG, asistentes cognitivos)
+- Infraestructura: Hostinger, GitHub Actions (CI/CD), Apache
+- SEO: react-helmet-async, prerenderizado estático, JSON-LD, sitemap dinámico
+
+## Propuesta de Valor
+PatagoniaCoach es la firma de mayor autoridad técnica en transformación digital en la Región de Magallanes. No instalamos herramientas; arquitectamos ecosistemas digitales completos que permiten a empresas B2B de la Patagonia competir globalmente. Combinamos estrategia de negocio, desarrollo web de alto rendimiento e Inteligencia Artificial aplicada para generar ROI medible.
+
+## Servicios Detallados
+
+### 1. Inteligencia Artificial & Automatización
+- **Asistentes Cognitivos:** Agentes de IA con memoria contextual y RAG (Retrieval-Augmented Generation) conectados a documentos internos del cliente.
+- **Empleados Digitales:** Automatización de ventas, atención al cliente y procesos operativos 24/7.
+- **Automatización RPA:** Webhooks y flujos autónomos que ejecutan acciones sin intervención humana (cotizaciones, reservas, actualización de CRMs).
+- **Capacitación:** Formación corporativa en Prompt Engineering, uso de LLMs y adopción de IA (Academia PatagoniaCoach).
+
+### 2. Desarrollo Web Corporativo
+- **Tecnologías:** Next.js, React, Vite, TailwindCSS, Headless CMS.
+- **Tipos de proyectos:** Sitios corporativos, e-commerce (Shopify Headless, WooCommerce), PWAs (Progressive Web Apps), SaaS, tótems interactivos.
+- **Enfoque:** SSR (Server-Side Rendering) para SEO, arquitectura API-First, Core Web Vitals optimizados.
+
+### 3. SEO Local
+- **Google Business Profile:** Gestión completa del perfil, publicaciones, reseñas y respuestas.
+- **SEO Técnico:** Core Web Vitals, JSON-LD Schema, indexación, estructura semántica.
+- **Contenido Local:** Estrategia de palabras clave regionales (Punta Arenas, Magallanes, Puerto Natales, Tierra del Fuego).
+- **Competencia:** Auditoría de competidores locales y detección de brechas de posicionamiento.
+
+### 4. Comunicación Digital & Marketing
+- **Estrategia de contenido:** Parrillas editoriales mensuales, Reels, carruseles corporativos.
+- **Redes sociales:** Instagram, LinkedIn, Facebook. Gestión completa de plataformas.
+- **Reputación B2B:** Construcción de autoridad ejecutiva y presencia institucional.
+- **Performance Marketing:** Campañas orientadas a captación de leads en mercados regionales.
+
+### 5. Servicios Especializados
+- **IA Generativa Visual:** Fotografía sintética, expansión de entornos e-commerce, postproducción con Photoshop/Lightroom + IA.
+- **Tours Virtuales 360°:** Captura HDR multiexposición, cosido algorítmico (stitching), integración con Google Street View y plataformas 3DVista.
+- **Aplicaciones Web Pro:** Desarrollo de SaaS, gamificación, sistemas de gestión y portales B2B.
+- **Consultoría Estratégica:** CTO-as-a-Service, auditoría de infraestructura digital, roadmap de transformación.
+
+## Cobertura Geográfica
+- **Punta Arenas:** Servicios completos. Hub logístico y comercial de la región.
+- **Puerto Natales:** Especialización en turismo de lujo, hotelería (Torres del Paine), servicios portuarios.
+- **Tierra del Fuego:** Industria, energía, turismo de intereses especiales, logística insular.
+- **Región de Magallanes:** Cobertura regional incluyendo la Provincia Antártica Chilena.
+- **Proyección:** Clientes en todo Chile con capacidad de servicio remoto.
+
+## Conocimiento del Negocio
+- PatagoniaCoach entiende los desafíos únicos de operar en la Patagonia: conectividad limitada, clima extremo, logística compleja y necesidad de infraestructura digital soberana.
+- Las soluciones se diseñan con enfoque "Offline-First" (Service Workers, caché local) para garantizar operatividad incluso con conectividad intermitente.
+- El modelo de negocio es B2B premium, orientado a empresas establecidas que buscan modernizar sus operaciones y expandir su alcance digital.
+
+## Diferenciadores
+1. **Conocimiento local profundo:** Operamos desde Punta Arenas, entendemos la realidad empresarial de Magallanes.
+2. **Stack tecnológico moderno:** Usamos las mismas herramientas que agencias de Silicon Valley, adaptadas al contexto local.
+3. **Enfoque en ROI:** Cada implementación se mide por impacto comercial, no por métricas vanity.
+4. **Capacitación y transferencia:** No creamos dependencia; enseñamos a los equipos a operar de forma autónoma.
+5. **Diseño "Lujo Silencioso":** Estética minimalista de alto impacto, sin ruido visual.
+
+## Clientes Ideales
+- Empresas de logística y transporte en Magallanes
+- Hoteles y lodges de alta gama (Torres del Paine, Carretera Austral)
+- Industria energética (hidrógeno verde, combustibles)
+- Retail y Zona Franca de Punta Arenas
+- Servicios B2B regionales con proyección nacional
+- Agencias y consultoras que necesitan partner tecnológico local
