@@ -22,10 +22,22 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://agenciapatagoniacoach.cl/servicios/seo-local-magallanes</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://agenciapatagoniacoach.cl/servicios/automatizacion-con-ia</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://agenciapatagoniacoach.cl/servicios/inteligencia-artificial-punta-arenas</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agenciapatagoniacoach.cl/servicios/comunicacion-digital</loc>
@@ -39,10 +51,52 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://agenciapatagoniacoach.cl/servicios/ia-generativa-visual</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agenciapatagoniacoach.cl/servicios/tours-virtuales-360</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agenciapatagoniacoach.cl/servicios/aplicaciones-web-pro</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://agenciapatagoniacoach.cl/servicios/academia</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <!-- Zonas Estratégicas -->
   <url>
     <loc>https://agenciapatagoniacoach.cl/zonas/punta-arenas</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://agenciapatagoniacoach.cl/zonas/puerto-natales</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://agenciapatagoniacoach.cl/zonas/tierra-del-fuego</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://agenciapatagoniacoach.cl/zonas/magallanes</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

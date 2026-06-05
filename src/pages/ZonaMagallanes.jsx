@@ -5,8 +5,10 @@ import Footer from '../components/Footer';
 import DigitalDiagnostic from '../components/DigitalDiagnostic';
 import LeadCommand from '../components/LeadCommand';
 import SEO from '../components/SEO';
+import { localBusinessSchema, ZONE_DATA } from '../seo/schemas';
 
 const ZonaMagallanes = () => {
+  const data = ZONE_DATA['magallanes'];
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -22,6 +24,7 @@ const ZonaMagallanes = () => {
         title="Marketing & Sistemas en Magallanes y Antártica | PatagoniaCoach"
         description="Agencia de transformación digital líder en la Región de Magallanes. Sistemas inteligentes para turismo, industria, logística y academia austral."
         schema={schema}
+        schemas={[localBusinessSchema(data.city, data.region, data.lat, data.lng)]}
       />
       <Navbar />
       

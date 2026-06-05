@@ -1,6 +1,11 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # 0. Block direct access to secrets
+  RewriteRule ^secrets\.php$ - [F,L]
+  RewriteRule ^secrets\.example\.php$ - [F,L]
+
   RewriteRule ^index\.html$ - [L]
 
   # 1. If it's a real file or directory, stop and serve it

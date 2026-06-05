@@ -1,6 +1,8 @@
 import PageTemplate from './PageTemplate';
+import { localBusinessSchema, ZONE_DATA } from '../seo/schemas';
 
 const ZonaPuntaArenas = () => {
+  const data = ZONE_DATA['punta-arenas'];
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -45,6 +47,7 @@ const ZonaPuntaArenas = () => {
       features={features}
       faqs={faqs}
       schema={schema}
+      extraSchemas={[localBusinessSchema(data.city, data.region, data.lat, data.lng)]}
     />
   );
 };

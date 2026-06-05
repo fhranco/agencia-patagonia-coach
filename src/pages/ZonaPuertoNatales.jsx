@@ -5,8 +5,10 @@ import Footer from '../components/Footer';
 import DigitalDiagnostic from '../components/DigitalDiagnostic';
 import LeadCommand from '../components/LeadCommand';
 import SEO from '../components/SEO';
+import { localBusinessSchema, ZONE_DATA } from '../seo/schemas';
 
 const ZonaPuertoNatales = () => {
+  const data = ZONE_DATA['puerto-natales'];
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -22,6 +24,7 @@ const ZonaPuertoNatales = () => {
         title="Marketing & Sistemas en Puerto Natales | PatagoniaCoach"
         description="Potenciamos marcas de lujo y logística en Puerto Natales. Especialistas en hotelería de alta gama en Torres del Paine y servicios portuarios."
         schema={schema}
+        schemas={[localBusinessSchema(data.city, data.region, data.lat, data.lng)]}
       />
       <Navbar />
       

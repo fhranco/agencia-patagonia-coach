@@ -5,8 +5,10 @@ import Footer from '../components/Footer';
 import DigitalDiagnostic from '../components/DigitalDiagnostic';
 import LeadCommand from '../components/LeadCommand';
 import SEO from '../components/SEO';
+import { localBusinessSchema, ZONE_DATA } from '../seo/schemas';
 
 const ZonaTierraDelFuego = () => {
+  const data = ZONE_DATA['tierra-del-fuego'];
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -22,6 +24,7 @@ const ZonaTierraDelFuego = () => {
         title="Marketing & Sistemas en Tierra del Fuego | PatagoniaCoach"
         description="Liderazgo digital para la industria y turismo de intereses especiales en Tierra del Fuego. Sistemas para energía, logística y expediciones extremas."
         schema={schema}
+        schemas={[localBusinessSchema(data.city, data.region, data.lat, data.lng)]}
       />
       <Navbar />
       
