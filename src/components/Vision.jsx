@@ -57,7 +57,7 @@ const Vision = () => {
               >
                 <Globe className="w-8 h-8 text-patagonia-cyan mb-4 group-hover:scale-110 transition-transform" />
                 <h4 className="text-lg font-bold mb-2 uppercase tracking-widest text-patagonia-cyan">Escale Global</h4>
-                <p className="text-sm text-white/40 font-light">
+                <p className="text-sm text-white/60 font-light">
                   Llevamos su negocio regional al escenario mundial mediante automatización y marketing de élite.
                 </p>
               </motion.div>
@@ -68,7 +68,7 @@ const Vision = () => {
               >
                 <Compass className="w-8 h-8 text-patagonia-red mb-4 group-hover:scale-110 transition-transform" />
                 <h4 className="text-lg font-bold mb-2 uppercase tracking-widest text-patagonia-gold">Norte Estratégico</h4>
-                <p className="text-sm text-white/40 font-light">
+                <p className="text-sm text-white/60 font-light">
                   Cada línea de código y cada campaña tiene un solo objetivo: aumentar su rentabilidad y autoridad de mercado.
                 </p>
               </motion.div>

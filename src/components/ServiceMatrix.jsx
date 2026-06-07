@@ -56,7 +56,7 @@ const ServiceCard = ({ title, subtitle, solutions, icon: Icon, index, activeInde
             {title}
           </h3>
           {subtitle && (
-            <p className="text-sm font-light text-white/40 leading-relaxed max-w-[95%]">
+            <p className="text-sm font-light text-white/60 leading-relaxed max-w-[95%]">
               {subtitle}
             </p>
           )}
@@ -82,7 +82,7 @@ const ServiceCard = ({ title, subtitle, solutions, icon: Icon, index, activeInde
       <div className="relative z-10 pt-6 flex justify-between items-center group-hover:translate-x-2 transition-transform duration-700">
         <div className="flex items-center gap-4">
           <div className="w-12 h-px bg-white/10" />
-          <span className="text-[9px] font-black tracking-[0.6em] text-white/40 uppercase group-hover:text-patagonia-gold transition-colors">Activar Diagnóstico</span>
+          <span className="text-[9px] font-black tracking-[0.6em] text-white/60 uppercase group-hover:text-patagonia-gold transition-colors">Activar Diagnóstico</span>
         </div>
         <Play className="w-4 h-4 text-white/0 group-hover:text-patagonia-gold transition-all" />
       </div>

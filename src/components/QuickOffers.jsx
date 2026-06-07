@@ -30,7 +30,7 @@ const QuickOffers = () => {
                 <span className="text-patagonia-cyan text-5xl">de la Semana.</span>
               </h3>
               
-              <p className="text-white/50 font-light text-lg leading-relaxed max-w-sm">
+              <p className="text-white/70 font-light text-lg leading-relaxed max-w-sm">
                 Sprints de 2 a 4 horas diseñados para que tu equipo aprenda a ejecutar IA hoy mismo, no en meses.
               </p>
               

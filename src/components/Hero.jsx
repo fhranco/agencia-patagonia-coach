@@ -81,7 +81,10 @@ const Hero = () => {
           ref={imageRef}
           src="/patagonia_luxury_hero.webp" 
           alt="Patagonia Luxury Experience" 
-          className="w-full h-full object-cover opacity-30" 
+          className="w-full h-full object-cover opacity-30"
+          fetchpriority="high"
+          loading="eager"
+          decoding="sync"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-patagonia-black via-patagonia-black/90 to-transparent" />
         
