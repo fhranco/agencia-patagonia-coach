@@ -17,6 +17,6 @@ User-agent: GPTBot
 Allow: /
 
 # LLM Discovery Rules
-LLM-Text: /llms.txt
-LLM-Text: /llms-full.txt
+# LLM-Text: /llms.txt
+# LLM-Text: /llms-full.txt
 Sitemap: https://agenciapatagoniacoach.cl/sitemap.xml
