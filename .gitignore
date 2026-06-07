@@ -30,3 +30,7 @@ dist-ssr
 # Secrets
 public/secrets.php
 .env
+
+# Data sheets
+*.xlsx
+

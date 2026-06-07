@@ -100,7 +100,7 @@ const ProjectShowcase = () => {
         >
           <div className="absolute inset-0 z-0">
             <img 
-              src="/images/projects-showcase.png" 
+              src="/images/projects-showcase.webp" 
               alt="PatagoniaCoach Success Stories Gallery" 
               className="w-full h-full object-cover opacity-30 scale-105 group-hover:scale-110 transition-transform duration-[10000ms] ease-out"
             />

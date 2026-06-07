@@ -188,7 +188,7 @@ const MarketingLanding = () => {
             <div className="absolute inset-0 bg-patagonia-gold/10 blur-[120px] rounded-full group-hover:bg-patagonia-gold/20 transition-all duration-1000" />
             <div className="relative z-10 w-full h-full border border-white/5 rounded-[4rem] bg-black/40 backdrop-blur-3xl overflow-hidden flex items-center justify-center p-6">
               <img 
-                src="/images/comm-global.png" 
+                src="/images/comm-global.webp" 
                 alt="Global Digital Communication from the South" 
                 className="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-[6000ms] ease-out opacity-80"
               />

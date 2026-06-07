@@ -99,7 +99,7 @@ const ZonaTierraDelFuego = () => {
             <div className="absolute inset-0 bg-patagonia-gold/10 blur-[120px] rounded-full group-hover:bg-patagonia-gold/20 transition-all duration-1000" />
             <div className="relative z-10 w-full h-full border border-white/5 rounded-[4rem] bg-black/40 backdrop-blur-3xl overflow-hidden flex items-center justify-center p-4">
               <img 
-                src="/images/tdf-authority.png" 
+                src="/images/tdf-authority.webp" 
                 alt="Tierra del Fuego Semantic Map" 
                 className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-transform duration-[8000ms] ease-out opacity-90"
               />

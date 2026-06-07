@@ -228,7 +228,7 @@ const IALanding = () => {
             <div className="absolute inset-0 bg-patagonia-gold/10 blur-[120px] rounded-full group-hover:bg-patagonia-gold/20 transition-all duration-1000" />
             <div className="relative z-10 w-full h-full border border-white/5 rounded-[3rem] bg-black/40 backdrop-blur-3xl overflow-hidden flex items-center justify-center p-4">
               <img 
-                src="/images/ai-core.png" 
+                src="/images/ai-core.webp" 
                 alt="Patagonia AI Neural Core" 
                 className="w-full h-full object-contain scale-110 group-hover:scale-125 transition-transform duration-[3000ms] ease-out"
               />

@@ -94,7 +94,7 @@ const ZonaMagallanes = () => {
           <div className="w-full max-w-5xl aspect-square relative group rounded-[4rem] overflow-hidden border border-white/5 bg-black/60 shadow-[0_0_100px_rgba(0,0,0,0.5)]">
             <div className="absolute inset-0 bg-patagonia-gold/5 blur-[120px] rounded-full group-hover:bg-patagonia-gold/10 transition-all duration-1000" />
             <img 
-              src="/images/magallanes-authority.png" 
+              src="/images/magallanes-authority.webp" 
               alt="Unified Magallanes Region Strategic Map" 
               className="w-full h-full object-contain p-8 opacity-90 scale-100 group-hover:scale-105 transition-transform duration-[12000ms] ease-out"
             />
