@@ -222,7 +222,7 @@ const MasteryGallery = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20">
             <div className="space-y-6 max-w-5xl">
               <div className="inline-block px-4 py-1.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm">
-                <span className="text-[10px] uppercase tracking-[0.4em] font-black text-white/40">Galería de Maestría</span>
+                <span className="text-[10px] uppercase tracking-[0.4em] font-black text-white/60">Galería de Maestría</span>
               </div>
               <h2 className="text-6xl md:text-[7rem] font-heading font-light text-white leading-[0.85] tracking-tighter whitespace-pre-line">
                 Proyectos de {"\n"}
@@ -283,6 +283,7 @@ const MasteryGallery = () => {
             >
               <button 
                 onClick={() => setSelectedProject(null)}
+                aria-label="Cerrar detalles del proyecto"
                 className="absolute top-8 right-8 p-3 hover:bg-white/5 rounded-full text-patagonia-secondary hover:text-white transition-all"
               >
                 <X className="w-6 h-6" />

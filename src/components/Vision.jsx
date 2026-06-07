@@ -28,7 +28,7 @@ const Vision = () => {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <span className="text-patagonia-red font-heading tracking-[0.4em] text-xs uppercase block font-bold">La Visión del Fundador</span>
+              <span className="text-patagonia-gold font-heading tracking-[0.4em] text-xs uppercase block font-bold">La Visión del Fundador</span>
               <h3 className="text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight">
                 "No digitalizo procesos, <span className="text-patagonia-red">evoluciono resultados."</span>
               </h3>
@@ -67,7 +67,7 @@ const Vision = () => {
                 className="glass-card p-8 border-white/5 bg-white/[0.03] backdrop-blur-3xl group hover:border-patagonia-red/30 transition-all"
               >
                 <Compass className="w-8 h-8 text-patagonia-red mb-4 group-hover:scale-110 transition-transform" />
-                <h4 className="text-lg font-bold mb-2 uppercase tracking-widest text-patagonia-red">Norte Estratégico</h4>
+                <h4 className="text-lg font-bold mb-2 uppercase tracking-widest text-patagonia-gold">Norte Estratégico</h4>
                 <p className="text-sm text-white/40 font-light">
                   Cada línea de código y cada campaña tiene un solo objetivo: aumentar su rentabilidad y autoridad de mercado.
                 </p>
@@ -83,7 +83,7 @@ const Vision = () => {
                   </div>
                   <div>
                     <p className="text-3xl font-heading font-light tracking-tight text-white/90">Franco Gallardo <span className="text-patagonia-red italic">S.</span></p>
-                    <p className="text-[10px] uppercase tracking-[0.4em] text-white/30">Founder & Chief Ecosystem Architect</p>
+                    <p className="text-[10px] uppercase tracking-[0.4em] text-white/60">Founder & Chief Ecosystem Architect</p>
                   </div>
                 </div>
               </div>

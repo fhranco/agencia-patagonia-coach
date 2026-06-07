@@ -406,18 +406,18 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                         <div className="p-4 rounded-2xl bg-white/5 group-hover:bg-patagonia-gold/10 transition-all">{n.icon}</div>
                         <span className="text-xl font-heading font-light text-white">{n.name}</span>
                       </div>
-                      <ChevronRight className="w-6 h-6 text-white/20 group-hover:text-patagonia-gold transition-all" />
+                      <ChevronRight className="w-6 h-6 text-white/50 group-hover:text-patagonia-gold transition-all" />
                     </button>
                   ))}
                 </div>
-                <button onClick={() => setStep('sector')} className="w-full text-center text-[10px] uppercase tracking-widest text-white/20 hover:text-white transition-all font-bold">← Volver al sector anterior</button>
+                <button onClick={() => setStep('sector')} className="w-full text-center text-[10px] uppercase tracking-widest text-white/50 hover:text-white transition-all font-bold">← Volver al sector anterior</button>
               </motion.div>
             )}
 
             {step === 'audit' && (
               <motion.div key={currentQuestion} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-12">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] uppercase tracking-widest text-white/20 font-bold">Protocolo {currentQuestion + 1} / 20</span>
+                  <span className="text-[10px] uppercase tracking-widest text-white/50 font-bold">Protocolo {currentQuestion + 1} / 20</span>
                   <div className="w-48 h-1 bg-white/5 rounded-full overflow-hidden">
                     <motion.div className="h-full bg-patagonia-gold" animate={{ width: `${((currentQuestion + 1) / 20) * 100}%` }} />
                   </div>
@@ -540,7 +540,7 @@ const DigitalDiagnostic = ({ isModal = false }) => {
 
                 {/* Footer Regreso */}
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-center gap-8">
-                   <button onClick={() => setStep('sector')} className="text-white/20 text-[10px] tracking-[0.3em] uppercase hover:text-patagonia-gold transition-all font-bold">Reiniciar Auditoría</button>
+                   <button onClick={() => setStep('sector')} className="text-white/50 text-[10px] tracking-[0.3em] uppercase hover:text-patagonia-gold transition-all font-bold">Reiniciar Auditoría</button>
                    <button 
                     onClick={() => {
                       if (isModal) {

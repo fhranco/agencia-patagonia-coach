@@ -28,8 +28,8 @@ const PilarAccordion = ({ id, title, focus, deliverable, icon: Icon, isOpen, onC
   >
     <div className="flex items-center justify-between gap-8 px-4">
       <div className="flex items-center gap-8">
-        <span className="font-mono text-xs text-white/20 tracking-widest">{id}</span>
-        <div className={`p-3 rounded-xl transition-colors ${isOpen ? 'bg-patagonia-red/20 text-patagonia-red' : 'bg-white/5 text-white/40 group-hover:text-white'}`}>
+        <span className="font-mono text-xs text-white/50 tracking-widest">{id}</span>
+        <div className={`p-3 rounded-xl transition-colors ${isOpen ? 'bg-patagonia-red/20 text-patagonia-red' : 'bg-white/5 text-white/60 group-hover:text-white'}`}>
           <Icon className="w-6 h-6" />
         </div>
         <h3 className={`text-2xl font-bold tracking-tight transition-all ${isOpen ? 'text-white' : 'text-white/40'}`}>
@@ -38,7 +38,7 @@ const PilarAccordion = ({ id, title, focus, deliverable, icon: Icon, isOpen, onC
       </div>
       <motion.div
         animate={{ rotate: isOpen ? 180 : 0 }}
-        className="text-white/20"
+        className="text-white/50"
       >
         <ChevronDown className="w-5 h-5" />
       </motion.div>
@@ -54,11 +54,11 @@ const PilarAccordion = ({ id, title, focus, deliverable, icon: Icon, isOpen, onC
         >
           <div className="grid md:grid-cols-2 gap-6 md:gap-12 p-6 md:p-12 md:ml-16">
             <div className="space-y-4">
-              <p className="text-xs uppercase tracking-[0.3em] text-patagonia-red font-bold">Foco Estratégico</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-patagonia-gold font-bold">Foco Estratégico</p>
               <p className="text-base md:text-lg text-white/70 font-light leading-relaxed">{focus}</p>
             </div>
             <div className="space-y-4 bg-white/5 p-6 rounded-xl border border-white/10">
-              <p className="text-xs uppercase tracking-[0.3em] text-white/40 font-bold">Entregable Clave</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-white/60 font-bold">Entregable Clave</p>
               <div className="flex items-center gap-3">
                 <ShieldCheck className="w-5 h-5 text-patagonia-cyan" />
                 <p className="text-lg md:text-xl font-heading font-medium">{deliverable}</p>
@@ -110,11 +110,11 @@ const Consultancy = () => {
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-patagonia-red rounded-full animate-ping" />
-                <span className="text-patagonia-red font-heading tracking-[0.2em] md:tracking-[0.4em] text-[10px] md:text-xs uppercase">Ecosistema de Valor</span>
+                <span className="text-patagonia-gold font-heading tracking-[0.2em] md:tracking-[0.4em] text-[10px] md:text-xs uppercase">Ecosistema de Valor</span>
               </div>
               <h2 className="text-3xl md:text-6xl font-bold leading-tight">
                 El Puente de <br />
-                <span className="text-white/20">Transformación.</span>
+                <span className="text-white/50">Transformación.</span>
               </h2>
             </div>
 
@@ -165,7 +165,7 @@ const Consultancy = () => {
                 <TrendingUp className="w-8 h-8 text-patagonia-cyan" />
                 <div className="space-y-2">
                   <p className="text-4xl font-mono font-bold text-patagonia-cyan">+40%</p>
-                  <p className="text-xs uppercase tracking-widest text-white/40">Eficiencia Operativa en Ventas</p>
+                  <p className="text-xs uppercase tracking-widest text-white/60">Eficiencia Operativa en Ventas</p>
                 </div>
               </motion.div>
 
@@ -180,7 +180,7 @@ const Consultancy = () => {
                 </p>
                 <div className="mt-8 relative z-10">
                   <p className="font-bold text-sm tracking-widest uppercase">Director de Operaciones</p>
-                  <p className="text-[10px] text-white/30 uppercase tracking-widest">Sector Logística B2B</p>
+                  <p className="text-[10px] text-white/60 uppercase tracking-widest">Sector Logística B2B</p>
                 </div>
               </motion.div>
 
