@@ -42,7 +42,7 @@ const ProjectShowcase = () => {
         <div className="mb-32 space-y-8">
           <div className="flex items-center gap-6">
             <div className="w-12 h-px bg-white/20" />
-            <span className="text-white/20 font-heading tracking-[0.8em] text-[10px] uppercase font-semibold">Portafolio de Ejecución</span>
+            <span className="text-white/60 font-heading tracking-[0.8em] text-[10px] uppercase font-semibold">Portafolio de Ejecución</span>
           </div>
           <h2 className="text-6xl md:text-[6.5rem] font-heading font-light max-w-5xl leading-[0.9] text-balance tracking-tighter text-white/90">
             Ecosistemas que <span className="italic">definen</span> industrias.
@@ -82,7 +82,7 @@ const ProjectShowcase = () => {
                 <div className="pt-8 border-t border-white/5 flex gap-8">
                   {p.stats.map((s, idx) => (
                     <div key={idx} className="space-y-1">
-                      <p className="text-[10px] uppercase tracking-[0.3em] text-white/20 font-bold">{idx === 0 ? "RESULTADO" : "CAPACIDAD"}</p>
+                      <p className="text-[10px] uppercase tracking-[0.3em] text-white/60 font-bold">{idx === 0 ? "RESULTADO" : "CAPACIDAD"}</p>
                       <p className="text-sm font-heading font-light text-white/80">{s}</p>
                     </div>
                   ))}

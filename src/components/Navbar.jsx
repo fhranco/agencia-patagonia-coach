@@ -78,6 +78,7 @@ const Navbar = () => {
           <button 
             className="md:hidden p-2 text-patagonia-white hover:text-patagonia-gold transition-colors"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Cerrar menú móvil" : "Abrir menú móvil"}
           >
             {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
           </button>
@@ -97,6 +98,7 @@ const Navbar = () => {
             {/* Close button for full screen menu */}
             <button 
               onClick={() => setIsOpen(false)}
+              aria-label="Cerrar menú móvil"
               className="absolute top-8 right-8 p-2 text-white/40 hover:text-patagonia-gold transition-colors"
             >
               <X className="w-10 h-10 font-light" />

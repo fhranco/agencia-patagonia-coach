@@ -41,7 +41,7 @@ const ServiceCard = ({ title, subtitle, solutions, icon: Icon, index, activeInde
       {/* Minimalist Header */}
       <div className="flex justify-between items-start relative z-10">
         <div className="space-y-2">
-          <span className="text-[9px] font-black tracking-[0.5em] text-white/20 uppercase italic">Codex 0{index + 1}</span>
+          <span className="text-[9px] font-black tracking-[0.5em] text-white/50 uppercase italic">Codex 0{index + 1}</span>
           <div className={`h-[1px] bg-white/20 transition-all duration-700 ${isHovered ? 'w-16' : 'w-8'}`} />
         </div>
         <div className={`p-3 rounded-xl border transition-all duration-500 ${isHovered ? 'bg-white/10 border-white/20' : 'bg-transparent border-transparent'}`}>
@@ -68,7 +68,7 @@ const ServiceCard = ({ title, subtitle, solutions, icon: Icon, index, activeInde
             {solutions.map((sol, i) => (
               <li 
                 key={i}
-                className={`text-[10px] uppercase tracking-[0.3em] font-medium transition-all duration-500 flex items-center gap-4 ${isHovered ? 'text-white/80 translate-x-2' : 'text-white/20'}`}
+                className={`text-[10px] uppercase tracking-[0.3em] font-medium transition-all duration-500 flex items-center gap-4 ${isHovered ? 'text-white/80 translate-x-2' : 'text-white/50'}`}
               >
                 <div className={`w-1 h-px transition-all duration-500 ${isHovered ? 'bg-white w-4' : 'bg-white/20 w-2'}`} />
                 {sol}
@@ -254,7 +254,7 @@ const ServiceMatrix = () => {
         <div className="mb-32 space-y-8">
           <div className="flex items-center gap-6">
             <div className="w-12 h-px bg-white/20" />
-            <span className="text-white/20 font-heading tracking-[0.8em] text-[10px] uppercase font-semibold">Matriz de Servicios Elite</span>
+            <span className="text-white/60 font-heading tracking-[0.8em] text-[10px] uppercase font-semibold">Matriz de Servicios Elite</span>
           </div>
           <h2 className="text-6xl md:text-[6.5rem] font-heading font-light max-w-5xl leading-[0.9] text-balance tracking-tighter text-white/90">
             Ecosistemas de <span className="italic">valor</span> ininterrumpido.

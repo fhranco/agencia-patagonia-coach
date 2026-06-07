@@ -18,12 +18,12 @@ const Footer = () => {
             <div className="space-y-3">
               <p className="text-[9px] font-heading tracking-[0.5em] text-patagonia-gold uppercase font-bold">Protocolo de Origen</p>
               <p className="text-xl font-heading font-light text-patagonia-white/80 tracking-tight">Desde el territorio más salvaje, <br/>impulsando la transformación global.</p>
-              <p className="text-[10px] text-patagonia-secondary/40 uppercase tracking-[0.3em]">Punta Arenas · Patagonia Chilena.</p>
+              <p className="text-[10px] text-patagonia-secondary/70 uppercase tracking-[0.3em]">Punta Arenas · Patagonia Chilena.</p>
             </div>
           </div>
           
           <div className="md:col-span-2 space-y-10">
-            <h4 className="text-[9px] font-heading tracking-[0.5em] text-patagonia-white/30 uppercase font-black">Servicios</h4>
+            <h3 className="text-[9px] font-heading tracking-[0.5em] text-patagonia-white/60 uppercase font-black">Servicios</h3>
             <ul className="space-y-6 text-patagonia-secondary font-light text-[10px] uppercase tracking-widest">
               <li><a href="/servicios/desarrollo-web" className="hover:text-patagonia-gold transition-colors">diseño web</a></li>
               <li><a href="/servicios/seo-local-magallanes" className="hover:text-patagonia-gold transition-colors">SEO Local</a></li>
@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
 
           <div className="md:col-span-2 space-y-10">
-            <h4 className="text-[9px] font-heading tracking-[0.5em] text-patagonia-white/30 uppercase font-black">Zonas</h4>
+            <h3 className="text-[9px] font-heading tracking-[0.5em] text-patagonia-white/60 uppercase font-black">Zonas</h3>
             <ul className="space-y-6 text-patagonia-secondary font-light text-[10px] uppercase tracking-widest">
               <li><a href="/zonas/punta-arenas" className="hover:text-patagonia-gold transition-colors">Punta Arenas</a></li>
               <li><a href="/zonas/puerto-natales" className="hover:text-patagonia-gold transition-colors">Puerto Natales</a></li>
@@ -42,7 +42,7 @@ const Footer = () => {
           </div>
 
           <div className="md:col-span-3 space-y-10">
-            <h4 className="text-[9px] font-heading tracking-[0.5em] text-patagonia-white/30 uppercase font-black">Contacto Elite</h4>
+            <h3 className="text-[9px] font-heading tracking-[0.5em] text-patagonia-white/60 uppercase font-black">Contacto Elite</h3>
             <div className="space-y-8">
               <a href="mailto:hola@agenciapatagoniacoach.cl" className="block text-patagonia-white/90 hover:text-patagonia-gold transition-colors font-heading font-light text-2xl tracking-tighter">
                 hola@agenciapatagoniacoach.cl
@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-40 pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10 text-[9px] text-patagonia-secondary/30 uppercase font-black tracking-[0.6em]">
+        <div className="mt-40 pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10 text-[9px] text-patagonia-secondary/60 uppercase font-black tracking-[0.6em]">
           <span>© 2026 PATAGONIACOACH · FREEDOM PERSPECTIVE EDITION.</span>
           <div className="flex gap-14">
             <span className="hover:text-patagonia-gold transition-colors cursor-help">Security Certified</span>

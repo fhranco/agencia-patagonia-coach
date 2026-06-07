@@ -127,9 +127,10 @@ const LeadCommand = ({ isModal = false, onClose }) => {
                 <input type="hidden" name="_honeypot" value={formData._honeypot} onChange={handleChange} style={{ display: 'none' }} />
                 
                 <div className="space-y-3">
-                  <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Identidad & Organización</label>
+                  <label htmlFor="input-nombre" className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Identidad & Organización</label>
                   <input 
                     required
+                    id="input-nombre"
                     name="nombre"
                     value={formData.nombre}
                     onChange={handleChange}
@@ -140,9 +141,10 @@ const LeadCommand = ({ isModal = false, onClose }) => {
                 </div>
                 <div className="space-y-8">
                   <div className="space-y-4">
-                    <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Canal de Contacto (Email)</label>
+                    <label htmlFor="input-email" className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Canal de Contacto (Email)</label>
                     <input 
                       required
+                      id="input-email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
@@ -152,9 +154,10 @@ const LeadCommand = ({ isModal = false, onClose }) => {
                     />
                   </div>
                   <div className="space-y-4">
-                    <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">WhatsApp de Contacto</label>
+                    <label htmlFor="input-whatsapp" className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">WhatsApp de Contacto</label>
                     <input 
                       required
+                      id="input-whatsapp"
                       name="whatsapp"
                       value={formData.whatsapp || ''}
                       onChange={handleChange}
@@ -166,9 +169,10 @@ const LeadCommand = ({ isModal = false, onClose }) => {
                 </div>
                 <div className="grid md:grid-cols-1 gap-6">
                   <div className="space-y-3">
-                    <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Escala de Inversión Estimada</label>
+                    <label htmlFor="select-presupuesto" className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Escala de Inversión Estimada</label>
                     <div className="relative">
                       <select 
+                        id="select-presupuesto"
                         name="presupuesto"
                         value={formData.presupuesto}
                         onChange={handleChange}
@@ -185,9 +189,10 @@ const LeadCommand = ({ isModal = false, onClose }) => {
                   </div>
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Objetivos Estratégicos</label>
+                  <label htmlFor="textarea-mensaje" className="text-[9px] uppercase tracking-[0.4em] text-patagonia-white/30 font-black">Objetivos Estratégicos</label>
                   <textarea 
                     required
+                    id="textarea-mensaje"
                     name="mensaje"
                     value={formData.mensaje}
                     onChange={handleChange}

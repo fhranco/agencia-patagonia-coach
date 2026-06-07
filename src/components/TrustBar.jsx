@@ -36,7 +36,7 @@ const TrustBar = () => {
         <div ref={marqueeRef} className="flex gap-24 py-4 min-w-full">
           <div className="flex gap-24 items-center">
             {clients.map((client, i) => (
-              <span key={i} className="text-4xl font-heading font-bold text-white/20 hover:text-white transition-colors cursor-default">
+              <span key={i} className="text-4xl font-heading font-bold text-white/50 hover:text-white transition-colors cursor-default">
                 {client}
               </span>
             ))}

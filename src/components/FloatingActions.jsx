@@ -71,6 +71,7 @@ const FloatingActions = () => {
         whileHover={{ scale: 1.05, x: -5 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setShowAudit(true)}
+        aria-label="Iniciar Diagnóstico Digital"
         className="fixed top-[35%] right-0 z-[500] w-10 md:w-14 h-10 md:h-14 rounded-l-full flex items-center justify-center bg-patagonia-gold text-black shadow-[0_0_30px_rgba(250,204,21,0.3)] transition-all border-y border-l border-white/20 backdrop-blur-3xl group overflow-hidden"
       >
         <motion.div
@@ -105,6 +106,7 @@ const FloatingActions = () => {
                 <motion.div variants={{ visible: { opacity: 1, x: 0, scale: 1 }, hidden: { opacity: 0, x: 50, scale: 0.8 } }}>
                    <button
                      onClick={() => { setShowChat(true); setIsOpen(false); }}
+                     aria-label="Abrir Asistente IA"
                      className="w-10 h-10 md:w-12 md:h-12 bg-white/5 backdrop-blur-3xl rounded-full flex items-center justify-center border border-white/20 shadow-2xl hover:bg-[#00D4FF]/20 transition-all relative overflow-hidden"
                    >
                      <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute inset-0 bg-[#00D4FF]/30 rounded-full" />
@@ -125,6 +127,7 @@ const FloatingActions = () => {
             onClick={() => setIsOpen(!isOpen)}
             whileHover={{ scale: 1.05, x: -5 }}
             whileTap={{ scale: 0.95 }}
+            aria-label="Alternar menú de contacto y chat de IA"
             className={`w-10 h-10 md:w-14 md:h-14 rounded-l-full flex items-center justify-center shadow-[0_0_40px_rgba(0,212,255,0.3)] transition-all border-y border-l border-white/20 backdrop-blur-3xl z-[600] group overflow-hidden ${
               isOpen ? 'bg-white text-black' : 'bg-[#00D4FF] text-white'
             }`}
@@ -149,6 +152,7 @@ const FloatingActions = () => {
               whileHover={{ scale: 1.05, x: -5 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleHomeClick}
+              aria-label={isHomePath ? "Desplazarse arriba" : "Ir al inicio"}
               className="w-10 h-10 md:w-12 md:h-12 rounded-l-full flex items-center justify-center bg-white/10 text-[#00D4FF] shadow-2xl transition-all border-y border-l border-white/10 backdrop-blur-3xl group overflow-hidden z-[500]"
             >
                <motion.div animate={{ scale: [1, 1.4, 1], opacity: [0.2, 0, 0.2] }} transition={{ repeat: Infinity, duration: 3 }} className="absolute inset-0 bg-[#00D4FF]/10 rounded-full" />
@@ -178,6 +182,7 @@ const FloatingActions = () => {
               {/* Botón de Cierre Elite - Pantalla Completa */}
               <button 
                 onClick={() => setShowAudit(false)}
+                aria-label="Cerrar Diagnóstico Digital"
                 className="fixed top-8 right-8 z-[1100] w-12 h-12 bg-white/10 backdrop-blur-3xl rounded-full flex items-center justify-center text-white border border-white/20 hover:bg-patagonia-red transition-all group"
               >
                 <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
