@@ -28,20 +28,20 @@ const Hero = () => {
 
       gsap.to(".word-inner", {
         y: 0,
-        duration: 1.5,
-        stagger: 0.1,
+        duration: 0.8,
+        stagger: 0.04,
         ease: "power4.out",
-        delay: 0.5
+        delay: 0.1
       });
 
       // 3. Staggered reveal for subtext and buttons
       gsap.from(".hero-reveal", {
         opacity: 0,
-        y: 40,
-        duration: 1.2,
-        stagger: 0.2,
+        y: 20,
+        duration: 0.8,
+        stagger: 0.1,
         ease: "expo.out",
-        delay: 1.2
+        delay: 0.4
       });
 
       // 4. Floating Light Leak (Golden Glow)

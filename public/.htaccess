@@ -14,9 +14,7 @@
   RewriteRule ^ - [L]
 
   # 2. SEO Cleanup: Signal Google that old URLs are permanently Gone (410)
-  RewriteRule ^servicio/.*$ - [G,L]
-  RewriteRule ^tienda/.*$ - [G,L]
-  RewriteRule ^home/.*$ - [G,L]
+  RewriteRule ^(servicio|tienda|home|cart|carrito|checkout|my-account|shop|product|categoria-producto)(/.*)?$ - [G,L]
 
   # 3. 301 Redirects for SEO Migration
   Redirect 301 /ia /servicios/automatizacion-con-ia

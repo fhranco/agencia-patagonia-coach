@@ -43,7 +43,7 @@ const ValueLadder = () => {
           >
             <div className="space-y-6">
               <div className="mb-6 opacity-80 group-hover:opacity-100 transition-opacity">{item.icon}</div>
-              <h3 className="text-3xl md:text-4xl font-heading font-light tracking-tight text-patagonia-white">{item.title}</h3>
+              <h2 className="text-3xl md:text-4xl font-heading font-light tracking-tight text-patagonia-white">{item.title}</h2>
               <p className="text-patagonia-gold font-heading text-[9px] uppercase tracking-[0.4em] font-semibold">{item.subtitle}</p>
             </div>
             

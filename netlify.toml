@@ -3,6 +3,26 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/cart"
+  status = 410
+
+[[redirects]]
+  from = "/carrito"
+  status = 410
+
+[[redirects]]
+  from = "/checkout"
+  status = 410
+
+[[redirects]]
+  from = "/shop"
+  status = 410
+
+[[redirects]]
+  from = "/my-account"
+  status = 410
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

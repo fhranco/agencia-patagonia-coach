@@ -83,7 +83,7 @@ const MainLanding = () => {
         <div className="md:hidden px-6 py-12 bg-patagonia-black">
           <div className="glass-card text-center space-y-6 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-patagonia-gold/5 blur-[50px] rounded-full pointer-events-none" />
-            <h3 className="text-2xl font-heading text-white tracking-tight leading-tight">¿Cuál es el nivel digital de su empresa?</h3>
+            <h2 className="text-2xl font-heading text-white tracking-tight leading-tight">¿Cuál es el nivel digital de su empresa?</h2>
             <p className="text-sm text-patagonia-secondary font-light leading-relaxed">Responda nuestro test de 2 minutos para recibir un reporte técnico personalizado de optimización para Magallanes.</p>
             <button 
               onClick={() => setShowDiagnostic(true)}

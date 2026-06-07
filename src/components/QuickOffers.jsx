@@ -25,10 +25,10 @@ const QuickOffers = () => {
                 <Clock className="w-3 h-3" /> Formación Express
               </div>
               
-              <h3 className="text-4xl font-bold tracking-tighter italic leading-tight">
+              <h2 className="text-4xl font-bold tracking-tighter italic leading-tight">
                 Talleres y Cursos <br />
                 <span className="text-patagonia-cyan text-5xl">de la Semana.</span>
-              </h3>
+              </h2>
               
               <p className="text-white/70 font-light text-lg leading-relaxed max-w-sm">
                 Sprints de 2 a 4 horas diseñados para que tu equipo aprenda a ejecutar IA hoy mismo, no en meses.
@@ -56,10 +56,10 @@ const QuickOffers = () => {
                 <Zap className="w-3 h-3 text-patagonia-red" /> Lanzamiento Rápido
               </div>
               
-              <h3 className="text-4xl font-bold tracking-tighter italic leading-tight text-white">
+              <h2 className="text-4xl font-bold tracking-tighter italic leading-tight text-white">
                 Tu Web B2B <br />
                 <span className="text-patagonia-red text-5xl italic font-black">en 48 Horas.</span>
-              </h3>
+              </h2>
               
               <p className="text-white/60 font-light text-lg leading-relaxed max-w-sm">
                 Desplegamos tu ecosistema digital completo con arquitectura de conversión lista para captar leads. 

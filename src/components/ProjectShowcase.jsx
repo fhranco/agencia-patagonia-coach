@@ -109,7 +109,7 @@ const ProjectShowcase = () => {
 
           <div className="relative z-10 p-12 md:p-24 flex flex-col gap-20">
             <div className="space-y-4 max-w-xl text-left">
-              <h4 className="text-4xl md:text-5xl font-heading font-light text-white leading-tight">Ingeniería de <br/><span className="italic text-patagonia-gold">Clase Mundial.</span></h4>
+              <h3 className="text-4xl md:text-5xl font-heading font-light text-white leading-tight">Ingeniería de <br/><span className="italic text-patagonia-gold">Clase Mundial.</span></h3>
               <p className="text-patagonia-secondary text-base font-light max-w-md">Cada proyecto es una declaración de principios técnicos y estéticos. No aceptamos menos que la excelencia.</p>
             </div>
 

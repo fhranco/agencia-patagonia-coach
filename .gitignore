@@ -34,4 +34,5 @@ public/secrets.php
 # Data sheets
 *.xlsx
 
-5d102eeb-72a7-46b7-a903-ddc6b69d64c0.pdf
+# PDFs
+*.pdf
