@@ -36,12 +36,33 @@ const ZonaPuntaArenas = () => {
     }
   ];
 
+  const content = (
+    <div className="space-y-8">
+      <p>
+        Como la firma de mayor autoridad técnica en la capital de la Patagonia, diseñamos ecosistemas digitales que permiten a las empresas líderes de Punta Arenas dominar su mercado y proyectarse globalmente. No instalamos herramientas; evolucionamos resultados.
+      </p>
+      <div className="pt-8 border-t border-white/5 space-y-4">
+        <span className="text-[10px] uppercase tracking-[0.3em] font-black text-patagonia-gold block">Servicios de Élite en Punta Arenas:</span>
+        <div className="flex flex-wrap gap-x-6 gap-y-4 text-xs font-semibold uppercase tracking-wider">
+          <a href="/servicios/marketing-digital-punta-arenas" className="text-white/60 hover:text-patagonia-gold transition-colors">Marketing Digital</a>
+          <a href="/servicios/creacion-paginas-web-punta-arenas" className="text-white/60 hover:text-patagonia-gold transition-colors">Diseño Web</a>
+          <a href="/servicios/manejo-redes-sociales-punta-arenas" className="text-white/60 hover:text-patagonia-gold transition-colors">Redes Sociales</a>
+          <a href="/servicios/videos-redes-sociales-punta-arenas" className="text-white/60 hover:text-patagonia-gold transition-colors">Videos</a>
+          <a href="/servicios/creacion-reels-punta-arenas" className="text-white/60 hover:text-patagonia-gold transition-colors">Reels</a>
+          <a href="/servicios/fotografia-para-redes-sociales" className="text-white/60 hover:text-patagonia-gold transition-colors">Fotografía</a>
+          <a href="/servicios/seo-local-punta-arenas" className="text-white/60 hover:text-patagonia-gold transition-colors">SEO Local</a>
+          <a href="/servicios/automatizacion-ia-empresas" className="text-white/60 hover:text-patagonia-gold transition-colors">Automatización IA</a>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <PageTemplate
       title="Agencia de Transformación Digital en Punta Arenas | PatagoniaCoach"
       h1="Liderando el futuro digital en Punta Arenas"
       description="Potenciamos el crecimiento de empresas en la capital regional mediante tecnología, IA y marketing estratégico de élite."
-      content="Como la firma de mayor autoridad técnica en la capital de la Patagonia, diseñamos ecosistemas digitales que permiten a las empresas líderes de Punta Arenas dominar su mercado y proyectarse globalmente. No instalamos herramientas; evolucionamos resultados."
+      content={content}
       features={features}
       faqs={faqs}
       schema={schema}

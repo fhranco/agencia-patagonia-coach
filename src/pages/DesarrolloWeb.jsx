@@ -11,10 +11,21 @@ const DesarrolloWeb = () => {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": "https://agenciapatagoniacoach.cl/servicios/desarrollo-web/#service",
-    "name": "Desarrollo Web de Alto Rendimiento",
+    "name": "Arquitectura Web de Alto Rendimiento",
     "provider": { "@id": "https://agenciapatagoniacoach.cl/#organization" },
-    "areaServed": { "@type": "AdministrativeArea", "name": "Región de Magallanes y de la Antártica Chilena" },
-    "description": "Sistemas web de alta fidelidad, optimizados para SEO, velocidad y conversión elite en la Patagonia."
+    "areaServed": [
+      { "@type": "City", "name": "Punta Arenas" },
+      { "@type": "City", "name": "Puerto Natales" },
+      { "@type": "AdministrativeArea", "name": "Magallanes" }
+    ],
+    "description": "Desarrollo de ecosistemas web de alta fidelidad. Especialistas en Next.js, Headless CMS y optimización para motores generativos (GEO) en la Patagonia.",
+    "knowsAbout": [
+      "Desarrollo Web Full-stack",
+      "Next.js & React",
+      "Arquitectura Jamstack",
+      "SEO Técnico",
+      "Optimización de Performance Web"
+    ]
   };
 
   return (

@@ -51,6 +51,14 @@
   @apply bg-patagonia-surface rounded-full hover:bg-patagonia-gold/40 transition-colors;
 }
 
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Custom Cursor styles */
 .custom-cursor {
   position: fixed;

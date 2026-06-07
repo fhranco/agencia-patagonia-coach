@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowLeft } from 'lucide-react';
 import BrandLogo from './BrandLogo';
@@ -9,7 +9,22 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showContact, setShowContact] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const isHome = location.pathname === '/';
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('contact') === 'true') {
+      setShowContact(true);
+    }
+  }, [location.search]);
+
+  const handleCloseContact = () => {
+    setShowContact(false);
+    if (location.search.includes('contact=true')) {
+      navigate(location.pathname + location.hash, { replace: true });
+    }
+  };
 
   const navLinks = [
     { name: 'servicio', path: '/#servicios' },
@@ -136,14 +151,14 @@ const Navbar = () => {
             className="relative w-full max-w-6xl bg-patagonia-surface/5 rounded-[4rem] border border-white/5 shadow-2xl p-8 md:p-16"
           >
             <button 
-              onClick={() => setShowContact(false)}
+              onClick={handleCloseContact}
               className="absolute top-8 right-8 text-white/40 hover:text-white transition-all flex items-center gap-2 group z-[1010]"
             >
               <span className="text-[10px] uppercase tracking-widest font-bold group-hover:mr-2 transition-all">Cerrar</span>
               <X className="w-8 h-8" />
             </button>
             
-            <LeadCommand isModal={true} onClose={() => setShowContact(false)} />
+            <LeadCommand isModal={true} onClose={handleCloseContact} />
           </motion.div>
         </motion.div>
       )}

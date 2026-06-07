@@ -8,7 +8,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 const PageTemplate = ({ title, h1, description, content, schema, features = [], faqs = [] }) => {
   return (
     <div className="bg-patagonia-black text-patagonia-white min-h-screen selection:bg-patagonia-red selection:text-white">
-      <SEO title={title} description={description} schema={schema} />
+      <SEO title={title} description={description} schema={schema} faqData={faqs} />
       <Navbar />
       
       <main>

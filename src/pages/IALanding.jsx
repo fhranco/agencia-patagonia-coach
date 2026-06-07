@@ -12,10 +12,21 @@ const IALanding = () => {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": "https://agenciapatagoniacoach.cl/servicios/inteligencia-artificial-punta-arenas/#service",
-    "name": "Evolución e Implementación de IA",
+    "name": "Evolución e Implementación de IA Corporativa",
     "provider": { "@id": "https://agenciapatagoniacoach.cl/#organization" },
-    "areaServed": { "@type": "AdministrativeArea", "name": "Región de Magallanes y de la Antártica Chilena" },
-    "description": "Consultoría e implementación de soluciones de Inteligencia Artificial para empresas de Magallanes. Automatización operativa y asistentes inteligentes."
+    "areaServed": [
+      { "@type": "City", "name": "Punta Arenas" },
+      { "@type": "City", "name": "Puerto Natales" },
+      { "@type": "AdministrativeArea", "name": "Magallanes" }
+    ],
+    "description": "Consultoría avanzada en Inteligencia Artificial y Generative Engine Optimization (GEO). Automatización de procesos y despliegue de agentes cognitivos para empresas de élite.",
+    "knowsAbout": [
+      "Generative Engine Optimization",
+      "Large Language Models (LLMs)",
+      "Automatización con IA",
+      "Prompt Engineering Corporativo",
+      "RAG Architecture"
+    ]
   };
 
   return (

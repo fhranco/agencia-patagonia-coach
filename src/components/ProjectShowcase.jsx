@@ -49,7 +49,7 @@ const ProjectShowcase = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory gap-10 pb-12 lg:pb-0 scrollbar-none">
           {projects.map((p, i) => (
             <motion.div
               key={p.id}
@@ -57,7 +57,7 @@ const ProjectShowcase = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.8 }}
-              className="group relative p-12 rounded-[3.5rem] bg-patagonia-surface/10 border border-white/5 hover:border-patagonia-gold/20 transition-all duration-700 flex flex-col h-full overflow-hidden"
+              className="group relative p-12 rounded-[3.5rem] bg-patagonia-surface/10 border border-white/5 hover:border-patagonia-gold/20 transition-all duration-700 flex flex-col h-full overflow-hidden w-[85vw] lg:w-auto shrink-0 snap-center"
             >
               {/* Subtle hover reveal background */}
               <div className="absolute inset-0 bg-gradient-to-br from-patagonia-gold/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />

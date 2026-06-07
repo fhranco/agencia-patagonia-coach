@@ -11,10 +11,21 @@ const SEOLocal = () => {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": "https://agenciapatagoniacoach.cl/servicios/seo-local-magallanes/#service",
-    "name": "SEO Local Magallanes",
+    "name": "Estrategia de SEO Local y Dominio Territorial",
     "provider": { "@id": "https://agenciapatagoniacoach.cl/#organization" },
-    "areaServed": { "@type": "AdministrativeArea", "name": "Región de Magallanes y de la Antártica Chilena" },
-    "description": "Dominio estratégico en Google para empresas de Magallanes. Posicionamos su marca donde sus clientes regionales están buscando."
+    "areaServed": [
+      { "@type": "City", "name": "Punta Arenas" },
+      { "@type": "City", "name": "Puerto Natales" },
+      { "@type": "AdministrativeArea", "name": "Magallanes" }
+    ],
+    "description": "Posicionamiento web estratégico para el mercado de la Patagonia. Expertos en SEO Local, Google Business Profile y Generative Engine Optimization (GEO).",
+    "knowsAbout": [
+      "SEO Local",
+      "Google Business Profile Optimization",
+      "Generative Engine Optimization",
+      "Local Knowledge Graph",
+      "Análisis de Competencia Regional"
+    ]
   };
 
   return (

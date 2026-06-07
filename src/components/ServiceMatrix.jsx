@@ -28,7 +28,7 @@ const ServiceCard = ({ title, subtitle, solutions, icon: Icon, index, activeInde
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: index * 0.05 }}
-      className={`relative group min-h-[540px] rounded-[2.5rem] p-12 flex flex-col gap-10 transition-all duration-700 border overflow-hidden cursor-pointer ${
+      className={`relative group min-h-[540px] rounded-[2.5rem] p-12 flex flex-col gap-10 transition-all duration-700 border overflow-hidden cursor-pointer w-[85vw] md:w-auto shrink-0 snap-center ${
         isHovered 
           ? 'bg-white/[0.05] border-white/20 scale-[1.01] z-20 shadow-[0_40px_100px_rgba(0,0,0,0.5)]' 
           : 'bg-white/[0.01] border-white/5 z-10'
@@ -93,6 +93,16 @@ const ServiceCard = ({ title, subtitle, solutions, icon: Icon, index, activeInde
 const ServiceMatrix = () => {
   const [activeServiceHover, setActiveServiceHover] = useState(null);
   const [selectedService, setSelectedService] = useState(null);
+  const [scrollIndex, setScrollIndex] = useState(0);
+
+  const handleScroll = (e) => {
+    const container = e.target;
+    // w-[85vw] is 85% of viewport width
+    const cardWidth = container.clientWidth * 0.85;
+    const gap = 24; // gap-6 is 24px
+    const active = Math.round(container.scrollLeft / (cardWidth + gap));
+    setScrollIndex(active);
+  };
 
   const services = [
     {
@@ -251,7 +261,11 @@ const ServiceMatrix = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" style={{ perspective: 2000 }}>
+        <div 
+          onScroll={handleScroll}
+          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory gap-6 pb-8 md:pb-0 scrollbar-none" 
+          style={{ perspective: 2000 }}
+        >
           {services.map((service, index) => (
             <ServiceCard 
               key={index} 
@@ -260,6 +274,18 @@ const ServiceMatrix = () => {
               onHover={setActiveServiceHover}
               onClick={() => setSelectedService(service)}
               {...service} 
+            />
+          ))}
+        </div>
+
+        {/* Carousel Indicators for Mobile */}
+        <div className="flex md:hidden justify-center gap-2 mt-6">
+          {services.map((_, index) => (
+            <div 
+              key={index}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                index === scrollIndex ? 'w-6 bg-patagonia-gold' : 'w-2 bg-white/10'
+              }`}
             />
           ))}
         </div>

@@ -14,6 +14,7 @@ export default {
           red: "#ff1721",
           white: "hsl(0, 0%, 98%)",
           secondary: "hsl(0, 0%, 60%)",
+          cyan: "#00e5ff",
         },
       },
       fontFamily: {
