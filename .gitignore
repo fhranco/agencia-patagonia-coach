@@ -27,3 +27,6 @@ dist-ssr
 .npm-cache
 .tmp
 
+# Secrets
+public/secrets.php
+.env

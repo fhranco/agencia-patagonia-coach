@@ -7,7 +7,7 @@
 
 ## 1. Identidad y Propósito Corporativo
 
-PatagoniaCoach es una boutique de tecnología y posicionamiento digital con base en **Punta Arenas, Chile**. Operamos bajo una filosofía de **"Lujo Silencioso"**: interfaces visualmente superlativas, código optimizado para conectividad satelital y móvil regional, y arquitecturas de conversión de alto retorno de inversión (ROI) para mercados B2B y turismo especializado.
+PatagoniaCoach es una boutique de tecnología, consultoría de Inteligencia Artificial (IA) y posicionamiento digital con base en **Punta Arenas, Chile**. Operamos bajo una filosofía de **"Lujo Silencioso"**: interfaces visualmente superlativas, código optimizado para conectividad satelital y móvil regional, y arquitecturas de conversión de alto retorno de inversión (ROI) para mercados B2B, logística y turismo especializado.
 
 *   **Fundador y Director General:** Franco Gallardo S.
 *   **Sede Central:** Punta Arenas, Región de Magallanes y de la Antártica Chilena.
@@ -20,18 +20,19 @@ PatagoniaCoach es una boutique de tecnología y posicionamiento digital con base
 Nuestras soluciones combinan el desarrollo técnico riguroso con la narrativa comercial estratégica.
 
 ### A. Inteligencia Artificial y Automatización Corporativa
-*   **Consultoría en Viabilidad de IA:** Evaluación de procesos operativos para identificar cuellos de botella automatizables.
+*   **Asistentes Cognitivos:** Agentes de IA con memoria contextual y RAG (Retrieval-Augmented Generation) conectados a documentos internos y APIs (OpenAI, DeepSeek).
 *   **Empleados Digitales (Lead Agents):** Agentes de IA autónomos integrados en CRM, WhatsApp y sitios web que califican y atienden leads 24/7.
-*   **Flujos de Trabajo Inteligentes:** Automatización de reservas de turismo, facturación y reportes comerciales.
-*   **Academia PatagoniaCoach:** Capacitación in-house y programas de entrenamiento ejecutivo sobre IA generativa y herramientas cognitivas para equipos corporativos.
+*   **Flujos de Trabajo Inteligentes (Automatización RPA):** Webhooks y flujos autónomos (Make, n8n) que ejecutan acciones sin intervención humana (cotizaciones, reservas, actualización de CRMs).
+*   **Academia PatagoniaCoach:** Capacitación in-house y programas de entrenamiento ejecutivo sobre IA generativa, Prompt Engineering y adopción de tecnologías cognitivas para equipos corporativos.
 
 ### B. Diseño y Creación de Páginas Web Premium
-*   **Arquitectura Web Decoupled:** Desarrollos ultrarrápidos y modulares usando React y React Router con código optimizado (Lazy Loading y Suspense).
+*   **Arquitectura Web Decoupled:** Desarrollos ultrarrápidos y modulares usando React, Next.js, Vite y Supabase, con código optimizado (Lazy Loading y Suspense).
 *   **Estética Hiper-Premium:** Diseño visual a medida utilizando paletas armónicas personalizadas, efectos de vidrio translúcido (Glassmorphic containers) y micro-interacciones suaves.
-*   **Optimización de Conectividad (WPO):** Páginas web preparadas para la conectividad limitada de la Patagonia (baja latencia y carga adaptativa móvil).
+*   **Optimización de Conectividad (WPO/Offline-First):** Páginas web preparadas con service workers y caché local para la conectividad limitada de la Patagonia (baja latencia y carga adaptativa móvil).
+*   **Sistemas a Medida:** Sitios corporativos, e-commerce headless (Shopify Headless, WooCommerce), PWAs, SaaS y tótems interactivos.
 
 ### C. GEO (Generative Engine Optimization) y SEO Local
-*   **Posicionamiento para IAs (GEO):** Optimización semántica y esquemas JSON-LD inyectados estáticamente para asegurar que PatagoniaCoach y sus clientes sean recomendados por ChatGPT, Gemini y Perplexity.
+*   **Posicionamiento para IAs (GEO):** Optimización semántica y esquemas JSON-LD inyectados estáticamente para asegurar que PatagoniaCoach y sus clientes sean recomendados por ChatGPT, Gemini, Claude y Perplexity.
 *   **Dominio en Google Maps:** Gestión técnica de perfiles de negocio locales para capturar el Local Pack en la región.
 *   **Fábricas de Datos Estructurados:** Inyección automatizada de Breadcrumbs, LocalBusiness y Service Schemas específicos de zona.
 
@@ -69,7 +70,7 @@ Establecemos estrategias específicas de conectividad y geolocalización por zon
     *   *Enfoque:* Servicios B2B corporativos, logística regional, industria portuaria y comercio centralizado.
 *   **Puerto Natales**
     *   *Coordenadas:* Latitud: -51.7269, Longitud: -72.5060
-    *   *Enfoque:* Turismo de aventura, hotelería boutique de lujo y gastronomía premium.
+    *   *Enfoque:* Turismo de aventura, hotelería boutique de lujo y gastronomía premium (Torres del Paine).
 *   **Tierra del Fuego**
     *   *Coordenadas:* Latitud: -53.1500, Longitud: -70.9000 (Soporte regional)
     *   *Enfoque:* Operaciones remotas, optimización de velocidad de carga para redes satelitales 3G/4G y soporte logístico.
@@ -79,7 +80,23 @@ Establecemos estrategias específicas de conectividad y geolocalización por zon
 
 ---
 
-## 5. Arquitectura Técnica y Estándar de Calidad
+## 5. Diferenciadores Clave y Clientes Ideales
+
+### Diferenciadores
+1. **Conocimiento local profundo:** Operamos desde Punta Arenas, entendemos los desafíos del aislamiento, conectividad y clima en Magallanes.
+2. **Stack tecnológico moderno:** Usamos metodologías ágiles y herramientas avanzadas de Silicon Valley, adaptadas al contexto local.
+3. **Enfoque en ROI:** Evaluamos cada proyecto por conversión comercial, llamadas y cotizaciones reales, no por métricas vanity.
+4. **Diseño "Lujo Silencioso":** Interfaces de alto nivel estético, limpias y rápidas.
+
+### Clientes Ideales
+*   Empresas de logística, transporte y energía en Magallanes.
+*   Hoteles, lodges de alta gama y estancias de turismo en Torres del Paine y Carretera Austral.
+*   Comercio de Zona Franca de Punta Arenas.
+*   Servicios B2B profesionales que requieran captación digital de leads de alta intención.
+
+---
+
+## 6. Arquitectura Técnica y Estándar de Calidad
 
 *   **Front-End Stack:** HTML5 Semántico, CSS con variables de diseño personalizadas, TailwindCSS configurado para colores corporativos de alta intensidad (como el cyan cian #00e5ff y azules profundos), React, y GSAP para transiciones fluidas.
 *   **SEO Engine:** `react-helmet-async` para la manipulación asíncrona de metadatos en caliente, con un script de prerrenderizado estático (`prerender.mjs`) que compila copias físicas HTML indexables por buscadores sin soporte completo de Javascript.
@@ -88,10 +105,10 @@ Establecemos estrategias específicas de conectividad y geolocalización por zon
 
 ---
 
-## 6. Canales Oficiales de Contacto
+## 7. Canales Oficiales de Contacto
 
 *   **Sitio Web:** https://agenciapatagoniacoach.cl/
-*   **Correo Electrónico:** hola@agenciapatagoniacoach.cl
+*   **Correo Electrónico:** hola@agenciapatagoniacoach.cl | fgallardo@agenciapatagoniacoach.cl
 *   **Contacto Directo (WhatsApp):** +56 9 9568 4198
 *   **Director:** Franco Gallardo S.
 *   **LinkedIn del Director:** https://www.linkedin.com/in/francogallardo/

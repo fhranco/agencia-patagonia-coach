@@ -4,9 +4,15 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
-// --- CONFIGURACIÓN ---
-// REEMPLAZA ESTO CON TU API KEY DE DEEPSEEK
-$api_key = 'sk-3f814a317d084769817d8185fca30fb4'; 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    header('Allow: POST');
+    exit;
+}
+
+$secrets = file_exists(__DIR__ . '/secrets.php') ? require __DIR__ . '/secrets.php' : [];
+
+$api_key = $secrets['deepseek_key_chat'] ?? ($_ENV['DEEPSEEK_KEY_CHAT'] ?? '');
 
 $input = json_decode(file_get_contents('php://input'), true);
 $user_message = $input['message'] ?? '';
@@ -17,35 +23,30 @@ if ($user_message === '') {
     exit;
 }
 
-// Cargar conocimiento
-$knowledge_file = 'ai_knowledge.txt';
+$knowledge_file = __DIR__ . '/ai_knowledge.txt';
 $ai_memory = file_exists($knowledge_file) ? file_get_contents($knowledge_file) : "Eres un asistente de PatagoniaCoach.";
 
-// --- LÓGICA DE MEMORIA POR WHATSAPP ---
 $identified_name = "";
-// Si el mensaje actual tiene un número de WhatsApp, buscamos quién es
 if (preg_match('/[0-9]{7,}/', $user_message, $matches)) {
     $found_wa = $matches[0];
-    if (file_exists('chat_audit.log')) {
-        $log_content = file_get_contents('chat_audit.log');
-        // Buscar el último bloque donde aparezca este WhatsApp y tratar de extraer el nombre
-        // Esta es una búsqueda simple en el log de auditoría
+    $audit_log = __DIR__ . '/chat_audit.log';
+    if (file_exists($audit_log)) {
+        $log_content = file_get_contents($audit_log);
         if (preg_match_all('/\[USER\]: (.*?)\n.*?' . $found_wa . '/s', $log_content, $name_matches)) {
             $identified_name = end($name_matches[1]);
         }
     }
 }
 
-// Identidad Patagonian AI - Inteligente y Ejecutiva
 $system_prompt = "Eres Patagonian AI, la inteligencia de PatagoniaCoach. 
 TU SOCIO: Franco Gallardo.
-CONTACTO: +56995684198
+CONTACTO: " . ($secrets['whatsapp'] ?? '+56995684198') . "
 
 REGLAS DE ORO:
 1. NO SEAS UN DISCO RAYADO: Varía tus saludos y respuestas. No uses siempre la misma frase de 'tu sitio captura leads'.
 2. MEMORIA: Si el nombre o WhatsApp ya están en el chat, ÚSALOS pero no los vuelvas a pedir.
 3. CONSULTORÍA: Si te saludan, saluda y pregunta qué negocio tienen. Si preguntan algo, responde con valor.
-4. CIERRE: Sugiere hablar con Franco (+56995684198) solo cuando haya interés real o necesites datos.
+4. CIERRE: Sugiere hablar con Franco (" . ($secrets['whatsapp'] ?? '+56995684198') . ") solo cuando haya interés real o necesites datos.
 5. BREVEDAD: Máximo 20 palabras. Sé directo y elegante.
 
 CONOCIMIENTO BASE:
@@ -57,7 +58,6 @@ if (!empty($identified_name)) {
 
 $messages = [['role' => 'system', 'content' => $system_prompt]];
 
-// Añadir historial enviado desde el frontend
 foreach ($history as $msg) {
     if (isset($msg['role']) && isset($msg['content'])) {
         $role = ($msg['role'] === 'bot' || $msg['role'] === 'assistant') ? 'assistant' : 'user';
@@ -96,7 +96,6 @@ if (curl_errno($ch)) {
         $result = json_decode($response, true);
         $reply = $result['choices'][0]['message']['content'] ?? 'Lo siento, tuve un problema procesando eso.';
         
-        // --- LOGICA DE REGISTRO DE LEADS E HISTORIAL ---
         $full_chat_log = "";
         foreach ($messages as $m) {
             $role_display = ($m['role'] === 'system') ? 'SYS' : strtoupper($m['role']);
@@ -104,26 +103,23 @@ if (curl_errno($ch)) {
         }
         $full_chat_log .= "[BOT]: " . $reply;
 
-        // Registro de Leads
         if (preg_match('/[0-9]{7,}/', $user_message)) {
-            $file = 'chat_leads_history.csv';
+            $leads_file = __DIR__ . '/chat_leads_history.csv';
             $date = date('Y-m-d H:i:s');
             $line = "\"$date\", \"Detectado\", \"$user_message\", \"Chat AI History\"\n";
-            file_put_contents($file, $line, FILE_APPEND);
+            file_put_contents($leads_file, $line, FILE_APPEND);
             
-            $to = "contacto@agenciapatagoniacoach.cl";
+            $to = $secrets['contact_email'] ?? 'contacto@agenciapatagoniacoach.cl';
             $subject = "🔥 LEADS DETECTADO EN CHAT";
             $body = "Se ha detectado actividad de contacto:\n\n" . $full_chat_log;
-            $headers = "From: no-reply@agenciapatagoniacoach.cl";
+            $headers = "From: " . ($secrets['site_email'] ?? 'no-reply@agenciapatagoniacoach.cl');
             mail($to, $subject, $body, $headers);
         }
 
-        // Auditoría Perpetua
-        file_put_contents('chat_audit.log', "\n--- SESSION " . date('Y-m-d H:i:s') . " ---\n" . $full_chat_log . "\n", FILE_APPEND);
+        file_put_contents(__DIR__ . '/chat_audit.log', "\n--- SESSION " . date('Y-m-d H:i:s') . " ---\n" . $full_chat_log . "\n", FILE_APPEND);
 
         echo json_encode(['reply' => $reply]);
     }
 }
 
 curl_close($ch);
-?>

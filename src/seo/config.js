@@ -3,6 +3,9 @@
  * Incorporating keyword-optimized titles and descriptions for B2B search intent.
  */
 
+export const SITE_URL = 'https://agenciapatagoniacoach.cl';
+export const DEFAULT_IMAGE = `${SITE_URL}/portafolio-web.png`;
+
 export const SEO_CONFIG = {
   "/": {
     title: "Agencia de Transformación Digital y SEO en Punta Arenas | PatagoniaCoach",
@@ -29,6 +32,16 @@ export const SEO_CONFIG = {
     breadcrumbs: [
       { name: "Inicio", item: "/" },
       { name: "SEO Local Magallanes", item: "/servicios/seo-local-magallanes" }
+    ]
+  },
+  "/servicios/seo-local-punta-arenas": {
+    title: "SEO Local en Punta Arenas | Posiciona en Google Maps",
+    description: "Optimiza tu presencia en búsquedas locales en Punta Arenas. Domina Google Maps, búsquedas por voz y atiende clientes de la zona de inmediato.",
+    schemaType: "Service",
+    category: "SEO Local",
+    breadcrumbs: [
+      { name: "Inicio", item: "/" },
+      { name: "SEO Local Punta Arenas", item: "/servicios/seo-local-punta-arenas" }
     ]
   },
   "/servicios/automatizacion-con-ia": {
@@ -91,7 +104,7 @@ export const SEO_CONFIG = {
       { name: "Aplicaciones Web Pro", item: "/servicios/aplicaciones-web-pro" }
     ]
   },
-  // B2B Local SEO Pages
+  // 8 B2B Local SEO Pages
   "/servicios/marketing-digital-punta-arenas": {
     title: "Marketing Digital en Punta Arenas | Estrategias B2B Locales",
     description: "Atrae clientes calificados en Magallanes con marketing de precisión. Agencia experta en SEO, anuncios, contenido y embudos de ventas B2B.",
@@ -152,16 +165,6 @@ export const SEO_CONFIG = {
       { name: "Fotografía Redes Sociales", item: "/servicios/fotografia-para-redes-sociales" }
     ]
   },
-  "/servicios/seo-local-punta-arenas": {
-    title: "SEO Local en Punta Arenas | Posiciona en Google Maps",
-    description: "Optimiza tu presencia en búsquedas locales en Punta Arenas. Domina Google Maps, búsquedas por voz y atiende clientes de la zona de inmediato.",
-    schemaType: "Service",
-    category: "SEO Local",
-    breadcrumbs: [
-      { name: "Inicio", item: "/" },
-      { name: "SEO Local Punta Arenas", item: "/servicios/seo-local-punta-arenas" }
-    ]
-  },
   "/servicios/automatizacion-ia-empresas": {
     title: "Automatización con IA para Empresas | Consultoría Magallanes",
     description: "Sistemas de automatización y agentes de IA diseñados a medida. Reduce costos, ahorra horas de trabajo y automatiza la atención de tu empresa.",
@@ -197,7 +200,7 @@ export const SEO_CONFIG = {
     title: "Transformación Digital y Conectividad SEO en Tierra del Fuego",
     description: "Soluciones digitales adaptadas para la logística y el comercio de Tierra del Fuego. Sitios ultralivianos y optimización para baja conectividad.",
     schemaType: "LocalBusiness",
-    zone: "magallanes", // Uses regional fallback coordinates
+    zone: "magallanes",
     breadcrumbs: [
       { name: "Inicio", item: "/" },
       { name: "Tierra del Fuego", item: "/zonas/tierra-del-fuego" }
@@ -213,7 +216,27 @@ export const SEO_CONFIG = {
       { name: "Región de Magallanes", item: "/zonas/magallanes" }
     ]
   },
-  // Legacy / Additional landings
+  // Fallbacks & Short paths
+  "/servicios/inteligencia-artificial-punta-arenas": {
+    title: "Inteligencia Artificial en Punta Arenas | PatagoniaCoach: Evolución Operativa",
+    description: "Lidere la transformación digital en Magallanes con Inteligencia Artificial. Implementamos asistentes cognitivos y automatización inteligente para su empresa.",
+    schemaType: "Service",
+    category: "Inteligencia Artificial",
+    breadcrumbs: [
+      { name: "Inicio", item: "/" },
+      { name: "Inteligencia Artificial", item: "/servicios/inteligencia-artificial-punta-arenas" }
+    ]
+  },
+  "/servicios/academia": {
+    title: "Academia PatagoniaCoach | Formación Práctica Digital",
+    description: "Capacitación técnica de alto impacto en Magallanes. Talleres, Bootcamps e Implementaciones Corporativas de IA y Marketing Digital.",
+    schemaType: "Service",
+    category: "Capacitación y Educación Corporativa",
+    breadcrumbs: [
+      { name: "Inicio", item: "/" },
+      { name: "Academia", item: "/servicios/academia" }
+    ]
+  },
   "/ia": {
     title: "Inteligencia Artificial y Automatización de Procesos | PatagoniaCoach",
     description: "Sistemas autónomos de IA y empleados virtuales. Eleva la eficiencia operativa de tu empresa con soluciones cognitivas de vanguardia.",
@@ -255,3 +278,41 @@ export const SEO_CONFIG = {
     ]
   }
 };
+
+export const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": SITE_URL + "/#organization",
+  "name": "PatagoniaCoach",
+  "url": SITE_URL,
+  "description": "Agencia de transformación digital en Punta Arenas, especializada en desarrollo web, SEO local, comunicación digital, automatización con inteligencia artificial y estrategias digitales para empresas de Magallanes.",
+  "image": DEFAULT_IMAGE,
+  "telephone": "+56995684198",
+  "priceRange": "$$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Magallanes",
+    "addressLocality": "Punta Arenas",
+    "addressRegion": "Magallanes y de la Antártica Chilena",
+    "postalCode": "6200000",
+    "addressCountry": "CL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -53.1638,
+    "longitude": -70.9171
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Punta Arenas" },
+    { "@type": "City", "name": "Puerto Natales" },
+    { "@type": "AdministrativeArea", "name": "Región de Magallanes y de la Antártica Chilena" },
+    { "@type": "Country", "name": "Chile" }
+  ],
+  "sameAs": [
+    "https://instagram.com/patagoniacoach.cl",
+    "https://www.linkedin.com/in/francogallardo/"
+  ]
+};
+
+// Backwards compatibility alias for routeConfig in scripts/components
+export const routeConfig = SEO_CONFIG;

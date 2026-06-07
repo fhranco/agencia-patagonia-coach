@@ -12,7 +12,10 @@ const SEO = ({
   title: overrideTitle, 
   description: overrideDescription, 
   schema: overrideSchema,
-  faqData = null
+  image: overrideImage,
+  faqData = null,
+  noindex = false,
+  schemas: extraSchemas = null
 }) => {
   const { pathname } = useLocation();
   
@@ -23,7 +26,7 @@ const SEO = ({
   const title = overrideTitle || routeConfig.title;
   const description = overrideDescription || routeConfig.description;
   const canonicalUrl = `https://agenciapatagoniacoach.cl${cleanPath}`;
-  const defaultImage = 'https://agenciapatagoniacoach.cl/portafolio-web.png';
+  const defaultImage = overrideImage || 'https://agenciapatagoniacoach.cl/portafolio-web.png';
   
   // Generate schemas
   const schemasToInject = [];
@@ -56,12 +59,18 @@ const SEO = ({
     }
   }
 
+  // 4. Extra schemas from props
+  if (extraSchemas && extraSchemas.length > 0) {
+    schemasToInject.push(...extraSchemas);
+  }
+
   return (
     <Helmet>
       {/* Basic Meta Tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />
+      <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />

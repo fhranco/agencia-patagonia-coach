@@ -20,8 +20,25 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Inject secrets
+        run: |
+          cat > public/secrets.php << 'EOF'
+          <?php
+          return [
+            'deepseek_key_chat' => '${{ secrets.DEEPSEEK_KEY_CHAT }}',
+            'deepseek_key_api'  => '${{ secrets.DEEPSEEK_KEY_API }}',
+            'admin_email'       => 'agente@agenciapatagoniacoach.cl',
+            'contact_email'     => 'contacto@agenciapatagoniacoach.cl',
+            'site_email'        => 'no-reply@agenciapatagoniacoach.cl',
+            'whatsapp'          => '+56995684198',
+          ];
+          EOF
+
       - name: Build project
         run: npm run build
+
+      - name: Prerender & generate sitemap
+        run: npm run postbuild
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4

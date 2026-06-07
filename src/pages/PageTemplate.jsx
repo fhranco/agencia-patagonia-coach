@@ -2,13 +2,14 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import LeadCommand from '../components/LeadCommand';
+import { faqSchema } from '../seo/schemas';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
-const PageTemplate = ({ title, h1, description, content, schema, features = [], faqs = [] }) => {
+const PageTemplate = ({ title, h1, description, content, schema, features = [], faqs = [], extraSchemas = [] }) => {
   return (
     <div className="bg-patagonia-black text-patagonia-white min-h-screen selection:bg-patagonia-red selection:text-white">
-      <SEO title={title} description={description} schema={schema} faqData={faqs} />
+      <SEO title={title} description={description} schema={schema} faqData={faqs} schemas={extraSchemas} />
       <Navbar />
       
       <main>
