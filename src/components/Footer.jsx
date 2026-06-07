@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-40 pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10 text-[9px] text-patagonia-secondary/60 uppercase font-black tracking-[0.6em]">
+        <div className="mt-40 pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10 text-[9px] text-white/70 uppercase font-black tracking-[0.6em]">
           <span>© 2026 PATAGONIACOACH · FREEDOM PERSPECTIVE EDITION.</span>
           <div className="flex gap-14">
             <span className="hover:text-patagonia-gold transition-colors cursor-help">Security Certified</span>

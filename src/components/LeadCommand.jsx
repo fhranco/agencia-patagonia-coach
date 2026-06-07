@@ -97,7 +97,7 @@ const LeadCommand = ({ isModal = false, onClose }) => {
             </div>
             <div>
               <p className="text-5xl font-heading font-light text-patagonia-white tracking-tighter">AES</p>
-              <p className="text-[8px] text-patagonia-secondary/40 uppercase tracking-[0.5em] mt-4 font-black">Protocolo de Seguridad</p>
+              <p className="text-[8px] text-white/60 uppercase tracking-[0.5em] mt-4 font-black">Protocolo de Seguridad</p>
             </div>
           </div>
         </div>
@@ -212,9 +212,9 @@ const LeadCommand = ({ isModal = false, onClose }) => {
                     <>INICIAR AUDITORÍA ESTRATÉGICA <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></>
                   )}
                 </button>
-                <div className="flex items-center justify-center gap-2 opacity-20 grayscale">
+                <div className="flex items-center justify-center gap-2 opacity-40 grayscale">
                    <ShieldCheck className="w-3 h-3" />
-                   <span className="text-[8px] uppercase tracking-[0.4em] font-black">Transmisión Segura SSL-256</span>
+                   <span className="text-[8px] uppercase tracking-[0.4em] font-black text-white/70">Transmisión Segura SSL-256</span>
                 </div>
               </form>
             )}
