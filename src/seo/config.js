@@ -4,7 +4,7 @@
  */
 
 export const SITE_URL = 'https://agenciapatagoniacoach.cl';
-export const DEFAULT_IMAGE = `${SITE_URL}/portafolio-web.png`;
+export const DEFAULT_IMAGE = `${SITE_URL}/portafolio-web.webp`;
 
 export const SEO_CONFIG = {
   "/": {

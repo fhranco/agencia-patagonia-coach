@@ -4,7 +4,7 @@
  */
 
 const SITE_URL = 'https://agenciapatagoniacoach.cl';
-const DEFAULT_IMAGE = `${SITE_URL}/portafolio-web.png`;
+const DEFAULT_IMAGE = `${SITE_URL}/portafolio-web.webp`;
 
 export const ZONE_DATA = {
   "punta-arenas": {

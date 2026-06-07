@@ -29,7 +29,7 @@ const Tours360 = () => {
       {/* Hero Section */}
       <section className="pt-40 pb-24 px-6 relative overflow-hidden text-center">
         <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
-          <img src="/patagonia_luxury_hero.png" alt="360 Immersion Mastery" className="w-full h-full object-cover" />
+          <img src="/patagonia_luxury_hero.webp" alt="360 Immersion Mastery" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-patagonia-black via-transparent to-patagonia-black" />
         </div>
 

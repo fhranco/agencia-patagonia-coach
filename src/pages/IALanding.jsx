@@ -42,7 +42,7 @@ const IALanding = () => {
       <section className="pt-40 pb-24 px-6 relative overflow-hidden">
         {/* Background image med/high opacity gradient */}
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-          <img src="/patagonia_luxury_hero.png" alt="AI Luxury Experience" className="w-full h-full object-cover" />
+          <img src="/patagonia_luxury_hero.webp" alt="AI Luxury Experience" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-patagonia-black via-patagonia-black/80 to-patagonia-black" />
         </div>
 

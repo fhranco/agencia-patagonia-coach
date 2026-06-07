@@ -17,7 +17,7 @@ const PageTemplate = ({ title, h1, description, content, schema, features = [], 
         <section className="relative pt-48 pb-32 px-6 overflow-hidden">
           {/* Background Ambient */}
           <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-            <img src="/patagonia_luxury_hero.png" alt="" className="w-full h-full object-cover" />
+            <img src="/patagonia_luxury_hero.webp" alt="" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-patagonia-black via-patagonia-black/90 to-patagonia-black" />
           </div>
 

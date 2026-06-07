@@ -31,7 +31,7 @@ const ZonaMagallanes = () => {
       {/* Hero Section */}
       <section className="pt-40 pb-24 px-6 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-          <img src="/patagonia_luxury_hero.png" alt="Magallanes Region Gateway" className="w-full h-full object-cover" />
+          <img src="/patagonia_luxury_hero.webp" alt="Magallanes Region Gateway" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-patagonia-black via-transparent to-patagonia-black" />
         </div>
 

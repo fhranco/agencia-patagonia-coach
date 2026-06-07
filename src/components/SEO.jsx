@@ -26,7 +26,7 @@ const SEO = ({
   const title = overrideTitle || routeConfig.title;
   const description = overrideDescription || routeConfig.description;
   const canonicalUrl = `https://agenciapatagoniacoach.cl${cleanPath}`;
-  const defaultImage = overrideImage || 'https://agenciapatagoniacoach.cl/portafolio-web.png';
+  const defaultImage = overrideImage || 'https://agenciapatagoniacoach.cl/portafolio-web.webp';
   
   // Generate schemas
   const schemasToInject = [];

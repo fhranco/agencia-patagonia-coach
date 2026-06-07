@@ -79,7 +79,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
           ref={imageRef}
-          src="/patagonia_luxury_hero.png" 
+          src="/patagonia_luxury_hero.webp" 
           alt="Patagonia Luxury Experience" 
           className="w-full h-full object-cover opacity-30" 
         />
