@@ -23,6 +23,238 @@
   status = 410
 
 [[redirects]]
+  from = "/tienda*"
+  status = 410
+
+[[redirects]]
+  from = "/top-crypto-exchange-influencers-in-china*"
+  status = 410
+
+[[redirects]]
+  from = "/hello-world*"
+  status = 410
+
+[[redirects]]
+  from = "/tag/*"
+  status = 410
+
+[[redirects]]
+  from = "/core/*"
+  status = 410
+
+[[redirects]]
+  from = "/wp-content/*"
+  status = 410
+
+[[redirects]]
+  from = "/index.php/*"
+  status = 410
+
+[[redirects]]
+  from = "/servicio/plan-ico-return-on-investment*"
+  status = 410
+
+[[redirects]]
+  from = "/servicio/single-service*"
+  status = 410
+
+# 301 Redirects
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ia"
+  to = "/servicios/automatizacion-con-ia"
+  status = 301
+
+[[redirects]]
+  from = "/marketing"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+
+[[redirects]]
+  from = "/consultoria"
+  to = "/servicios/consultoria-transformacion-digital"
+  status = 301
+
+[[redirects]]
+  from = "/academia"
+  to = "/servicios/academia"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/audio-y-podcast/*"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/audio-y-podcast"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/diseno-de-contenido/*"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/diseno-de-contenido"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/manual-de-identidad/*"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/manual-de-identidad"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+
+[[redirects]]
+  from = "/servicio/contenido-pro/*"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+
+[[redirects]]
+  from = "/servicio/contenido-pro"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/gestion-tienda/*"
+  to = "/servicios/desarrollo-web"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/gestion-tienda"
+  to = "/servicios/desarrollo-web"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/landing-page-express/*"
+  to = "/servicios/desarrollo-web"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/landing-page-express"
+  to = "/servicios/desarrollo-web"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/conversion-cro/*"
+  to = "/servicios/desarrollo-web"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/conversion-cro"
+  to = "/servicios/desarrollo-web"
+  status = 301
+
+[[redirects]]
+  from = "/servicio/diseno-web-avanzado/*"
+  to = "/servicios/desarrollo-web"
+  status = 301
+
+[[redirects]]
+  from = "/servicio/diseno-web-avanzado"
+  to = "/servicios/desarrollo-web"
+  status = 301
+
+[[redirects]]
+  from = "/servicio/diseno-web-landing-express/*"
+  to = "/servicios/desarrollo-web"
+  status = 301
+
+[[redirects]]
+  from = "/servicio/diseno-web-landing-express"
+  to = "/servicios/desarrollo-web"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/fotografia-360-para-e-commerce-de-producto/*"
+  to = "/servicios/tours-virtuales-360"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/fotografia-360-para-e-commerce-de-producto"
+  to = "/servicios/tours-virtuales-360"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/fotografia-tour-virtual/*"
+  to = "/servicios/tours-virtuales-360"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/fotografia-tour-virtual"
+  to = "/servicios/tours-virtuales-360"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/fotografia-redes-sociales-lifestyle/*"
+  to = "/servicios/fotografia-para-redes-sociales"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/fotografia-redes-sociales-lifestyle"
+  to = "/servicios/fotografia-para-redes-sociales"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/fotografia-para-tienda-virtual/*"
+  to = "/servicios/fotografia-para-redes-sociales"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/fotografia-para-tienda-virtual"
+  to = "/servicios/fotografia-para-redes-sociales"
+  status = 301
+
+[[redirects]]
+  from = "/servicio/01-fotografia-para-tienda-virtual/*"
+  to = "/servicios/fotografia-para-redes-sociales"
+  status = 301
+
+[[redirects]]
+  from = "/servicio/01-fotografia-para-tienda-virtual"
+  to = "/servicios/fotografia-para-redes-sociales"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/videos-corporativos/*"
+  to = "/servicios/videos-redes-sociales-punta-arenas"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/videos-corporativos"
+  to = "/servicios/videos-redes-sociales-punta-arenas"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/ventas-ecommerce-plus/*"
+  to = "/servicios/aplicaciones-web-pro"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/ventas-ecommerce-plus"
+  to = "/servicios/aplicaciones-web-pro"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/talleres-y-cursos-para-empresas/*"
+  to = "/servicios/academia"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/talleres-y-cursos-para-empresas"
+  to = "/servicios/academia"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

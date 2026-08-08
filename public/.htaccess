@@ -14,13 +14,37 @@
   RewriteRule ^ - [L]
 
   # 2. SEO Cleanup: Signal Google that old URLs are permanently Gone (410)
-  RewriteRule ^(servicio|tienda|home|cart|carrito|checkout|my-account|shop|product|categoria-producto)(/.*)?$ - [G,L]
+  RewriteRule ^(servicio/plan-ico|servicio/single-service|top-crypto-exchange|hello-world|tag|core|wp-content|tienda|home|cart|carrito|checkout|my-account|shop|product|categoria-producto)(/.*)?$ - [G,L]
 
   # 3. 301 Redirects for SEO Migration
+  Redirect 301 /home /
   Redirect 301 /ia /servicios/automatizacion-con-ia
   Redirect 301 /marketing /servicios/comunicacion-digital
   Redirect 301 /consultoria /servicios/consultoria-transformacion-digital
+  Redirect 301 /academia /servicios/academia
   Redirect 301 /principios-editoriales-de-patagoniacoach /sobre-patagoniacoach
+
+  Redirect 301 /servicios/audio-y-podcast /servicios/comunicacion-digital
+  Redirect 301 /servicios/diseno-de-contenido /servicios/comunicacion-digital
+  Redirect 301 /servicios/manual-de-identidad /servicios/comunicacion-digital
+  Redirect 301 /servicio/contenido-pro /servicios/comunicacion-digital
+
+  Redirect 301 /servicios/gestion-tienda /servicios/desarrollo-web
+  Redirect 301 /servicios/landing-page-express /servicios/desarrollo-web
+  Redirect 301 /servicios/conversion-cro /servicios/desarrollo-web
+  Redirect 301 /servicio/diseno-web-avanzado /servicios/desarrollo-web
+  Redirect 301 /servicio/diseno-web-landing-express /servicios/desarrollo-web
+
+  Redirect 301 /servicios/fotografia-360-para-e-commerce-de-producto /servicios/tours-virtuales-360
+  Redirect 301 /servicios/fotografia-tour-virtual /servicios/tours-virtuales-360
+
+  Redirect 301 /servicios/fotografia-redes-sociales-lifestyle /servicios/fotografia-para-redes-sociales
+  Redirect 301 /servicios/fotografia-para-tienda-virtual /servicios/fotografia-para-redes-sociales
+  Redirect 301 /servicio/01-fotografia-para-tienda-virtual /servicios/fotografia-para-redes-sociales
+
+  Redirect 301 /servicios/videos-corporativos /servicios/videos-redes-sociales-punta-arenas
+  Redirect 301 /servicios/ventas-ecommerce-plus /servicios/aplicaciones-web-pro
+  Redirect 301 /servicios/talleres-y-cursos-para-empresas /servicios/academia
 
   # 4. SPA Fallback: Everything else to index.html
   RewriteRule . /index.html [L]

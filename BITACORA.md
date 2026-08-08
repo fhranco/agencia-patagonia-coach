@@ -146,9 +146,25 @@ cp public/secrets.example.php public/secrets.php
 
 ---
 
+## Cambio 7: Mapeo y Depuración de 35 URLs con Error 404
+
+**Objetivo:** Eliminar los 35 errores 404 reportados en Search Console mediante redirecciones 301 a contenidos relevantes y respuesta 410 Gone a spam/URLs obsoletas de WordPress.
+
+### Acciones Realizadas:
+1. **Auditoría de 35 URLs 404:**
+   - Se analizaron las URLs reportadas por Googlebot (páginas descontinuadas, spam legacy de WordPress y enlaces antiguos).
+2. **Configuración de Redirecciones 301 (`netlify.toml` y `public/.htaccess`):**
+   - Se mapearon 19 URLs antiguas a sus servicios oficiales actuales (`/servicios/desarrollo-web`, `/servicios/comunicacion-digital`, `/servicios/tours-virtuales-360`, `/servicios/fotografia-para-redes-sociales`, etc.).
+3. **Respuesta 410 Gone (Eliminado permanentemente):**
+   - Se configuraron 16 reglas de código HTTP 410 para indicar explícitamente a Googlebot que elimine de su índice las URLs de spam antiguo (`/top-crypto-exchange-influencers-in-china`, `/hello-world`, `/wp-content/*`, `/tag/*`, `/core/*`, etc.).
+
+---
+
 ## 📝 Próximos Pasos Sugeridos
 1. `[x]` Verificar en producción que meta tags y schemas se vean correctos  
 2. `[x]` Optimizar imágenes (WebP + lazy loading)
 3. `[x]` Limpiar sitemap.xml de URLs con redirección y enviar solicitud de validación en Google Search Console
+4. `[x]` Configurar 301 y 410 para las 35 URLs 404 y enviar solicitud de validación en Search Console
+
 
 
