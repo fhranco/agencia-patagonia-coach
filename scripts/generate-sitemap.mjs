@@ -16,7 +16,13 @@ const currentDate = new Date().toISOString().split('T')[0];
 let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 
+const REDIRECT_ROUTES = new Set(['/ia', '/marketing', '/consultoria', '/academia']);
+
 for (const [route, config] of Object.entries(SEO_CONFIG)) {
+  if (REDIRECT_ROUTES.has(route) || config.redirect) {
+    continue;
+  }
+
   const cleanRoute = route === "/" ? "" : route.replace(/\/$/, "");
   const url = `https://agenciapatagoniacoach.cl${cleanRoute}`;
   
@@ -28,8 +34,6 @@ for (const [route, config] of Object.entries(SEO_CONFIG)) {
     changefreq = "daily";
   } else if (route.startsWith("/zonas/")) {
     priority = "0.7";
-  } else if (route === "/ia" || route === "/marketing" || route === "/consultoria" || route === "/academia") {
-    priority = "0.6";
   }
   
   sitemapXml += `

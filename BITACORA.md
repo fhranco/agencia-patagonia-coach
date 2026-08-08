@@ -131,7 +131,24 @@ cp public/secrets.example.php public/secrets.php
 
 ---
 
+## Cambio 6: Depuración SEO de "Páginas con Redirección" en Sitemap
+
+**Objetivo:** Eliminar la incidencia de Search Console "Página con redirección" excluyendo rutas cortas/alias del sitemap XML.
+
+### Acciones Realizadas:
+1. **Auditoría de Incidencia Search Console:**
+   - Se analizaron los reportes `Metadatos.csv`, `Tabla.csv` y `Gráfico.csv` en la carpeta `SEO/`.
+   - Se identificó que rutas como `/ia`, `/marketing`, `/consultoria` y `/academia` estaban incluidas en el sitemap pero sufrían redirecciones 301 en `.htaccess`.
+2. **Optimización del Generador de Sitemap (`scripts/generate-sitemap.mjs`):**
+   - Se añadió un filtro `REDIRECT_ROUTES` para ignorar automáticamente rutas cortas o marcadas como redirección.
+3. **Regeneración de Sitemap:**
+   - Se regeneró `public/sitemap.xml` garantizando que las 23 URLs del sitemap retornen respuesta limpia HTTP `200 OK`.
+
+---
+
 ## 📝 Próximos Pasos Sugeridos
 1. `[x]` Verificar en producción que meta tags y schemas se vean correctos  
 2. `[x]` Optimizar imágenes (WebP + lazy loading)
+3. `[x]` Limpiar sitemap.xml de URLs con redirección y enviar solicitud de validación en Google Search Console
+
 
