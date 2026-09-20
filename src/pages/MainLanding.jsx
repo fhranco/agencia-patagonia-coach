@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import DigitalJourney from '../components/scrollytelling/DigitalJourney';
 import TrustBar from '../components/TrustBar';
 import ValueLadder from '../components/ValueLadder';
 import QuickOffers from '../components/QuickOffers';
@@ -55,7 +56,8 @@ const MainLanding = () => {
       />
       <Navbar />
       <main>
-        <Hero />
+        {/* Scrollytelling Cinematic Hero Experience (Staging) */}
+        <DigitalJourney />
         <TrustBar />
         
         <div className="hidden md:block">
