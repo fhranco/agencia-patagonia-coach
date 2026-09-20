@@ -13,8 +13,12 @@ const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.resolve(__dirname, '../dist');
 const TEMPLATE_PATH = path.join(DIST_DIR, 'index.html');
+const isStaging = process.argv.includes('--staging') || 
+                  process.env.APP_ENV === 'staging' || 
+                  process.env.VITE_APP_ENV === 'staging' || 
+                  process.env.NODE_ENV === 'staging';
 
-console.log('--- STARTING STATIC PRERENDER PIPELINE ---');
+console.log(`--- STARTING STATIC PRERENDER PIPELINE [MODE: ${isStaging ? 'STAGING (NOINDEX)' : 'PRODUCTION'}] ---`);
 
 if (!fs.existsSync(TEMPLATE_PATH)) {
   console.error(`[ERROR] Vite bundle index.html not found at ${TEMPLATE_PATH}. Please compile first.`);
@@ -76,10 +80,15 @@ for (const [route, config] of Object.entries(SEO_CONFIG)) {
     );
   }
   
+  const robotsDirective = isStaging 
+    ? 'noindex, nofollow, noarchive' 
+    : 'index, follow';
+
   // Construct new meta elements
   let headTags = `
     <title>${title}</title>
     <meta name="description" content="${description}" />
+    <meta name="robots" content="${robotsDirective}" />
     <link rel="canonical" href="${canonicalUrl}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${canonicalUrl}" />
@@ -120,4 +129,39 @@ for (const [route, config] of Object.entries(SEO_CONFIG)) {
 }
 
 console.log(`[SUCCESS] Prerendered ${prerenderCount} routes successfully.`);
+
+if (isStaging) {
+  console.log('--- APPLYING STAGING SAFETY GUARDS ---');
+  // 1. Force staging robots.txt (Disallow all)
+  const stagingRobotsPath = path.join(DIST_DIR, 'robots.txt');
+  const stagingRobotsContent = "User-agent: *\nDisallow: /\n";
+  fs.writeFileSync(stagingRobotsPath, stagingRobotsContent, 'utf-8');
+  console.log(`[SAFEGUARD] Staging robots.txt written (Disallow: /) at: ${stagingRobotsPath}`);
+
+  // 2. Netlify / Server _headers
+  const headersPath = path.join(DIST_DIR, '_headers');
+  const headersContent = "/*\n  X-Robots-Tag: noindex, nofollow, noarchive\n";
+  fs.writeFileSync(headersPath, headersContent, 'utf-8');
+  console.log(`[SAFEGUARD] Staging _headers written (X-Robots-Tag) at: ${headersPath}`);
+
+  // 3. Apache .htaccess X-Robots-Tag header injection
+  const htaccessPath = path.join(DIST_DIR, '.htaccess');
+  if (fs.existsSync(htaccessPath)) {
+    let htaccessContent = fs.readFileSync(htaccessPath, 'utf-8');
+    if (!htaccessContent.includes('X-Robots-Tag')) {
+      htaccessContent = `<IfModule mod_headers.c>\n  Header set X-Robots-Tag "noindex, nofollow, noarchive"\n</IfModule>\n\n` + htaccessContent;
+      fs.writeFileSync(htaccessPath, htaccessContent, 'utf-8');
+      console.log(`[SAFEGUARD] Staging .htaccess injected with X-Robots-Tag at: ${htaccessPath}`);
+    }
+  }
+
+  // 4. Remove dist/sitemap.xml if present to avoid indexing
+  const sitemapDist = path.join(DIST_DIR, 'sitemap.xml');
+  if (fs.existsSync(sitemapDist)) {
+    fs.unlinkSync(sitemapDist);
+    console.log(`[SAFEGUARD] Staging sitemap removed from output folder.`);
+  }
+  console.log('[SAFEGUARD] Staging multi-layer defense active: Meta noindex + Server X-Robots-Tag + Robots.txt Disallow + Canonical Protection.');
+}
+
 console.log('-------------------------------------------');

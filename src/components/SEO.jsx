@@ -64,13 +64,23 @@ const SEO = ({
     schemasToInject.push(...extraSchemas);
   }
 
+  // Staging / Non-production safety check: Guarantee noindex on non-production hosts
+  const isStagingEnv = import.meta.env.VITE_APP_ENV === 'staging' || 
+    (typeof window !== 'undefined' && 
+     window.location.hostname !== 'agenciapatagoniacoach.cl' && 
+     window.location.hostname !== 'www.agenciapatagoniacoach.cl');
+
+  const robotsDirective = (isStagingEnv || noindex) 
+    ? 'noindex, nofollow, noarchive' 
+    : 'index, follow';
+
   return (
     <Helmet>
       {/* Basic Meta Tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />
-      <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+      <meta name="robots" content={robotsDirective} />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />

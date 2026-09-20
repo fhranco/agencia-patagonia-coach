@@ -9,6 +9,17 @@ const __dirname = path.dirname(__filename);
 const DIST_DIR = path.resolve(__dirname, '../dist');
 const PUBLIC_DIR = path.resolve(__dirname, '../public');
 
+const isStaging = process.argv.includes('--staging') || 
+                  process.env.APP_ENV === 'staging' || 
+                  process.env.VITE_APP_ENV === 'staging' || 
+                  process.env.NODE_ENV === 'staging';
+
+if (isStaging) {
+  console.log('--- SITEMAP GENERATION SKIPPED [STAGING SAFEGUARD] ---');
+  console.log('[SAFEGUARD] Staging mode active: sitemap.xml suppressed to prevent Google Search Console contamination.');
+  process.exit(0);
+}
+
 console.log('--- STARTING SITEMAP GENERATION PIPELINE ---');
 
 const currentDate = new Date().toISOString().split('T')[0];
