@@ -1,5 +1,5 @@
-import DigitalJourney from '../components/scrollytelling/DigitalJourney';
-import Manifesto from '../components/v2/Manifesto';
+import HeroEditorial from '../components/v2/HeroEditorial';
+import SelectedWork from '../components/v2/SelectedWork';
 import SEO from '../components/SEO';
 
 const MainLanding = () => {
@@ -42,21 +42,17 @@ const MainLanding = () => {
       />
       <main className="bg-[#05070A] text-[#F8FAFC]">
         {/* =========================================================================
-            HIGH-FIDELITY VERTICAL SLICE (FASE 02)
-            ACTO 00: Entry / Cold Open (The Cartographic Aperture)
-            ACTO 01: Digital Journey (240 Frames WebP + Nueva Capa Editorial)
-            TRANSICIÓN: Frame 240 Exit Mask
-            ACTO 02: Positioning / Manifesto (Soberanía Austral)
+            PATAGONIACOACH V2 — NUEVA DIRECCIÓN DEFINITIVA
+            01 — HERO EDITORIAL (Estrategia, Creatividad, Tecnología)
+            02 — SELECTED WORK (AGM Rent a Car, Ruta 9, Óptica Harris, REMAG)
             ========================================================================= */}
-        <DigitalJourney />
-        <Manifesto />
-
-        {/* Note: Subsequent acts (Portfolio, Capabilities, Deep Dive, Patagonia, Clients, Contact) 
-            remain preserved in codebase and will be implemented in subsequent phases after approval. */}
+        <HeroEditorial />
+        <SelectedWork />
       </main>
     </>
   );
 };
 
 export default MainLanding;
+
 
