@@ -8,18 +8,20 @@ export default {
     extend: {
       colors: {
         patagonia: {
-          gold: "hsl(45, 100%, 50%)",
-          black: "hsl(0, 0%, 3%)",
-          surface: "hsl(0, 0%, 8%)",
-          red: "#cc111a",
-          white: "hsl(0, 0%, 98%)",
-          secondary: "hsl(0, 0%, 60%)",
-          cyan: "#00e5ff",
+          black: "#05070A",      // Basalto Austral (Fondo principal)
+          surface: "#0B0F17",    // Pizarra Oscura (Fondo secundario / tarjetas)
+          gold: "#F59E0B",       // Ámbar Patagónico (Acento principal de identidad)
+          amberDark: "#D97706",  // Ámbar Profundo (Interacciones y bordes)
+          white: "#F8FAFC",      // Blanco Escarcha (Texto principal)
+          secondary: "#94A3B8",  // Niebla Austral (Texto secundario / técnico)
+          cyan: "#38BDF8",       // Cian Glaciar (Exclusivamente señal técnica/datos)
+          red: "#cc111a",        // Legacy preserve
         },
       },
       fontFamily: {
         heading: ["'Outfit'", "sans-serif"],
         body: ["Inter", "sans-serif"],
+        mono: ["'JetBrains Mono'", "monospace"],
       },
       borderRadius: {
         'card': '1.5rem', // 24px

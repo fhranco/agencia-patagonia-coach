@@ -1,12 +1,13 @@
 :root {
-  --story-scroll-height: 720vh;
+  --story-scroll-height: 480vh;
+  --story-scroll-height-mobile: 420vh;
 }
 
 .digital-journey {
   position: relative;
   width: 100%;
   height: var(--story-scroll-height);
-  background-color: #0b0f17;
+  background-color: #05070A; /* Basalto Austral */
   contain: paint;
 }
 
@@ -18,10 +19,19 @@
   height: 100vh;
   height: 100svh;
   overflow: hidden;
-  background-color: #05070a;
+  background-color: #05070A;
 }
 
-/* Canvas viewport */
+/* Canvas viewport wrap */
+.digital-journey__canvas-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
 .digital-journey__canvas {
   position: absolute;
   top: 0;
@@ -29,241 +39,308 @@
   width: 100%;
   height: 100%;
   display: block;
-  z-index: 1;
   pointer-events: none;
 }
 
-/* Atmospheric photographic overlay for editorial legibility without killing amber light */
+/* Atmospheric photographic vignette (Darkens left column for high text contrast without killing amber light) */
 .digital-journey__overlay {
   position: absolute;
   inset: 0;
   z-index: 2;
   pointer-events: none;
   background: 
-    linear-gradient(90deg, rgba(7, 10, 16, 0.65) 0%, rgba(7, 10, 16, 0.35) 42%, rgba(7, 10, 16, 0.05) 75%, transparent 100%),
-    linear-gradient(180deg, rgba(7, 10, 16, 0.4) 0%, transparent 20%, transparent 80%, rgba(7, 10, 16, 0.8) 100%);
+    linear-gradient(90deg, rgba(5, 7, 10, 0.88) 0%, rgba(5, 7, 10, 0.55) 38%, rgba(5, 7, 10, 0.05) 75%, transparent 100%),
+    linear-gradient(180deg, rgba(5, 7, 10, 0.5) 0%, transparent 20%, transparent 80%, rgba(5, 7, 10, 0.85) 100%);
 }
 
-/* Bottom mask transition into the next dark section */
+/* Acto 00: Aperture Layer */
+.digital-journey__aperture-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 25;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  transition: opacity 0.3s ease-out;
+}
+
+/* Exit transition to Acto 02 (Manifesto) */
 .digital-journey__exit-mask {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 22;
+  pointer-events: none;
+  background: #05070A;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out;
+}
+
+.digital-journey__exit-mask::after {
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 160px;
-  z-index: 4;
-  pointer-events: none;
-  background: linear-gradient(180deg, transparent 0%, #0b0f17 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.digital-journey__exit-mask.is-active {
-  opacity: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(245, 158, 11, 0.4) 40%, #F59E0B 50%, rgba(245, 158, 11, 0.4) 60%, transparent 100%);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
 }
 
 /* Content layer */
 .digital-journey__content {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 10;
   pointer-events: none;
   display: flex;
   align-items: center;
-  padding: 0 clamp(24px, 6vw, 96px);
+  padding: 0 clamp(32px, 6vw, 100px);
 }
 
 .digital-journey__chapter {
   position: absolute;
-  max-width: 620px;
+  max-width: 580px;
   opacity: 0;
   visibility: hidden;
   will-change: transform, opacity;
-  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
 }
 
-.digital-journey__chapter.is-active {
-  visibility: visible;
-  pointer-events: auto;
-}
-
-/* Editorial typography for provisional titles */
-.digital-journey__eyebrow {
-  display: inline-block;
-  font-family: var(--font-heading, "Outfit", sans-serif);
-  font-size: clamp(10px, 1vw, 12px);
-  font-weight: 700;
+/* Editorial Technical Marker */
+.digital-journey__marker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #f59e0b;
-  margin-bottom: 12px;
+  color: #F59E0B; /* Ámbar Patagónico */
   padding: 4px 10px;
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.22);
   border-radius: 9999px;
+  margin-bottom: 16px;
 }
 
-.digital-journey__headline {
-  font-family: var(--font-heading, "Outfit", sans-serif);
-  font-size: clamp(28px, 4.2vw, 56px);
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  color: #ffffff;
+.digital-journey__marker-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background-color: #F59E0B;
+}
+
+/* Monumental Headline: Text Reveal A (Split-Line Mask) */
+.digital-journey__headline-wrap {
   margin-bottom: 16px;
-  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
+}
+
+.digital-journey__line-mask {
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+
+.digital-journey__headline-line {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: clamp(30px, 4.4vw, 56px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: #F8FAFC;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.85);
+  text-transform: uppercase;
 }
 
 .digital-journey__subhead {
-  font-family: var(--font-body, "Inter", sans-serif);
-  font-size: clamp(14px, 1.4vw, 18px);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(14px, 1.3vw, 17px);
   font-weight: 300;
   line-height: 1.6;
-  color: #cbd5e1;
-  max-width: 520px;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+  color: #94A3B8;
+  max-width: 480px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
 }
 
-/* Chapter 01 Specific Position (Hero View) */
-.digital-journey__chapter--search {
-  top: 38%;
-  transform: translateY(-50%);
-}
+/* Chapter Positions */
+.digital-journey__chapter--search { top: 40%; transform: translateY(-50%); }
+.digital-journey__chapter--discovery { top: 42%; transform: translateY(-50%); }
+.digital-journey__chapter--responsive { top: 44%; transform: translateY(-50%); }
+.digital-journey__chapter--ai { top: 40%; transform: translateY(-50%); }
+.digital-journey__chapter--architecture { top: 42%; transform: translateY(-50%); }
+.digital-journey__chapter--ecosystem { top: 40%; transform: translateY(-50%); }
 
-/* Chapter 02: Discovery */
-.digital-journey__chapter--discovery {
-  top: 42%;
-  transform: translateY(-50%);
-}
-
-/* Chapter 03: Responsive */
-.digital-journey__chapter--responsive {
-  top: 44%;
-  transform: translateY(-50%);
-}
-
-/* Chapter 04: AI (Shifted slightly for balance) */
-.digital-journey__chapter--ai {
-  top: 40%;
-  transform: translateY(-50%);
-}
-
-/* Chapter 05: Architecture */
-.digital-journey__chapter--architecture {
-  top: 42%;
-  transform: translateY(-50%);
-}
-
-/* Chapter 06: Ecosystem */
-.digital-journey__chapter--ecosystem {
-  top: 40%;
-  transform: translateY(-50%);
-}
-
-/* Discrete Chapter Indicator (Right side) */
-.digital-journey__indicator {
+/* Technical Progress Rail (Right side on desktop) */
+.digital-journey__rail {
   position: absolute;
-  right: clamp(20px, 3vw, 48px);
+  right: clamp(24px, 3.5vw, 54px);
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
+  z-index: 15;
   display: flex;
-  flex-direction: column;
-  gap: 14px;
+  align-items: center;
+  gap: 16px;
   pointer-events: none;
 }
 
-.digital-journey__dot-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  justify-content: flex-end;
+.digital-journey__rail-track {
+  width: 1px;
+  height: 180px;
+  background: rgba(255, 255, 255, 0.12);
+  position: relative;
 }
 
-.digital-journey__dot-label {
-  font-family: var(--font-heading, "Outfit", sans-serif);
+.digital-journey__rail-bar {
+  width: 100%;
+  height: 100%;
+  background: #F59E0B;
+  transform-origin: top center;
+  transform: scaleY(0);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.8);
+}
+
+.digital-journey__rail-steps {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 190px;
+}
+
+.digital-journey__rail-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
   font-size: 10px;
+  color: #475569;
+  transition: all 0.25s ease;
+}
+
+.digital-journey__rail-step.is-active {
+  color: #F59E0B;
+}
+
+.digital-journey__rail-num {
   font-weight: 600;
-  letter-spacing: 0.15em;
-  color: #64748b;
+}
+
+.digital-journey__rail-title {
   opacity: 0;
   transform: translateX(6px);
   transition: all 0.25s ease;
 }
 
-.digital-journey__dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 9999px;
-  background-color: #334155;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.digital-journey__dot-wrap.is-active .digital-journey__dot {
-  width: 8px;
-  height: 8px;
-  background-color: #f59e0b;
-  box-shadow: 0 0 12px rgba(245, 158, 11, 0.8);
-}
-
-.digital-journey__dot-wrap.is-active .digital-journey__dot-label {
+.digital-journey__rail-step.is-active .digital-journey__rail-title {
   opacity: 1;
   transform: translateX(0);
-  color: #f59e0b;
 }
 
-/* Subtle scroll prompt on Frame 1 */
-.digital-journey__scroll-hint {
-  position: absolute;
-  bottom: clamp(24px, 4vh, 40px);
-  left: clamp(24px, 6vw, 96px);
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.digital-journey__scroll-line {
-  width: 24px;
-  height: 1px;
-  background: #f59e0b;
-}
-
-.digital-journey__scroll-text {
-  font-family: var(--font-heading, "Outfit", sans-serif);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #94a3b8;
-}
-
-/* Debug Mode Bar (Staging & Dev only) */
+/* Telemetry Box (Staging & Dev only) */
 .digital-journey__debug {
   position: fixed;
   bottom: 16px;
   right: 16px;
   z-index: 9999;
-  background: rgba(11, 15, 23, 0.92);
-  border: 1px solid #1e293b;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  background: rgba(5, 7, 10, 0.92);
+  border: 1px solid #1E293B;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
   border-radius: 8px;
-  padding: 10px 14px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 11px;
-  line-height: 1.5;
-  color: #94a3b8;
+  padding: 8px 12px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  line-height: 1.6;
+  color: #94A3B8;
   backdrop-filter: blur(8px);
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 .digital-journey__debug span {
-  color: #f59e0b;
+  color: #F59E0B;
   font-weight: 600;
+}
+
+/* ==========================================================================
+   MOBILE HYBRID COMPOSITION (55% Visual Top / 45% Editorial Bottom)
+   Prevents the 75-80% horizontal crop on mobile portrait viewports
+   ========================================================================== */
+@media (max-width: 768px) {
+  .digital-journey {
+    height: var(--story-scroll-height-mobile);
+  }
+
+  .digital-journey__sticky {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top 55%: Canvas retains optimal framing */
+  .digital-journey__canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: 55svh;
+    background-color: #05070A;
+  }
+
+  .digital-journey__overlay {
+    background: linear-gradient(180deg, transparent 60%, rgba(5, 7, 10, 0.95) 100%);
+  }
+
+  /* Bottom 45%: Pure solid editorial panel on Basalto Austral */
+  .digital-journey__content {
+    position: relative;
+    width: 100%;
+    height: 45svh;
+    background-color: #05070A;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px 20px;
+    align-items: flex-start;
+  }
+
+  .digital-journey__chapter {
+    position: absolute;
+    top: 24px !important;
+    left: 20px !important;
+    right: 20px !important;
+    max-width: 100%;
+    transform: none !important;
+  }
+
+  .digital-journey__headline-line {
+    font-size: clamp(24px, 6.8vw, 34px);
+    line-height: 1.08;
+  }
+
+  .digital-journey__subhead {
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: 100%;
+  }
+
+  /* Simplified mobile progress rail */
+  .digital-journey__rail {
+    top: 55svh;
+    right: 20px;
+    transform: translateY(-50%);
+    gap: 8px;
+  }
+
+  .digital-journey__rail-track {
+    display: none;
+  }
+
+  .digital-journey__rail-steps {
+    flex-direction: row;
+    height: auto;
+    gap: 12px;
+  }
+
+  .digital-journey__rail-title {
+    display: none;
+  }
 }
 
 /* Reduced Motion Fallback */
@@ -274,14 +351,19 @@
   .digital-journey__sticky {
     position: relative !important;
     height: auto !important;
-    min-height: 100vh;
+  }
+  .digital-journey__aperture-layer {
+    position: relative;
+    height: 80vh;
+  }
+  .digital-journey__canvas-wrap {
+    height: 70vh;
   }
   .digital-journey__content {
     position: relative;
-    padding-top: 120px;
-    padding-bottom: 80px;
+    padding: 60px 24px;
     flex-direction: column;
-    gap: 80px;
+    gap: 60px;
   }
   .digital-journey__chapter {
     position: relative !important;
@@ -290,7 +372,7 @@
     opacity: 1 !important;
     visibility: visible !important;
   }
-  .digital-journey__indicator {
+  .digital-journey__rail {
     display: none;
   }
 }

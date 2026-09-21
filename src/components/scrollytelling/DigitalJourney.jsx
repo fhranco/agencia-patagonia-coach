@@ -1,51 +1,52 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { FrameLoader } from './frameLoader';
+import EntryAperture from '../v2/EntryAperture';
 import './DigitalJourney.css';
 
-// Manifest definition imported or fetched
+// Manifest definition
 import manifestData from '../../../public/scrollytelling/manifest/scrollytelling_manifest.json';
 
-const PROVISIONAL_COPIES = [
+const EDITORIAL_CHAPTERS = [
   {
     id: '01_SEARCH',
-    eyebrow: 'ESTRATEGIA DIGITAL',
-    headline: 'Todo empieza con una búsqueda.',
-    subhead: 'Diseñamos la arquitectura y presencia digital que conecta a empresas de la Patagonia con clientes de alto valor.',
+    marker: '01 // SEARCH',
+    headlineLines: ['TODO EMPIEZA', 'CON UNA BÚSQUEDA.'],
+    supporting: 'Diseñamos la arquitectura digital que conecta la intención del usuario con oportunidades reales.',
     classModifier: 'digital-journey__chapter--search'
   },
   {
     id: '02_DISCOVERY',
-    eyebrow: 'POSICIONAMIENTO & GEO',
-    headline: 'Ser encontrado es sólo el comienzo.',
-    subhead: 'Optimización avanzada de motores de búsqueda e inteligencia artificial para convertir visitas en oportunidades reales.',
+    marker: '02 // DISCOVERY',
+    headlineLines: ['SER ENCONTRADO', 'ES EL COMIENZO.'],
+    supporting: 'Optimización avanzada para motores generativos (GEO) y presencia dominante en Magallanes.',
     classModifier: 'digital-journey__chapter--discovery'
   },
   {
     id: '03_RESPONSIVE',
-    eyebrow: 'INGENIERÍA MULTI-PANTALLA',
-    headline: 'Una experiencia. En cada pantalla.',
-    subhead: 'Rendimiento nativo y adaptabilidad fluida para un territorio donde la conectividad exige excelencia técnica.',
+    marker: '03 // RESPONSIVE',
+    headlineLines: ['UNA EXPERIENCIA.', 'CADA PANTALLA.'],
+    supporting: 'Rendimiento nativo y adaptabilidad fluida para un territorio de conectividad exigente.',
     classModifier: 'digital-journey__chapter--responsive'
   },
   {
     id: '04_AI',
-    eyebrow: 'INTELIGENCIA APLICADA',
-    headline: 'La búsqueda también conversa.',
-    subhead: 'Modelos de lenguaje, agentes autónomos e integración de datos que operan sin descanso en su negocio.',
+    marker: '04 // INTELLIGENCE',
+    headlineLines: ['LA BÚSQUEDA', 'AHORA CONVERSA.'],
+    supporting: 'Modelos de lenguaje, agentes autónomos e integración de flujos corporativos que operan 24/7.',
     classModifier: 'digital-journey__chapter--ai'
   },
   {
     id: '05_ARCHITECTURE',
-    eyebrow: 'DESARROLLO DE SOFTWARE',
-    headline: 'Lo visible depende de lo que está bien construido.',
-    subhead: 'Estructuras de código limpias, componentes reutilizables y sistemas listos para escalar a nivel global.',
+    marker: '05 // ARCHITECTURE',
+    headlineLines: ['CONSTRUIR', 'PARA RESISTIR.'],
+    supporting: 'Estructuras de código limpias, componentes sólidos y soberanía digital sin concesiones.',
     classModifier: 'digital-journey__chapter--architecture'
   },
   {
     id: '06_ECOSYSTEM',
-    eyebrow: 'SOLUCIONES INTEGRADAS',
-    headline: 'Web, SEO e inteligencia trabajando como un sistema.',
-    subhead: 'Un ecosistema unificado que potencia el crecimiento y soberanía digital de su empresa en Magallanes.',
+    marker: '06 // ECOSYSTEM',
+    headlineLines: ['SISTEMAS', 'CONECTADOS.'],
+    supporting: 'Web, datos e inteligencia trabajando como una sola infraestructura viva y medible.',
     classModifier: 'digital-journey__chapter--ecosystem'
   }
 ];
@@ -54,38 +55,29 @@ export default function DigitalJourney() {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
   const frameLoaderRef = useRef(null);
+  const entryApertureRef = useRef(null);
+  const exitMaskRef = useRef(null);
+  const chapterRefs = useRef([]);
+  const indicatorDotsRef = useRef([]);
+  const indicatorProgressBarRef = useRef(null);
+  const debugPanelRef = useRef(null);
 
-  // Animation and scroll state refs (not causing re-renders)
+  // Animation and scroll state refs (zero React re-renders during rAF)
   const targetProgressRef = useRef(0);
   const currentProgressRef = useRef(0);
   const currentFrameRef = useRef(1);
   const rafIdRef = useRef(null);
   const lastDrawnImageRef = useRef(null);
+  const lastActiveChapterIdxRef = useRef(-1);
+  const lastDebugUpdateRef = useRef(0);
 
-  // UI state for reactive elements
-  const [activeChapterIndex, setActiveChapterIndex] = useState(0);
-  const [chapterOpacities, setChapterOpacities] = useState([1, 0, 0, 0, 0, 0]);
-  const [chapterTranslates, setChapterTranslates] = useState([0, 18, 18, 18, 18, 18]);
-  const [showExitMask, setShowExitMask] = useState(false);
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
-
-  // Debug metrics state (active in dev / staging)
-  const [debugMetrics, setDebugMetrics] = useState({
-    progress: '0.000',
-    chapter: '01_SEARCH',
-    seqFrame: 1,
-    sourceFrame: 0,
-    cachedCount: 0
-  });
-
-  // Helper: Find sequence frame by normalized progress lookup
+  // Binary search for closest normalized progress
   const findFrameIndex = useCallback((progress) => {
     const frames = manifestData.frames;
     if (!frames || frames.length === 0) return 1;
     if (progress <= 0) return frames[0].sequence_index;
     if (progress >= 1) return frames[frames.length - 1].sequence_index;
 
-    // Binary search for closest normalized progress
     let low = 0;
     let high = frames.length - 1;
 
@@ -101,7 +93,6 @@ export default function DigitalJourney() {
       }
     }
 
-    // Closest match between low and high
     if (low >= frames.length) return frames[frames.length - 1].sequence_index;
     if (high < 0) return frames[0].sequence_index;
 
@@ -110,7 +101,7 @@ export default function DigitalJourney() {
     return diffLow < diffHigh ? frames[low].sequence_index : frames[high].sequence_index;
   }, []);
 
-  // Canvas draw function with object-fit: cover
+  // Canvas draw with object-fit cover
   const drawFrame = useCallback((img) => {
     const canvas = canvasRef.current;
     if (!canvas || !img) return;
@@ -123,7 +114,6 @@ export default function DigitalJourney() {
     const iw = img.naturalWidth || img.width || 1600;
     const ih = img.naturalHeight || img.height || 900;
 
-    // Center crop cover
     const scale = Math.max(cw / iw, ch / ih);
     const nw = iw * scale;
     const nh = ih * scale;
@@ -134,7 +124,7 @@ export default function DigitalJourney() {
     lastDrawnImageRef.current = img;
   }, []);
 
-  // Update canvas internal pixel size matching CSS dimensions * DPR
+  // Resize canvas with clamped DPR
   const resizeCanvas = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -155,12 +145,12 @@ export default function DigitalJourney() {
     }
   }, [drawFrame]);
 
-  // Main scroll loop inside requestAnimationFrame
+  // High-performance RAF scroll loop: Direct DOM updates, ZERO React state churn
   const updateLoop = useCallback(() => {
     const loader = frameLoaderRef.current;
     if (!loader) return;
 
-    // Configurable LERP response (0.14 for direct feel with micro-smoothing)
+    // LERP response (0.14 for direct responsiveness + micro-smoothing)
     const target = targetProgressRef.current;
     let current = currentProgressRef.current;
     current += (target - current) * 0.14;
@@ -170,14 +160,45 @@ export default function DigitalJourney() {
     }
     currentProgressRef.current = current;
 
-    // 1. Identify target frame by manifest normalized progress
-    const targetFrameIdx = findFrameIndex(current);
+    // =========================================================================
+    // 1. ACTO 00: Aperture Transition (Progress 0.00 to 0.08)
+    // =========================================================================
+    const apertureEl = entryApertureRef.current;
+    if (apertureEl) {
+      if (current <= 0.001) {
+        apertureEl.style.opacity = '1';
+        apertureEl.style.transform = 'scale(1)';
+        apertureEl.style.visibility = 'visible';
+        apertureEl.style.pointerEvents = 'auto';
+      } else if (current > 0.001 && current < 0.075) {
+        // As scroll starts, aperture dilates outward, revealing frame 1 beneath
+        const apT = current / 0.075;
+        const scale = 1 + apT * 2.8; // Scales up to 3.8x
+        const opacity = Math.max(0, 1 - apT * 1.3);
+        apertureEl.style.transform = `scale(${scale.toFixed(3)})`;
+        apertureEl.style.opacity = opacity.toFixed(3);
+        apertureEl.style.visibility = 'visible';
+        apertureEl.style.pointerEvents = 'none';
+      } else {
+        apertureEl.style.opacity = '0';
+        apertureEl.style.visibility = 'hidden';
+        apertureEl.style.pointerEvents = 'none';
+      }
+    }
+
+    // =========================================================================
+    // 2. ACTO 01: Scrollytelling Scrubbing (Progress 0.075 to 0.94)
+    // =========================================================================
+    // Map overall progress to the 240 frames
+    const journeyStart = 0.075;
+    const journeyEnd = 0.94;
+    const journeyProg = Math.max(0, Math.min(1, (current - journeyStart) / (journeyEnd - journeyStart)));
+
+    const targetFrameIdx = findFrameIndex(journeyProg);
     currentFrameRef.current = targetFrameIdx;
 
-    // 2. Update dynamic window cache
     loader.updateWindow(targetFrameIdx);
 
-    // 3. Render frame (or fallback to nearest loaded image)
     const frameImg = loader.getFrame(targetFrameIdx);
     if (frameImg) {
       drawFrame(frameImg);
@@ -185,11 +206,11 @@ export default function DigitalJourney() {
       drawFrame(lastDrawnImageRef.current);
     }
 
-    // 4. Calculate chapter transitions & typography animations
+    // =========================================================================
+    // 3. Editorial Typography Overlap Transitions
+    // =========================================================================
     const chapters = manifestData.chapters;
     let activeChIdx = 0;
-    const newOpacities = [0, 0, 0, 0, 0, 0];
-    const newTranslates = [18, 18, 18, 18, 18, 18];
 
     for (let i = 0; i < chapters.length; i++) {
       const ch = chapters[i];
@@ -197,76 +218,107 @@ export default function DigitalJourney() {
       const end = ch.provisional_progress.end;
       const chSpan = end - start;
 
-      if (current >= start && current <= end) {
+      if (journeyProg >= start && journeyProg <= end) {
         activeChIdx = i;
       }
 
       // Local progress within chapter (0..1)
-      const localProg = Math.max(0, Math.min(1, (current - start) / chSpan));
+      const localProg = Math.max(0, Math.min(1, (journeyProg - start) / chSpan));
 
-      // Standard curve: 0-15% in, 15-70% hold, 70-100% out
       let opacity = 0;
-      let translateY = 18;
+      let translateY = 20;
 
-      if (localProg >= 0 && localProg <= 0.15) {
-        const tIn = localProg / 0.15;
+      // Temporal overlap curve:
+      // 0.00-0.18: In (fade + upward translation)
+      // 0.18-0.72: Hold
+      // 0.72-1.00: Out (fade + upward translation into next chapter)
+      if (localProg >= 0 && localProg <= 0.18) {
+        const tIn = localProg / 0.18;
         opacity = tIn;
-        translateY = 18 * (1 - tIn);
-      } else if (localProg > 0.15 && localProg <= 0.70) {
+        translateY = 20 * (1 - tIn);
+      } else if (localProg > 0.18 && localProg <= 0.72) {
         opacity = 1;
         translateY = 0;
-      } else if (localProg > 0.70 && localProg <= 1.0) {
-        // Hold final chapter at 100% without fading out abruptly
+      } else if (localProg > 0.72 && localProg <= 1.0) {
         if (i === chapters.length - 1) {
           opacity = 1;
           translateY = 0;
         } else {
-          const tOut = (localProg - 0.70) / 0.30;
+          const tOut = (localProg - 0.72) / 0.28;
           opacity = 1 - tOut;
-          translateY = -14 * tOut;
+          translateY = -18 * tOut;
         }
       }
 
-      // Chapter 1 Special Hero View: stays visible at scroll = 0
-      if (i === 0 && current < 0.02) {
-        opacity = 1;
+      // Chapter 1 is active once aperture starts opening
+      if (i === 0 && journeyProg < 0.05) {
+        opacity = Math.max(0, (current - 0.03) / 0.04);
         translateY = 0;
       }
 
-      newOpacities[i] = opacity;
-      newTranslates[i] = translateY;
+      const chEl = chapterRefs.current[i];
+      if (chEl) {
+        chEl.style.opacity = opacity.toFixed(3);
+        chEl.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0)`;
+        chEl.style.visibility = opacity > 0.005 ? 'visible' : 'hidden';
+      }
     }
 
-    setActiveChapterIndex(activeChIdx);
-    setChapterOpacities(newOpacities);
-    setChapterTranslates(newTranslates);
+    // Update indicator ticks only if active chapter changes (no wasted work)
+    if (lastActiveChapterIdxRef.current !== activeChIdx) {
+      lastActiveChapterIdxRef.current = activeChIdx;
+      indicatorDotsRef.current.forEach((dot, idx) => {
+        if (dot) {
+          if (idx === activeChIdx) {
+            dot.classList.add('is-active');
+          } else {
+            dot.classList.remove('is-active');
+          }
+        }
+      });
+    }
 
-    // 5. Exit mask transition at the end of section
-    setShowExitMask(current > 0.94);
+    // Update progress bar
+    if (indicatorProgressBarRef.current) {
+      indicatorProgressBarRef.current.style.transform = `scaleY(${journeyProg.toFixed(3)})`;
+    }
 
-    // 6. Update debug telemetry
-    const metaItem = manifestData.frames[targetFrameIdx - 1];
-    setDebugMetrics({
-      progress: current.toFixed(3),
-      chapter: metaItem ? metaItem.chapter : chapters[activeChIdx].id,
-      seqFrame: targetFrameIdx,
-      sourceFrame: metaItem ? metaItem.source_frame : 0,
-      cachedCount: loader.getLoadedCount()
-    });
+    // =========================================================================
+    // 4. Exit Mask to Acto 02 (Progress > 0.94)
+    // =========================================================================
+    const exitMaskEl = exitMaskRef.current;
+    if (exitMaskEl) {
+      if (current > 0.93) {
+        const exitT = Math.min(1, (current - 0.93) / 0.07);
+        exitMaskEl.style.opacity = exitT.toFixed(3);
+        exitMaskEl.style.visibility = 'visible';
+      } else {
+        exitMaskEl.style.opacity = '0';
+        exitMaskEl.style.visibility = 'hidden';
+      }
+    }
+
+    // =========================================================================
+    // 5. Throttled Telemetry (Updates every 120ms, Staging/Dev only)
+    // =========================================================================
+    const now = performance.now();
+    if (now - lastDebugUpdateRef.current > 120 && debugPanelRef.current) {
+      lastDebugUpdateRef.current = now;
+      const metaItem = manifestData.frames[targetFrameIdx - 1];
+      debugPanelRef.current.innerHTML = `
+        <div>Prog: <span>${current.toFixed(3)}</span> | J: <span>${journeyProg.toFixed(2)}</span></div>
+        <div>Cap: <span>${chapters[activeChIdx] ? chapters[activeChIdx].id : '01_SEARCH'}</span></div>
+        <div>Frame: <span>${targetFrameIdx}/240</span> (Src #${metaItem ? metaItem.source_frame : 0})</div>
+        <div>GPU Cache: <span>${loader.getLoadedCount()}/32</span></div>
+      `;
+    }
 
     rafIdRef.current = requestAnimationFrame(updateLoop);
   }, [drawFrame, findFrameIndex]);
 
-  // Handle passive scroll listener
+  // Handle passive scroll listener and loader initialization
   useEffect(() => {
-    // Check reduced motion
-    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setIsReducedMotion(motionQuery.matches);
-
-    const handleMotionChange = (e) => setIsReducedMotion(e.matches);
-    motionQuery.addEventListener('change', handleMotionChange);
-
-    // Initialize FrameLoader
+    // Initialize FrameLoader with sliding window
     const loader = new FrameLoader({
       totalFrames: 240,
       basePath: '/scrollytelling/desktop',
@@ -281,7 +333,7 @@ export default function DigitalJourney() {
     });
     frameLoaderRef.current = loader;
 
-    // Load initial critical set (frames 1..12, ~704.5 KB)
+    // Load initial critical set immediately (frames 1..12)
     loader.loadInitialSet(12).then(() => {
       const firstImg = loader.getFrame(1);
       if (firstImg) drawFrame(firstImg);
@@ -296,7 +348,7 @@ export default function DigitalJourney() {
     }
     resizeCanvas();
 
-    // Scroll listener: passive, calculates container-relative progress (0..1)
+    // Passive scroll listener: container-relative progress (0..1)
     const handleScroll = () => {
       const container = containerRef.current;
       if (!container) return;
@@ -313,11 +365,10 @@ export default function DigitalJourney() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
-    // Start RAF update loop
+    // Start RAF loop
     rafIdRef.current = requestAnimationFrame(updateLoop);
 
     return () => {
-      motionQuery.removeEventListener('change', handleMotionChange);
       window.removeEventListener('scroll', handleScroll);
       if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
       resizeObs.disconnect();
@@ -329,91 +380,98 @@ export default function DigitalJourney() {
     <section 
       ref={containerRef} 
       className="digital-journey" 
-      aria-label="Presentación interactiva de capacidades digitales PatagoniaCoach"
+      aria-label="PatagoniaCoach V2: Acto 00 (Apertura) y Acto 01 (Digital Journey)"
     >
       <div className="digital-journey__sticky">
-        {/* Canvas Render with 16:9 Aspect Preservation */}
-        <canvas 
-          ref={canvasRef} 
-          className="digital-journey__canvas" 
-          aria-hidden="true" 
-        />
-
-        {/* Cinematic Vignette Overlay */}
-        <div className="digital-journey__overlay" aria-hidden="true" />
-
-        {/* Exit transition gradient to black section below */}
-        <div 
-          className={`digital-journey__exit-mask ${showExitMask ? 'is-active' : ''}`} 
-          aria-hidden="true" 
-        />
-
-        {/* HTML Semantic Editorial Content */}
-        <div className="digital-journey__content">
-          {PROVISIONAL_COPIES.map((item, idx) => {
-            const opacity = chapterOpacities[idx];
-            const translateY = chapterTranslates[idx];
-            const isVisible = opacity > 0.01;
-
-            return (
-              <div 
-                key={item.id}
-                className={`digital-journey__chapter ${item.classModifier} ${isVisible ? 'is-active' : ''}`}
-                style={{
-                  opacity: opacity,
-                  transform: `translateY(${translateY}px)`
-                }}
-              >
-                {item.eyebrow && (
-                  <span className="digital-journey__eyebrow">
-                    {item.eyebrow}
-                  </span>
-                )}
-                <h1 className="digital-journey__headline">
-                  {item.headline}
-                </h1>
-                <p className="digital-journey__subhead">
-                  {item.subhead}
-                </p>
-              </div>
-            );
-          })}
+        {/* Canvas Render (16:9 Aspect Preservation with Cover Logic) */}
+        <div className="digital-journey__canvas-wrap">
+          <canvas 
+            ref={canvasRef} 
+            className="digital-journey__canvas" 
+            aria-hidden="true" 
+          />
+          {/* Subtle cinematic vignette */}
+          <div className="digital-journey__overlay" aria-hidden="true" />
         </div>
 
-        {/* Discrete Chapter Indicator (01 — 06) */}
-        <div className="digital-journey__indicator" aria-hidden="true">
-          {manifestData.chapters.map((ch, idx) => (
+        {/* ACTO 00: The Cartographic Aperture Overlay */}
+        <div ref={entryApertureRef} className="digital-journey__aperture-layer">
+          <EntryAperture />
+        </div>
+
+        {/* Exit transition to Acto 02 (Manifesto) */}
+        <div 
+          ref={exitMaskRef} 
+          className="digital-journey__exit-mask" 
+          aria-hidden="true" 
+        />
+
+        {/* ACTO 01: Editorial Typography Layer */}
+        <div className="digital-journey__content">
+          {EDITORIAL_CHAPTERS.map((item, idx) => (
             <div 
-              key={ch.id} 
-              className={`digital-journey__dot-wrap ${activeChapterIndex === idx ? 'is-active' : ''}`}
+              key={item.id}
+              ref={(el) => (chapterRefs.current[idx] = el)}
+              className={`digital-journey__chapter ${item.classModifier}`}
             >
-              <span className="digital-journey__dot-label">
-                {String(idx + 1).padStart(2, '0')} {ch.title.split(' / ')[0]}
-              </span>
-              <div className="digital-journey__dot" />
+              {/* Technical Marker */}
+              <div className="digital-journey__marker">
+                <span className="digital-journey__marker-dot" />
+                <span className="digital-journey__marker-text">{item.marker}</span>
+              </div>
+
+              {/* Monumental Headline: Text Reveal A (Split-Line Ascend) */}
+              <div className="digital-journey__headline-wrap">
+                {item.headlineLines.map((line, lIdx) => (
+                  <div key={lIdx} className="digital-journey__line-mask">
+                    <h2 className="digital-journey__headline-line">
+                      {line}
+                    </h2>
+                  </div>
+                ))}
+              </div>
+
+              {/* Supporting Line */}
+              <p className="digital-journey__subhead">
+                {item.supporting}
+              </p>
             </div>
           ))}
         </div>
 
-        {/* Scroll hint visible only on initial frame */}
-        <div 
-          className="digital-journey__scroll-hint"
-          style={{ opacity: chapterOpacities[0] > 0.8 ? 1 : 0 }}
-          aria-hidden="true"
-        >
-          <div className="digital-journey__scroll-line" />
-          <span className="digital-journey__scroll-text">Desplaza para explorar</span>
+        {/* Technical Progress Indicator (Desktop & Mobile Rail) */}
+        <div className="digital-journey__rail" aria-hidden="true">
+          <div className="digital-journey__rail-track">
+            <div 
+              ref={indicatorProgressBarRef} 
+              className="digital-journey__rail-bar" 
+            />
+          </div>
+          <div className="digital-journey__rail-steps">
+            {manifestData.chapters.map((ch, idx) => (
+              <div 
+                key={ch.id} 
+                ref={(el) => (indicatorDotsRef.current[idx] = el)}
+                className={`digital-journey__rail-step ${idx === 0 ? 'is-active' : ''}`}
+              >
+                <span className="digital-journey__rail-num">
+                  {String(idx + 1).padStart(2, '0')}
+                </span>
+                <span className="digital-journey__rail-title">
+                  {ch.title.split(' / ')[0]}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Debug Mode Bar (Staging Only) */}
-      <aside className="digital-journey__debug" aria-label="Telemetría de desarrollo">
-        <div>Progress: <span>{debugMetrics.progress}</span></div>
-        <div>Capítulo: <span>{debugMetrics.chapter}</span></div>
-        <div>Seq Frame: <span>{debugMetrics.seqFrame} / 240</span></div>
-        <div>Master Frame: <span>#{debugMetrics.sourceFrame}</span></div>
-        <div>Decoded Cache: <span>{debugMetrics.cachedCount} / 32</span></div>
-      </aside>
+      {/* Telemetry Bar (Staging & Dev only) */}
+      <aside 
+        ref={debugPanelRef} 
+        className="digital-journey__debug" 
+        aria-label="Telemetría de rendimiento"
+      />
     </section>
   );
 }

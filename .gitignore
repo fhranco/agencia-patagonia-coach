@@ -40,3 +40,6 @@ public/secrets.php
 # Scrollytelling raw master & local scratch
 Final-video.mp4
 scratch/
+ngrok
+*.tar.gz
+
