@@ -101,22 +101,22 @@ const SelectedWork = () => {
         <div className="scene-spatial-title" aria-hidden="true">AGM MOBILITY</div>
 
         <div className="agm-stage-grid">
-          {/* Visual Dominance Column */}
+          {/* Visual Dominance Column - Editorial Mockup Container */}
           <div className="agm-visual-window">
             <img 
               src="/images/projects-showcase.webp" 
-              alt="AGM Rent a Car - Motor de Reserva y Plataforma de Flota en Punta Arenas" 
+              alt="AGM Rent a Car - Maqueta de Cotizador Web y Catálogo de Flota" 
               className="agm-visual-img"
               loading="lazy"
             />
             <div className="agm-hud-overlay">
               <div className="agm-hud-top">
-                <span className="agm-hud-badge">AGM • FLEET TELEMETRY</span>
-                <span className="font-mono text-[11px] text-patagonia-cyan">API STATUS: 200 OK</span>
+                <span className="agm-hud-badge">AGM • ARRIENDO DE VEHÍCULOS</span>
+                <span className="font-mono text-[11px] text-patagonia-cyan">PUNTA ARENAS • 53°S</span>
               </div>
               <div className="agm-hud-bottom">
-                <span>TARIFICACIÓN DINÁMICA POR TEMPORADA</span>
-                <span className="text-patagonia-cyan">ES / EN / PT • CHECKOUT DIRECTO</span>
+                <span>ESTRUCTURA WEB & COTIZADOR DIGITAL</span>
+                <span className="text-patagonia-cyan">CATÁLOGO DE FLOTA</span>
               </div>
             </div>
           </div>
@@ -128,21 +128,20 @@ const SelectedWork = () => {
             <h2 className="agm-title">AGM Rent a Car</h2>
             
             <p className="agm-tagline">
-              Motor de reservas instantáneo para la flota líder en Punta Arenas y la Patagonia.
+              Plataforma web y cotizador digital para arriendo de vehículos en Punta Arenas.
             </p>
 
             <p className="agm-desc">
-              Transformación digital integral del sistema de arriendo de vehículos para el turismo 
-              receptivo y corporativo en Magallanes. Arquitectura web en tiempo real con motor de 
-              tarifas dinámicas por temporada, control de flota sincronizado y checkout 
-              internacional multilingüe sin fricción transaccional.
+              Desarrollo del sitio web y cotizador digital para la flota de arriendo de vehículos 
+              en Magallanes. Estructura web orientada a agilizar consultas de disponibilidad, 
+              selección de categorías y solicitudes de reserva tanto para turismo receptivo 
+              como corporativo.
             </p>
 
             <div className="agm-tags-wrap" aria-label="Disciplinas">
               <span className="agm-tag-pill">Desarrollo Web Pro</span>
-              <span className="agm-tag-pill">Backend Multilingüe</span>
-              <span className="agm-tag-pill">Motor de Reserva</span>
-              <span className="agm-tag-pill">Checkout en 3 Pasos</span>
+              <span className="agm-tag-pill">Cotizador Web</span>
+              <span className="agm-tag-pill">Flota Punta Arenas</span>
             </div>
 
             <div className="agm-actions">
@@ -179,22 +178,22 @@ const SelectedWork = () => {
             <h2 className="agm-title">Ruta 9</h2>
 
             <p className="agm-tagline">
-              Identidad visceral, sabor y cultura smash burger en el confín austral.
+              Identidad de marca, sabor y cultura smash burger en Punta Arenas.
             </p>
 
             <p className="agm-desc">
-              Estrategia de marca, fotografía gastronómica de alta definición y dinamismo comercial 
-              para el referente de smash burgers en Magallanes. Producción visual que captura la 
-              energía de la plancha, el producto de calidad y la atmósfera de locales, combinada 
-              con posicionamiento de búsqueda local para dominar la demanda gastronómica en la región.
+              Estrategia de marca, dirección de contenidos visuales y presencia digital para 
+              marca de smash burgers en Magallanes. Enfoque en comunicar la identidad de 
+              producto y conectar con el público local mediante optimización en búsquedas 
+              geolocalizadas y presencia en canales digitales.
             </p>
 
             <div className="agm-tags-wrap" aria-label="Disciplinas">
               <span className="agm-tag-pill" style={{ color: '#F59E0B', borderColor: 'rgba(245,158,11,0.3)' }}>
-                Fotografía Gastronómica
+                Smash Burgers & Brand
               </span>
               <span className="agm-tag-pill" style={{ color: '#F59E0B', borderColor: 'rgba(245,158,11,0.3)' }}>
-                Smash Burgers & Brand
+                Estrategia de Marca
               </span>
               <span className="agm-tag-pill" style={{ color: '#F59E0B', borderColor: 'rgba(245,158,11,0.3)' }}>
                 SEO Local Magallanes
@@ -225,17 +224,17 @@ const SelectedWork = () => {
             </div>
           </article>
 
-          {/* Visual Column: Authentic Gourmet Dish Photography */}
+          {/* Visual Column: Editorial Photography Frame */}
           <div className="ruta9-visual-frame">
             <img 
               src="/gourmet_dish_luxury.webp" 
-              alt="Ruta 9 - Fotografía Gastronómica y Cultura Smash Burger en Punta Arenas" 
+              alt="Ruta 9 - Maqueta Editorial de Gastronomía y Smash Burgers en Punta Arenas" 
               className="ruta9-visual-img"
               loading="lazy"
             />
             <div className="ruta9-overlay-content">
-              <span className="ruta9-coords-badge">53°09′S • PUNTA ARENAS • CULTURA SMASH BURGER</span>
-              <p className="font-heading text-xl text-white font-light mt-1">Sabor, Fuego & Marca Austral</p>
+              <span className="ruta9-coords-badge">MAQUETA PROVISIONAL • GASTRONOMÍA & MARCA</span>
+              <p className="font-heading text-xl text-white font-light mt-1">Sabor, Identidad & Marca Austral</p>
             </div>
           </div>
         </div>
@@ -248,18 +247,18 @@ const SelectedWork = () => {
         <div className="scene-spatial-title" aria-hidden="true">HARRIS OPTICAL</div>
 
         <div className="harris-stage-grid">
-          {/* Visual Column: Precision Lens & Reticle */}
+          {/* Visual Column: Precision Lens & Reticle (Art Direction) */}
           <div className="harris-reticle-col">
             <img 
               src="/images/web-core.webp" 
-              alt="Óptica Harris - Precisión Óptica, Cristales de Alta Gama y Ray-Ban Meta" 
+              alt="Óptica Harris - Maqueta de Precisión Óptica y Salud Visual en Punta Arenas" 
               className="harris-reticle-img"
               loading="lazy"
             />
             <div className="harris-lens-hud">
               <div className="harris-crosshair">
                 <span className="font-mono text-[9px] text-patagonia-cyan uppercase tracking-widest">
-                  OPTICAL PRECISION • 53°S
+                  DIRECCIÓN DE ARTE • FOCO ÓPTICO
                 </span>
               </div>
             </div>
@@ -272,21 +271,22 @@ const SelectedWork = () => {
             <h2 className="agm-title">Óptica Harris</h2>
 
             <p className="agm-tagline">
-              Precisión visual, cristales de alta gama y vanguardia tecnológica en Punta Arenas.
+              Presencia digital, catálogo de productos y posicionamiento local en Punta Arenas.
             </p>
 
             <p className="agm-desc">
-              Posicionamiento digital y experiencia de marca para la óptica de máxima tradición 
-              en Magallanes. Integración de tecnologías oftálmicas de vanguardia (cristales Varilux, 
-              Mimetika y smart glasses Ray-Ban Meta), combinadas con estrategia de SEO local de 
-              alta autoridad para consolidar el liderazgo en salud y precisión visual en Punta Arenas.
+              Estrategia digital y posicionamiento web para óptica establecida en Magallanes. 
+              Estructura para la exhibición de anteojos y tecnologías ópticas de fabricantes 
+              globales (incluyendo smart glasses Ray-Ban Meta y cristales de alta precisión 
+              Varilux y Mimetika), combinada con SEO local para captar búsquedas de salud visual 
+              en Punta Arenas.
             </p>
 
             <div className="agm-tags-wrap" aria-label="Disciplinas">
-              <span className="agm-tag-pill">Ray-Ban Meta Tech</span>
-              <span className="agm-tag-pill">Varilux / Mimetika</span>
+              <span className="agm-tag-pill">Salud Visual & Óptica</span>
+              <span className="agm-tag-pill">Catálogo Ray-Ban Meta</span>
+              <span className="agm-tag-pill">Cristales Varilux / Mimetika</span>
               <span className="agm-tag-pill">SEO Local Punta Arenas</span>
-              <span className="agm-tag-pill">Experiencia de Marca</span>
             </div>
 
             <div className="agm-actions">
@@ -323,14 +323,14 @@ const SelectedWork = () => {
             <h2 className="agm-title">REMAG</h2>
 
             <p className="agm-tagline">
-              Transformación territorial, valorización de residuos y circularidad en Magallanes.
+              Ecosistema digital y comunicación para la gestión de residuos y vidrio en Magallanes.
             </p>
 
             <p className="agm-desc">
-              Ecosistema de gestión y comunicación digital para la iniciativa referente en 
-              reciclaje y valorización de vidrio en la Patagonia. Trazabilidad de puntos limpios en 
-              el territorio magallánico, campañas de educación ambiental y alianzas estratégicas 
-              con empresas regionales para proteger el ecosistema austral mediante economía circular.
+              Estrategia de comunicación y portal web para el proyecto de reciclaje y valorización 
+              de vidrio en la Patagonia. Difusión de la red de puntos limpios en el territorio 
+              magallánico, contenidos de educación ambiental y articulación con la comunidad 
+              para fomentar la economía circular regional.
             </p>
 
             <div className="agm-tags-wrap" aria-label="Disciplinas">
@@ -373,13 +373,13 @@ const SelectedWork = () => {
           <div className="remag-network-col">
             <img 
               src="/images/apps-pro.webp" 
-              alt="REMAG - Gestión de Residuos, Puntos Limpios y Reciclaje de Vidrio en Magallanes" 
+              alt="REMAG - Maqueta de Red de Puntos Limpios y Reciclaje de Vidrio en Magallanes" 
               className="remag-network-img"
               loading="lazy"
             />
             <div className="remag-overlay-badge">
               <span className="font-mono text-[10px] text-patagonia-gold uppercase tracking-widest">
-                REMAG • RED DE PUNTOS LIMPIOS & VIDRIO
+                MAQUETA PROVISIONAL • PUNTOS LIMPIOS & VIDRIO
               </span>
             </div>
           </div>

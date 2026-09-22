@@ -1,5 +1,6 @@
 import HeroEditorial from '../components/v2/HeroEditorial';
 import SelectedWork from '../components/v2/SelectedWork';
+import DevelopmentPillar from '../components/v2/DevelopmentPillar';
 import SEO from '../components/SEO';
 
 const MainLanding = () => {
@@ -45,9 +46,11 @@ const MainLanding = () => {
             PATAGONIACOACH V2 — NUEVA DIRECCIÓN DEFINITIVA
             01 — HERO EDITORIAL (Estrategia, Creatividad, Tecnología)
             02 — SELECTED WORK (AGM Rent a Car, Ruta 9, Óptica Harris, REMAG)
+            03 — PILAR 01: DESARROLLO (Construir — Ingeniería de Software)
             ========================================================================= */}
         <HeroEditorial />
         <SelectedWork />
+        <DevelopmentPillar />
       </main>
     </>
   );

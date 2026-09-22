@@ -179,19 +179,19 @@ const HeroEditorial = () => {
         <div ref={agmCropRef} className="hero-crop-agm">
           <img 
             src="/images/projects-showcase.webp" 
-            alt="AGM Rent a Car - Sistema de Reserva y Flota" 
+            alt="AGM Rent a Car - Maqueta de Catálogo de Flota" 
             className="hero-crop-agm-img"
           />
           <div className="hero-crop-agm-overlay" />
-          <span className="hero-crop-agm-label">AGM • Movilidad</span>
-          <span className="hero-crop-agm-status">Reserva Online 24/7</span>
+          <span className="hero-crop-agm-label">AGM • Arriendo de Autos</span>
+          <span className="hero-crop-agm-status">Punta Arenas • 53°S</span>
         </div>
 
-        {/* Crop 2: Ruta 9 Territorial Photography Slice */}
+        {/* Crop 2: Paisaje Austral Territorial */}
         <div ref={ruta9CropRef} className="hero-crop-ruta9">
           <img 
             src="/patagonia_luxury_hero.webp" 
-            alt="Ruta 9 - Ecosistema Austral" 
+            alt="Paisaje Austral - Territorio Patagónico" 
             className="hero-crop-ruta9-img"
           />
         </div>
