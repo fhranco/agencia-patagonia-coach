@@ -4,6 +4,7 @@ import DevelopmentPillar from '../components/v2/DevelopmentPillar';
 import SeoPillar from '../components/v2/SeoPillar';
 import IaPillar from '../components/v2/IaPillar';
 import MethodologySection from '../components/v2/MethodologySection';
+import TerritorySection from '../components/v2/TerritorySection';
 import SEO from '../components/SEO';
 
 const MainLanding = () => {
@@ -53,6 +54,7 @@ const MainLanding = () => {
             04 — PILAR 02: SEO (Encontrar — Autoridad Territorial & Semántica)
             05 — PILAR 03: INTELIGENCIA ARTIFICIAL (Potenciar — Orquestación & Procesos)
             06 — METODOLOGÍA (De la Estrategia a la Ejecución — Ruta de Trabajo)
+            07 — PATAGONIA (Territorio / Identidad / Perspectiva 53°S)
             ========================================================================= */}
         <HeroEditorial />
         <SelectedWork />
@@ -60,6 +62,7 @@ const MainLanding = () => {
         <SeoPillar />
         <IaPillar />
         <MethodologySection />
+        <TerritorySection />
       </main>
     </>
   );

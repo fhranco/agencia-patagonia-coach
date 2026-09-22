@@ -1,0 +1,379 @@
+/* =========================================================================
+   PATAGONIACOACH V2 — FASE 05: PATAGONIA / TERRITORIO / PERSPECTIVA 53°S
+   LENGUAJE: EDITORIAL CINEMATOGRÁFICO // RESPIRACIÓN // ESCALA // ESPACIO
+   PALETA: Basalto (#05070A), Blanco Escarcha (#F8FAFC), Niebla Austral (#94A3B8), Ámbar Marcador (#F59E0B)
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   1. ROOT SECTION
+   ------------------------------------------------------------------------- */
+.territory-root {
+  position: relative;
+  width: 100%;
+  background-color: #05070A;
+  color: #F8FAFC;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .territory-root {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* Horizon Entry Conduit from Methodology */
+.territory-horizon-entry {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 15;
+}
+
+.territory-horizon-beam {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0) 0%, rgba(248, 250, 252, 0.6) 50%, rgba(56, 189, 248, 0) 100%);
+  box-shadow: 0 0 15px rgba(248, 250, 252, 0.3);
+}
+
+/* -------------------------------------------------------------------------
+   2. LAYER 1: CINEMATIC PHOTOGRAPHY BACKGROUND
+   ------------------------------------------------------------------------- */
+.territory-bg-cinema {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.territory-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+  filter: contrast(1.15) brightness(0.7) saturate(1.1);
+  will-change: transform;
+}
+
+.territory-vignette-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(5, 7, 10, 0.2) 0%, rgba(5, 7, 10, 0.95) 85%);
+}
+
+.territory-fog-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 7, 10, 0.8) 0%, transparent 25%, transparent 75%, rgba(5, 7, 10, 0.95) 100%);
+}
+
+/* -------------------------------------------------------------------------
+   3. LAYER 2: MONUMENTAL 53°S COORDINATE
+   ------------------------------------------------------------------------- */
+.territory-monumental-text {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(8rem, 28vw, 32rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #F8FAFC;
+  opacity: 0.05;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 2;
+  will-change: transform, opacity, letter-spacing;
+}
+
+/* -------------------------------------------------------------------------
+   4. LAYER 3: SPATIAL EDITORIAL VIEWPORT
+   ------------------------------------------------------------------------- */
+.territory-spatial-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vh, 5rem) clamp(1.5rem, 4vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+/* Top Fold: Statement & Austral Perspective */
+.territory-editorial-lead {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vh, 1.5rem);
+  max-width: 880px;
+}
+
+.territory-eyebrow-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.territory-coord-pin {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #F8FAFC;
+  background: rgba(11, 15, 23, 0.85);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.4rem;
+  backdrop-filter: blur(8px);
+}
+
+.territory-eyebrow-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: #94A3B8;
+  text-transform: uppercase;
+}
+
+.territory-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.4rem, 4.8vw, 4.4rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: #F8FAFC;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.territory-statement {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.25vw, 1.15rem);
+  line-height: 1.55;
+  color: #E2E8F0;
+  margin: 0;
+  max-width: 740px;
+}
+
+/* 3 Architectural Principles Row */
+.territory-principles-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  .territory-principles-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.territory-principle-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.95rem 1.15rem;
+  background: rgba(11, 15, 23, 0.7);
+  border: 1px solid rgba(248, 250, 252, 0.08);
+  border-radius: 0.75rem;
+  backdrop-filter: blur(10px);
+}
+
+.principle-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #F59E0B;
+}
+
+.principle-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #94A3B8;
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------
+   5. TERRITORIAL NODES GRID (SEO Internal Links)
+   ------------------------------------------------------------------------- */
+.territory-nodes-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+.territory-nodes-header {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: #F59E0B;
+  font-weight: 600;
+}
+
+.territory-nodes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 1024px) {
+  .territory-nodes-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+
+.territory-node-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.15rem 1.35rem;
+  background: rgba(11, 15, 23, 0.75);
+  border: 1px solid rgba(248, 250, 252, 0.12);
+  border-radius: 0.85rem;
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.territory-node-card:hover {
+  border-color: rgba(245, 158, 11, 0.6);
+  background: rgba(15, 23, 42, 0.85);
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.2), 0 15px 35px rgba(0, 0, 0, 0.95);
+}
+
+.node-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.15rem;
+}
+
+.node-coords {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: #F59E0B;
+}
+
+.node-arrow {
+  color: #94A3B8;
+  transition: all 0.3s ease;
+}
+
+.territory-node-card:hover .node-arrow {
+  color: #F59E0B;
+  transform: translate(2px, -2px);
+}
+
+.node-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #F8FAFC;
+  margin: 0;
+}
+
+.node-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.74rem;
+  line-height: 1.4;
+  color: #94A3B8;
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------
+   6. BRIDGE TOWARDS PROOF SECTION
+   ------------------------------------------------------------------------- */
+.territory-proof-bridge {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: clamp(1rem, 2vh, 1.5rem);
+}
+
+.proof-conduit-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(248, 250, 252, 0.15) 0%, rgba(248, 250, 252, 0.4) 50%, rgba(248, 250, 252, 0.05) 100%);
+}
+
+.proof-bridge-spec {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: #94A3B8;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------------------------
+   7. MOBILE ADAPTATION (< 1024px)
+   ------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  .territory-spatial-viewport {
+    padding: 4.5rem 1.25rem 3.5rem;
+    gap: 2.5rem;
+  }
+
+  .territory-monumental-text {
+    font-size: clamp(8rem, 36vw, 14rem);
+    opacity: 0.06;
+    top: 40%;
+  }
+
+  .territory-node-card {
+    padding: 1rem 1.15rem;
+  }
+
+  .territory-proof-bridge {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .proof-conduit-line {
+    width: 100%;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   8. REDUCED MOTION SUPPORT
+   ------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .territory-hero-image {
+    transform: none !important;
+  }
+
+  .territory-monumental-text {
+    opacity: 0.06 !important;
+  }
+}
