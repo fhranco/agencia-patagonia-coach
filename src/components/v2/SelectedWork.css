@@ -413,8 +413,8 @@
   height: clamp(360px, 58vh, 640px);
   border-radius: clamp(1rem, 2vw, 2rem);
   overflow: hidden;
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  box-shadow: 0 35px 90px -20px rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  box-shadow: 0 35px 90px -20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(245, 158, 11, 0.05);
 }
 
 .remag-network-img {
@@ -422,6 +422,18 @@
   height: 100%;
   object-fit: cover;
   filter: brightness(0.85);
+}
+
+.remag-overlay-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  background: rgba(5, 7, 10, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 /* =========================================================================
