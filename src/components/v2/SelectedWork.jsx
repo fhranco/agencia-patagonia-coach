@@ -398,9 +398,9 @@ const SelectedWork = () => {
         <div className="bridge-vertical-guide guide-center-right" />
         <div className="bridge-vertical-guide guide-right" />
         <div className="bridge-center-conduit">
-          <div className="bridge-telemetry-badge">
+          <div className="bridge-status-badge">
             <span className="bridge-status-dot" />
-            <span className="bridge-telemetry-text">ARQUITECTURA DIGITAL // DESARROLLO 53°S</span>
+            <span className="bridge-status-text">ARQUITECTURA DIGITAL // DESARROLLO 53°S</span>
           </div>
           <div className="bridge-laser-spine" />
           <div className="bridge-crosshair">

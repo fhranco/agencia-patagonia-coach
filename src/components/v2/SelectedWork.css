@@ -503,7 +503,7 @@
   z-index: 5;
 }
 
-.bridge-telemetry-badge {
+.bridge-status-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
@@ -523,7 +523,7 @@
   box-shadow: 0 0 10px #38BDF8;
 }
 
-.bridge-telemetry-text {
+.bridge-status-text {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.68rem;
   letter-spacing: 0.18em;

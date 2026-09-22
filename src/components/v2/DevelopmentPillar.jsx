@@ -541,13 +541,13 @@ const DevelopmentPillar = () => {
                 <div className="dev-idle-scanline" aria-hidden="true" />
 
                 {/* Real-time System Status Bar (Truth Hardened: No fake benchmarks) */}
-                <div className="dev-system-telemetry">
-                  <div className="dev-telemetry-item">
+                <div className="dev-system-status-bar">
+                  <div className="dev-status-item">
                     <span className="dev-status-indicator" />
                     <span>CORE WEB VITALS OPTIMIZADOS</span>
                   </div>
-                  <div ref={wowSignalRef} className="dev-telemetry-item dev-wow-badge">
-                    <span className="text-patagonia-cyan font-bold">SISTEMA // PRODUCCIÓN</span>
+                  <div ref={wowSignalRef} className="dev-status-item dev-wow-badge">
+                    <span className="text-patagonia-cyan font-bold">SISTEMA INTEGRADO</span>
                   </div>
                 </div>
               </div>

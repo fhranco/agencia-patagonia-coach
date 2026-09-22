@@ -574,7 +574,7 @@
   100% { transform: translateY(500%); }
 }
 
-.dev-system-telemetry {
+.dev-system-status-bar {
   position: absolute;
   bottom: 1.25rem;
   left: 1.25rem;
@@ -592,7 +592,7 @@
   letter-spacing: 0.1em;
 }
 
-.dev-telemetry-item {
+.dev-status-item {
   display: flex;
   align-items: center;
   gap: 0.6rem;
