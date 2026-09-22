@@ -387,29 +387,24 @@ const SelectedWork = () => {
       </section>
 
       {/* =====================================================================
-          FINAL CONVERSION PORTAL
+          BRIDGE ELEMENT: SELECTED WORK -> DESARROLLO (Physical Continuity)
+          The frame of REMAG extends, lines multiply, forming the initial geometry of CONSTRUIR.
+          Zero dead black void. Continuous architectural conduit.
           ===================================================================== */}
-      <section className="scene-conversion-portal" aria-label="Conversión y Contacto">
-        <div className="conversion-box">
-          <span className="font-mono text-xs tracking-[0.3em] uppercase text-patagonia-gold">
-            DIAGNÓSTICO & EJECUCIÓN INMEDIATA
-          </span>
-
-          <h3 className="conversion-h3">
-            ¿Tu empresa necesita este estándar de ingeniería, diseño y posicionamiento?
-          </h3>
-
-          <button 
-            type="button" 
-            onClick={handleOpenContact}
-            className="conversion-btn"
-            id="cta-iniciar-proyecto-kinetic"
-          >
-            <span>Iniciar Conversación de Proyecto</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </button>
+      <div className="selected-to-dev-bridge" aria-hidden="true">
+        <div className="bridge-vertical-guide guide-left" />
+        <div className="bridge-vertical-guide guide-right" />
+        <div className="bridge-center-conduit">
+          <div className="bridge-telemetry-badge">
+            <span className="bridge-status-dot" />
+            <span className="bridge-telemetry-text">CONDUIT // TRANSITION_VECTOR [MAGALLANES 53°S]</span>
+          </div>
+          <div className="bridge-laser-spine" />
+          <div className="bridge-crosshair">
+            <span className="bridge-coord-text">SEC_02 // SYSTEM_BUILD_INIT</span>
+          </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

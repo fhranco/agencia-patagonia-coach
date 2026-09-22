@@ -4,13 +4,11 @@ import { Home, Grid, MapPin, MessageSquare } from 'lucide-react';
 
 const BottomNav = () => {
   const location = useLocation();
+  const isHomePath = location.pathname === '/';
 
-  const navItems = [
-    { label: 'Inicio', path: '/', icon: Home },
-    { label: 'Servicios', path: '/#servicios', icon: Grid },
-    { label: 'Zonas', path: '/zonas/punta-arenas', icon: MapPin },
-    { label: 'Contacto', path: '?contact=true', icon: MessageSquare, isAction: true },
-  ];
+  if (isHomePath) {
+    return null;
+  }
 
   return (
     <div className="md:hidden fixed bottom-0 left-0 w-full z-[190] px-4 pb-4">
