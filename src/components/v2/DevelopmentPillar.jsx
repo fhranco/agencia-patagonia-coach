@@ -102,20 +102,20 @@ const DevelopmentPillar = () => {
         )
 
         // -------------------------------------------------------------------
-        // 3.00 - 4.60 (30% - 46%): COMPONENTES (Cruza la línea central)
+        // 3.00 - 4.60 (30% - 46%): COMPONENTES (Entra dentro del marco MID)
         // -------------------------------------------------------------------
         .fromTo(moduleUiRef.current,
           { 
-            x: -120, 
-            y: 110, 
-            rotationY: 14, 
-            rotationX: -6, 
-            scale: 0.82, 
+            x: -40, 
+            y: 90, 
+            rotationY: 10, 
+            rotationX: -4, 
+            scale: 0.85, 
             opacity: 0 
           },
           { 
-            x: -30, 
-            y: 35, 
+            x: 0, 
+            y: 25, 
             rotationY: 2, 
             rotationX: -1, 
             scale: 0.95, 
@@ -210,22 +210,23 @@ const DevelopmentPillar = () => {
 
         // -------------------------------------------------------------------
         // 8.70 - 10.00 (87% - 100%): TRANSFORMACIÓN HACIA SEARCH READY
-        // 1. Interfaz escala a 80-85vw e invade área textual
+        // 1. Interfaz escala a 1.06 con transformOrigin: "left center" expandiéndose hacia la DERECHA
         // 2. CONSTRUIR reacciona como objeto espacial y se desplaza detrás
         // 3. Capacidades y CTA reducen protagonismo
-        // 4. Barra URL se separa físicamente, escala y avanza al centro óptico
+        // 4. Barra URL se separa físicamente hacia arriba (y: -24px) y escala sin invadir la izquierda
         // 5. Canvas inferior se atenúa
         // -------------------------------------------------------------------
         .to(moduleSystemRef.current, {
-          scale: 1.08,
-          x: -50,
+          scale: 1.06,
+          x: 0,
+          transformOrigin: "left center",
           duration: 1.3,
           ease: "power2.out"
         }, 8.7)
         .to(monumentalRef.current, {
-          x: -120,
-          scale: 1.15,
-          opacity: 0.1,
+          x: -80,
+          scale: 1.12,
+          opacity: 0.08,
           duration: 1.3,
           ease: "power2.out"
         }, 8.7)
@@ -247,11 +248,12 @@ const DevelopmentPillar = () => {
           duration: 1.2,
           ease: "power2.out"
         }, 8.7)
-        // La Barra URL se separa físicamente y toma el foco absoluto
+        // La Barra URL se separa físicamente hacia arriba y gana escala hacia la derecha
         .to(browserBarRef.current, {
           y: -24,
-          scale: 1.14,
-          x: -30,
+          scale: 1.08,
+          x: 0,
+          transformOrigin: "left center",
           zIndex: 60,
           boxShadow: "0 0 50px rgba(56, 189, 248, 0.65), 0 20px 60px rgba(0, 0, 0, 0.95)",
           borderColor: "rgba(56, 189, 248, 0.95)",

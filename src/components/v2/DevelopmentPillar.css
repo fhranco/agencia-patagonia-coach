@@ -49,20 +49,20 @@
   line-height: 0.8;
   white-space: nowrap;
   pointer-events: none;
-  z-index: 2;
+  z-index: 14; /* Floats between system (10) and front content (30) */
   user-select: none;
   opacity: 0.05;
   will-change: transform, opacity;
 }
 
 /* =========================================================================
-   2. SPATIAL VIEWPORT (Breaks rigid 42/58 split; overlapping layers)
+   2. SPATIAL VIEWPORT (Protected Content Safe Zone + Right-Anchored System)
    ========================================================================= */
 .dev-spatial-viewport {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 1720px;
+  max-width: 1840px;
   margin: 0 auto;
   padding: clamp(2.5rem, 5vh, 5rem) clamp(1.5rem, 4vw, 4rem);
   box-sizing: border-box;
@@ -76,24 +76,27 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     min-height: 85vh;
     gap: 0;
+    padding-right: 0; /* Allows system to expand and clip gracefully right */
+    overflow: visible;
   }
 }
 
 /* =========================================================================
-   3. LAYER: FRONT — Semantic Content Column & Integrated CTA
+   3. LAYER: FRONT — Semantic Content Safe Zone (Permanently Protected)
    ========================================================================= */
 .dev-content-col {
   display: flex;
   flex-direction: column;
   gap: 1.35rem;
   position: relative;
-  z-index: 25;
-  width: 100%;
-  max-width: 500px;
+  z-index: 30; /* Highest priority FRONT layer */
+  width: clamp(380px, 35vw, 500px);
+  max-width: 38vw;
   flex-shrink: 0;
+  margin-right: clamp(64px, 5vw, 110px); /* Permanent Content Safe Gutter */
 }
 
 .dev-eyebrow-wrap {
@@ -145,6 +148,7 @@
   font-size: clamp(0.85rem, 0.92vw, 0.92rem);
   line-height: 1.7;
   color: #94A3B8;
+  max-width: 460px;
 }
 
 .dev-capabilities-wrap {
@@ -288,13 +292,15 @@
   position: relative;
   width: 100%;
   perspective: 1400px;
-  z-index: 15;
+  z-index: 10;
+  flex: 1;
+  min-width: 0;
 }
 
 @media (min-width: 1024px) {
   .dev-assembly-wrapper {
-    width: clamp(750px, 68vw, 1150px);
-    margin-left: -5vw; /* Breaks center line and overlaps text column */
+    width: clamp(700px, 72vw, 1280px);
+    margin-left: 0; /* Protects content safe zone permanently */
   }
 }
 
@@ -465,13 +471,14 @@
 .dev-system-window {
   position: relative;
   width: 100%;
-  max-width: 980px;
+  max-width: 1080px;
   border-radius: 1.25rem;
   overflow: visible; /* Allows URL bar to physically detach on Search Ready */
   background-color: #0B0F17;
   border: 1px solid rgba(56, 189, 248, 0.35);
   box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.95), 0 0 50px rgba(56, 189, 248, 0.1);
   z-index: 10;
+  transform-origin: left center;
   will-change: transform, opacity, box-shadow;
 }
 
@@ -507,7 +514,7 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem;
   color: #E2E8F0;
-  transform-origin: center center;
+  transform-origin: left center;
   will-change: transform, box-shadow, border-color;
   transition: background-color 0.3s ease;
 }
