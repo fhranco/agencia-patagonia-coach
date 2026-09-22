@@ -5,7 +5,8 @@ import SeoPillar from '../components/v2/SeoPillar';
 import IaPillar from '../components/v2/IaPillar';
 import MethodologySection from '../components/v2/MethodologySection';
 import TerritorySection from '../components/v2/TerritorySection';
-import ProofSection from '../components/v2/ProofSection';
+import ConversionSection from '../components/v2/ConversionSection';
+import FooterV2 from '../components/v2/FooterV2';
 import SEO from '../components/SEO';
 
 const MainLanding = () => {
@@ -48,15 +49,16 @@ const MainLanding = () => {
       />
       <main className="bg-[#05070A] text-[#F8FAFC]">
         {/* =========================================================================
-            PATAGONIACOACH V2 — NUEVA DIRECCIÓN DEFINITIVA
+            PATAGONIACOACH V2 — CIERRE ESTRUCTURAL DE LA HOME
             01 — HERO EDITORIAL (Estrategia, Creatividad, Tecnología)
-            02 — SELECTED WORK (AGM Rent a Car, Ruta 9, Óptica Harris, REMAG)
+            02 — SELECTED WORK (AGM Rent a Car, Ruta 9, Óptica Harris, REMAG — Dataset Provisional)
             03 — PILAR 01: DESARROLLO (Construir — Ingeniería de Software)
             04 — PILAR 02: SEO (Encontrar — Autoridad Territorial & Semántica)
             05 — PILAR 03: INTELIGENCIA ARTIFICIAL (Potenciar — Orquestación & Procesos)
-            06 — METODOLOGÍA (De la Estrategia a la Ejecución — Ruta de Trabajo)
+            06 — METODOLOGÍA (De la Estrategia a la Ejecución — 5 Hitos Reales)
             07 — PATAGONIA (Territorio / Identidad / Perspectiva 53°S)
-            08 — EVIDENCIA (Registro de Trabajo Real // AGM, Ruta 9, Harris, REMAG)
+            08 — CONVERSIÓN & CONTACTO (Punto de Entrada: Construir / Encontrar / Automatizar / Diagnóstico)
+            09 — FOOTER V2 (Navegación Territorial & Enlazado Interno SEO Completo)
             ========================================================================= */}
         <HeroEditorial />
         <SelectedWork />
@@ -65,7 +67,8 @@ const MainLanding = () => {
         <IaPillar />
         <MethodologySection />
         <TerritorySection />
-        <ProofSection />
+        <ConversionSection />
+        <FooterV2 />
       </main>
     </>
   );
