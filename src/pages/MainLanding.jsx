@@ -3,6 +3,7 @@ import SelectedWork from '../components/v2/SelectedWork';
 import DevelopmentPillar from '../components/v2/DevelopmentPillar';
 import SeoPillar from '../components/v2/SeoPillar';
 import IaPillar from '../components/v2/IaPillar';
+import MethodologySection from '../components/v2/MethodologySection';
 import SEO from '../components/SEO';
 
 const MainLanding = () => {
@@ -51,12 +52,14 @@ const MainLanding = () => {
             03 — PILAR 01: DESARROLLO (Construir — Ingeniería de Software)
             04 — PILAR 02: SEO (Encontrar — Autoridad Territorial & Semántica)
             05 — PILAR 03: INTELIGENCIA ARTIFICIAL (Potenciar — Orquestación & Procesos)
+            06 — METODOLOGÍA (De la Estrategia a la Ejecución — Ruta de Trabajo)
             ========================================================================= */}
         <HeroEditorial />
         <SelectedWork />
         <DevelopmentPillar />
         <SeoPillar />
         <IaPillar />
+        <MethodologySection />
       </main>
     </>
   );

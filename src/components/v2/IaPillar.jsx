@@ -578,8 +578,8 @@ const IaPillar = () => {
                   <span className="ia-token-val">PatagoniaCoach (Magallanes)</span>
                 </div>
                 <div ref={token3Ref} className="ia-token token-priority">
-                  <span className="ia-token-tag">PRIORIDAD</span>
-                  <span className="ia-token-val">Nivel 01 — Disponibilidad Inmediata</span>
+                  <span className="ia-token-tag">OPERACIÓN</span>
+                  <span className="ia-token-val">Requerimiento Estructurado</span>
                 </div>
                 <div ref={token4Ref} className="ia-token token-context">
                   <span className="ia-token-tag">TERRITORIO</span>
@@ -735,11 +735,11 @@ const IaPillar = () => {
                 </div>
                 <div className="ia-result-row">
                   <span className="ia-res-label">ESTADO:</span>
-                  <span className="ia-res-val text-emerald-400 font-mono font-medium">Verificado & Enlazado</span>
+                  <span className="ia-res-val text-emerald-400 font-mono font-medium">Flujo Integrado</span>
                 </div>
                 <div className="ia-result-row">
                   <span className="ia-res-label">CAPACIDAD:</span>
-                  <span className="ia-res-val">Operatividad Ampliada // 24/7</span>
+                  <span className="ia-res-val">Procesos Coordinados</span>
                 </div>
               </div>
 
