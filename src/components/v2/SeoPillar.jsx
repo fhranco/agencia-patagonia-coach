@@ -50,6 +50,7 @@ const SeoPillar = () => {
   const hubRef = useRef(null);
   const visibilityBadgeRef = useRef(null);
   const packetRef = useRef(null);
+  const editorialFooterRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -291,18 +292,22 @@ const SeoPillar = () => {
 
         const mobileTl = gsap.timeline({
           scrollTrigger: {
-            trigger: arenaStageRef.current || rootRef.current,
-            start: "top 75%",
-            end: "bottom 35%",
-            scrub: 0.8
+            trigger: arenaStageRef.current,
+            start: "top 12%",
+            end: "+=170%",
+            pin: true,
+            scrub: 0.8,
+            anticipatePin: 1
           }
         });
 
         mobileTl
-          // 01: Query typing & transition
+          // -----------------------------------------------------------------
+          // 0.00 - 0.80: QUERY TYPING & AMBER SEARCH INTERFACE ACTIVATION
+          // -----------------------------------------------------------------
           .to(searchBarRef.current, {
-            borderColor: "rgba(245, 158, 11, 0.55)",
-            boxShadow: "0 0 25px rgba(245, 158, 11, 0.25)",
+            borderColor: "rgba(245, 158, 11, 0.65)",
+            boxShadow: "0 0 30px rgba(245, 158, 11, 0.35)",
             duration: 0.4
           }, 0.0)
           .to([searchIconRef.current, cursorRef.current], {
@@ -322,12 +327,14 @@ const SeoPillar = () => {
           }, 0.1)
           .to(statusTagRef.current, {
             color: "#F59E0B",
-            borderColor: "rgba(245, 158, 11, 0.5)",
-            backgroundColor: "rgba(245, 158, 11, 0.15)",
+            borderColor: "rgba(245, 158, 11, 0.6)",
+            backgroundColor: "rgba(245, 158, 11, 0.18)",
             duration: 0.3
           }, 0.7)
 
-          // 02: Token separation & Hub emergence
+          // -----------------------------------------------------------------
+          // 0.80 - 1.40: TOKEN SEPARATION & PUNTA ARENAS HUB EMERGENCE
+          // -----------------------------------------------------------------
           .to(tokensStageRef.current, {
             opacity: 1,
             y: 0,
@@ -335,44 +342,115 @@ const SeoPillar = () => {
             ease: "expo.out"
           }, 0.8)
           .fromTo(hubRef.current,
-            { opacity: 0, scale: 0.7 },
+            { opacity: 0, scale: 0.65 },
             { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.5)" },
             0.9
           )
+          .to(monumentalRef.current, {
+            opacity: 0.08,
+            duration: 0.6
+          }, 1.0)
 
-          // 03: Sequential nodes and SVG connections
+          // -----------------------------------------------------------------
+          // 1.40 - 2.20: SPATIAL ENDPOINTS & SVG CONDUITS CONNECTION
+          // -----------------------------------------------------------------
           .fromTo([node1Ref.current, node2Ref.current],
-            { opacity: 0, y: 15 },
-            { opacity: 1, y: 0, stagger: 0.15, duration: 0.6, ease: "power2.out" },
-            1.2
+            { opacity: 0, scale: 0.85, y: 15 },
+            { opacity: 1, scale: 1, y: 0, stagger: 0.15, duration: 0.6, ease: "power2.out" },
+            1.4
           )
           .fromTo([path1Ref.current, path2Ref.current],
             { strokeDashoffset: 450, opacity: 0 },
-            { strokeDashoffset: 0, opacity: 1, stagger: 0.1, duration: 0.6, ease: "power2.inOut" },
-            1.3
+            { strokeDashoffset: 0, opacity: 1, stagger: 0.1, duration: 0.7, ease: "power2.inOut" },
+            1.5
           )
           .fromTo(visibilityBadgeRef.current,
-            { opacity: 0, y: 10 },
-            { opacity: 1, y: 0, duration: 0.4, ease: "back.out(2)" },
-            1.6
+            { opacity: 0, scale: 0.85, y: 15 },
+            { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(2)" },
+            1.8
           )
 
-          // 04: Convergence to Intención Estructurada
-          .to([node1Ref.current, node2Ref.current, hubRef.current, tokensStageRef.current], {
-            scale: 0.6,
+          // -----------------------------------------------------------------
+          // 2.30 - 3.10: CONVERGENCIA FÍSICA (Muchas señales convirtiéndose en una)
+          // -----------------------------------------------------------------
+          // Query & Tokens travel toward center
+          .to(searchBarRef.current, {
+            y: 70,
+            scale: 0.75,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2.in"
+          }, 2.3)
+          .to(tokensStageRef.current, {
+            y: 60,
+            scale: 0.3,
             opacity: 0,
             duration: 0.5,
             ease: "power2.in"
-          }, 2.0)
-          .to([path1Ref.current, path2Ref.current, visibilityBadgeRef.current], {
+          }, 2.3)
+          // Endpoints retract along their diagonal lines
+          .to(node1Ref.current, {
+            x: 80,
+            y: 90,
+            scale: 0.2,
             opacity: 0,
-            duration: 0.3
-          }, 2.0)
+            duration: 0.6,
+            ease: "power2.in"
+          }, 2.3)
+          .to(node2Ref.current, {
+            x: -80,
+            y: -90,
+            scale: 0.2,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2.in"
+          }, 2.3)
+          // Conduits collapse to center
+          .to([path1Ref.current, path2Ref.current], {
+            opacity: 0,
+            duration: 0.4,
+            ease: "power2.in"
+          }, 2.4)
+          // Hub & Badge converge into central focal point
+          .to(hubRef.current, {
+            scale: 0.2,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2.in"
+          }, 2.3)
+          .to(visibilityBadgeRef.current, {
+            y: -25,
+            scale: 0.5,
+            opacity: 0,
+            duration: 0.4,
+            ease: "power2.in"
+          }, 2.3)
+          // Cartography dims softly to ambient baseline
+          .to(mapRef.current, {
+            opacity: 0.12,
+            duration: 0.6,
+            ease: "power2.out"
+          }, 2.4)
+
+          // -----------------------------------------------------------------
+          // 3.10 - 3.80: FORMATION OF INTENCIÓN ESTRUCTURADA
+          // -----------------------------------------------------------------
           .fromTo(packetRef.current,
-            { opacity: 0, scale: 0.85 },
-            { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.6)" },
-            2.2
-          );
+            { opacity: 0, scale: 0.35, y: 10 },
+            { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "back.out(1.8)" },
+            3.1
+          )
+
+          // -----------------------------------------------------------------
+          // 3.80 - 4.80: AISLAMIENTO REAL (55–65vh de espacio dedicado)
+          // INTENCIÓN ESTRUCTURADA permanece como único protagonista sin interferencia.
+          // -----------------------------------------------------------------
+          .to(packetRef.current, {
+            boxShadow: "0 0 60px rgba(245, 158, 11, 0.55), 0 30px 80px rgba(0, 0, 0, 0.98)",
+            borderColor: "rgba(245, 158, 11, 0.95)",
+            duration: 1.0,
+            ease: "none"
+          }, 3.8);
       });
 
     }, rootRef);
@@ -439,7 +517,7 @@ const SeoPillar = () => {
           </div>
 
           {/* 03: Editorial Footer & Capabilities / CTA (Clean closing after kinetic stage) */}
-          <div className="seo-editorial-footer">
+          <div ref={editorialFooterRef} className="seo-editorial-footer">
             <p className="seo-desc">
               Una plataforma digital excelente permanece invisible sin una estrategia de descubrimiento sólida. 
               Estructuramos datos, entidades y cobertura semántica para conectar las necesidades reales de los 
@@ -637,8 +715,22 @@ const SeoPillar = () => {
                   <span>INTENCIÓN ESTRUCTURADA</span>
                 </div>
                 <div className="packet-body">
-                  <span>Consulta: "servicios digitales en punta arenas"</span>
-                  <span className="packet-meta">Territorio: Magallanes (53°S) • Servicio: Desarrollo & SEO</span>
+                  <div className="packet-row">
+                    <span className="packet-label">CONSULTA:</span>
+                    <span className="packet-val">"desarrollo web punta arenas"</span>
+                  </div>
+                  <div className="packet-row">
+                    <span className="packet-label">TERRITORIO:</span>
+                    <span className="packet-val">Magallanes [-53.1638° S]</span>
+                  </div>
+                  <div className="packet-row">
+                    <span className="packet-label">SERVICIO:</span>
+                    <span className="packet-val">Plataformas Digitales</span>
+                  </div>
+                  <div className="packet-row">
+                    <span className="packet-label">CONTEXTO:</span>
+                    <span className="packet-val">Alta Relevancia // Establecido</span>
+                  </div>
                 </div>
               </div>
 
