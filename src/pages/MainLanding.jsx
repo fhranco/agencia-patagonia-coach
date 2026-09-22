@@ -2,6 +2,7 @@ import HeroEditorial from '../components/v2/HeroEditorial';
 import SelectedWork from '../components/v2/SelectedWork';
 import DevelopmentPillar from '../components/v2/DevelopmentPillar';
 import SeoPillar from '../components/v2/SeoPillar';
+import IaPillar from '../components/v2/IaPillar';
 import SEO from '../components/SEO';
 
 const MainLanding = () => {
@@ -49,11 +50,13 @@ const MainLanding = () => {
             02 — SELECTED WORK (AGM Rent a Car, Ruta 9, Óptica Harris, REMAG)
             03 — PILAR 01: DESARROLLO (Construir — Ingeniería de Software)
             04 — PILAR 02: SEO (Encontrar — Autoridad Territorial & Semántica)
+            05 — PILAR 03: INTELIGENCIA ARTIFICIAL (Potenciar — Orquestación & Procesos)
             ========================================================================= */}
         <HeroEditorial />
         <SelectedWork />
         <DevelopmentPillar />
         <SeoPillar />
+        <IaPillar />
       </main>
     </>
   );
