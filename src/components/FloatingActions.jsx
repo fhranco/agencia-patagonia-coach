@@ -23,6 +23,11 @@ const FloatingActions = () => {
       setIsOpen(false);
     };
 
+    const handleOpenAudit = () => {
+      setShowAudit(true);
+      setIsOpen(false);
+    };
+
     const toggleHomeVisibility = () => {
       if (window.pageYOffset > 300) {
         setIsHomeVisible(true);
@@ -32,10 +37,12 @@ const FloatingActions = () => {
     };
 
     window.addEventListener('open-ai-chat', handleOpenChat);
+    window.addEventListener('open-digital-diagnostic', handleOpenAudit);
     window.addEventListener('scroll', toggleHomeVisibility);
     
     return () => {
       window.removeEventListener('open-ai-chat', handleOpenChat);
+      window.removeEventListener('open-digital-diagnostic', handleOpenAudit);
       window.removeEventListener('scroll', toggleHomeVisibility);
     };
   }, []);

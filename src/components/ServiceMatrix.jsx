@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   BarChart3, 
@@ -15,6 +16,7 @@ import {
   GraduationCap,
   Gamepad2
 } from 'lucide-react';
+import { getWhatsAppUrl } from '../constants/contact';
 
 const ServiceCard = ({ title, subtitle, solutions, icon: Icon, index, activeIndex, onHover, onClick }) => {
   const isHovered = activeIndex === index;
@@ -355,19 +357,21 @@ const ServiceMatrix = () => {
                 {/* Conversion CTA */}
                 <div className="pt-6 flex flex-col sm:flex-row gap-4">
                   <a 
-                    href={`https://wa.me/56995684198?text=Hola,%20me%20interesa%20agendar%20una%20auditoría%20de%20viabilidad%20para%20el%20servicio%20de%20${encodeURIComponent(selectedService.title)}.`} 
+                    href={getWhatsAppUrl(`Hola Franco, me interesa agendar una auditoría de viabilidad para el servicio de ${selectedService.title}.`)} 
                     target="_blank" 
                     rel="noopener noreferrer" 
+                    data-cta="whatsapp"
                     className="btn-primary flex-1 text-center justify-center py-4"
                   >
                     Agendar Auditoría Viabilidad
                   </a>
-                  <a 
-                    href={selectedService.href} 
+                  <Link 
+                    to={selectedService.href} 
+                    data-cta="service-link"
                     className="px-6 py-4 rounded-full border border-white/10 text-white/70 hover:bg-white/5 transition-all text-center flex-1 text-sm tracking-wider uppercase font-bold"
                   >
                     Ver Masterplan
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>

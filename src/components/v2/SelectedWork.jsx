@@ -87,9 +87,9 @@ const SelectedWork = () => {
     return () => ctx.revert();
   }, []);
 
-  const handleOpenContact = (e) => {
-    e.preventDefault();
-    window.dispatchEvent(new CustomEvent('open-ai-chat'));
+  const handleOpenContact = (projectName = 'un proyecto similar') => {
+    const name = typeof projectName === 'string' ? projectName : 'un proyecto similar';
+    window.open(getWhatsAppUrl(`Hola Franco, estuve revisando los casos en la web y me interesa cotizar ${name}.`), '_blank');
   };
 
   return (
@@ -145,15 +145,16 @@ const SelectedWork = () => {
             </div>
 
             <div className="agm-actions">
-              <Link to="/servicios/desarrollo-web" className="btn-scene-primary">
+              <Link to="/servicios/desarrollo-web" data-cta="service-web" className="btn-scene-primary">
                 <span>Ver Capacidad Web</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
 
               <button 
                 type="button" 
-                onClick={handleOpenContact}
-                className="btn-scene-secondary"
+                onClick={() => handleOpenContact('una plataforma de arriendo/cotizador como AGM Rent a Car')}
+                data-cta="whatsapp"
+                className="btn-scene-secondary cursor-pointer"
               >
                 <span>Cotizar Proyecto Similar</span>
               </button>
@@ -204,20 +205,21 @@ const SelectedWork = () => {
             </div>
 
             <div className="agm-actions">
-              <Link to="/servicios/seo-local-magallanes" className="btn-scene-primary">
+              <Link to="/servicios/seo-local-magallanes" data-cta="service-seo" className="btn-scene-primary">
                 <span>Ver SEO Local</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
 
-              <Link to="/servicios/comunicacion-digital" className="btn-scene-secondary">
+              <Link to="/servicios/comunicacion-digital" data-cta="service-marketing" className="btn-scene-secondary">
                 <span>Ver Estrategia Visual</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
 
               <button 
                 type="button" 
-                onClick={handleOpenContact}
-                className="btn-scene-secondary"
+                onClick={() => handleOpenContact('estrategia de marca y presencia gastronómica como Ruta 9')}
+                data-cta="whatsapp"
+                className="btn-scene-secondary cursor-pointer"
               >
                 <span>Cotizar Proyecto Similar</span>
               </button>
@@ -290,15 +292,16 @@ const SelectedWork = () => {
             </div>
 
             <div className="agm-actions">
-              <Link to="/servicios/seo-local-punta-arenas" className="btn-scene-primary">
+              <Link to="/servicios/seo-local-punta-arenas" data-cta="service-seo" className="btn-scene-primary">
                 <span>Ver SEO Punta Arenas</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
 
               <button 
                 type="button" 
-                onClick={handleOpenContact}
-                className="btn-scene-secondary"
+                onClick={() => handleOpenContact('posicionamiento local y catálogo como Óptica Harris')}
+                data-cta="whatsapp"
+                className="btn-scene-secondary cursor-pointer"
               >
                 <span>Cotizar Proyecto Similar</span>
               </button>
@@ -349,20 +352,21 @@ const SelectedWork = () => {
             </div>
 
             <div className="agm-actions">
-              <Link to="/servicios/aplicaciones-web-pro" className="btn-scene-primary">
+              <Link to="/servicios/aplicaciones-web-pro" data-cta="service-apps" className="btn-scene-primary">
                 <span>Ver Aplicaciones Web Pro</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
 
-              <Link to="/zonas/magallanes" className="btn-scene-secondary">
+              <Link to="/zonas/magallanes" data-cta="zone-magallanes" className="btn-scene-secondary">
                 <span>Ver Cobertura Magallanes</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
 
               <button 
                 type="button" 
-                onClick={handleOpenContact}
-                className="btn-scene-secondary"
+                onClick={() => handleOpenContact('una plataforma o aplicación como REMAG')}
+                data-cta="whatsapp"
+                className="btn-scene-secondary cursor-pointer"
               >
                 <span>Cotizar Proyecto Similar</span>
               </button>

@@ -11,6 +11,7 @@ import {
   Search,
   Globe
 } from 'lucide-react';
+import { CONTACT, getWhatsAppUrl } from '../../constants/contact';
 import './FooterV2.css';
 
 const FooterV2 = () => {
@@ -43,8 +44,8 @@ const FooterV2 = () => {
               <span>PROTOCOLO DE ORIGEN AUSTRAL</span>
             </div>
             <div className="coords-body">
-              <span className="coords-latlong">53°09′45″S · 70°55′21″W</span>
-              <span className="coords-location">Punta Arenas · Región de Magallanes · Chile</span>
+              <span className="coords-latlong">{CONTACT.coords.display}</span>
+              <span className="coords-location">{CONTACT.city} · {CONTACT.region} · Chile</span>
             </div>
             <div className="coords-status">
               <span className="status-indicator" />
@@ -64,43 +65,43 @@ const FooterV2 = () => {
             </h4>
             <ul className="footer-links-list">
               <li>
-                <Link to="/servicios/desarrollo-web" className="footer-nav-link">
+                <Link to="/servicios/desarrollo-web" data-cta="service-web" className="footer-nav-link">
                   <span>Desarrollo Web Pro</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/seo-local-magallanes" className="footer-nav-link">
+                <Link to="/servicios/seo-local-magallanes" data-cta="service-seo" className="footer-nav-link">
                   <span>SEO Local & GEO Magallanes</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/automatizacion-con-ia" className="footer-nav-link">
+                <Link to="/servicios/automatizacion-con-ia" data-cta="service-ai" className="footer-nav-link">
                   <span>Automatización con IA</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/aplicaciones-web-pro" className="footer-nav-link">
+                <Link to="/servicios/aplicaciones-web-pro" data-cta="service-apps" className="footer-nav-link">
                   <span>Aplicaciones Web & Software</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/consultoria-transformacion-digital" className="footer-nav-link">
+                <Link to="/servicios/consultoria-transformacion-digital" data-cta="service-consulting" className="footer-nav-link">
                   <span>Consultoría & Diagnóstico</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/ia-generativa-visual" className="footer-nav-link">
+                <Link to="/servicios/ia-generativa-visual" data-cta="service-iavisual" className="footer-nav-link">
                   <span>IA Visual Corporativa</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/tours-virtuales-360" className="footer-nav-link">
+                <Link to="/servicios/tours-virtuales-360" data-cta="service-tours" className="footer-nav-link">
                   <span>Tours Virtuales 360°</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
@@ -116,49 +117,49 @@ const FooterV2 = () => {
             </h4>
             <ul className="footer-links-list">
               <li>
-                <Link to="/servicios/seo-local-punta-arenas" className="footer-nav-link">
+                <Link to="/servicios/seo-local-punta-arenas" data-cta="service-seo" className="footer-nav-link">
                   <span>SEO Local Punta Arenas</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/creacion-paginas-web-punta-arenas" className="footer-nav-link">
+                <Link to="/servicios/creacion-paginas-web-punta-arenas" data-cta="service-web" className="footer-nav-link">
                   <span>Creación Páginas Web Punta Arenas</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/marketing-digital-punta-arenas" className="footer-nav-link">
+                <Link to="/servicios/marketing-digital-punta-arenas" data-cta="service-marketing" className="footer-nav-link">
                   <span>Marketing Digital Magallanes</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/manejo-redes-sociales-punta-arenas" className="footer-nav-link">
+                <Link to="/servicios/manejo-redes-sociales-punta-arenas" data-cta="service-social" className="footer-nav-link">
                   <span>Manejo de Redes Sociales</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/videos-redes-sociales-punta-arenas" className="footer-nav-link">
+                <Link to="/servicios/videos-redes-sociales-punta-arenas" data-cta="service-video" className="footer-nav-link">
                   <span>Videos para Redes Sociales</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/creacion-reels-punta-arenas" className="footer-nav-link">
+                <Link to="/servicios/creacion-reels-punta-arenas" data-cta="service-reels" className="footer-nav-link">
                   <span>Creación de Reels</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/fotografia-para-redes-sociales" className="footer-nav-link">
+                <Link to="/servicios/fotografia-para-redes-sociales" data-cta="service-photo" className="footer-nav-link">
                   <span>Fotografía Profesional B2B</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/automatizacion-ia-empresas" className="footer-nav-link">
+                <Link to="/servicios/automatizacion-ia-empresas" data-cta="service-ai" className="footer-nav-link">
                   <span>Agentes de IA para Empresas</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
@@ -174,31 +175,31 @@ const FooterV2 = () => {
             </h4>
             <ul className="footer-links-list">
               <li>
-                <Link to="/zonas/punta-arenas" className="footer-nav-link">
+                <Link to="/zonas/punta-arenas" data-cta="zone-punta-arenas" className="footer-nav-link">
                   <span>Punta Arenas • 53°S</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/zonas/puerto-natales" className="footer-nav-link">
+                <Link to="/zonas/puerto-natales" data-cta="zone-puerto-natales" className="footer-nav-link">
                   <span>Puerto Natales & Torres del Paine</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/zonas/tierra-del-fuego" className="footer-nav-link">
+                <Link to="/zonas/tierra-del-fuego" data-cta="zone-tierra-del-fuego" className="footer-nav-link">
                   <span>Tierra del Fuego & Porvenir</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/zonas/magallanes" className="footer-nav-link">
+                <Link to="/zonas/magallanes" data-cta="zone-magallanes" className="footer-nav-link">
                   <span>Región de Magallanes Completa</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/academia" className="footer-nav-link">
+                <Link to="/academia" data-cta="service-academia" className="footer-nav-link">
                   <span>Academia PatagoniaCoach</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
@@ -215,24 +216,26 @@ const FooterV2 = () => {
             
             <div className="footer-contact-details">
               <a 
-                href="mailto:hola@agenciapatagoniacoach.cl" 
+                href={`mailto:${CONTACT.email}`} 
+                data-cta="email"
                 className="footer-direct-mail"
               >
-                hola@agenciapatagoniacoach.cl
+                {CONTACT.email}
               </a>
 
               <a 
-                href="https://wa.me/56995684198" 
+                href={getWhatsAppUrl('Hola PatagoniaCoach, me gustaría coordinar una conversación directa.')} 
                 target="_blank" 
                 rel="noopener noreferrer"
+                data-cta="whatsapp"
                 className="footer-direct-phone"
               >
-                +56 9 9568 4198
+                {CONTACT.phone}
               </a>
 
               <div className="footer-social-row">
                 <a 
-                  href="https://www.linkedin.com/in/francogallardo/" 
+                  href={CONTACT.social.linkedin} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="footer-social-badge"
@@ -241,7 +244,7 @@ const FooterV2 = () => {
                   <span>LINKEDIN</span>
                 </a>
                 <a 
-                  href="https://instagram.com/patagoniacoach.cl" 
+                  href={CONTACT.social.instagram} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="footer-social-badge"
@@ -250,9 +253,10 @@ const FooterV2 = () => {
                   <span>INSTAGRAM</span>
                 </a>
                 <a 
-                  href="https://wa.me/56995684198" 
+                  href={getWhatsAppUrl('Hola PatagoniaCoach, me gustaría coordinar una conversación directa.')} 
                   target="_blank" 
                   rel="noopener noreferrer" 
+                  data-cta="whatsapp"
                   className="footer-social-badge"
                   aria-label="WhatsApp Oficial"
                 >

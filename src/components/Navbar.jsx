@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowLeft } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 import LeadCommand from './LeadCommand';
+import { openDigitalDiagnostic } from '../constants/contact';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,13 +27,10 @@ const Navbar = () => {
     }
   };
 
-  const navLinks = [
-    { name: 'servicio', path: '/#servicios' },
-    { name: 'Inteligencia Artificial', path: '/servicios/automatizacion-con-ia' },
-    { name: 'diseño web', path: '/servicios/desarrollo-web' },
-    { name: 'redes sociales', path: '/servicios/comunicacion-digital' },
-    { name: 'academia', path: '/academia' },
-  ];
+  const handleOpenDiagnostic = () => {
+    setIsOpen(false);
+    openDigitalDiagnostic();
+  };
 
   return (
     <>
@@ -54,20 +52,38 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Desktop Links */}
+        {/* Desktop Links: Compact Structure (Servicios, Proyectos, Diagnóstico, Contacto) */}
         <div className="hidden md:flex items-center gap-6 lg:gap-10 font-heading text-[10px] uppercase tracking-[0.3em] font-semibold text-patagonia-secondary">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              to={link.path} 
-              className={`hover:text-patagonia-gold transition-all duration-500 hover:tracking-[0.4em] ${link.color || ''}`}
-            >
-              {link.name}
-            </Link>
-          ))}
+          <Link 
+            to="/servicios/desarrollo-web" 
+            data-cta="service-web"
+            className="hover:text-patagonia-gold transition-all duration-500 hover:tracking-[0.4em]"
+          >
+            Servicios
+          </Link>
+          
+          <a 
+            href={isHome ? "#proyectos-seleccionados" : "/#proyectos-seleccionados"}
+            data-cta="projects-nav"
+            className="hover:text-patagonia-gold transition-all duration-500 hover:tracking-[0.4em]"
+          >
+            Proyectos
+          </a>
+
           <button 
+            type="button"
+            onClick={handleOpenDiagnostic}
+            data-cta="diagnostic"
+            className="hover:text-patagonia-gold transition-all duration-500 hover:tracking-[0.4em] text-left cursor-pointer"
+          >
+            Diagnóstico
+          </button>
+
+          <button 
+            type="button"
             onClick={() => setShowContact(true)}
-            className="hover:text-patagonia-gold transition-all duration-500 text-patagonia-gold border-b border-patagonia-gold/20 pb-0.5"
+            data-cta="contact-nav"
+            className="hover:text-patagonia-gold transition-all duration-500 text-patagonia-gold border-b border-patagonia-gold/20 pb-0.5 cursor-pointer"
           >
             Contacto
           </button>
@@ -104,30 +120,50 @@ const Navbar = () => {
               <X className="w-10 h-10 font-light" />
             </button>
 
-            <div className="flex flex-col gap-10 px-6 py-12 font-heading text-2xl uppercase tracking-[0.4em] text-center">
+            <div className="flex flex-col gap-8 px-6 py-12 font-heading text-xl uppercase tracking-[0.4em] text-center">
               {!isHome && (
                 <Link 
                   to="/" 
                   onClick={() => setIsOpen(false)}
-                  className="text-patagonia-gold flex items-center justify-center gap-4 mb-4 border border-patagonia-gold/20 py-4 rounded-2xl text-base"
+                  className="text-patagonia-gold flex items-center justify-center gap-4 mb-2 border border-patagonia-gold/20 py-4 rounded-2xl text-base"
                 >
                   <ArrowLeft className="w-5 h-5" />
                   Inicio
                 </Link>
               )}
-              {navLinks.map((link) => (
-                <Link 
-                  key={link.name} 
-                  to={link.path} 
-                  onClick={() => setIsOpen(false)}
-                  className={`hover:text-patagonia-gold transition-all duration-500 hover:tracking-[0.6em] ${link.color || 'text-patagonia-secondary'}`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              
+              <Link 
+                to="/servicios/desarrollo-web" 
+                onClick={() => setIsOpen(false)}
+                data-cta="service-web"
+                className="hover:text-patagonia-gold transition-all duration-500 hover:tracking-[0.6em] text-patagonia-secondary"
+              >
+                Servicios
+              </Link>
+
+              <a 
+                href={isHome ? "#proyectos-seleccionados" : "/#proyectos-seleccionados"}
+                onClick={() => setIsOpen(false)}
+                data-cta="projects-nav"
+                className="hover:text-patagonia-gold transition-all duration-500 hover:tracking-[0.6em] text-patagonia-secondary"
+              >
+                Proyectos
+              </a>
+
               <button 
+                type="button"
+                onClick={handleOpenDiagnostic}
+                data-cta="diagnostic"
+                className="hover:text-patagonia-gold transition-all duration-500 hover:tracking-[0.6em] text-patagonia-secondary uppercase tracking-[0.4em]"
+              >
+                Diagnóstico
+              </button>
+
+              <button 
+                type="button"
                 onClick={() => { setShowContact(true); setIsOpen(false); }}
-                className="text-patagonia-gold border-b border-patagonia-gold/30 pb-2 hover:tracking-[0.6em] transition-all duration-500"
+                data-cta="contact-nav"
+                className="text-patagonia-gold border-b border-patagonia-gold/30 pb-2 hover:tracking-[0.6em] transition-all duration-500 uppercase tracking-[0.4em]"
               >
                 Contacto
               </button>

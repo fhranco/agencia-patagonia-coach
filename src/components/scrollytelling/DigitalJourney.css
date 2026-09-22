@@ -263,6 +263,68 @@
   font-weight: 600;
 }
 
+/* Chapter CTA Buttons */
+.digital-journey__cta-wrap {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.digital-journey__cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.digital-journey__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+}
+
+.digital-journey__cta-btn--primary {
+  background: #F59E0B;
+  color: #05070A;
+  border: 1px solid #F59E0B;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.25);
+}
+
+.digital-journey__cta-btn--primary:hover {
+  background: #D97706;
+  border-color: #D97706;
+  color: #05070A;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
+}
+
+.digital-journey__cta-btn--secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+.digital-journey__cta-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
 /* ==========================================================================
    MOBILE HYBRID COMPOSITION (55% Visual Top / 45% Editorial Bottom)
    Prevents the 75-80% horizontal crop on mobile portrait viewports

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { FrameLoader } from './frameLoader';
 import EntryAperture from '../v2/EntryAperture';
+import { openDigitalDiagnostic, getWhatsAppUrl } from '../../constants/contact';
+import { ArrowRight } from 'lucide-react';
 import './DigitalJourney.css';
 
 // Manifest definition
@@ -12,42 +14,83 @@ const EDITORIAL_CHAPTERS = [
     marker: '01 // SEARCH',
     headlineLines: ['TODO EMPIEZA', 'CON UNA BÚSQUEDA.'],
     supporting: 'Diseñamos la arquitectura digital que conecta la intención del usuario con oportunidades reales.',
-    classModifier: 'digital-journey__chapter--search'
+    classModifier: 'digital-journey__chapter--search',
+    cta: {
+      type: 'link',
+      label: 'Mejorar mi visibilidad',
+      href: '/servicios/seo-local-magallanes',
+      dataCta: 'service-seo'
+    }
   },
   {
     id: '02_DISCOVERY',
     marker: '02 // DISCOVERY',
-    headlineLines: ['SER ENCONTRADO', 'ES EL COMIENZO.'],
+    headlineLines: ['SER ENCONTRADO', 'ES SÓLO EL COMIENZO.'],
     supporting: 'Optimización avanzada para motores generativos (GEO) y presencia dominante en Magallanes.',
-    classModifier: 'digital-journey__chapter--discovery'
+    classModifier: 'digital-journey__chapter--discovery',
+    cta: {
+      type: 'action',
+      label: 'Evaluar mi presencia digital',
+      action: 'diagnostic',
+      dataCta: 'diagnostic'
+    }
   },
   {
     id: '03_RESPONSIVE',
     marker: '03 // RESPONSIVE',
-    headlineLines: ['UNA EXPERIENCIA.', 'CADA PANTALLA.'],
+    headlineLines: ['UNA EXPERIENCIA.', 'EN CADA PANTALLA.'],
     supporting: 'Rendimiento nativo y adaptabilidad fluida para un territorio de conectividad exigente.',
-    classModifier: 'digital-journey__chapter--responsive'
+    classModifier: 'digital-journey__chapter--responsive',
+    cta: {
+      type: 'link',
+      label: 'Ver desarrollo web',
+      href: '/servicios/desarrollo-web',
+      dataCta: 'service-web'
+    }
   },
   {
     id: '04_AI',
     marker: '04 // INTELLIGENCE',
-    headlineLines: ['LA BÚSQUEDA', 'AHORA CONVERSA.'],
-    supporting: 'Modelos de lenguaje, agentes autónomos e integración de flujos corporativos que operan 24/7.',
-    classModifier: 'digital-journey__chapter--ai'
+    headlineLines: ['LA BÚSQUEDA', 'TAMBIÉN CONVERSA.'],
+    supporting: 'Modelos de lenguaje, flujos automatizados e integración corporativa orientada a resultados.',
+    classModifier: 'digital-journey__chapter--ai',
+    cta: {
+      type: 'link',
+      label: 'Ver automatización con IA',
+      href: '/servicios/automatizacion-con-ia',
+      dataCta: 'service-ai',
+      secondary: {
+        label: 'Hablemos de IA',
+        href: getWhatsAppUrl('Hola PatagoniaCoach, me gustaría conversar sobre automatización e IA para mi empresa.'),
+        dataCta: 'whatsapp'
+      }
+    }
   },
   {
     id: '05_ARCHITECTURE',
     marker: '05 // ARCHITECTURE',
-    headlineLines: ['CONSTRUIR', 'PARA RESISTIR.'],
+    headlineLines: ['LO VISIBLE DEPENDE', 'DE LO BIEN CONSTRUIDO.'],
     supporting: 'Estructuras de código limpias, componentes sólidos y soberanía digital sin concesiones.',
-    classModifier: 'digital-journey__chapter--architecture'
+    classModifier: 'digital-journey__chapter--architecture',
+    cta: {
+      type: 'link',
+      label: 'Cómo construimos',
+      href: '/servicios/desarrollo-web',
+      dataCta: 'service-web'
+    }
   },
   {
     id: '06_ECOSYSTEM',
     marker: '06 // ECOSYSTEM',
-    headlineLines: ['SISTEMAS', 'CONECTADOS.'],
-    supporting: 'Web, datos e inteligencia trabajando como una sola infraestructura viva y medible.',
-    classModifier: 'digital-journey__chapter--ecosystem'
+    headlineLines: ['WEB, SEO E INTELIGENCIA', 'COMO UN SISTEMA.'],
+    supporting: 'Web, datos y procesos trabajando como una sola infraestructura viva y medible.',
+    classModifier: 'digital-journey__chapter--ecosystem',
+    cta: {
+      type: 'whatsapp',
+      label: 'Revisemos tu caso',
+      href: getWhatsAppUrl('Hola PatagoniaCoach, me gustaría revisar el ecosistema digital de mi empresa y coordinar una conversación.'),
+      dataCta: 'whatsapp'
+    }
   }
 ];
 
@@ -261,6 +304,7 @@ export default function DigitalJourney() {
         chEl.style.opacity = opacity.toFixed(3);
         chEl.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0)`;
         chEl.style.visibility = opacity > 0.005 ? 'visible' : 'hidden';
+        chEl.style.pointerEvents = opacity > 0.4 ? 'auto' : 'none';
       }
     }
 
@@ -435,6 +479,56 @@ export default function DigitalJourney() {
               <p className="digital-journey__subhead">
                 {item.supporting}
               </p>
+
+              {/* Conversion CTA (Single focused action per chapter) */}
+              {item.cta && (
+                <div className="digital-journey__cta-wrap">
+                  {item.cta.type === 'action' && item.cta.action === 'diagnostic' ? (
+                    <button
+                      type="button"
+                      onClick={() => openDigitalDiagnostic()}
+                      data-cta={item.cta.dataCta}
+                      className="digital-journey__cta-btn digital-journey__cta-btn--primary"
+                    >
+                      <span>{item.cta.label}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  ) : item.cta.type === 'whatsapp' ? (
+                    <a
+                      href={item.cta.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-cta={item.cta.dataCta}
+                      className="digital-journey__cta-btn digital-journey__cta-btn--primary"
+                    >
+                      <span>{item.cta.label}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  ) : (
+                    <div className="digital-journey__cta-group">
+                      <a
+                        href={item.cta.href}
+                        data-cta={item.cta.dataCta}
+                        className="digital-journey__cta-btn digital-journey__cta-btn--primary"
+                      >
+                        <span>{item.cta.label}</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </a>
+                      {item.cta.secondary && (
+                        <a
+                          href={item.cta.secondary.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          data-cta={item.cta.secondary.dataCta}
+                          className="digital-journey__cta-btn digital-journey__cta-btn--secondary"
+                        >
+                          <span>{item.cta.secondary.label}</span>
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           ))}
         </div>

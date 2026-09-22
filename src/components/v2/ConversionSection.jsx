@@ -12,6 +12,7 @@ import {
   Sparkles,
   Phone
 } from 'lucide-react';
+import { CONTACT, getWhatsAppUrl } from '../../constants/contact';
 import './ConversionSection.css';
 
 const OPTIONS = [
@@ -66,7 +67,7 @@ const ConversionSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Prepara mensaje de WhatsApp directo
-    const text = encodeURIComponent(
+    const msg = (
       `Hola PatagoniaCoach, me interesa evaluar un proyecto.\n` +
       `• Nombre: ${formData.nombre}\n` +
       `• Empresa: ${formData.empresa || 'N/A'}\n` +
@@ -74,7 +75,7 @@ const ConversionSection = () => {
       `• Necesidad: ${selectedOpt.label} (${selectedOpt.category})\n` +
       `• Mensaje: ${formData.mensaje || 'Solicito coordinar una llamada de diagnóstico.'}`
     );
-    window.open(`https://wa.me/56995684198?text=${text}`, '_blank');
+    window.open(getWhatsAppUrl(msg), '_blank');
     setSubmitted(true);
   };
 
@@ -241,9 +242,10 @@ const ConversionSection = () => {
 
             <div className="direct-channels-list">
               <a 
-                href="https://wa.me/56995684198?text=Hola%20PatagoniaCoach%2C%20quisiera%20coordinar%20una%20reuni%C3%B3n%20para%20evaluar%20un%20proyecto."
+                href={getWhatsAppUrl('Hola PatagoniaCoach, quisiera coordinar una conversación directa para evaluar un proyecto.')}
                 target="_blank" 
                 rel="noopener noreferrer"
+                data-cta="whatsapp"
                 className="direct-channel-link"
               >
                 <div className="channel-icon-box bg-emerald-500/10 border-emerald-500/30 text-emerald-400">
@@ -251,13 +253,14 @@ const ConversionSection = () => {
                 </div>
                 <div className="channel-info">
                   <span className="channel-tag">WHATSAPP DIRECTO</span>
-                  <span className="channel-val">+56 9 9568 4198</span>
+                  <span className="channel-val">{CONTACT.phone}</span>
                 </div>
                 <ArrowUpRight className="w-4 h-4 channel-arrow" />
               </a>
 
               <a 
-                href="mailto:hola@agenciapatagoniacoach.cl"
+                href={`mailto:${CONTACT.email}`}
+                data-cta="email"
                 className="direct-channel-link"
               >
                 <div className="channel-icon-box bg-sky-500/10 border-sky-500/30 text-sky-400">
@@ -265,7 +268,7 @@ const ConversionSection = () => {
                 </div>
                 <div className="channel-info">
                   <span className="channel-tag">CORREO ELECTRÓNICO</span>
-                  <span className="channel-val">hola@agenciapatagoniacoach.cl</span>
+                  <span className="channel-val">{CONTACT.email}</span>
                 </div>
                 <ArrowUpRight className="w-4 h-4 channel-arrow" />
               </a>
@@ -273,8 +276,8 @@ const ConversionSection = () => {
 
             <div className="direct-location-box">
               <span className="location-tag">SEDE REGIONAL</span>
-              <span className="location-val">Punta Arenas • Magallanes • Chile</span>
-              <span className="location-coords">53°09′45″S 70°55′21″W</span>
+              <span className="location-val">{CONTACT.city} • {CONTACT.region} • Chile</span>
+              <span className="location-coords">{CONTACT.coords.display}</span>
             </div>
           </aside>
 

@@ -66,9 +66,9 @@ const QuickOffers = () => {
               </p>
               
               <div className="pt-6">
-                <a href="#contacto" className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold hover:gap-5 transition-all shadow-[0_0_50px_rgba(255,255,255,0.1)]">
-                  INICIAR MI WEB <Sparkles className="w-5 h-5 text-patagonia-red" />
-                </a>
+                <Link to="/servicios/desarrollo-web" data-cta="service-web" className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold hover:gap-5 transition-all shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+                  <span>INICIAR MI WEB</span> <Sparkles className="w-5 h-5 text-patagonia-red" />
+                </Link>
               </div>
             </div>
           </motion.div>
