@@ -77,9 +77,9 @@ const IaPillar = () => {
           scrollTrigger: {
             trigger: rootRef.current,
             start: "top top",
-            end: "+=220%",
+            end: "+=130%",
             pin: true,
-            scrub: 0.8,
+            scrub: 0.6,
             anticipatePin: 1
           }
         });
@@ -297,9 +297,9 @@ const IaPillar = () => {
           scrollTrigger: {
             trigger: arenaStageRef.current,
             start: "top 12%",
-            end: "+=170%",
+            end: "+=110%",
             pin: true,
-            scrub: 0.8,
+            scrub: 0.6,
             anticipatePin: 1
           }
         });

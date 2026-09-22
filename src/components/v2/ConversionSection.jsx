@@ -20,7 +20,7 @@ const OPTIONS = [
     num: '01',
     label: 'NECESITO CONSTRUIR',
     subtext: 'Web corporativa, plataforma de alto rendimiento o software a medida.',
-    orientation: 'El punto de entrada recomendado es Desarrollo & Plataformas Web.',
+    orientation: 'Podemos comenzar por Desarrollo & Plataformas Web.',
     category: 'Desarrollo Web / Plataformas',
     icon: Code2
   },
@@ -29,7 +29,7 @@ const OPTIONS = [
     num: '02',
     label: 'NECESITO SER ENCONTRADO',
     subtext: 'Posicionamiento en Google, presencia en mapas y optimización GEO.',
-    orientation: 'El punto de entrada recomendado es SEO Local & Estructura Semántica.',
+    orientation: 'Podemos comenzar por SEO Local & Estructura Semántica.',
     category: 'SEO Local & GEO',
     icon: Search
   },
@@ -38,7 +38,7 @@ const OPTIONS = [
     num: '03',
     label: 'NECESITO AUTOMATIZAR',
     subtext: 'Integración de procesos, conexión de sistemas y agentes de IA.',
-    orientation: 'El punto de entrada recomendado es Automatización & Orquestación con IA.',
+    orientation: 'Podemos comenzar por Automatización & Orquestación con IA.',
     category: 'Automatización & IA',
     icon: Workflow
   },
@@ -47,7 +47,7 @@ const OPTIONS = [
     num: '04',
     label: 'NO SÉ POR DÓNDE EMPEZAR',
     subtext: 'Revisemos la infraestructura, datos y procesos de la organización.',
-    orientation: 'Iniciemos con una Auditoría y Diagnóstico de Ecosistema Digital.',
+    orientation: 'Podemos comenzar por una Auditoría y Diagnóstico de Ecosistema Digital.',
     category: 'Diagnóstico & Consultoría',
     icon: Compass
   }

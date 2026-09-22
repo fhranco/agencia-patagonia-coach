@@ -42,8 +42,8 @@ const STAGES = [
     id: "construir",
     name: "CONSTRUIR",
     tagline: "Ingeniería de Software de Precisión",
-    desc: "Desarrollamos plataformas digitales de alto rendimiento con código soberano y ultra-rápido.",
-    capability: "Desarrollo Web Moderno • Performance 100",
+    desc: "Desarrollamos plataformas digitales de alto rendimiento con código modular, mantenible y eficiente.",
+    capability: "Desarrollo Web Moderno • Core Web Vitals",
     icon: Code2
   },
   {
@@ -60,8 +60,8 @@ const STAGES = [
     id: "escalar",
     name: "ESCALAR",
     tagline: "Automatización & IA Continua",
-    desc: "Integramos flujos inteligentes y acompañamiento ejecutivo para expandir la capacidad operativa.",
-    capability: "Orquestación IA • CTO-as-a-Service",
+    desc: "Integramos flujos inteligentes y acompañamiento técnico para expandir la capacidad operativa.",
+    capability: "Orquestación IA • Dirección Técnica",
     icon: TrendingUp
   }
 ];
@@ -97,9 +97,9 @@ const MethodologySection = () => {
           scrollTrigger: {
             trigger: rootRef.current,
             start: "top top",
-            end: "+=180%",
+            end: "+=100%",
             pin: true,
-            scrub: 0.8,
+            scrub: 0.6,
             anticipatePin: 1
           }
         });
@@ -294,7 +294,7 @@ const MethodologySection = () => {
                 <ArrowUpRight className="w-4 h-4" />
               </span>
             </Link>
-            <span className="methodology-cta-spec">INICIAR AUDITORÍA // SIN COMPROMISO</span>
+            <span className="methodology-cta-spec">INICIAR AUDITORÍA // EVALUACIÓN INICIAL</span>
           </div>
 
           {/* Horizon Line to Patagonia Section */}

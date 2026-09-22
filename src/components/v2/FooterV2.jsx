@@ -269,16 +269,16 @@ const FooterV2 = () => {
 
         </div>
 
-        {/* Bottom Bar: Copyright, Coordinates & Technical Certification */}
+        {/* Bottom Bar: Copyright, Coordinates & Austral Seal */}
         <div className="footer-bottom-bar">
           <div className="bottom-left">
             <span className="copyright-text">
-              © {new Date().getFullYear()} PATAGONIACOACH · INGENIERÍA DIGITAL & SOBERANÍA TECNOLÓGICA.
+              © {new Date().getFullYear()} PATAGONIACOACH · INGENIERÍA DIGITAL & DESARROLLO ESTRATÉGICO.
             </span>
           </div>
 
           <div className="bottom-right">
-            <span className="tech-tag">ARCH: REACT 19 + GSAP + VITE</span>
+            <span className="tech-tag">PUNTA ARENAS • PATAGONIA CHILENA</span>
             <span className="divider-dot" aria-hidden="true">•</span>
             <span className="tech-tag">53°S MAGALLANES</span>
           </div>

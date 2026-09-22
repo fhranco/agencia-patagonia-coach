@@ -27,8 +27,8 @@ const DevelopmentPillar = () => {
       const mm = gsap.matchMedia();
 
       // =====================================================================
-      // DESKTOP KINETIC CHOREOGRAPHY (FASE 03.3B — Exact Timeline Calibration)
-      // Total duration calibrated to +=160% for crisp, uninterrupted momentum.
+      // DESKTOP KINETIC CHOREOGRAPHY (FASE 07 — Optimized & Dense Momentum)
+      // Total duration calibrated to +=130% for crisp, uninterrupted momentum.
       // Timeline normalized to 10s:
       // 0.00 - 1.20 (0% - 12%):   Entrada / Estructura
       // 1.20 - 3.00 (12% - 30%):  Arquitectura
@@ -43,9 +43,9 @@ const DevelopmentPillar = () => {
           scrollTrigger: {
             trigger: rootRef.current,
             start: "top top",
-            end: "+=160%",
+            end: "+=130%",
             pin: true,
-            scrub: 0.7,
+            scrub: 0.6,
             anticipatePin: 1
           }
         });

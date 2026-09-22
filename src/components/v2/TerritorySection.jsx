@@ -21,7 +21,7 @@ const TERRITORY_NODES = [
     id: "punta-arenas",
     name: "PUNTA ARENAS",
     coords: "53°09′S 70°55′W",
-    role: "Hub Tecnológico & Servicios Corporativos",
+    role: "Servicios Corporativos & Operación Regional",
     path: "/zonas/punta-arenas"
   },
   {
@@ -42,7 +42,7 @@ const TERRITORY_NODES = [
     id: "magallanes",
     name: "REGIÓN DE MAGALLANES",
     coords: "53°S ESTRECHO",
-    role: "Ecosistema Austral & Proyección Global",
+    role: "Ecosistema Austral & Cobertura Regional",
     path: "/zonas/magallanes"
   }
 ];
@@ -76,9 +76,9 @@ const TerritorySection = () => {
           scrollTrigger: {
             trigger: rootRef.current,
             start: "top top",
-            end: "+=150%",
+            end: "+=90%",
             pin: true,
-            scrub: 0.8,
+            scrub: 0.6,
             anticipatePin: 1
           }
         });
@@ -216,15 +216,15 @@ const TerritorySection = () => {
           <div className="territory-principles-row">
             <div className="territory-principle-item">
               <span className="principle-label">01 // RESILIENCIA</span>
-              <p className="principle-desc">Arquitecturas autónomas preparadas para operar sin fricción en condiciones remotas.</p>
+              <p className="principle-desc">Arquitecturas preparadas para operar de forma continua bajo conectividad variable.</p>
             </div>
             <div className="territory-principle-item">
               <span className="principle-label">02 // ESCALA REAL</span>
-              <p className="principle-desc">Ingeniería concebida para conectar industrias de alto valor con el mercado global.</p>
+              <p className="principle-desc">Ingeniería concebida para vincular empresas locales con audiencias regionales y nacionales.</p>
             </div>
             <div className="territory-principle-item">
-              <span className="principle-label">03 // SOBERANÍA</span>
-              <p className="principle-desc">Sistemas que otorgan autonomía técnica total a las organizaciones de la región.</p>
+              <span className="principle-label">03 // GOBERNANZA</span>
+              <p className="principle-desc">Infraestructura propia que garantiza control sobre los datos y las plataformas digitales.</p>
             </div>
           </div>
         </div>

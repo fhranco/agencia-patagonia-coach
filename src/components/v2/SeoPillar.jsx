@@ -57,7 +57,7 @@ const SeoPillar = () => {
       const mm = gsap.matchMedia();
 
       // =====================================================================
-      // DESKTOP CHOREOGRAPHY (Continuous Pin scrubbed across +=150% scroll)
+      // DESKTOP CHOREOGRAPHY (Continuous Pin scrubbed across +=120% scroll)
       // Narrative: CONTINUIDAD -> CONSULTA -> TERRITORIO -> RED JERÁRQUICA -> MOMENTO WOW -> CONVERGENCIA
       // =====================================================================
       mm.add("(min-width: 1024px)", () => {
@@ -65,9 +65,9 @@ const SeoPillar = () => {
           scrollTrigger: {
             trigger: rootRef.current,
             start: "top top",
-            end: "+=150%",
+            end: "+=120%",
             pin: true,
-            scrub: 0.6,
+            scrub: 0.5,
             anticipatePin: 1,
             invalidateOnRefresh: true
           }
@@ -294,9 +294,9 @@ const SeoPillar = () => {
           scrollTrigger: {
             trigger: arenaStageRef.current,
             start: "top 12%",
-            end: "+=170%",
+            end: "+=110%",
             pin: true,
-            scrub: 0.8,
+            scrub: 0.6,
             anticipatePin: 1
           }
         });
