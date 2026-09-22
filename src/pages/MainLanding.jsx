@@ -1,6 +1,7 @@
 import HeroEditorial from '../components/v2/HeroEditorial';
 import SelectedWork from '../components/v2/SelectedWork';
 import DevelopmentPillar from '../components/v2/DevelopmentPillar';
+import SeoPillar from '../components/v2/SeoPillar';
 import SEO from '../components/SEO';
 
 const MainLanding = () => {
@@ -47,10 +48,12 @@ const MainLanding = () => {
             01 — HERO EDITORIAL (Estrategia, Creatividad, Tecnología)
             02 — SELECTED WORK (AGM Rent a Car, Ruta 9, Óptica Harris, REMAG)
             03 — PILAR 01: DESARROLLO (Construir — Ingeniería de Software)
+            04 — PILAR 02: SEO (Encontrar — Autoridad Territorial & Semántica)
             ========================================================================= */}
         <HeroEditorial />
         <SelectedWork />
         <DevelopmentPillar />
+        <SeoPillar />
       </main>
     </>
   );
