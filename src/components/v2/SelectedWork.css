@@ -1,230 +1,224 @@
 /* =========================================================================
-   PATAGONIACOACH V2 — SELECTED WORK STYLES (STACKED PANELS / ANTI-SAAS)
+   PATAGONIACOACH V2 — KINETIC SELECTED WORK STYLES (SCENE-BASED ARCHITECTURE)
    ========================================================================= */
 
-.selected-work-root {
+.kinetic-work-root {
   position: relative;
   width: 100%;
   background-color: #05070A;
   color: #F8FAFC;
-  padding: clamp(4rem, 10vh, 8rem) 0;
-  overflow: visible;
+  overflow: hidden;
 }
 
-.selected-work-container {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 clamp(1.5rem, 5vw, 4rem);
-}
-
-/* Section Header */
-.selected-work-header {
-  margin-bottom: clamp(3rem, 8vh, 6rem);
-  max-width: 960px;
-}
-
-.selected-work-badge {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: clamp(0.7rem, 0.85vw, 0.8rem);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #F59E0B;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
-.selected-work-badge::before {
-  content: '';
-  display: inline-block;
-  width: 28px;
-  height: 1px;
-  background-color: #F59E0B;
-}
-
-.selected-work-h2 {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(2.5rem, 5.5vw, 5.2rem);
-  font-weight: 300;
-  line-height: 0.96;
-  letter-spacing: -0.04em;
-  color: #F8FAFC;
-  margin-bottom: 1.5rem;
-  text-wrap: balance;
-}
-
-.selected-work-intro {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(1rem, 1.2vw, 1.2rem);
-  font-weight: 300;
-  line-height: 1.6;
-  color: #94A3B8;
-  max-width: 720px;
-}
-
-/* Stacked Panels Showcase */
-.selected-work-stack {
+/* =========================================================================
+   COMMON SCENE FOUNDATION
+   ========================================================================= */
+.kinetic-scene {
   position: relative;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: clamp(2.5rem, 6vh, 5rem);
-}
-
-.project-panel-wrapper {
-  position: sticky;
-  top: clamp(4rem, 8vh, 6rem);
-  width: 100%;
-}
-
-.project-panel-card {
-  position: relative;
-  background: #0B0F17;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: clamp(1.5rem, 2.5vw, 2.5rem);
+  justify-content: center;
+  padding: clamp(3rem, 6vh, 6rem) clamp(1.5rem, 5vw, 4rem);
+  box-sizing: border-box;
   overflow: hidden;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.project-panel-card:hover {
-  border-color: rgba(245, 158, 11, 0.35);
-  box-shadow: 0 30px 70px -10px rgba(245, 158, 11, 0.08);
+/* Monumental Typographic Watermark for each scene */
+.scene-spatial-title {
+  position: absolute;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: rgba(248, 250, 252, 0.04);
+  line-height: 0.8;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
 }
 
-.project-panel-grid {
+/* =========================================================================
+   SCENE 1: AGM RENT A CAR (Technology / Mobility / Interface)
+   ========================================================================= */
+.scene-agm {
+  background: radial-gradient(circle at 80% 30%, rgba(56, 189, 248, 0.06) 0%, #05070A 70%);
+}
+
+.scene-agm .scene-spatial-title {
+  top: 5%;
+  left: -2%;
+  font-size: clamp(8rem, 20vw, 24rem);
+  color: rgba(56, 189, 248, 0.035);
+}
+
+.agm-stage-grid {
+  position: relative;
+  z-index: 5;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  min-height: clamp(520px, 68vh, 760px);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
 }
 
 @media (min-width: 1024px) {
-  .project-panel-grid {
-    grid-template-columns: 1.15fr 1.35fr;
+  .agm-stage-grid {
+    grid-template-columns: 1.15fr 0.85fr;
   }
 }
 
-/* Project Info Column */
-.project-info-col {
-  padding: clamp(2rem, 4vw, 3.75rem);
+.agm-visual-window {
+  position: relative;
+  width: 100%;
+  height: clamp(380px, 62vh, 680px);
+  border-radius: clamp(1rem, 2vw, 2rem);
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: 0 35px 90px -20px rgba(0, 0, 0, 0.9), 0 0 50px rgba(56, 189, 248, 0.08);
+}
+
+.agm-visual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.88) contrast(1.1);
+}
+
+.agm-hud-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(5, 7, 10, 0.9) 0%, transparent 40%, rgba(5, 7, 10, 0.3) 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 2rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
-  position: relative;
-  z-index: 2;
+  padding: 1.5rem;
 }
 
-.project-meta-top {
+.agm-hud-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding-bottom: 1.25rem;
 }
 
-.project-index {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
-  font-weight: 700;
-  color: #38BDF8;
-  letter-spacing: 0.1em;
-}
-
-.project-category {
+.agm-hud-badge {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
+  color: #38BDF8;
+  background: rgba(5, 7, 10, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
   text-transform: uppercase;
-  color: #F59E0B;
 }
 
-.project-body {
+.agm-hud-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: #94A3B8;
+  letter-spacing: 0.12em;
+}
+
+.agm-content-col {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
-.project-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(2rem, 3.5vw, 3.6rem);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: #F8FAFC;
+.agm-case-index {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: #38BDF8;
+  text-transform: uppercase;
 }
 
-.project-tagline {
+.agm-title {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
   font-weight: 300;
-  line-height: 1.3;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #F8FAFC;
+  margin: 0;
+}
+
+.agm-tagline {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+  font-weight: 300;
+  line-height: 1.35;
   color: #E2E8F0;
 }
 
-.project-description {
+.agm-desc {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(0.85rem, 0.95vw, 0.95rem);
-  line-height: 1.65;
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  line-height: 1.7;
   color: #94A3B8;
-  font-weight: 300;
 }
 
-.project-tags-list {
+.agm-tags-wrap {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  padding-top: 0.5rem;
 }
 
-.project-tag-pill {
+.agm-tag-pill {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #CBD5E1;
-  padding: 0.3rem 0.75rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #38BDF8;
+  padding: 0.35rem 0.8rem;
+  background: rgba(56, 189, 248, 0.05);
+  border: 1px solid rgba(56, 189, 248, 0.15);
   border-radius: 9999px;
 }
 
-/* Action Foot */
-.project-actions {
+.agm-actions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
 }
 
-.project-link-primary {
+.btn-scene-primary {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: rgba(245, 158, 11, 0.12);
-  color: #F59E0B;
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  padding: 0.75rem 1.4rem;
+  background-color: #F59E0B;
+  color: #05070A;
+  padding: 0.85rem 1.6rem;
   border-radius: 0.6rem;
   font-family: 'Outfit', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
-.project-link-primary:hover {
-  background: #F59E0B;
-  color: #05070A;
+.btn-scene-primary:hover {
+  background-color: #fbbf24;
   transform: translateY(-2px);
 }
 
-.project-link-secondary {
+.btn-scene-secondary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -235,95 +229,243 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: color 0.2s ease;
   cursor: pointer;
+  background: none;
+  border: none;
+  transition: color 0.2s ease;
 }
 
-.project-link-secondary:hover {
+.btn-scene-secondary:hover {
   color: #F8FAFC;
 }
 
-/* Project Visual Column */
-.project-visual-col {
+/* =========================================================================
+   SCENE 2: RUTA 9 (Territory / Energy / Photographic Richness)
+   ========================================================================= */
+.scene-ruta9 {
+  background: radial-gradient(circle at 20% 50%, rgba(245, 158, 11, 0.07) 0%, #05070A 75%);
+}
+
+.scene-ruta9 .scene-spatial-title {
+  bottom: 8%;
+  right: -5%;
+  font-size: clamp(8rem, 22vw, 26rem);
+  color: rgba(245, 158, 11, 0.03);
+}
+
+.ruta9-stage-grid {
   position: relative;
-  overflow: hidden;
-  background: #05070A;
-  min-height: 320px;
-}
-
-.project-visual-img {
+  z-index: 5;
+  max-width: 1440px;
+  margin: 0 auto;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
-  filter: brightness(0.85) contrast(1.05);
-}
-
-.project-panel-card:hover .project-visual-img {
-  transform: scale(1.04);
-  filter: brightness(0.95) contrast(1.1);
-}
-
-.project-visual-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(11, 15, 23, 0.95) 0%, rgba(11, 15, 23, 0.2) 50%, transparent 100%);
-  pointer-events: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
 }
 
 @media (min-width: 1024px) {
-  .project-visual-overlay {
-    background: linear-gradient(to right, rgba(11, 15, 23, 0.95) 0%, rgba(11, 15, 23, 0.1) 40%, transparent 100%);
+  .ruta9-stage-grid {
+    grid-template-columns: 0.85fr 1.15fr;
   }
 }
 
-.project-visual-badge {
+.ruta9-visual-frame {
+  position: relative;
+  width: 100%;
+  height: clamp(380px, 62vh, 680px);
+  border-radius: clamp(1rem, 2vw, 2rem);
+  overflow: hidden;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  box-shadow: 0 35px 90px -20px rgba(0, 0, 0, 0.9);
+}
+
+.ruta9-visual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+}
+
+.ruta9-overlay-content {
   position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(5, 7, 10, 0.8) 0%, transparent 60%, rgba(5, 7, 10, 0.4) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+}
+
+.ruta9-coords-badge {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  color: #F8FAFC;
-  background: rgba(5, 7, 10, 0.75);
-  backdrop-filter: blur(12px);
-  padding: 0.4rem 0.85rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 9999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: #F59E0B;
   text-transform: uppercase;
 }
 
-/* Call to Action Closer */
-.selected-work-cta-bridge {
-  margin-top: clamp(4rem, 8vh, 6rem);
-  padding: clamp(2.5rem, 5vw, 4.5rem);
-  background: radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.08) 0%, rgba(11, 15, 23, 0.6) 70%);
+/* =========================================================================
+   SCENE 3: ÓPTICA HARRIS (Clinical Precision / Medical Engineering)
+   ========================================================================= */
+.scene-harris {
+  background: radial-gradient(circle at 70% 70%, rgba(56, 189, 248, 0.05) 0%, #05070A 75%);
+}
+
+.scene-harris .scene-spatial-title {
+  top: 10%;
+  right: 5%;
+  font-size: clamp(7rem, 18vw, 22rem);
+  color: rgba(248, 250, 252, 0.03);
+}
+
+.harris-stage-grid {
+  position: relative;
+  z-index: 5;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .harris-stage-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.harris-reticle-col {
+  position: relative;
+  width: 100%;
+  height: clamp(360px, 58vh, 640px);
+  border-radius: clamp(1rem, 2vw, 2rem);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 35px 90px -20px rgba(0, 0, 0, 0.9);
+}
+
+.harris-reticle-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.82) contrast(1.15);
+}
+
+.harris-lens-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(5, 7, 10, 0.85) 90%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.harris-crosshair {
+  width: 180px;
+  height: 180px;
+  border: 1px dashed rgba(56, 189, 248, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================================================
+   SCENE 4: REMAG (Systemic / Economy / B2B Network Topology)
+   ========================================================================= */
+.scene-remag {
+  background: radial-gradient(circle at 30% 30%, rgba(245, 158, 11, 0.06) 0%, #05070A 75%);
+}
+
+.scene-remag .scene-spatial-title {
+  bottom: 5%;
+  left: 2%;
+  font-size: clamp(8rem, 20vw, 25rem);
+  color: rgba(245, 158, 11, 0.035);
+}
+
+.remag-stage-grid {
+  position: relative;
+  z-index: 5;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .remag-stage-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.remag-network-col {
+  position: relative;
+  width: 100%;
+  height: clamp(360px, 58vh, 640px);
+  border-radius: clamp(1rem, 2vw, 2rem);
+  overflow: hidden;
   border: 1px solid rgba(245, 158, 11, 0.2);
-  border-radius: clamp(1.5rem, 2.5vw, 2.5rem);
+  box-shadow: 0 35px 90px -20px rgba(0, 0, 0, 0.9);
+}
+
+.remag-network-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+}
+
+/* =========================================================================
+   FINAL CONVERSION PORTAL
+   ========================================================================= */
+.scene-conversion-portal {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(4rem, 8vh, 8rem) clamp(1.5rem, 5vw, 4rem);
+  background: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.08) 0%, #05070A 80%);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.conversion-box {
+  max-width: 820px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 1.75rem;
+  gap: 2rem;
+  position: relative;
+  z-index: 5;
 }
 
-.selected-work-cta-title {
+.conversion-h3 {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-size: clamp(2.25rem, 4.5vw, 4.2rem);
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
   color: #F8FAFC;
-  max-width: 760px;
+  text-wrap: balance;
 }
 
-.selected-work-cta-btn {
+.conversion-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
   background-color: #F59E0B;
   color: #05070A;
-  padding: 1.1rem 2.5rem;
+  padding: 1.15rem 2.8rem;
   border-radius: 0.75rem;
   font-family: 'Outfit', sans-serif;
   font-size: 0.85rem;
@@ -331,14 +473,14 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 4px 25px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 6px 30px rgba(245, 158, 11, 0.35);
   transition: all 0.3s ease;
   cursor: pointer;
   border: none;
 }
 
-.selected-work-cta-btn:hover {
+.conversion-btn:hover {
   background-color: #fbbf24;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 35px rgba(245, 158, 11, 0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px rgba(245, 158, 11, 0.5);
 }

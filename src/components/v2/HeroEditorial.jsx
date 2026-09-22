@@ -1,7 +1,11 @@
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowDown, ArrowUpRight, Sparkles, Compass } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Compass, ShieldCheck } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './HeroEditorial.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const capabilities = [
   { name: 'Desarrollo Web Pro', path: '/servicios/desarrollo-web' },
@@ -13,6 +17,124 @@ const capabilities = [
 ];
 
 const HeroEditorial = () => {
+  const containerRef = useRef(null);
+  const backLayerRef = useRef(null);
+  const midLayerRef = useRef(null);
+  const frontLayerRef = useRef(null);
+  const agmCropRef = useRef(null);
+  const ruta9CropRef = useRef(null);
+  const harrisCropRef = useRef(null);
+  const wordEstrategiaRef = useRef(null);
+  const wordCreatividadRef = useRef(null);
+  const wordTecnologiaRef = useRef(null);
+  const capabilitiesRef = useRef(null);
+  const ctaBarRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. Ambient Movement (Breathing and Drifting without scroll)
+      gsap.to(agmCropRef.current, {
+        y: '-=12',
+        x: '+=6',
+        rotation: 0.5,
+        duration: 5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      if (ruta9CropRef.current) {
+        gsap.to(ruta9CropRef.current, {
+          y: '+=15',
+          x: '-=8',
+          rotation: -0.6,
+          duration: 6.5,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: 0.5
+        });
+      }
+
+      if (harrisCropRef.current) {
+        gsap.to(harrisCropRef.current, {
+          scale: 1.05,
+          duration: 4.5,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: 1
+        });
+      }
+
+      // 2. Mouse Parallax on Desktop
+      const handleMouseMove = (e) => {
+        if (window.innerWidth < 1024) return;
+        const { clientX, clientY } = e;
+        const xPercent = (clientX / window.innerWidth - 0.5) * 2;
+        const yPercent = (clientY / window.innerHeight - 0.5) * 2;
+
+        gsap.to(midLayerRef.current, {
+          x: xPercent * 25,
+          y: yPercent * 18,
+          duration: 1.2,
+          ease: 'power1.out',
+          overwrite: 'auto'
+        });
+
+        gsap.to(backLayerRef.current, {
+          x: xPercent * -15,
+          y: yPercent * -10,
+          duration: 1.5,
+          ease: 'power1.out',
+          overwrite: 'auto'
+        });
+      };
+
+      window.addEventListener('mousemove', handleMouseMove);
+
+      // 3. Kinetic Scroll Deconstruction: Hero transforms into AGM Scene
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: '+=120%',
+          pin: true,
+          scrub: 0.8,
+          anticipatePin: 1
+        }
+      });
+
+      tl
+        // Word transformations
+        .to(wordEstrategiaRef.current, { x: '-80vw', opacity: 0.1, ease: 'power2.in' }, 0)
+        .to(wordCreatividadRef.current, { y: '50vh', opacity: 0.1, ease: 'power2.in' }, 0)
+        .to(wordTecnologiaRef.current, { scale: 1.8, opacity: 0.15, zIndex: 1, ease: 'power2.in' }, 0)
+        
+        // Capabilities and CTAs clip out
+        .to(capabilitiesRef.current, { x: '-60vw', opacity: 0, ease: 'power2.in' }, 0.1)
+        .to(ctaBarRef.current, { scale: 0.85, opacity: 0, ease: 'power2.in' }, 0.1)
+
+        // AGM Crop expands physically to take over the viewport
+        .to(agmCropRef.current, {
+          top: '0%',
+          right: '0%',
+          width: '100vw',
+          height: '100vh',
+          borderRadius: 0,
+          zIndex: 50,
+          boxShadow: 'none',
+          ease: 'power2.inOut'
+        }, 0.2);
+
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+      };
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const handleScrollToProjects = (e) => {
     e.preventDefault();
     const target = document.getElementById('proyectos-seleccionados');
@@ -27,89 +149,102 @@ const HeroEditorial = () => {
   };
 
   return (
-    <section className="hero-editorial-root" aria-label="Introducción PatagoniaCoach">
-      {/* Background Atmosphere Layers */}
-      <div className="hero-atmosphere" aria-hidden="true">
-        <div className="hero-gradient-radial" />
-        <div className="hero-gradient-bottom" />
-        <div className="hero-cartography-lines" />
-        <svg className="hero-contour-svg" viewBox="0 0 1000 600" preserveAspectRatio="none">
-          <path d="M0,150 Q250,50 500,180 T1000,120" />
-          <path d="M0,320 Q300,200 600,340 T1000,280" />
-          <path d="M0,480 Q200,380 550,500 T1000,420" />
+    <section 
+      ref={containerRef} 
+      className="hero-kinetic-container"
+      aria-label="Introducción Cinemática PatagoniaCoach"
+    >
+      {/* =====================================================================
+          1. BACK LAYER: Monumental Kinetic Typography & Cartography
+          ===================================================================== */}
+      <div ref={backLayerRef} className="hero-layer-back" aria-hidden="true">
+        <div className="hero-back-atmosphere" />
+        <div className="hero-back-grid" />
+        <svg className="hero-back-topo-svg" viewBox="0 0 1000 600" preserveAspectRatio="none">
+          <path d="M0,120 Q300,40 600,160 T1000,100" />
+          <path d="M0,280 Q350,180 700,320 T1000,240" />
+          <path d="M0,450 Q250,350 650,480 T1000,390" />
         </svg>
+
+        {/* Spatial Typography */}
+        <div className="hero-monumental-text hero-monumental-1">PATAGONIA</div>
+        <div className="hero-monumental-text hero-monumental-2">INGENIERÍA</div>
       </div>
 
-      {/* Header Bar */}
-      <header className="hero-header-bar">
-        <motion.div 
-          className="hero-brand-block"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="hero-brand-name">PatagoniaCoach</span>
-          <span className="hero-brand-dot" />
-          <span className="hero-tagline-pill">Estudio de Ingeniería & Estrategia</span>
-        </motion.div>
-
-        <motion.div 
-          className="hero-coords"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 0.8, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Compass className="inline w-3.5 h-3.5 mr-1.5 align-text-bottom text-patagonia-cyan" />
-          <span>53°09′45″ S • 70°54′29″ W • MAGALLANES</span>
-        </motion.div>
-      </header>
-
-      {/* Main Content Stage */}
-      <div className="hero-stage">
-        <div className="hero-title-container">
-          <motion.div 
-            className="hero-title-label"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-          >
-            <span>Dirección Creativa & Tecnológica</span>
-          </motion.div>
-
-          <motion.h1 
-            className="hero-h1-editorial"
-            initial={{ opacity: 0, y: 35 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          >
-            Estrategia.<br />
-            Creatividad.<br />
-            <span className="hero-h1-accent">Tecnología.</span>
-          </motion.h1>
+      {/* =====================================================================
+          2. MID LAYER: Real Project Visual Crops at Different Depths
+          ===================================================================== */}
+      <div ref={midLayerRef} className="hero-layer-mid">
+        {/* Crop 1: AGM Rent a Car Primary Expanding Anchor */}
+        <div ref={agmCropRef} className="hero-crop-agm">
+          <img 
+            src="/images/projects-showcase.webp" 
+            alt="AGM Rent a Car - Sistema de Reserva y Flota" 
+            className="hero-crop-agm-img"
+          />
+          <div className="hero-crop-agm-overlay" />
+          <span className="hero-crop-agm-label">AGM • Movilidad</span>
+          <span className="hero-crop-agm-status">Reserva Online 24/7</span>
         </div>
 
-        {/* Narrative Box */}
-        <motion.div 
-          className="hero-narrative-box"
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <p className="hero-narrative-text">
+        {/* Crop 2: Ruta 9 Territorial Photography Slice */}
+        <div ref={ruta9CropRef} className="hero-crop-ruta9">
+          <img 
+            src="/patagonia_luxury_hero.webp" 
+            alt="Ruta 9 - Ecosistema Austral" 
+            className="hero-crop-ruta9-img"
+          />
+        </div>
+
+        {/* Crop 3: Óptica Harris Precision Reticle Element */}
+        <div ref={harrisCropRef} className="hero-crop-harris">
+          <div className="hero-crop-harris-inner">
+            <span className="font-mono text-[10px] text-patagonia-cyan tracking-widest">HARRIS • 53°S</span>
+          </div>
+        </div>
+      </div>
+
+      {/* =====================================================================
+          3. FRONT LAYER: Semantic Value Proposition, CTAs & Capabilities
+          ===================================================================== */}
+      <div ref={frontLayerRef} className="hero-layer-front">
+        {/* Header Bar */}
+        <header className="hero-front-header">
+          <div className="hero-front-brand">
+            <span className="hero-front-brand-title">PatagoniaCoach</span>
+            <span className="hero-front-brand-dot" />
+            <span className="hero-front-tagline">Estudio de Ingeniería & Estrategia</span>
+          </div>
+
+          <div className="hero-front-coords">
+            <Compass className="inline w-3.5 h-3.5 mr-1.5 align-text-bottom text-patagonia-cyan" />
+            <span>53°09′45″ S • 70°54′29″ W • MAGALLANES</span>
+          </div>
+        </header>
+
+        {/* Central Stage: Semantic H1 & Narrative */}
+        <div className="hero-front-stage">
+          <div className="hero-front-label">
+            <span>Dirección Creativa & Tecnológica</span>
+          </div>
+
+          <h1 className="hero-front-h1">
+            <span ref={wordEstrategiaRef} className="block">Estrategia.</span>
+            <span ref={wordCreatividadRef} className="block">Creatividad.</span>
+            <span ref={wordTecnologiaRef} className="block h1-accent">Tecnología.</span>
+          </h1>
+
+          <p className="hero-front-copy">
             Construimos experiencias digitales de alto impacto, sistemas escalables y ventajas 
             competitivas duraderas para marcas que deciden liderar desde la Patagonia hacia el mundo.
           </p>
-          <p className="hero-narrative-subtext">
-            Ingeniería de software de precisión, diseño cinematográfico y optimización generativa (GEO) 
-            articuladas en un único estándar de ejecución sin intermediarios.
-          </p>
 
-          {/* Dual Action CTAs */}
-          <div className="hero-cta-bar">
+          {/* Dual CTAs */}
+          <div ref={ctaBarRef} className="hero-front-ctas">
             <a 
               href="#proyectos-seleccionados" 
               onClick={handleScrollToProjects}
-              className="hero-btn-primary"
+              className="hero-btn-main"
               id="cta-ver-proyectos"
             >
               <span>Ver Proyectos</span>
@@ -118,7 +253,7 @@ const HeroEditorial = () => {
 
             <button 
               onClick={handleOpenContact}
-              className="hero-btn-secondary"
+              className="hero-btn-hablemos"
               id="cta-hablemos"
               type="button"
             >
@@ -126,49 +261,30 @@ const HeroEditorial = () => {
               <ArrowUpRight className="w-4 h-4 text-patagonia-gold" />
             </button>
           </div>
-        </motion.div>
+        </div>
 
         {/* Capabilities Editorial Strip */}
-        <motion.nav 
-          className="hero-capabilities-strip"
-          aria-label="Capacidades y Servicios Principales"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        <nav 
+          ref={capabilitiesRef}
+          className="hero-front-capabilities"
+          aria-label="Capacidades del Estudio"
         >
-          <span className="hero-capabilities-heading">Capacidades del Estudio</span>
-          <div className="hero-capabilities-grid">
+          <span className="hero-cap-label">Capacidades del Estudio</span>
+          <div className="hero-cap-links">
             {capabilities.map((cap, idx) => (
               <span key={cap.path} className="inline-flex items-center gap-3">
-                <Link to={cap.path} className="hero-capability-link">
+                <Link to={cap.path} className="hero-cap-a">
                   <span>{cap.name}</span>
-                  <ArrowUpRight className="hero-capability-arrow w-3.5 h-3.5" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-patagonia-cyan opacity-70" />
                 </Link>
                 {idx < capabilities.length - 1 && (
-                  <span className="hero-capability-separator" aria-hidden="true">•</span>
+                  <span className="hero-cap-sep" aria-hidden="true">•</span>
                 )}
               </span>
             ))}
           </div>
-        </motion.nav>
+        </nav>
       </div>
-
-      {/* Footer Ticker / Status Bar */}
-      <footer className="hero-footer-bar">
-        <div className="hero-status-indicator">
-          <span className="hero-status-dot" />
-          <span>Disponibilidad Q4 2026: 2 cupos de proyecto</span>
-        </div>
-
-        <a 
-          href="#proyectos-seleccionados" 
-          onClick={handleScrollToProjects}
-          className="hero-scroll-cue"
-        >
-          <span>Explorar Selección</span>
-          <ArrowDown className="w-3.5 h-3.5 animate-bounce" />
-        </a>
-      </footer>
     </section>
   );
 };

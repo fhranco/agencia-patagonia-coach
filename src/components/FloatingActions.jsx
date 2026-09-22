@@ -49,6 +49,42 @@ const FloatingActions = () => {
     }
   };
 
+  if (isHomePath) {
+    return (
+      <>
+        <LeadAgent isOpen={showChat} onClose={() => setShowChat(false)} />
+        <AnimatePresence>
+          {showAudit && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[1000] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-12 overflow-y-auto"
+            >
+              <motion.div
+                initial={{ scale: 0.9, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.9, y: 20 }}
+                className="relative w-full max-w-6xl"
+              >
+                <button 
+                  onClick={() => setShowAudit(false)}
+                  aria-label="Cerrar Diagnóstico Digital"
+                  className="fixed top-8 right-8 z-[1100] w-12 h-12 bg-white/10 backdrop-blur-3xl rounded-full flex items-center justify-center text-white border border-white/20 hover:bg-patagonia-red transition-all group"
+                >
+                  <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
+                </button>
+                <div className="bg-patagonia-surface/5 rounded-[4rem] border border-white/5 shadow-2xl overflow-hidden">
+                  <DigitalDiagnostic isModal={true} />
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </>
+    );
+  }
+
   return (
     <>
       {/* 0. Full Screen Mobile Overlay when Menu is Open */}
