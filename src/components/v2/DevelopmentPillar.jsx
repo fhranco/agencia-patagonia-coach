@@ -27,50 +27,59 @@ const DevelopmentPillar = () => {
       const mm = gsap.matchMedia();
 
       // =====================================================================
-      // DESKTOP KINETIC CHOREOGRAPHY (Pinned scrub scene — 6 Stages)
-      // Duration calibrated to +=185% for zero dead scroll space.
+      // DESKTOP KINETIC CHOREOGRAPHY (FASE 03.3B — Exact Timeline Calibration)
+      // Total duration calibrated to +=160% for crisp, uninterrupted momentum.
+      // Timeline normalized to 10s:
+      // 0.00 - 1.20 (0% - 12%):   Entrada / Estructura
+      // 1.20 - 3.00 (12% - 30%):  Arquitectura
+      // 3.00 - 4.60 (30% - 46%):  Componentes
+      // 4.60 - 6.00 (46% - 60%):  Conexiones
+      // 6.00 - 7.60 (60% - 76%):  Integración
+      // 7.60 - 8.70 (76% - 87%):  Sistema Final & Settle
+      // 8.70 - 10.00 (87% - 100%): Transformación hacia Search Ready
       // =====================================================================
       mm.add("(min-width: 1024px)", () => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: rootRef.current,
             start: "top top",
-            end: "+=185%",
+            end: "+=160%",
             pin: true,
-            scrub: 0.8,
+            scrub: 0.7,
             anticipatePin: 1
           }
         });
 
         // -------------------------------------------------------------------
-        // ETAPA 01 — ESTRUCTURA: Retícula, geometría, puntos de anclaje (0.0 - 0.20)
+        // 0.00 - 1.20 (0% - 12%): ENTRADA / ESTRUCTURA
         // -------------------------------------------------------------------
         tl.fromTo(gridRef.current,
-          { opacity: 0.08, scale: 0.94 },
-          { opacity: 0.28, scale: 1, duration: 1.2, ease: "power2.out" }
+          { opacity: 0.2, scale: 0.96 },
+          { opacity: 0.35, scale: 1, duration: 1.2, ease: "power2.out" },
+          0
         )
         .fromTo(monumentalRef.current,
-          { x: 120, y: 30, scale: 0.92, opacity: 0.02 },
-          { x: -40, y: 0, scale: 1.04, opacity: 0.08, duration: 1.5, ease: "power2.out" },
-          "<0.1"
+          { x: 60, y: 20, scale: 0.95, opacity: 0.04 },
+          { x: 0, y: 0, scale: 1.04, opacity: 0.08, duration: 1.2, ease: "power2.out" },
+          0
         )
         .fromTo(contentColRef.current,
-          { x: -50, opacity: 0 },
+          { x: -40, opacity: 0 },
           { x: 0, opacity: 1, duration: 1.2, ease: "power2.out" },
-          "<0.2"
+          0
         )
         .fromTo(wireframeChassisRef.current,
-          { opacity: 0, scale: 0.92, borderColor: "rgba(56, 189, 248, 0.05)" },
-          { opacity: 1, scale: 1, borderColor: "rgba(56, 189, 248, 0.25)", duration: 1.2, ease: "power3.out" },
-          "<0.1"
+          { opacity: 0.4, scale: 0.94, borderColor: "rgba(56, 189, 248, 0.15)" },
+          { opacity: 1, scale: 1, borderColor: "rgba(56, 189, 248, 0.35)", duration: 1.2, ease: "power3.out" },
+          0
         )
 
         // -------------------------------------------------------------------
-        // ETAPA 02 — ARQUITECTURA: Bloque funcional entra desde perspectiva (0.20 - 0.40)
+        // 1.20 - 3.00 (12% - 30%): ARQUITECTURA
         // -------------------------------------------------------------------
         .fromTo(moduleArchRef.current,
           { 
-            x: 160, 
+            x: 180, 
             y: -90, 
             rotationY: -14, 
             rotationX: 8, 
@@ -79,26 +88,26 @@ const DevelopmentPillar = () => {
             filter: "blur(6px)"
           },
           { 
-            x: 40, 
-            y: -30, 
-            rotationY: -4, 
+            x: 35, 
+            y: -25, 
+            rotationY: -3, 
             rotationX: 2, 
-            scale: 0.94, 
+            scale: 0.95, 
             opacity: 1, 
             filter: "blur(0px)",
-            duration: 1.4, 
+            duration: 1.8, 
             ease: "power3.out" 
           },
-          "-=0.4"
+          1.2
         )
 
         // -------------------------------------------------------------------
-        // ETAPA 03 — COMPONENTES: Fragmento UI cruza la línea central (0.40 - 0.58)
+        // 3.00 - 4.60 (30% - 46%): COMPONENTES (Cruza la línea central)
         // -------------------------------------------------------------------
         .fromTo(moduleUiRef.current,
           { 
             x: -120, 
-            y: 130, 
+            y: 110, 
             rotationY: 14, 
             rotationX: -6, 
             scale: 0.82, 
@@ -106,34 +115,34 @@ const DevelopmentPillar = () => {
           },
           { 
             x: -30, 
-            y: 40, 
-            rotationY: 3, 
+            y: 35, 
+            rotationY: 2, 
             rotationX: -1, 
-            scale: 0.94, 
+            scale: 0.95, 
             opacity: 1, 
-            duration: 1.4, 
+            duration: 1.6, 
             ease: "power3.out" 
           },
-          "-=0.9"
+          3.0
         )
 
         // -------------------------------------------------------------------
-        // ETAPA 04 — CONEXIONES: Líneas y dependencias sincronizadas (0.58 - 0.72)
+        // 4.60 - 6.00 (46% - 60%): CONEXIONES
         // -------------------------------------------------------------------
         .fromTo(connectionSvgRef.current,
           { opacity: 0 },
-          { opacity: 1, duration: 0.6, ease: "power2.inOut" },
-          "-=0.5"
+          { opacity: 1, duration: 0.5, ease: "power2.inOut" },
+          4.6
         )
         .fromTo(connectionPathRef.current,
           { strokeDashoffset: 400 },
-          { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" },
-          "<"
+          { strokeDashoffset: 0, duration: 1.4, ease: "power2.out" },
+          4.6
         )
 
         // -------------------------------------------------------------------
-        // ETAPA 05 — INTEGRACIÓN: Piezas convergen físicamente en el chasis (0.72 - 0.86)
-        // Transformación real: las piezas se mueven y bloquean en el sistema unificado.
+        // 6.00 - 7.60 (60% - 76%): INTEGRACIÓN FÍSICA
+        // Las piezas se mueven y bloquean en el sistema unificado.
         // -------------------------------------------------------------------
         .to(moduleArchRef.current, {
           x: 0,
@@ -142,9 +151,9 @@ const DevelopmentPillar = () => {
           rotationX: 0,
           scale: 1,
           opacity: 0,
-          duration: 1.2,
+          duration: 1.4,
           ease: "expo.out"
-        })
+        }, 6.0)
         .to(moduleUiRef.current, {
           x: 0,
           y: 0,
@@ -152,74 +161,104 @@ const DevelopmentPillar = () => {
           rotationX: 0,
           scale: 1,
           opacity: 0,
-          duration: 1.2,
+          duration: 1.4,
           ease: "expo.out"
-        }, "<")
+        }, 6.0)
         .to(connectionSvgRef.current, {
           opacity: 0,
-          duration: 0.6,
+          duration: 0.8,
           ease: "power2.out"
-        }, "<0.3")
+        }, 6.2)
         .to(wireframeChassisRef.current, {
           opacity: 0,
-          duration: 0.6,
+          duration: 0.8,
           ease: "power2.out"
-        }, "<")
-
-        // Revelación del Sistema Operativo Unificado (70% viewport)
+        }, 6.2)
         .fromTo(moduleSystemRef.current,
-          { scale: 0.94, opacity: 0, y: 30 },
+          { scale: 0.94, opacity: 0, y: 25 },
           { scale: 1, opacity: 1, y: 0, duration: 1.4, ease: "expo.out" },
-          "-=1.0"
+          6.2
         )
 
         // -------------------------------------------------------------------
-        // ETAPA 06 — SISTEMA & MOMENTO WOW: Confirmación autorizada (0.86 - 0.93)
-        // Settle de 280ms, grid reacciona, telemetría operativa confirmada.
+        // 7.60 - 8.70 (76% - 87%): SISTEMA FINAL & SETTLE
         // -------------------------------------------------------------------
         .to(moduleSystemRef.current, {
           scale: 1.025,
           boxShadow: "0 40px 100px -15px rgba(0, 0, 0, 0.98), 0 0 60px rgba(56, 189, 248, 0.25)",
           duration: 0.15,
           ease: "power2.out"
-        })
+        }, 7.6)
         .to(moduleSystemRef.current, {
           scale: 1,
           boxShadow: "0 30px 80px -20px rgba(0, 0, 0, 0.95), 0 0 40px rgba(56, 189, 248, 0.12)",
           duration: 0.25,
           ease: "power3.out"
-        })
+        }, 7.75)
         .fromTo(wowSignalRef.current,
-          { opacity: 0, scale: 0.8 },
+          { opacity: 0, scale: 0.85 },
           { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" },
-          "<"
+          7.75
         )
         .to(gridRef.current, {
-          opacity: 0.35,
-          duration: 0.2,
+          opacity: 0.4,
+          duration: 0.25,
           yoyo: true,
           repeat: 1,
           ease: "power1.inOut"
-        }, "<")
+        }, 7.75)
 
         // -------------------------------------------------------------------
-        // ETAPA 07 — PREPARACIÓN SEO: Barra URL recibe foco y dirección física (0.93 - 1.0)
-        // Canvas se suaviza ligeramente; la URL bar se convierte en el puente hacia SEO.
+        // 8.70 - 10.00 (87% - 100%): TRANSFORMACIÓN HACIA SEARCH READY
+        // 1. Interfaz escala a 80-85vw e invade área textual
+        // 2. CONSTRUIR reacciona como objeto espacial y se desplaza detrás
+        // 3. Capacidades y CTA reducen protagonismo
+        // 4. Barra URL se separa físicamente, escala y avanza al centro óptico
+        // 5. Canvas inferior se atenúa
         // -------------------------------------------------------------------
-        .to(moduleSystemRef.current.querySelector('.dev-system-canvas'), {
-          opacity: 0.85,
-          filter: "brightness(0.92)",
-          duration: 0.8,
+        .to(moduleSystemRef.current, {
+          scale: 1.08,
+          x: -50,
+          duration: 1.3,
           ease: "power2.out"
-        }, "+=0.1")
-        .to(browserBarRef.current, {
-          boxShadow: "0 0 40px rgba(56, 189, 248, 0.5), inset 0 0 15px rgba(56, 189, 248, 0.15)",
-          borderColor: "rgba(56, 189, 248, 0.85)",
-          backgroundColor: "rgba(5, 7, 10, 0.98)",
-          scale: 1.03,
+        }, 8.7)
+        .to(monumentalRef.current, {
+          x: -120,
+          scale: 1.15,
+          opacity: 0.1,
+          duration: 1.3,
+          ease: "power2.out"
+        }, 8.7)
+        .to(contentColRef.current.querySelector('.dev-capabilities-wrap'), {
+          opacity: 0.25,
+          y: 15,
           duration: 1.0,
-          ease: "power2.inOut"
-        }, "<");
+          ease: "power2.out"
+        }, 8.7)
+        .to(contentColRef.current.querySelector('.dev-cta-container'), {
+          opacity: 0.3,
+          y: 15,
+          duration: 1.0,
+          ease: "power2.out"
+        }, 8.7)
+        .to(moduleSystemRef.current.querySelector('.dev-system-canvas'), {
+          opacity: 0.65,
+          filter: "brightness(0.68) contrast(1.12)",
+          duration: 1.2,
+          ease: "power2.out"
+        }, 8.7)
+        // La Barra URL se separa físicamente y toma el foco absoluto
+        .to(browserBarRef.current, {
+          y: -24,
+          scale: 1.14,
+          x: -30,
+          zIndex: 60,
+          boxShadow: "0 0 50px rgba(56, 189, 248, 0.65), 0 20px 60px rgba(0, 0, 0, 0.95)",
+          borderColor: "rgba(56, 189, 248, 0.95)",
+          backgroundColor: "rgba(11, 15, 23, 0.98)",
+          duration: 1.3,
+          ease: "power2.out"
+        }, 8.7);
 
         // -------------------------------------------------------------------
         // CURSOR PARALLAX MULTICAPA (Diferenciado por profundidad)
@@ -392,19 +431,19 @@ const DevelopmentPillar = () => {
         <div className="dev-assembly-wrapper">
           <div ref={stageRef} className="dev-assembly-stage">
             
-            {/* ETAPA 01: Wireframe Chassis & Coordinates */}
+            {/* ETAPA 01: Wireframe Chassis & PatagoniaCoach Real Identity */}
             <div ref={wireframeChassisRef} className="dev-wireframe-chassis" aria-hidden="true">
               <div className="chassis-bracket bracket-tl">
-                <span>SYS_CHASSIS // LAT -53.1638</span>
+                <span>ARQUITECTURA DIGITAL // 53°S</span>
               </div>
               <div className="chassis-bracket bracket-tr">
-                <span>RES 1920x1080</span>
+                <span>CAPA 01 // SISTEMA</span>
               </div>
               <div className="chassis-bracket bracket-bl">
-                <span>CORE_INIT_01</span>
+                <span>CORE_MODULAR // REACT</span>
               </div>
               <div className="chassis-bracket bracket-br">
-                <span>VITE_REACT_DOM</span>
+                <span>SISTEMA // MAGALLANES</span>
               </div>
               <div className="chassis-grid-lines" />
             </div>
@@ -470,9 +509,9 @@ const DevelopmentPillar = () => {
               <circle cx="360" cy="280" r="4" fill="#F59E0B" />
             </svg>
 
-            {/* ETAPA 05 & 06: Unified Operational System Window (60–80% Viewport) */}
+            {/* ETAPA 05 & 06 & 07: Unified Operational System Window */}
             <div ref={moduleSystemRef} className="dev-system-window">
-              {/* Browser Header Bar — Ready for SEO Handover (#17) */}
+              {/* Browser Header Bar — Detaches physically in 87-100% for Search Ready */}
               <div ref={browserBarRef} className="dev-browser-header">
                 <div className="dev-browser-dots">
                   <span className="dev-dot dot-red" />
@@ -484,6 +523,7 @@ const DevelopmentPillar = () => {
                 <div className="dev-browser-url-bar" id="dev-to-seo-bridge">
                   <Globe className="w-3.5 h-3.5 text-patagonia-cyan shrink-0" />
                   <span className="dev-url-text">https://patagoniacoach.cl/servicios/desarrollo-web</span>
+                  <span className="dev-url-cursor">|</span>
                   <span className="dev-url-status">SECURE • HTTPS</span>
                 </div>
               </div>
@@ -507,7 +547,7 @@ const DevelopmentPillar = () => {
                     <span>CORE WEB VITALS OPTIMIZADOS</span>
                   </div>
                   <div ref={wowSignalRef} className="dev-telemetry-item dev-wow-badge">
-                    <span className="text-patagonia-cyan font-bold">SISTEMA OPERATIVO // PRODUCCIÓN</span>
+                    <span className="text-patagonia-cyan font-bold">SISTEMA // PRODUCCIÓN</span>
                   </div>
                 </div>
               </div>

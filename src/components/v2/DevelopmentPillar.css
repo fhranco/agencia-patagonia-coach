@@ -1,6 +1,6 @@
 /* =========================================================================
    PATAGONIACOACH V2 — PILAR 01: DESARROLLO (CONSTRUIR) STYLES
-   SPATIAL ARCHITECTURE & KINETIC SYSTEM ASSEMBLY
+   SPATIAL ARCHITECTURE, CONTINUOUS TRANSITION & SEARCH READY STAGE
    ========================================================================= */
 
 .dev-pillar-root {
@@ -14,11 +14,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 1px solid rgba(56, 189, 248, 0.15);
+  border-top: 1px solid rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 35px rgba(56, 189, 248, 0.12);
 }
 
 /* =========================================================================
    1. LAYER: BACK — Technical Grid & Monumental Typography
+   Immediately visible on entry; zero dead black void.
    ========================================================================= */
 .dev-bg-grid {
   position: absolute;
@@ -26,9 +28,10 @@
   pointer-events: none;
   background-size: 60px 60px;
   background-image: 
-    linear-gradient(to right, rgba(248, 250, 252, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(248, 250, 252, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
   z-index: 1;
+  opacity: 0.22;
 }
 
 .dev-monumental-text {
@@ -41,13 +44,14 @@
   font-size: clamp(9rem, 26vw, 32rem);
   letter-spacing: -0.06em;
   text-transform: uppercase;
-  color: rgba(248, 250, 252, 0.025);
-  -webkit-text-stroke: 1px rgba(56, 189, 248, 0.04);
+  color: rgba(248, 250, 252, 0.035);
+  -webkit-text-stroke: 1px rgba(56, 189, 248, 0.06);
   line-height: 0.8;
   white-space: nowrap;
   pointer-events: none;
   z-index: 2;
   user-select: none;
+  opacity: 0.05;
   will-change: transform, opacity;
 }
 
@@ -148,6 +152,7 @@
   flex-direction: column;
   gap: 0.55rem;
   padding-top: 0.35rem;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .dev-cap-pill {
@@ -184,6 +189,7 @@
   gap: 0.6rem;
   padding-top: 0.75rem;
   position: relative;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .dev-cta-conduit {
@@ -311,6 +317,7 @@
   border-radius: 1.25rem;
   pointer-events: none;
   z-index: 3;
+  opacity: 0.4;
 }
 
 .chassis-bracket {
@@ -453,14 +460,14 @@
 }
 
 /* =========================================================================
-   ETAPA 05 & 06: UNIFIED OPERATIONAL SYSTEM WINDOW (60–80% Viewport)
+   ETAPA 05 & 06 & 07: UNIFIED OPERATIONAL SYSTEM WINDOW
    ========================================================================= */
 .dev-system-window {
   position: relative;
   width: 100%;
   max-width: 980px;
   border-radius: 1.25rem;
-  overflow: hidden;
+  overflow: visible; /* Allows URL bar to physically detach on Search Ready */
   background-color: #0B0F17;
   border: 1px solid rgba(56, 189, 248, 0.35);
   box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.95), 0 0 50px rgba(56, 189, 248, 0.1);
@@ -469,13 +476,16 @@
 }
 
 .dev-browser-header {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 1.25rem;
   padding: 0.95rem 1.5rem;
   background: rgba(5, 7, 10, 0.96);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.4s ease;
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+  z-index: 30;
 }
 
 .dev-browser-dots {
@@ -483,8 +493,9 @@
   gap: 0.5rem;
 }
 
-/* Browser URL / Search Bar (Physical link into SEO #17) */
+/* Browser URL / Search Bar (Detaches in 87-100% for Search Ready #10) */
 .dev-browser-url-bar {
+  position: relative;
   flex: 1;
   display: flex;
   align-items: center;
@@ -496,14 +507,29 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem;
   color: #E2E8F0;
-  transition: all 0.35s ease;
+  transform-origin: center center;
+  will-change: transform, box-shadow, border-color;
+  transition: background-color 0.3s ease;
 }
 
 .dev-url-text {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding: 0 0.6rem;
+  padding: 0 0.4rem;
+}
+
+.dev-url-cursor {
+  display: inline-block;
+  color: #38BDF8;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  animation: urlBlink 1s step-start infinite;
+}
+
+@keyframes urlBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .dev-url-status {
@@ -519,6 +545,9 @@
   height: clamp(320px, 50vh, 520px);
   overflow: hidden;
   background-color: #030508;
+  border-bottom-left-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  will-change: filter, opacity;
 }
 
 .dev-system-img {

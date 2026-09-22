@@ -389,19 +389,22 @@ const SelectedWork = () => {
       {/* =====================================================================
           BRIDGE ELEMENT: SELECTED WORK -> DESARROLLO (Physical Continuity)
           The frame of REMAG extends, lines multiply, forming the initial geometry of CONSTRUIR.
-          Zero dead black void. Continuous architectural conduit.
+          Continuous architectural conduit with PatagoniaCoach real identity.
           ===================================================================== */}
       <div className="selected-to-dev-bridge" aria-hidden="true">
+        <div className="bridge-grid-matrix" />
         <div className="bridge-vertical-guide guide-left" />
+        <div className="bridge-vertical-guide guide-center-left" />
+        <div className="bridge-vertical-guide guide-center-right" />
         <div className="bridge-vertical-guide guide-right" />
         <div className="bridge-center-conduit">
           <div className="bridge-telemetry-badge">
             <span className="bridge-status-dot" />
-            <span className="bridge-telemetry-text">CONDUIT // TRANSITION_VECTOR [MAGALLANES 53°S]</span>
+            <span className="bridge-telemetry-text">ARQUITECTURA DIGITAL // DESARROLLO 53°S</span>
           </div>
           <div className="bridge-laser-spine" />
           <div className="bridge-crosshair">
-            <span className="bridge-coord-text">SEC_02 // SYSTEM_BUILD_INIT</span>
+            <span className="bridge-coord-text">CAPA 01 // SISTEMA</span>
           </div>
         </div>
       </div>
