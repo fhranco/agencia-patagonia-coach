@@ -5,6 +5,7 @@ import SeoPillar from '../components/v2/SeoPillar';
 import IaPillar from '../components/v2/IaPillar';
 import MethodologySection from '../components/v2/MethodologySection';
 import TerritorySection from '../components/v2/TerritorySection';
+import ProofSection from '../components/v2/ProofSection';
 import SEO from '../components/SEO';
 
 const MainLanding = () => {
@@ -55,6 +56,7 @@ const MainLanding = () => {
             05 — PILAR 03: INTELIGENCIA ARTIFICIAL (Potenciar — Orquestación & Procesos)
             06 — METODOLOGÍA (De la Estrategia a la Ejecución — Ruta de Trabajo)
             07 — PATAGONIA (Territorio / Identidad / Perspectiva 53°S)
+            08 — EVIDENCIA (Registro de Trabajo Real // AGM, Ruta 9, Harris, REMAG)
             ========================================================================= */}
         <HeroEditorial />
         <SelectedWork />
@@ -63,6 +65,7 @@ const MainLanding = () => {
         <IaPillar />
         <MethodologySection />
         <TerritorySection />
+        <ProofSection />
       </main>
     </>
   );
