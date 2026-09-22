@@ -310,7 +310,7 @@
   min-height: clamp(450px, 62vh, 680px);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   transform-style: preserve-3d;
   will-change: transform;
 }
@@ -471,7 +471,7 @@
 .dev-system-window {
   position: relative;
   width: 100%;
-  max-width: 1080px;
+  max-width: 100%;
   border-radius: 1.25rem;
   overflow: visible; /* Allows URL bar to physically detach on Search Ready */
   background-color: #0B0F17;
