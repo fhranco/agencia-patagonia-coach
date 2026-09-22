@@ -253,6 +253,9 @@ const DigitalDiagnostic = ({ isModal = false }) => {
   const [dimensionScores, setDimensionScores] = useState({ flow: 0, comm: 0, sales: 0, scale: 0 });
   const [answers, setAnswers] = useState([]);
   const [leadData, setLeadData] = useState({ nombre: '', email: '', whatsapp: '' });
+  const [consent, setConsent] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
+  const [isPersisted, setIsPersisted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSectorSelect = (sector) => {
@@ -317,20 +320,51 @@ const DigitalDiagnostic = ({ isModal = false }) => {
 
   const analyses = getDimensionAnalyses();
 
-  const handleLeadSubmit = (e) => {
+  const handleLeadSubmit = async (e) => {
     e.preventDefault();
+    if (!consent) return;
+
     setIsSubmitting(true);
     setStep('processing');
     
-    // Process local diagnosis result without failing on non-existent backend
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setStep('result');
-    }, 1200);
+    try {
+      const payload = {
+        name: leadData.nombre,
+        email: leadData.email,
+        phone: leadData.whatsapp,
+        sector: currentSector,
+        niche: currentNiche?.name || currentNiche?.id,
+        score: Math.round(scorePercentage),
+        answers: answers,
+        consent: true,
+        consent_timestamp: new Date().toISOString(),
+        website_hp: honeypot,
+        page: window.location.pathname,
+        source: 'digital-diagnostic',
+        cta: 'diagnostic-submit'
+      };
+
+      const res = await fetch('/api/diagnostic', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        setIsPersisted(true);
+      }
+    } catch (err) {
+      console.warn('[DigitalDiagnostic] Persistence note:', err);
+    } finally {
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setStep('result');
+      }, 800);
+    }
   };
 
   const getSectorLabels = () => {
-    if (currentSector === 'tourism') return { label: "Turismo de Élite", color: "text-[#FF7A18]" };
+    if (currentSector === 'tourism') return { label: "Turismo & Experiencias", color: "text-[#FF7A18]" };
     if (currentSector === 'industry') return { label: "Industria & Logística", color: "text-patagonia-red" };
     return { label: "Retail & B2B", color: "text-patagonia-cyan" };
   };
@@ -428,8 +462,8 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                   <Loader2 className="w-10 h-10 text-patagonia-gold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin" />
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-xl font-heading text-white italic">Transmitiendo radiografía operativa...</h4>
-                  <p className="text-patagonia-gold/60 text-xs animate-pulse">Generando reporte extendido de 20+ páginas</p>
+                  <h4 className="text-xl font-heading text-white italic">Calculando índice de madurez digital...</h4>
+                  <p className="text-patagonia-gold/60 text-xs">Estructurando radiografía dimensional y hoja de ruta táctica</p>
                 </div>
               </motion.div>
             )}
@@ -441,12 +475,38 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                   <h3 className="text-4xl font-heading font-light text-white leading-tight">Auditoría Finalizada.</h3>
                   <p className="text-patagonia-secondary max-w-md mx-auto font-light italic">Sus respuestas han sido procesadas. Ingrese sus datos para ver el informe dimensional y su hoja de ruta táctica.</p>
                 </div>
-                <form onSubmit={handleLeadSubmit} className="max-w-md mx-auto space-y-4">
+                <form onSubmit={handleLeadSubmit} className="max-w-md mx-auto space-y-4 text-left">
+                  {/* Honeypot */}
+                  <input 
+                    type="text" 
+                    name="website_hp" 
+                    value={honeypot} 
+                    onChange={e => setHoneypot(e.target.value)} 
+                    tabIndex={-1} 
+                    autoComplete="off" 
+                    className="hidden" 
+                    aria-hidden="true" 
+                  />
                   <input required type="text" placeholder="Nombre completo" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none text-white focus:border-patagonia-gold" onChange={e => setLeadData({...leadData, nombre: e.target.value})} />
                   <input required type="email" placeholder="Email corporativo" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none text-white focus:border-patagonia-gold" onChange={e => setLeadData({...leadData, email: e.target.value})} />
                   <input required type="tel" placeholder="WhatsApp" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none text-white focus:border-patagonia-gold" onChange={e => setLeadData({...leadData, whatsapp: e.target.value})} />
-                  <button disabled={isSubmitting} data-cta="diagnostic-submit" className="btn-primary w-full py-5 text-[10px] tracking-[0.4em] font-black uppercase disabled:opacity-50">
-                    {isSubmitting ? "Procesando Diagnóstico..." : "Ver Resultados & Hoja de Ruta"}
+                  
+                  {/* Consent checkbox */}
+                  <label className="flex items-start gap-3 cursor-pointer p-2 rounded-xl bg-white/[0.02] border border-white/5">
+                    <input 
+                      type="checkbox" 
+                      required 
+                      checked={consent} 
+                      onChange={e => setConsent(e.target.checked)} 
+                      className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-patagonia-gold focus:ring-patagonia-gold shrink-0 cursor-pointer" 
+                    />
+                    <span className="text-[11px] text-patagonia-secondary font-light leading-relaxed">
+                      Acepto que PatagoniaCoach procese mis datos para registrar esta evaluación y coordinar la asesoría técnica.
+                    </span>
+                  </label>
+
+                  <button disabled={isSubmitting || !consent} data-cta="diagnostic-submit" className="btn-primary w-full py-5 text-[10px] tracking-[0.4em] font-black uppercase disabled:opacity-50 cursor-pointer">
+                    {isSubmitting ? "Registrando Diagnóstico..." : "Ver Resultados & Hoja de Ruta"}
                   </button>
                 </form>
               </motion.div>
@@ -454,12 +514,14 @@ const DigitalDiagnostic = ({ isModal = false }) => {
 
             {step === 'result' && (
               <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-12">
-                {/* Indicador de Análisis Local */}
-                <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center gap-4">
+                {/* Indicador de Persistencia / Análisis */}
+                <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center gap-4 text-left">
                   <CheckCircle2 className="w-6 h-6 flex-shrink-0 text-emerald-400" />
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-white">Diagnóstico Calculado en Tiempo Real</p>
-                    <p className="text-xs text-patagonia-secondary">Radiografía dimensional lista. Puedes coordinar una sesión directa para su implementación.</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-white">
+                      {isPersisted ? "Diagnóstico guardado correctamente" : "Diagnóstico Calculado en Tiempo Real"}
+                    </p>
+                    <p className="text-xs text-patagonia-secondary">Radiografía dimensional y roadmap listos. Puedes coordinar una sesión directa para su implementación.</p>
                   </div>
                 </div>
 

@@ -62,10 +62,43 @@ const ConversionSection = () => {
     contacto: '',
     mensaje: ''
   });
+  const [consent, setConsent] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!consent) return;
+
+    setIsSubmitting(true);
+
+    const isPhone = formData.contacto.startsWith('+') || /^[0-9\s-]+$/.test(formData.contacto);
+    const isEmail = formData.contacto.includes('@');
+
+    try {
+      await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.nombre,
+          company: formData.empresa,
+          phone: isPhone ? formData.contacto : '',
+          email: isEmail ? formData.contacto : '',
+          service_interest: `${selectedOpt.label} (${selectedOpt.category})`,
+          message: formData.mensaje,
+          consent: true,
+          consent_timestamp: new Date().toISOString(),
+          website_hp: honeypot,
+          source: 'home-conversion-section',
+          page: window.location.pathname,
+          cta: 'contact-submit'
+        })
+      });
+    } catch (err) {
+      console.warn('[ConversionSection] Leads API note:', err);
+    }
+
     // Prepara mensaje de WhatsApp directo
     const msg = (
       `Hola PatagoniaCoach, me interesa evaluar un proyecto.\n` +
@@ -76,6 +109,7 @@ const ConversionSection = () => {
       `• Mensaje: ${formData.mensaje || 'Solicito coordinar una llamada de diagnóstico.'}`
     );
     window.open(getWhatsAppUrl(msg), '_blank');
+    setIsSubmitting(false);
     setSubmitted(true);
   };
 
@@ -148,6 +182,18 @@ const ConversionSection = () => {
           {/* Direct Form */}
           <div className="conversion-form-wrap">
             <form onSubmit={handleSubmit} className="conversion-form">
+              {/* Honeypot */}
+              <input 
+                type="text" 
+                name="website_hp" 
+                value={honeypot} 
+                onChange={(e) => setHoneypot(e.target.value)} 
+                tabIndex={-1} 
+                autoComplete="off" 
+                className="hidden" 
+                aria-hidden="true" 
+              />
+
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="input-nombre" className="form-label">Tu Nombre *</label>
@@ -210,13 +256,31 @@ const ConversionSection = () => {
                 />
               </div>
 
+              {/* Consent checkbox */}
+              <div className="form-group">
+                <label className="flex items-start gap-2.5 cursor-pointer text-left py-1">
+                  <input 
+                    type="checkbox" 
+                    required 
+                    checked={consent} 
+                    onChange={(e) => setConsent(e.target.checked)} 
+                    className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-patagonia-gold focus:ring-patagonia-gold shrink-0 cursor-pointer" 
+                  />
+                  <span className="text-[11px] text-patagonia-secondary leading-tight">
+                    Acepto que PatagoniaCoach procese mis datos para coordinar la llamada y contacto comercial.
+                  </span>
+                </label>
+              </div>
+
               <div className="form-actions">
                 <button 
                   type="submit" 
-                  className="conversion-submit-btn"
+                  disabled={isSubmitting || !consent}
+                  className="conversion-submit-btn disabled:opacity-50 cursor-pointer"
                   id="btn-conversar-proyecto"
+                  data-cta="contact-submit"
                 >
-                  <span>Hablemos de Tu Proyecto</span>
+                  <span>{isSubmitting ? 'Registrando...' : 'Hablemos de Tu Proyecto'}</span>
                   <span className="submit-icon-wrap">
                     <ArrowUpRight className="w-4 h-4" />
                   </span>
