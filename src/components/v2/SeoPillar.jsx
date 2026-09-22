@@ -546,14 +546,14 @@ const SeoPillar = () => {
               {/* Real-time Status Badge */}
               <div ref={visibilityBadgeRef} className="seo-visibility-badge">
                 <span className="seo-badge-dot" />
-                <span>ENTIDAD IDENTIFICADA // COMPRENSIBLE</span>
+                <span>CONTEXTO ESTABLECIDO</span>
               </div>
 
-              {/* PRE-IA INTENTION PACKET (Stage 08: Prepares Input for Pilar IA) */}
+              {/* INTENTION PACKET (Stage 08: Prepares Input for Pilar IA) */}
               <div ref={packetRef} className="seo-intention-packet" id="seo-to-ia-packet">
                 <div className="packet-header">
                   <Sparkles className="w-3.5 h-3.5 text-patagonia-gold" />
-                  <span>PAQUETE DE INTENCIÓN // PRE-IA</span>
+                  <span>INTENCIÓN ESTRUCTURADA</span>
                 </div>
                 <div className="packet-body">
                   <span>Consulta: "servicios digitales en punta arenas"</span>
