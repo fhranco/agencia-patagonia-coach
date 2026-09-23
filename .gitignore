@@ -43,3 +43,4 @@ scratch/
 ngrok
 *.tar.gz
 
+.reference/
