@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Layout, Rocket, Shield, Globe, ArrowRight, Code } from 'lucide-react';
+import { Layout, Rocket, Shield, Globe, ArrowRight, Code, Camera } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DigitalDiagnostic from '../components/DigitalDiagnostic';
@@ -18,11 +18,12 @@ const DesarrolloWeb = () => {
       { "@type": "City", "name": "Puerto Natales" },
       { "@type": "AdministrativeArea", "name": "Magallanes" }
     ],
-    "description": "Desarrollo de ecosistemas web de alta fidelidad. Especialistas en Next.js, Headless CMS y optimización para motores generativos (GEO) en la Patagonia.",
+    "description": "Desarrollo de ecosistemas web de alta fidelidad. Especialistas en Next.js, Headless CMS, Tours 360 y optimización para motores generativos (GEO) en la Patagonia.",
     "knowsAbout": [
       "Desarrollo Web Full-stack",
       "Next.js & React",
       "Arquitectura Jamstack",
+      "Tours Virtuales 360",
       "SEO Técnico",
       "Optimización de Performance Web"
     ]
@@ -32,7 +33,7 @@ const DesarrolloWeb = () => {
     <div className="bg-patagonia-black text-patagonia-white min-h-screen">
       <SEO 
         title="Desarrollo Web Corporativo | PatagoniaCoach: Arquitectura de Alto Rendimiento"
-        description="Diseñamos ecosistemas web que proyectan autoridad. Desarrollo web profesional en Punta Arenas optimizado para conversión, SEO y velocidad extrema."
+        description="Diseñamos ecosistemas web que proyectan autoridad. Desarrollo web profesional en Punta Arenas optimizado para conversión, Tours 360, SEO y velocidad extrema."
         schema={schema}
       />
       <Navbar />
@@ -71,7 +72,7 @@ const DesarrolloWeb = () => {
           </h2>
           
           <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto font-light leading-relaxed mb-16 px-4">
-            No creamos simples sitios web; <span className="text-white font-normal">construimos activos digitales de alto rendimiento</span> que funcionan como herramientas de venta ininterrumpidas. Diseño de inmersión para marcas que lideran.
+            No creamos simples sitios web; <span className="text-white font-normal">construimos activos digitales de alto rendimiento</span> que funcionan como herramientas de venta ininterrumpidas. Diseño de inmersión para marcas que lideran en Magallanes.
           </p>
           
           <div className="flex justify-center">
@@ -93,24 +94,24 @@ const DesarrolloWeb = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
+                icon: Globe,
+                title: "Sitios Corporativos de Alto Rendimiento",
+                desc: "Plataformas web construidas en React y Next.js con carga ultrarrápida, diseño a medida y optimización extrema para posicionamiento orgánico en Google y motores de IA."
+              },
+              {
+                icon: Camera,
+                title: "Tours Virtuales 360 & Digitalización Inmersiva",
+                desc: "Fotografía y digitalización espacial 3D interactiva para hoteles, lodges de lujo, instalaciones portuarias e industrias en Magallanes. Experiencia inmersiva que multiplica la confianza y las reservas directas."
+              },
+              {
                 icon: Layout,
-                title: "Tiendas Virtuales (E-commerce)",
-                desc: "Plataformas de venta online robustas (Shopify Headless, WooCommerce) optimizadas para alta conversión, gestión de inventario sincronizada y pasarelas de pago seguras. Su negocio abierto 24/7."
+                title: "Comercio Electrónico & Plataformas B2B",
+                desc: "Tiendas online robustas (Shopify Headless, WooCommerce) optimizadas para alta conversión, gestión de inventario sincronizada y pasarelas de pago seguras. Su negocio abierto 24/7."
               },
               {
                 icon: Code,
-                title: "Sistemas B2B a Medida",
-                desc: "Desarrollo de software desde cero para digitalizar los procesos operativos únicos de su empresa. Intranets corporativas, sistemas de reservas complejos y paneles de administración exclusivos."
-              },
-              {
-                icon: Rocket,
-                title: "Aplicaciones Web Pro (PWA)",
-                desc: "Plataformas híbridas que funcionan como una app nativa en el teléfono de su cliente. Permiten navegación offline, notificaciones push y máxima velocidad sin la fricción de descargar desde una App Store."
-              },
-              {
-                icon: Globe,
-                title: "Sitios Corporativos Dinámicos",
-                desc: "Páginas web de alto impacto visual (Lujo Silencioso) equipadas con herramientas especiales: calculadoras de presupuesto, integración de Tours 360, cotizadores en tiempo real y chatbots impulsados por IA."
+                title: "Sistemas & Software a Medida",
+                desc: "Desarrollo de software y aplicaciones web para digitalizar procesos operativos únicos: paneles de administración, sistemas de reservas y conexiones API seguras."
               }
             ].map((f, i) => (
               <div key={i} className="group p-12 bg-patagonia-surface/20 border border-white/5 rounded-[3rem] hover:border-patagonia-gold/20 transition-all duration-700">

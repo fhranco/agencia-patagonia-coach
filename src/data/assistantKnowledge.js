@@ -49,13 +49,13 @@ export const ASSISTANT_KNOWLEDGE = {
     },
     {
       title: "IA Generativa Visual",
-      path: "/servicios/ia-generativa-visual",
+      path: "/servicios/automatizacion-con-ia",
       description: "Producción visual y conceptual asistida por modelos generativos para catálogos y comunicación corporativa.",
       keywords: ["visual", "imagenes", "fotografia ia", "generativa"]
     },
     {
       title: "Tours Virtuales 360",
-      path: "/servicios/tours-virtuales-360",
+      path: "/servicios/desarrollo-web",
       description: "Digitalización espacial inmersiva para hotelería, turismo, retail e industria en la Patagonia.",
       keywords: ["360", "tour virtual", "inmersivo", "hoteleria 360", "matterport"]
     },

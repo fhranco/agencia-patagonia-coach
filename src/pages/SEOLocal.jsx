@@ -31,8 +31,8 @@ const SEOLocal = () => {
   return (
     <div className="bg-patagonia-black text-patagonia-white min-h-screen">
       <SEO 
-        title="SEO Local en Punta Arenas | PatagoniaCoach: Dominio del Mercado Regional"
-        description="Capture la demanda de Magallanes. Expertos en posicionamiento web y Google Business Profile para empresas líderes en Punta Arenas y la Patagonia."
+        title="SEO Local & GEO en Magallanes y Punta Arenas | PatagoniaCoach"
+        description="Capture la demanda de Magallanes y Punta Arenas. Expertos en posicionamiento web, Google Maps, SEO Local y GEO para empresas en la Patagonia."
         schema={schema}
       />
       <Navbar />

@@ -399,9 +399,9 @@ const DevelopmentPillar = () => {
               <span>Aplicaciones Web Pro & PWA</span>
             </Link>
 
-            <Link to="/servicios/creacion-paginas-web-punta-arenas" className="dev-cap-pill">
+            <Link to="/servicios/desarrollo-web" className="dev-cap-pill">
               <Globe className="w-3.5 h-3.5 text-patagonia-cyan shrink-0" />
-              <span>Plataformas Digitales Punta Arenas</span>
+              <span>Plataformas Digitales & Tours 360</span>
             </Link>
           </div>
 

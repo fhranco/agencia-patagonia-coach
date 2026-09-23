@@ -292,8 +292,8 @@ const SelectedWork = () => {
             </div>
 
             <div className="agm-actions">
-              <Link to="/servicios/seo-local-punta-arenas" data-cta="service-seo" className="btn-scene-primary">
-                <span>Ver SEO Punta Arenas</span>
+              <Link to="/servicios/seo-local-magallanes" data-cta="service-seo" className="btn-scene-primary">
+                <span>Ver SEO + GEO Magallanes</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
 

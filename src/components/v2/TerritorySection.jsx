@@ -22,7 +22,7 @@ const TERRITORY_NODES = [
     name: "PUNTA ARENAS",
     coords: "53°09′S 70°55′W",
     role: "Servicios Corporativos & Operación Regional",
-    path: "/zonas/punta-arenas"
+    path: "/zonas/magallanes"
   },
   {
     id: "puerto-natales",

@@ -27,7 +27,24 @@ const currentDate = new Date().toISOString().split('T')[0];
 let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 
-const REDIRECT_ROUTES = new Set(['/ia', '/marketing', '/consultoria', '/academia']);
+const REDIRECT_ROUTES = new Set([
+  '/ia',
+  '/marketing',
+  '/consultoria',
+  '/servicios/academia',
+  '/zonas/punta-arenas',
+  '/servicios/creacion-paginas-web-punta-arenas',
+  '/servicios/tours-virtuales-360',
+  '/servicios/seo-local-punta-arenas',
+  '/servicios/automatizacion-ia-empresas',
+  '/servicios/inteligencia-artificial-punta-arenas',
+  '/servicios/ia-generativa-visual',
+  '/servicios/marketing-digital-punta-arenas',
+  '/servicios/manejo-redes-sociales-punta-arenas',
+  '/servicios/videos-redes-sociales-punta-arenas',
+  '/servicios/creacion-reels-punta-arenas',
+  '/servicios/fotografia-para-redes-sociales'
+]);
 
 for (const [route, config] of Object.entries(SEO_CONFIG)) {
   if (REDIRECT_ROUTES.has(route) || config.redirect) {

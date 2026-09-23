@@ -9,11 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const capabilities = [
   { name: 'Desarrollo Web Pro', path: '/servicios/desarrollo-web' },
-  { name: 'Inteligencia Artificial', path: '/servicios/automatizacion-con-ia' },
+  { name: 'IA & Automatización', path: '/servicios/automatizacion-con-ia' },
   { name: 'SEO Local & GEO', path: '/servicios/seo-local-magallanes' },
-  { name: 'Contenido y Medios', path: '/servicios/comunicacion-digital' },
-  { name: 'Automatización B2B', path: '/servicios/automatizacion-ia-empresas' },
-  { name: 'Estrategia Digital', path: '/servicios/consultoria-transformacion-digital' },
+  { name: 'Comunicación Digital', path: '/servicios/comunicacion-digital' },
+  { name: 'Consultoría Digital', path: '/servicios/consultoria-transformacion-digital' },
+  { name: 'Academia', path: '/academia' },
 ];
 
 const HeroEditorial = () => {

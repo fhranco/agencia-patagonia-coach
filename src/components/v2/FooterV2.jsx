@@ -61,148 +61,94 @@ const FooterV2 = () => {
           <div className="footer-nav-col">
             <h4 className="footer-col-title">
               <Layers className="w-3.5 h-3.5 text-patagonia-cyan" />
-              <span>SERVICIOS PRINCIPALES</span>
+              <span>SERVICIOS</span>
             </h4>
             <ul className="footer-links-list">
               <li>
                 <Link to="/servicios/desarrollo-web" data-cta="service-web" className="footer-nav-link">
-                  <span>Desarrollo Web Pro</span>
+                  <span>Desarrollo Web</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
                 <Link to="/servicios/seo-local-magallanes" data-cta="service-seo" className="footer-nav-link">
-                  <span>SEO Local & GEO Magallanes</span>
+                  <span>SEO + GEO Magallanes</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
                 <Link to="/servicios/automatizacion-con-ia" data-cta="service-ai" className="footer-nav-link">
-                  <span>Automatización con IA</span>
+                  <span>IA & Automatización</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/aplicaciones-web-pro" data-cta="service-apps" className="footer-nav-link">
-                  <span>Aplicaciones Web & Software</span>
+                <Link to="/servicios/comunicacion-digital" data-cta="service-comm" className="footer-nav-link">
+                  <span>Comunicación Digital</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
                 <Link to="/servicios/consultoria-transformacion-digital" data-cta="service-consulting" className="footer-nav-link">
-                  <span>Consultoría & Diagnóstico</span>
+                  <span>Consultoría Digital</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
-                <Link to="/servicios/ia-generativa-visual" data-cta="service-iavisual" className="footer-nav-link">
-                  <span>IA Visual Corporativa</span>
-                  <ArrowUpRight className="link-arrow" />
-                </Link>
-              </li>
-              <li>
-                <Link to="/servicios/tours-virtuales-360" data-cta="service-tours" className="footer-nav-link">
-                  <span>Tours Virtuales 360°</span>
+                <Link to="/servicios/aplicaciones-web-pro" data-cta="service-apps" className="footer-nav-link opacity-75">
+                  <span>Aplicaciones Web Pro</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 2: Regional Solutions (B2B Local SEO) */}
+          {/* Column 2: Territories */}
           <div className="footer-nav-col">
             <h4 className="footer-col-title">
-              <Search className="w-3.5 h-3.5 text-patagonia-gold" />
-              <span>SOLUCIONES LOCALES</span>
+              <MapPin className="w-3.5 h-3.5 text-patagonia-gold" />
+              <span>TERRITORIO</span>
             </h4>
             <ul className="footer-links-list">
               <li>
-                <Link to="/servicios/seo-local-punta-arenas" data-cta="service-seo" className="footer-nav-link">
-                  <span>SEO Local Punta Arenas</span>
-                  <ArrowUpRight className="link-arrow" />
-                </Link>
-              </li>
-              <li>
-                <Link to="/servicios/creacion-paginas-web-punta-arenas" data-cta="service-web" className="footer-nav-link">
-                  <span>Creación Páginas Web Punta Arenas</span>
-                  <ArrowUpRight className="link-arrow" />
-                </Link>
-              </li>
-              <li>
-                <Link to="/servicios/marketing-digital-punta-arenas" data-cta="service-marketing" className="footer-nav-link">
-                  <span>Marketing Digital Magallanes</span>
-                  <ArrowUpRight className="link-arrow" />
-                </Link>
-              </li>
-              <li>
-                <Link to="/servicios/manejo-redes-sociales-punta-arenas" data-cta="service-social" className="footer-nav-link">
-                  <span>Manejo de Redes Sociales</span>
-                  <ArrowUpRight className="link-arrow" />
-                </Link>
-              </li>
-              <li>
-                <Link to="/servicios/videos-redes-sociales-punta-arenas" data-cta="service-video" className="footer-nav-link">
-                  <span>Videos para Redes Sociales</span>
-                  <ArrowUpRight className="link-arrow" />
-                </Link>
-              </li>
-              <li>
-                <Link to="/servicios/creacion-reels-punta-arenas" data-cta="service-reels" className="footer-nav-link">
-                  <span>Creación de Reels</span>
-                  <ArrowUpRight className="link-arrow" />
-                </Link>
-              </li>
-              <li>
-                <Link to="/servicios/fotografia-para-redes-sociales" data-cta="service-photo" className="footer-nav-link">
-                  <span>Fotografía Profesional B2B</span>
-                  <ArrowUpRight className="link-arrow" />
-                </Link>
-              </li>
-              <li>
-                <Link to="/servicios/automatizacion-ia-empresas" data-cta="service-ai" className="footer-nav-link">
-                  <span>Agentes de IA para Empresas</span>
-                  <ArrowUpRight className="link-arrow" />
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Territories */}
-          <div className="footer-nav-col">
-            <h4 className="footer-col-title">
-              <MapPin className="w-3.5 h-3.5 text-patagonia-cyan" />
-              <span>COBERTURA TERRITORIAL</span>
-            </h4>
-            <ul className="footer-links-list">
-              <li>
-                <Link to="/zonas/punta-arenas" data-cta="zone-punta-arenas" className="footer-nav-link">
-                  <span>Punta Arenas • 53°S</span>
+                <Link to="/zonas/magallanes" data-cta="zone-magallanes" className="footer-nav-link">
+                  <span>Magallanes (Base Regional)</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
                 <Link to="/zonas/puerto-natales" data-cta="zone-puerto-natales" className="footer-nav-link">
-                  <span>Puerto Natales & Torres del Paine</span>
+                  <span>Puerto Natales</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
               <li>
                 <Link to="/zonas/tierra-del-fuego" data-cta="zone-tierra-del-fuego" className="footer-nav-link">
-                  <span>Tierra del Fuego & Porvenir</span>
+                  <span>Tierra del Fuego</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
               </li>
-              <li>
-                <Link to="/zonas/magallanes" data-cta="zone-magallanes" className="footer-nav-link">
-                  <span>Región de Magallanes Completa</span>
-                  <ArrowUpRight className="link-arrow" />
-                </Link>
-              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Formación */}
+          <div className="footer-nav-col">
+            <h4 className="footer-col-title">
+              <Globe className="w-3.5 h-3.5 text-patagonia-cyan" />
+              <span>FORMACIÓN</span>
+            </h4>
+            <ul className="footer-links-list">
               <li>
                 <Link to="/academia" data-cta="service-academia" className="footer-nav-link">
                   <span>Academia PatagoniaCoach</span>
                   <ArrowUpRight className="link-arrow" />
                 </Link>
+              </li>
+              <li>
+                <a href="#diagnostic" data-cta="nav-diagnostic" className="footer-nav-link">
+                  <span>Diagnóstico Digital</span>
+                  <ArrowUpRight className="link-arrow" />
+                </a>
               </li>
             </ul>
           </div>
@@ -211,7 +157,7 @@ const FooterV2 = () => {
           <div className="footer-nav-col footer-contact-col">
             <h4 className="footer-col-title">
               <Phone className="w-3.5 h-3.5 text-patagonia-gold" />
-              <span>CONTACTO DIRECTO</span>
+              <span>CONTACTO</span>
             </h4>
             
             <div className="footer-contact-details">

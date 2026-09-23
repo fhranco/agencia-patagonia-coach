@@ -495,17 +495,17 @@ const IaPillar = () => {
                   <Bot className="w-3.5 h-3.5 text-patagonia-cyan shrink-0" />
                   <span>Automatización con IA</span>
                 </Link>
-                <Link to="/servicios/automatizacion-ia-empresas" className="ia-nav-link">
-                  <Cpu className="w-3.5 h-3.5 text-patagonia-cyan shrink-0" />
-                  <span>IA para Empresas</span>
-                </Link>
-                <Link to="/servicios/ia-generativa-visual" className="ia-nav-link">
+                <Link to="/servicios/comunicacion-digital" className="ia-nav-link">
                   <Sparkles className="w-3.5 h-3.5 text-patagonia-cyan shrink-0" />
-                  <span>IA Generativa Visual</span>
+                  <span>Comunicación Digital</span>
                 </Link>
-                <Link to="/servicios/marketing-digital-punta-arenas" className="ia-nav-link">
+                <Link to="/servicios/consultoria-transformacion-digital" className="ia-nav-link">
+                  <Cpu className="w-3.5 h-3.5 text-patagonia-cyan shrink-0" />
+                  <span>Consultoría Digital</span>
+                </Link>
+                <Link to="/servicios/desarrollo-web" className="ia-nav-link">
                   <Activity className="w-3.5 h-3.5 text-patagonia-cyan shrink-0" />
-                  <span>Marketing & Automatización</span>
+                  <span>Desarrollo Web Pro</span>
                 </Link>
               </div>
             </div>

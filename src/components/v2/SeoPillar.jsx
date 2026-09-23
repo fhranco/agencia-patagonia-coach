@@ -541,27 +541,27 @@ const SeoPillar = () => {
               <div className="seo-territory-links-grid">
                 <Link to="/servicios/seo-local-magallanes" className="seo-nav-link">
                   <MapPin className="w-3.5 h-3.5 text-patagonia-gold shrink-0" />
-                  <span>SEO Local Magallanes</span>
+                  <span>SEO + GEO Magallanes</span>
                 </Link>
-                <Link to="/servicios/seo-local-punta-arenas" className="seo-nav-link">
-                  <MapPin className="w-3.5 h-3.5 text-patagonia-gold shrink-0" />
-                  <span>SEO Punta Arenas</span>
+                <Link to="/servicios/desarrollo-web" className="seo-nav-link">
+                  <Compass className="w-3.5 h-3.5 text-patagonia-gold shrink-0" />
+                  <span>Desarrollo Web Pro</span>
                 </Link>
-                <Link to="/zonas/punta-arenas" className="seo-nav-link">
+                <Link to="/zonas/magallanes" className="seo-nav-link">
                   <Globe className="w-3.5 h-3.5 text-patagonia-gold shrink-0" />
-                  <span>Zona Punta Arenas</span>
+                  <span>Zona Magallanes</span>
                 </Link>
                 <Link to="/zonas/puerto-natales" className="seo-nav-link">
                   <Globe className="w-3.5 h-3.5 text-patagonia-gold shrink-0" />
                   <span>Zona Puerto Natales</span>
                 </Link>
-                <Link to="/zonas/magallanes" className="seo-nav-link">
-                  <Compass className="w-3.5 h-3.5 text-patagonia-gold shrink-0" />
-                  <span>Zona Magallanes</span>
-                </Link>
                 <Link to="/zonas/tierra-del-fuego" className="seo-nav-link">
                   <Compass className="w-3.5 h-3.5 text-patagonia-gold shrink-0" />
                   <span>Tierra del Fuego</span>
+                </Link>
+                <Link to="/academia" className="seo-nav-link">
+                  <Compass className="w-3.5 h-3.5 text-patagonia-gold shrink-0" />
+                  <span>Academia Digital</span>
                 </Link>
               </div>
             </div>

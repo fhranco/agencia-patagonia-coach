@@ -11,7 +11,7 @@ const IALanding = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://agenciapatagoniacoach.cl/servicios/inteligencia-artificial-punta-arenas/#service",
+    "@id": "https://agenciapatagoniacoach.cl/servicios/automatizacion-con-ia/#service",
     "name": "Evolución e Implementación de IA Corporativa",
     "provider": { "@id": "https://agenciapatagoniacoach.cl/#organization" },
     "areaServed": [
@@ -97,24 +97,24 @@ const IALanding = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
             {[
               {
-                icon: Cpu,
-                title: "1. Consultoría & Viabilidad IA",
-                desc: "Diagnóstico inicial y diseño de hoja de ruta. Analizamos sus procesos actuales para identificar exactamente dónde la IA generará el mayor Retorno de Inversión (ROI)."
+                icon: Bot,
+                title: "1. Agentes Cognitivos & Asistentes 24/7",
+                desc: "Implementación de asistentes inteligentes multicanal (WhatsApp, web y sistemas internos). Resuelven dudas complejas, califican requerimientos y atienden clientes sin descanso."
               },
               {
                 icon: Zap,
-                title: "2. Automatizaciones y Agentes",
-                desc: "Implementación de Empleados Digitales y agentes autónomos. Automatizamos flujos repetitivos (cotizaciones, reportes, reservas) reduciendo hasta un 60% la latencia operativa."
+                title: "2. Automatización de Procesos & Flujos",
+                desc: "Integración de sistemas y flujos de trabajo operativos. Automatizamos tareas repetitivas (generación de cotizaciones, reportes, gestión de inventarios y reservas) reduciendo la fricción operativa."
               },
               {
-                icon: Bot,
-                title: "3. Capacitación Corporativa",
-                desc: "A través de la Academia Patagoniacoach, formamos a sus directivos y equipos en Prompt Engineering, uso de LLMs y mentalidad IA, asegurando independencia tecnológica."
+                icon: Sparkles,
+                title: "3. IA Generativa Visual & Creativa",
+                desc: "Generación de activos visuales hiperrealistas, fotografía asistida por IA y conceptualización visual para campañas corporativas y catálogos de productos sin altos costos de producción física."
               },
               {
-                icon: Code2,
-                title: "4. Marketing Potenciado por IA",
-                desc: "No más contenido genérico. Usamos inteligencia predictiva y IA generativa para crear campañas hiper-personalizadas, captando clientes locales y globales con precisión láser."
+                icon: Cpu,
+                title: "4. Arquitectura RAG & Conexión de Datos",
+                desc: "Conectamos modelos de lenguaje avanzados con las bases de conocimiento y documentos privados de su empresa, garantizando respuestas precisas y total privacidad corporativa."
               }
             ].map((f, i) => (
               <div key={i} className="group p-12 bg-patagonia-surface/20 border border-white/5 rounded-[2.5rem] hover:border-patagonia-gold/10 transition-all duration-700">

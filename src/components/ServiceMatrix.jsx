@@ -169,7 +169,7 @@ const ServiceMatrix = () => {
     },
     {
       title: "IA Generativa Visual",
-      href: "/servicios/ia-generativa-visual",
+      href: "/servicios/automatizacion-con-ia",
       subtitle: "Generación de activos visuales inteligentes para catálogos y presencia corporativa de alto impacto.",
       solutions: [
         "Activos Fotorrealistas con Midjourney y Stable Diffusion",
@@ -184,7 +184,7 @@ const ServiceMatrix = () => {
     },
     {
       title: "Tours Virtuales 360º",
-      href: "/servicios/tours-virtuales-360",
+      href: "/servicios/desarrollo-web",
       subtitle: "Experiencias de realidad virtual 360º para empresas que buscan destacar su ubicación.",
       solutions: [
         "Captura Fotogramétrica Espacial en Resolución 8K",
