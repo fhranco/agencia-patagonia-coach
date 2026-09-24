@@ -622,7 +622,7 @@ body{margin:0;background:var(--bg);color:#8a8a8f;font-family:&quot;Geist Mono&qu
   </main>
   <footer class="site-footer">
     <div class="footer-signoff">
-      <span class="footer-signoff-name"><span data-artist-name="">PatagoniaCoach</span><span class="footer-period" aria-hidden="true">.</span></span><span class="micro">Punta Arenas · Patagonia · Chile <span class="footer-year">© 2026</span></span>
+      <span class="footer-signoff-name"><span data-artist-name="">PatagoniaCoach</span><span class="footer-period" aria-hidden="true">.</span></span><span class="micro">Punta Arenas · Chile · 53°09′S 70°55′W <span class="footer-year">© 2026</span></span>
     </div>
     <div class="footer-socials" aria-label="Enlaces y servicios">
       <span class="micro footer-socials-label">Servicios /</span>

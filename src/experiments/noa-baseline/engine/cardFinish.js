@@ -52,7 +52,7 @@ export const paintStudyBack=function(canvas,p,index){
  const title=(x,y,size=100,align='left',step=size*1.05)=>{(p.titleLines||[p.title]).forEach((line,i)=>text(line,x,y+i*step,size,ink,'Bricolage',align));};
  const label=(value,x,y)=>text(value.toUpperCase(),x,y,19,accent,'IBM Plex Mono');
  const fragment=(i,x,y,width=850)=>{const parts=p.fragments[i].split(' / ');if(parts.length>1){label(parts[0],x,y);return para(parts[1],x,y+36,width,33,43,ink);}return para(parts[0],x,y,width,34,46,ink);};
- label('PatagoniaCoach / Selected work',70,60);text(String(index+1).padStart(2,'0'),954,54,32,accent,'IBM Plex Mono','right');rule(70,112,884);
+ label('PATAGONIACOACH // ARCHIVO DE PROYECTOS',70,60);text(String(index+1).padStart(2,'0'),954,54,32,accent,'IBM Plex Mono','right');rule(70,112,884);
  switch(index){
  case 0:
   title(70,176,112);label(p.label,72,440);para(p.short,72,490,810,38,48,accent);
@@ -68,7 +68,7 @@ export const paintStudyBack=function(canvas,p,index){
   para(p.detail,70,1090,850,27,37);break;
  case 3:
   c.strokeStyle=accent;c.globalAlpha=.3;c.strokeRect(90,170,844,950);c.globalAlpha=1;
-  title(512,224,114,'center');text('PATAGONIA / ESTRATEGIA + SOFTWARE',512,505,21,accent,'IBM Plex Mono','center');
+  title(512,224,114,'center');text('SISTEMAS DIGITALES & ARQUITECTURA WEB',512,505,21,accent,'IBM Plex Mono','center');
   para(p.description,155,590,714,31,44);
   p.fragments.forEach((_,i)=>{const x=150+i*248;fragment(i,x,930,215);});break;
  case 4:
@@ -92,7 +92,7 @@ export const paintStudyBack=function(canvas,p,index){
  }
  const contentBottom=bottom;
  c.fillStyle=accent;c.beginPath();c.arc(74,1200,4,0,Math.PI*2);c.fill();
- text(p.category.toUpperCase(),96,1191,17,muted,'IBM Plex Mono');text('PATAGONIA / 2026',954,1191,17,muted,'IBM Plex Mono','right');
+ text(p.category.toUpperCase(),96,1191,17,muted,'IBM Plex Mono');text('PUNTA ARENAS · 53°09′S // 2026',954,1191,17,muted,'IBM Plex Mono','right');
  return{contentBottom,footerTop:1191};
 };
 

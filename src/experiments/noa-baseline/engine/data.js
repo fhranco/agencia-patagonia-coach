@@ -30,6 +30,7 @@ export const BIOGRAPHY = [
 
 export const STUDY_NOTES = [
   {
+    provenance: "REAL PROJECT",
     accent: "#38bdf8",
     layout: "sequence",
     label: "Movilidad & E-Commerce",
@@ -40,6 +41,7 @@ export const STUDY_NOTES = [
     detail: "Arquitectura SPA con precarga de flota y canal directo a WhatsApp."
   },
   {
+    provenance: "REAL PROJECT",
     accent: "#f59e0b",
     layout: "contrast",
     label: "Gastronomía & Marca",
@@ -50,6 +52,7 @@ export const STUDY_NOTES = [
     detail: "Optimización GEO y fichas locales con alto engagement en Magallanes."
   },
   {
+    provenance: "REAL PROJECT",
     accent: "#2dd4bf",
     layout: "manifesto",
     label: "Salud Visual & Tecnología Óptica",
@@ -60,6 +63,7 @@ export const STUDY_NOTES = [
     detail: "Catálogo estructurado con schemas semánticos de óptica y ubicación geográfica."
   },
   {
+    provenance: "REAL PROJECT",
     accent: "#10b981",
     layout: "sequence",
     label: "Economía Circular & Residuos",
@@ -70,6 +74,7 @@ export const STUDY_NOTES = [
     detail: "Portal interactivo con georreferenciación de puntos de acopio en la región."
   },
   {
+    provenance: "REAL PROJECT",
     accent: "#6366f1",
     layout: "contrast",
     label: "E-Commerce B2B Austral",
@@ -80,6 +85,7 @@ export const STUDY_NOTES = [
     detail: "Renderizado instantáneo de catálogo con arquitectura reactiva modular."
   },
   {
+    provenance: "REAL PROJECT",
     accent: "#0ea5e9",
     layout: "manifesto",
     label: "Visualización de Datos Institucional",
@@ -90,6 +96,7 @@ export const STUDY_NOTES = [
     detail: "Arquitectura analítica basada en componentes vectoriales de alto rendimiento."
   },
   {
+    provenance: "REAL INTERNAL PRODUCT",
     accent: "#ec4899",
     layout: "sequence",
     label: "SaaS de Planificación Táctica",
@@ -100,6 +107,7 @@ export const STUDY_NOTES = [
     detail: "Motor de orquestación de contenidos con sincronización en tiempo real."
   },
   {
+    provenance: "REAL INTERNAL PRODUCT",
     accent: "#f43f5e",
     layout: "contrast",
     label: "Herramienta Estratégica & Scoring",
@@ -111,6 +119,7 @@ export const STUDY_NOTES = [
   },
   // Estudios técnicos complementarios (túnel 09-16) basados en los mismos ecosistemas reales
   {
+    provenance: "REAL CAPABILITY DEMO",
     accent: "#38bdf8",
     layout: "manifesto",
     label: "Sistemas de Reservas",
@@ -121,6 +130,7 @@ export const STUDY_NOTES = [
     detail: "Respuestas API en menos de 50ms para navegación sin fricción."
   },
   {
+    provenance: "REAL CAPABILITY DEMO",
     accent: "#f59e0b",
     layout: "sequence",
     label: "SEO Local & Mapas",
@@ -131,6 +141,7 @@ export const STUDY_NOTES = [
     detail: "Indexación semántica adaptada a patrones de búsqueda turística y local."
   },
   {
+    provenance: "REAL CAPABILITY DEMO",
     accent: "#2dd4bf",
     layout: "contrast",
     label: "Catálogo Tecnológico",
@@ -141,6 +152,7 @@ export const STUDY_NOTES = [
     detail: "Diseño visual enfocado en fidelidad de producto y confianza de marca."
   },
   {
+    provenance: "REAL CAPABILITY DEMO",
     accent: "#10b981",
     layout: "sequence",
     label: "Economía Circular",
@@ -151,6 +163,7 @@ export const STUDY_NOTES = [
     detail: "Carga progresiva de mapas con soporte offline básico."
   },
   {
+    provenance: "REAL CAPABILITY DEMO",
     accent: "#6366f1",
     layout: "manifesto",
     label: "Distribución Mayorista",
@@ -161,6 +174,7 @@ export const STUDY_NOTES = [
     detail: "Flujos transaccionales resilientes ante conectividad inestable."
   },
   {
+    provenance: "REAL CAPABILITY DEMO",
     accent: "#0ea5e9",
     layout: "contrast",
     label: "Indicadores Regionales",
@@ -171,6 +185,7 @@ export const STUDY_NOTES = [
     detail: "Renderizado reactivo sin librerías pesadas de gráficos."
   },
   {
+    provenance: "REAL CAPABILITY DEMO",
     accent: "#ec4899",
     layout: "sequence",
     label: "Automatización SaaS",
@@ -181,6 +196,7 @@ export const STUDY_NOTES = [
     detail: "Arquitectura Serverless escalable con costos operativos controlados."
   },
   {
+    provenance: "REAL CAPABILITY DEMO",
     accent: "#f43f5e",
     layout: "manifesto",
     label: "Diagnóstico Estratégico",

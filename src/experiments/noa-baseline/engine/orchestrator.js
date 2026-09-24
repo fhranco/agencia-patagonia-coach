@@ -65,25 +65,15 @@ export function initNoaBaseline(rootElement) {
   const sources = paths;
   const practicePaths = ["01-magnetic","02-filament","03-kinetic","04-mechanism","05-architecture","06-typography","07-portrait","08-botanical","09-landscape","10-optics"].map(name => noaAsset("assets/practice/" + name + ".png"));
 
-  const extraStudies = [
-    ["Arquitectura de Flota", "SISTEMAS DE RESERVAS", "Estructura de catálogo y tarifas en tiempo real para Magallanes."],
-    ["Cobertura GEO", "SEO LOCAL & MAPAS", "Estructuración semántica y presencia territorial en motores de búsqueda."],
-    ["Precisión Óptica UI", "CATÁLOGO TECNOLÓGICO", "Exhibición de tecnologías ópticas globales y cristales de alta definición."],
-    ["Mapeo Puntos Limpios", "ECONOMÍA CIRCULAR", "Portal georreferenciado para trazabilidad y educación ambiental regional."],
-    ["Flujo de Pedidos B2B", "DISTRIBUCIÓN MAYORISTA", "Catálogo SPA de alta velocidad para agilizar órdenes comerciales en la Patagonia."],
-    ["Matriz Territorial", "INDICADORES REGIONALES", "Visualización interactiva de sustentabilidad e impacto en Magallanes."],
-    ["Motor Multitenant", "AUTOMATIZACIÓN SAAS", "Orquestación de publicación y flujos de contenido sin intervención manual."],
-    ["Algoritmo Austral", "DIAGNÓSTICO ESTRATÉGICO", "Scoring técnico en tiempo real para evaluar madurez digital de empresas."]
-  ].map(([title, category, short], i) => ({
+  const extraStudies = STUDY_NOTES.slice(8, 16).map((note, i) => ({
     id: "tunnel-" + i,
-    title,
-    category,
-    short,
-    alt: short,
-    description: short,
-    detail: "",
+    number: num(i + 8),
+    title: note.titleLines ? note.titleLines.join(" ") : note.title,
+    category: note.label || "CAPACIDAD TÉCNICA",
+    short: note.short || "",
+    alt: (note.titleLines ? note.titleLines.join(" ") : "") + ", " + (note.label || ""),
     year: "2026",
-    ...STUDY_NOTES[i + 8]
+    ...note
   }));
 
   const studyProjects = [...projects, ...extraStudies];
@@ -514,9 +504,9 @@ export function initNoaBaseline(rootElement) {
       img.alt = p.alt || "";
     }
     const idxEl = dialog.querySelector("#project-index");
-    if (idxEl) idxEl.textContent = num(projectIndex) + " / 16";
+    if (idxEl) idxEl.textContent = num(projectIndex) + " / 16" + (p.provenance ? " · " + p.provenance : "");
     const catEl = dialog.querySelector("#project-category");
-    if (catEl) catEl.textContent = (p.category || "Study") + " / " + (p.year || "2026");
+    if (catEl) catEl.textContent = (p.category || "PROYECTO") + " · 53°09′S // " + (p.year || "2026");
     const titleEl = dialog.querySelector("#project-title");
     if (titleEl) window.renderStudyTitle(titleEl, p.title, !animateTitle);
     const shortEl = dialog.querySelector("#project-short");
