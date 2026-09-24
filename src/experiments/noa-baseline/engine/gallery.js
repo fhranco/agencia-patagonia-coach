@@ -187,9 +187,9 @@ export async function createStudioGallery(options) {
           reveal(amount,.54,.92,58,770,908,354,()=>{
             ctx.strokeStyle='#bcb3a2';rule(820);
             ctx.fillStyle=muted;ctx.font='400 19px "IBM Plex Mono"';ctx.fillText('THE MATERIAL',78,871);
-            ctx.fillStyle=ink;ctx.font='400 51px "Bricolage"';ctx.fillText(note.specimen.from,78,940);
+            ctx.fillStyle=ink;ctx.font='400 51px "Bricolage"';ctx.fillText(note.specimen?.from || '',78,940);
             ctx.strokeStyle=accent;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(91,970);ctx.lineTo(91,1043);ctx.lineTo(122,1043);ctx.moveTo(111,1034);ctx.lineTo(122,1043);ctx.lineTo(111,1052);ctx.stroke();
-            ctx.fillStyle=accent;ctx.font='400 42px "Bricolage"';ctx.fillText(note.specimen.to,150,1054);
+            ctx.fillStyle=accent;ctx.font='400 42px "Bricolage"';ctx.fillText(note.specimen?.to || '',150,1054);
             ctx.fillStyle=muted;ctx.font='400 19px "IBM Plex Mono"';ctx.fillText('THE POSSIBILITY',150,1100);
           });
         }else if(note.layout==='manifesto'){

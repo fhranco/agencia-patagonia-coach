@@ -66,14 +66,14 @@ export function initNoaBaseline(rootElement) {
   const practicePaths = ["01-magnetic","02-filament","03-kinetic","04-mechanism","05-architecture","06-typography","07-portrait","08-botanical","09-landscape","10-optics"].map(name => noaAsset("assets/practice/" + name + ".png"));
 
   const extraStudies = [
-    ["Magnetic Field","PARTICLE SCULPTURE","Iron beads gather around an impossible void."],
-    ["Lines of Light","LIGHT INSTALLATION","Fine luminous filaments draw a volume in space."],
-    ["An Instrument for Stillness","KINETIC DESIGN","Brass rings and suspended keys find their balance."],
-    ["Parts of a Whole","CERAMIC MECHANISM","A quiet machine, held apart to reveal its rhythm."],
-    ["A Stairway Elsewhere","SPATIAL STUDY","Alabaster steps circle a doorway suspended above the clouds."],
-    ["And Then","GLASS TYPOGRAPHY","An amber ampersand catches the light between two ideas."],
-    ["Layers of Someone","PAPER PORTRAIT","A profile takes shape through a sequence of paper contours."],
-    ["An Unlikely Growth","GLASS BOTANICAL","Opaline leaves and copper stems imagine another kind of nature."]
+    ["Arquitectura de Flota", "SISTEMAS DE RESERVAS", "Estructura de catálogo y tarifas en tiempo real para Magallanes."],
+    ["Cobertura GEO", "SEO LOCAL & MAPAS", "Estructuración semántica y presencia territorial en motores de búsqueda."],
+    ["Precisión Óptica UI", "CATÁLOGO TECNOLÓGICO", "Exhibición de tecnologías ópticas globales y cristales de alta definición."],
+    ["Mapeo Puntos Limpios", "ECONOMÍA CIRCULAR", "Portal georreferenciado para trazabilidad y educación ambiental regional."],
+    ["Flujo de Pedidos B2B", "DISTRIBUCIÓN MAYORISTA", "Catálogo SPA de alta velocidad para agilizar órdenes comerciales en la Patagonia."],
+    ["Matriz Territorial", "INDICADORES REGIONALES", "Visualización interactiva de sustentabilidad e impacto en Magallanes."],
+    ["Motor Multitenant", "AUTOMATIZACIÓN SAAS", "Orquestación de publicación y flujos de contenido sin intervención manual."],
+    ["Algoritmo Austral", "DIAGNÓSTICO ESTRATÉGICO", "Scoring técnico en tiempo real para evaluar madurez digital de empresas."]
   ].map(([title, category, short], i) => ({
     id: "tunnel-" + i,
     title,
@@ -606,6 +606,14 @@ export function initNoaBaseline(rootElement) {
     if (contactDialog) showDialog(contactDialog, b);
   }));
 
+  const onMessageContact = e => {
+    if (e.data?.type === "pc-contact" || e.data?.type === "noa-contact") {
+      const contactDialog = $("#contact-dialog");
+      if (contactDialog) showDialog(contactDialog);
+    }
+  };
+  window.addEventListener("message", onMessageContact);
+
   const dockDestroy = initSableDock(rootElement);
   initStudioAtelier(rootElement, StudioScore);
 
@@ -637,7 +645,7 @@ export function initNoaBaseline(rootElement) {
       const [images, biographyAction, contactPortrait, practiceImages] = await Promise.all([
         Promise.all(sources.map((src, i) => loadImage(src, projects[i].title).then(img => { loader.credit(8); return img; }))),
         loadImage(biographyActionSource, "Studio Camera").then(img => { loader.credit(4); return img; }),
-        loadImage(noaAsset("assets/portraits/noa-contact-right.png"), "Noa Vale"),
+        loadImage(noaAsset("assets/portraits/noa-contact-right.png"), "PatagoniaCoach"),
         Promise.all(practicePaths.map((p, i) => loadImage(p, "Practice " + (i + 1)))),
         loadPortraitContour()
       ]);
@@ -744,6 +752,7 @@ export function initNoaBaseline(rootElement) {
 
   return function cleanup() {
     window.removeEventListener("resize", onResize);
+    window.removeEventListener("message", onMessageContact);
     dockDestroy?.();
     trigger?.kill();
     lenis?.destroy();

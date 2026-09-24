@@ -1,15 +1,15 @@
-// Authoritative Noa Vale body markup
+// Authoritative PatagoniaCoach body markup
 export const NOA_BODY_HTML = `<div id="studio-loader">
     <div class="loader-veil"></div>
-    <span class="loader-mark monogram" aria-hidden="true">nv<span>•</span></span>
-    <div class="loader-progress" role="progressbar" aria-label="Loading portfolio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <span class="loader-mark monogram" aria-hidden="true">PC<span>•</span></span>
+    <div class="loader-progress" role="progressbar" aria-label="Cargando experiencia" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
       <span class="loader-count micro"><span data-count="">0</span><span class="loader-percent">%</span></span></div>
   </div>
-  <a class="skip-link" href="#artist" data-go="artist">Meet the artist</a>
-  <header class="site-header"><a href="#top" data-go="hero" class="wordmark" aria-label="Noa Vale, home"><span class="monogram">nv<span>•</span></span><span class="brand-lockup"><span class="artist-name">Noa Vale</span><span class="artist-role">Digital Artist</span></span></a>
-    <nav class="sable-dock" aria-label="Main navigation" data-dock-state="idle" data-dock-max="0.00"><a class="sable-dock__item" href="#artist" data-go="artist" data-dock-item=""><span class="sable-dock__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><rect x="2.2" y="2.2" width="11.6" height="11.6" rx="3.4"></rect><circle cx="8" cy="8" r="2.4"></circle></svg></span><span>The studio</span></a><a class="sable-dock__item" href="#practice" data-go="practice" data-dock-item=""><span class="sable-dock__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="3" cy="8" r="1.5"></circle><circle cx="12.5" cy="3.5" r="1.5"></circle><circle cx="12.5" cy="12.5" r="1.5"></circle><path d="M4.5 7.3 11 4.2M4.5 8.7l6.5 3.1"></path></svg></span><span>The practice</span></a><a class="sable-dock__item" href="#works" data-go="works" data-dock-item=""><span class="sable-dock__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" rx="1.5"></rect><path d="M2 6h12M5 4.5h.01M7 4.5h.01"></path></svg></span><span>Selected work</span></a>
+  <a class="skip-link" href="#artist" data-go="artist">Conocer el enfoque</a>
+  <header class="site-header"><a href="#top" data-go="hero" class="wordmark" aria-label="PatagoniaCoach, inicio"><span class="monogram">PC<span>•</span></span><span class="brand-lockup"><span class="artist-name">PatagoniaCoach</span><span class="artist-role">Ingeniería Digital & IA</span></span></a>
+    <nav class="sable-dock" aria-label="Navegación principal" data-dock-state="idle" data-dock-max="0.00"><a class="sable-dock__item" href="#artist" data-go="artist" data-dock-item=""><span class="sable-dock__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><rect x="2.2" y="2.2" width="11.6" height="11.6" rx="3.4"></rect><circle cx="8" cy="8" r="2.4"></circle></svg></span><span>Enfoque</span></a><a class="sable-dock__item" href="#practice" data-go="practice" data-dock-item=""><span class="sable-dock__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="3" cy="8" r="1.5"></circle><circle cx="12.5" cy="3.5" r="1.5"></circle><circle cx="12.5" cy="12.5" r="1.5"></circle><path d="M4.5 7.3 11 4.2M4.5 8.7l6.5 3.1"></path></svg></span><span>Capacidades</span></a><a class="sable-dock__item" href="#works" data-go="works" data-dock-item=""><span class="sable-dock__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" rx="1.5"></rect><path d="M2 6h12M5 4.5h.01M7 4.5h.01"></path></svg></span><span>Proyectos</span></a>
     </nav>
-    <button class="thinking-contact" type="button" data-contact="" aria-label="Let’s discuss a project"><span class="thinking-contact__label">LET’S DISCUSS</span><span class="thinking-contact__glass" aria-hidden="true"><svg viewBox="0 0 84 84"><g class="thinking-contact__mail"><path class="thinking-contact__open" d="M-11,-7.5 L0,-16 L11,-7.5"></path><g class="thinking-contact__letter"><rect x="-7.5" y="-5" width="15" height="12" rx="1.5"></rect><path d="M-4.5,-1.5 H4.5 M-4.5,1.8 H2"></path></g><rect class="thinking-contact__envelope" x="-11" y="-7.5" width="22" height="15" rx="2.5"></rect><path class="thinking-contact__closed" d="M-11,-5.5 L0,2.5 L11,-5.5"></path></g></svg></span></button>
+    <button class="thinking-contact" type="button" data-contact="" aria-label="Iniciar conversación"><span class="thinking-contact__label">CONVERSEMOS</span><span class="thinking-contact__glass" aria-hidden="true"><svg viewBox="0 0 84 84"><g class="thinking-contact__mail"><path class="thinking-contact__open" d="M-11,-7.5 L0,-16 L11,-7.5"></path><g class="thinking-contact__letter"><rect x="-7.5" y="-5" width="15" height="12" rx="1.5"></rect><path d="M-4.5,-1.5 H4.5 M-4.5,1.8 H2"></path></g><rect class="thinking-contact__envelope" x="-11" y="-7.5" width="22" height="15" rx="2.5"></rect><path class="thinking-contact__closed" d="M-11,-5.5 L0,2.5 L11,-5.5"></path></g></svg></span></button>
   </header>
   <main id="top">
     <div id="scroll-story">
@@ -17,38 +17,38 @@ export const NOA_BODY_HTML = `<div id="studio-loader">
         <div class="grain" aria-hidden="true"></div><canvas id="gallery-canvas" aria-hidden="true"></canvas><video id="card-motion" muted="" playsinline="" preload="none" hidden="" aria-hidden="true"></video>
         <section id="hero" class="panel hero-panel" aria-labelledby="hero-title">
           <div class="hero-edition micro">
-            <span class="hero-edition-label">Selected studies</span><span>01—08 / 2026</span></div>
-          <h1 id="hero-title">A world in every image.</h1>
+            <span class="hero-edition-label">Ecosistemas Digitales</span><span>Punta Arenas · Patagonia · Chile</span></div>
+          <h1 id="hero-title">Estrategia, tecnología e IA que generan negocio.</h1>
           <div class="static-hero" aria-hidden="true"><img data-image="0" alt=""><img data-image="1" alt=""><img data-image="2" alt="">
           </div>
           <div class="hero-bottom">
             <div class="current-work">
               <p class="micro">
                 <span class="current-index"><span id="current-number">01</span><span class="current-total"> / 08</span></span>
-                <span id="current-category">Digital sculpture</span></p>
-              <h2 id="current-title">An unlikely fold</h2>
+                <span id="current-category">Movilidad &amp; E-Commerce</span></p>
+              <h2 id="current-title">AGM Rent a Car</h2>
             </div>
             <div class="card-controls">
-              <button id="previous" class="card-arrow card-arrow--previous" aria-label="Previous work"><svg class="folded-ribbon" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><defs><linearGradient id="ribbon-prev-back" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5ead4"></stop><stop offset=".38" stop-color="#c6b490"></stop><stop offset=".7" stop-color="#a28d69"></stop><stop offset="1" stop-color="#e1d0ae"></stop></linearGradient><linearGradient id="ribbon-prev-face" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#b39b73"></stop><stop offset=".3" stop-color="#f6ebd4"></stop><stop offset=".46" stop-color="#dfceaa"></stop><stop offset="1" stop-color="#af9872"></stop></linearGradient><pattern id="ribbon-prev-grain" width="2" height="2" patternUnits="userSpaceOnUse"><path d="M0 .5h2" stroke="#fffaf0" stroke-width=".35" opacity=".24"></path></pattern></defs><g transform="translate(36 0) scale(-1 1)"><g class="ribbon-upper"><path d="M8 5 29 18 23 22 3 9Z" fill="url(#ribbon-prev-back)"></path><path d="M8 5 29 18" fill="none" stroke="#fff9e9" stroke-width=".7" opacity=".9"></path><path d="M8 5 29 18 23 22 3 9Z" fill="url(#ribbon-prev-grain)"></path></g><g class="ribbon-lower"><path d="M23 14 29 18 9 32 3 28Z" fill="#756344" transform="translate(0 .6)"></path><path d="M23 14 29 18 9 32 3 28Z" fill="url(#ribbon-prev-face)"></path><path d="M23 14 29 18 9 32 3 28Z" fill="url(#ribbon-prev-grain)"></path><path d="M3 28 23 14 29 18" fill="none" stroke="#fff9e9" stroke-width=".65" opacity=".88"></path><path d="m23 14 6 4" fill="none" stroke="#8b7553" stroke-width=".6" opacity=".65"></path></g></g></svg></button><button id="open-current">View study</button><button id="next" class="card-arrow card-arrow--next" aria-label="Next work"><svg class="folded-ribbon" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><defs><linearGradient id="ribbon-next-back" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5ead4"></stop><stop offset=".38" stop-color="#c6b490"></stop><stop offset=".7" stop-color="#a28d69"></stop><stop offset="1" stop-color="#e1d0ae"></stop></linearGradient><linearGradient id="ribbon-next-face" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#b39b73"></stop><stop offset=".3" stop-color="#f6ebd4"></stop><stop offset=".46" stop-color="#dfceaa"></stop><stop offset="1" stop-color="#af9872"></stop></linearGradient><pattern id="ribbon-next-grain" width="2" height="2" patternUnits="userSpaceOnUse"><path d="M0 .5h2" stroke="#fffaf0" stroke-width=".35" opacity=".24"></path></pattern></defs><g><g class="ribbon-upper"><path d="M8 5 29 18 23 22 3 9Z" fill="url(#ribbon-next-back)"></path><path d="M8 5 29 18" fill="none" stroke="#fff9e9" stroke-width=".7" opacity=".9"></path><path d="M8 5 29 18 23 22 3 9Z" fill="url(#ribbon-next-grain)"></path></g><g class="ribbon-lower"><path d="M23 14 29 18 9 32 3 28Z" fill="#756344" transform="translate(0 .6)"></path><path d="M23 14 29 18 9 32 3 28Z" fill="url(#ribbon-next-face)"></path><path d="M23 14 29 18 9 32 3 28Z" fill="url(#ribbon-next-grain)"></path><path d="M3 28 23 14 29 18" fill="none" stroke="#fff9e9" stroke-width=".65" opacity=".88"></path><path d="m23 14 6 4" fill="none" stroke="#8b7553" stroke-width=".6" opacity=".65"></path></g></g></svg></button>
-            </div><a class="scroll-cue" href="#artist" data-go="artist"><span class="round-arrow"><svg viewBox="0 0 24 30" aria-hidden="true"><path d="M12 2v23"></path><path d="m4.5 17.5 7.5 7.5 7.5-7.5"></path></svg></span><span class="micro">There’s a person<br>behind these pictures.</span></a>
+              <button id="previous" class="card-arrow card-arrow--previous" aria-label="Proyecto anterior"><svg class="folded-ribbon" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><defs><linearGradient id="ribbon-prev-back" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5ead4"></stop><stop offset=".38" stop-color="#c6b490"></stop><stop offset=".7" stop-color="#a28d69"></stop><stop offset="1" stop-color="#e1d0ae"></stop></linearGradient><linearGradient id="ribbon-prev-face" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#b39b73"></stop><stop offset=".3" stop-color="#f6ebd4"></stop><stop offset=".46" stop-color="#dfceaa"></stop><stop offset="1" stop-color="#af9872"></stop></linearGradient><pattern id="ribbon-prev-grain" width="2" height="2" patternUnits="userSpaceOnUse"><path d="M0 .5h2" stroke="#fffaf0" stroke-width=".35" opacity=".24"></path></pattern></defs><g transform="translate(36 0) scale(-1 1)"><g class="ribbon-upper"><path d="M8 5 29 18 23 22 3 9Z" fill="url(#ribbon-prev-back)"></path><path d="M8 5 29 18" fill="none" stroke="#fff9e9" stroke-width=".7" opacity=".9"></path><path d="M8 5 29 18 23 22 3 9Z" fill="url(#ribbon-prev-grain)"></path></g><g class="ribbon-lower"><path d="M23 14 29 18 9 32 3 28Z" fill="#756344" transform="translate(0 .6)"></path><path d="M23 14 29 18 9 32 3 28Z" fill="url(#ribbon-prev-face)"></path><path d="M23 14 29 18 9 32 3 28Z" fill="url(#ribbon-prev-grain)"></path><path d="M3 28 23 14 29 18" fill="none" stroke="#fff9e9" stroke-width=".65" opacity=".88"></path><path d="m23 14 6 4" fill="none" stroke="#8b7553" stroke-width=".6" opacity=".65"></path></g></g></svg></button><button id="open-current">Ver proyecto</button><button id="next" class="card-arrow card-arrow--next" aria-label="Siguiente proyecto"><svg class="folded-ribbon" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><defs><linearGradient id="ribbon-next-back" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5ead4"></stop><stop offset=".38" stop-color="#c6b490"></stop><stop offset=".7" stop-color="#a28d69"></stop><stop offset="1" stop-color="#e1d0ae"></stop></linearGradient><linearGradient id="ribbon-next-face" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#b39b73"></stop><stop offset=".3" stop-color="#f6ebd4"></stop><stop offset=".46" stop-color="#dfceaa"></stop><stop offset="1" stop-color="#af9872"></stop></linearGradient><pattern id="ribbon-next-grain" width="2" height="2" patternUnits="userSpaceOnUse"><path d="M0 .5h2" stroke="#fffaf0" stroke-width=".35" opacity=".24"></path></pattern></defs><g><g class="ribbon-upper"><path d="M8 5 29 18 23 22 3 9Z" fill="url(#ribbon-next-back)"></path><path d="M8 5 29 18" fill="none" stroke="#fff9e9" stroke-width=".7" opacity=".9"></path><path d="M8 5 29 18 23 22 3 9Z" fill="url(#ribbon-next-grain)"></path></g><g class="ribbon-lower"><path d="M23 14 29 18 9 32 3 28Z" fill="#756344" transform="translate(0 .6)"></path><path d="M23 14 29 18 9 32 3 28Z" fill="url(#ribbon-next-face)"></path><path d="M23 14 29 18 9 32 3 28Z" fill="url(#ribbon-next-grain)"></path><path d="M3 28 23 14 29 18" fill="none" stroke="#fff9e9" stroke-width=".65" opacity=".88"></path><path d="m23 14 6 4" fill="none" stroke="#8b7553" stroke-width=".6" opacity=".65"></path></g></g></svg></button>
+            </div><a class="scroll-cue" href="#artist" data-go="artist"><span class="round-arrow"><svg viewBox="0 0 24 30" aria-hidden="true"><path d="M12 2v23"></path><path d="m4.5 17.5 7.5 7.5 7.5-7.5"></path></svg></span><span class="micro">Detrás del sistema.<br>Conocer el enfoque.</span></a>
           </div>
         </section>
         <section id="entrance" class="panel entrance-panel" aria-labelledby="entrance-title" inert="" aria-hidden="true">
-          <p class="micro entrance-overline">A closer look / Into the studio</p>
-          <h2 id="entrance-title">Behind<br>the images<span id="entrance-dot" aria-hidden="true"></span></h2>
-          <span class="entrance-foot micro">Every world begins with a way of seeing.</span>
+          <p class="micro entrance-overline">Enfoque Austral // Hacia el Estudio</p>
+          <h2 id="entrance-title">Detrás<br>del sistema<span id="entrance-dot" aria-hidden="true"></span></h2>
+          <span class="entrance-foot micro">Pasar de lo que construimos a cómo pensamos.</span>
         </section>
         <div id="studio-portal" aria-hidden="true"></div>
         <section id="artist" class="panel artist-panel" aria-labelledby="artist-title" inert="" aria-hidden="true">
-          <div id="portal-signature"><span class="micro">Behind the images</span>
-            <h2 id="artist-title" class="portal-name" data-artist-name="">Noa Vale</h2>
-            <span class="micro">Independent digital artist</span>
+          <div id="portal-signature"><span class="micro">Detrás del sistema</span>
+            <h2 id="artist-title" class="portal-name" data-artist-name="">PatagoniaCoach</h2>
+            <span class="micro">Ingeniería Digital &amp; Ecosistemas IA</span>
           </div>
           <div id="portrait-figure">
             <!-- One photographic master, exactly registered through three tonal layers. -->
             <img id="portrait-soft" class="portrait-photo" crossorigin="anonymous" data-asset-src="assets/portraits/noa-vale-fullbody.png" alt="" aria-hidden="true" width="1024" height="1536">
             <img id="portrait-contrast" class="portrait-photo" crossorigin="anonymous" data-asset-src="assets/portraits/noa-vale-fullbody.png" alt="" aria-hidden="true" width="1024" height="1536">
-            <img id="maker-portrait" class="portrait-photo" crossorigin="anonymous" data-asset-src="assets/portraits/noa-vale-fullbody.png" alt="Noa Vale smiling in stylish glasses, a terracotta T-shirt and navy trousers." width="1024" height="1536">
+            <img id="maker-portrait" class="portrait-photo" crossorigin="anonymous" data-asset-src="assets/portraits/noa-vale-fullbody.png" alt="PatagoniaCoach — Consultoría e Ingeniería Digital Austral" width="1024" height="1536">
             <svg id="portrait-drawing" viewBox="0 0 1024 1536" fill="none" aria-hidden="true">
               <g id="portrait-lines">
                 <path class="portrait-line" d="M0.0 936.5 C0.7 933.0 1.3 922.4 3.8 916.0 C6.4 909.6 3.2 909.5 15.4 898.0 C27.5 886.5 49.2 865.5 76.6 847.0 C104.1 828.5 142.1 806.0 180.0 787.0 C217.9 768.0 275.0 750.5 304.0 733.0 C332.9 715.5 345.3 692.5 353.8 682.0 C362.3 671.5 358.8 679.5 354.9 670.0 C351.0 660.5 337.0 640.5 330.5 625.0 C323.9 609.5 321.9 590.0 315.6 577.0 C309.2 564.0 298.6 558.0 292.4 547.0 C286.2 536.0 283.1 534.5 278.6 511.0 C274.1 487.5 271.5 433.5 265.7 406.0 C259.8 378.5 249.2 364.5 243.6 346.0 C238.1 327.5 234.1 309.5 232.4 295.0 C230.8 280.5 230.7 273.5 233.7 259.0 C236.6 244.5 241.2 228.0 250.2 208.0 C259.2 188.0 265.6 159.5 287.6 139.0 C309.6 118.5 357.6 95.8 382.0 85.2 C406.3 74.7 409.0 75.8 433.7 75.8 C458.5 75.8 504.3 80.7 530.6 85.2 C556.8 89.8 575.8 96.0 591.4 103.0 C607.0 110.0 615.3 117.0 624.1 127.0 C632.9 137.0 632.0 150.5 644.1 163.0 C656.2 175.5 684.9 183.5 696.7 202.0 C708.5 220.5 713.4 250.0 714.8 274.0 C716.3 298.0 704.3 326.0 705.2 346.0 C706.1 366.0 716.8 377.5 720.3 394.0 C723.7 410.5 726.7 428.0 725.6 445.0 C724.6 462.0 721.1 482.0 713.9 496.0 C706.7 510.0 689.0 511.5 682.6 529.0 C676.2 546.5 676.1 584.5 675.3 601.0 C674.6 617.5 662.0 606.5 678.2 628.0 C694.3 649.5 730.5 699.5 772.3 730.0 C814.2 760.5 890.0 788.5 929.3 811.0 C968.6 833.5 992.8 852.5 1008.3 865.0 C1023.7 877.5 1019.7 874.1 1022.2 886.0 C1024.7 897.9 1022.9 928.1 1023.0 936.5" pathLength="1"></path>
@@ -60,88 +60,88 @@ export const NOA_BODY_HTML = `<div id="studio-loader">
             </svg>
           </div>
           <div id="portrait-caption">
-            <img id="portrait-signature" crossorigin="anonymous" data-asset-src="assets/identity/noa-vale-signature.png" alt="Noa Vale signature" width="2037" height="772"><span id="portrait-quote" class="portrait-quote">— “Look closer.<br>Make it unexpected.”</span>
+            <img id="portrait-signature" crossorigin="anonymous" data-asset-src="assets/identity/noa-vale-signature.png" alt="PatagoniaCoach" width="2037" height="772"><span id="portrait-quote" class="portrait-quote">— “No construimos solo sitios.<br>Construimos sistemas digitales.”</span>
           </div>
           <div id="artist-guide" aria-hidden="true"><img crossorigin="anonymous" data-asset-src="assets/guide-poses/practice-image.png" alt="" width="1024" height="1536">
           </div>
           <div id="artist-reading" class="visually-hidden"></div>
         </section>
         <section id="practice" class="panel practice-panel atelier" aria-labelledby="practice-title" inert="" aria-hidden="true">
-          <div class="section-kicker micro"><span>02 / Ways of making</span><span>An image learns to move.</span></div>
-          <h2 id="practice-title" class="visually-hidden">Ways of making.</h2>
+          <div class="section-kicker micro"><span>02 / Capacidades</span><span>Sistemas que generan negocio.</span></div>
+          <h2 id="practice-title" class="visually-hidden">Capacidades.</h2>
           <aside class="atelier-copy" aria-live="polite">
             <div class="atelier-copy-stack">
-              <article data-atelier-copy="0"><span class="micro">Find the unexpected</span>
-                <h3>Image<span>.</span></h3>
-                <p>A simple material.<br> A different point of view.<br> Suddenly, another world.</p>
-                <small>I start with a fold, a surface, a trace of light.<br> Through material and composition, I look for<br> the moment something familiar becomes unfamiliar.</small>
+              <article data-atelier-copy="0"><span class="micro">Automatización &amp; Agentes</span>
+                <h3>Inteligencia Artificial<span>.</span></h3>
+                <p>Agentes autónomos.<br> Automatización de procesos.<br> Decisiones con datos reales.</p>
+                <small>Integramos IA directamente en la operación del negocio.<br> Flujos que reducen fricción manual y multiplican la capacidad de atención y conversión.</small>
               </article>
-              <article data-atelier-copy="1" aria-hidden="true"><span class="micro">Give it character</span>
-                <h3>Motion<span>.</span></h3>
-                <p>A hesitation. A turn.<br> A moment of weightlessness.<br> The image finds its own rhythm.</p>
-                <small>I shape the pauses as carefully as the movement.<br> Weight, tension and timing turn a simple form<br> into something with a personality of its own.</small>
+              <article data-atelier-copy="1" aria-hidden="true"><span class="micro">Plataformas &amp; Software</span>
+                <h3>Desarrollo Digital<span>.</span></h3>
+                <p>Arquitectura moderna.<br> Carga instantánea.<br> Experiencias de alto rendimiento.</p>
+                <small>Construimos plataformas web y aplicaciones a medida.<br> Código limpio, infraestructura escalable y diseño enfocado en la conversión comercial.</small>
               </article>
-              <article data-atelier-copy="2" aria-hidden="true"><span class="micro">Leave room for someone else</span>
-                <h3>Interaction<span>.</span></h3>
-                <p>Your presence changes the picture.</p>
-                <button class="atelier-play" aria-label="Turn the sculpture" type="button">Turn the form <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 5 3v6l-5 3-5-3V6Zm-5 3 5 3 5-3M12 9v6"></path><path d="M4 13c-1.3.7-2 1.5-2 2.5C2 18 6.5 20 12 20s10-2 10-4.5c0-.9-.7-1.8-2-2.5M2 12v3.5h3.5M22 19v-3.5h-3.5"></path></svg></button>
+              <article data-atelier-copy="2" aria-hidden="true"><span class="micro">Posicionamiento &amp; GEO</span>
+                <h3>Crecimiento<span>.</span></h3>
+                <p>Visibilidad estratégica donde buscan tus clientes.</p>
+                <button class="atelier-play" aria-label="Explorar pilares" type="button">Explorar pilar <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 5 3v6l-5 3-5-3V6Zm-5 3 5 3 5-3M12 9v6"></path><path d="M4 13c-1.3.7-2 1.5-2 2.5C2 18 6.5 20 12 20s10-2 10-4.5c0-.9-.7-1.8-2-2.5M2 12v3.5h3.5M22 19v-3.5h-3.5"></path></svg></button>
               </article>
             </div>
           </aside>
           <div class="atelier-rail">
-            <span class="atelier-principle micro">One material.<br>Endless possibilities.</span>
-            <div class="atelier-tabs" role="group" aria-label="Explore the practice">
-              <button data-practice="0" aria-pressed="true"><b>01</b><span>Image</span></button><button data-practice="1" aria-pressed="false"><b>02</b><span>Motion</span></button><button data-practice="2" aria-pressed="false"><b>03</b><span>Interaction</span></button>
+            <span class="atelier-principle micro">Estrategia + Software.<br>Ejecución territorial.</span>
+            <div class="atelier-tabs" role="group" aria-label="Explorar capacidades">
+              <button data-practice="0" aria-pressed="true"><b>01</b><span>IA</span></button><button data-practice="1" aria-pressed="false"><b>02</b><span>Desarrollo</span></button><button data-practice="2" aria-pressed="false"><b>03</b><span>Crecimiento</span></button>
             </div>
             <div class="atelier-cue">
-              <span class="atelier-note">Light reveals form</span><span class="atelier-gesture micro">Scroll to find the light</span>
+              <span class="atelier-note">Tecnología con propósito</span><span class="atelier-gesture micro">Scroll para avanzar</span>
             </div>
           </div>
           <div class="static-practice">
-            <article><img data-image="0" alt="Folded metal sculpture">
-              <h3>Image.</h3>
-              <p>Find the unexpected. A simple material, seen in a different light.</p>
+            <article><img data-image="0" alt="Inteligencia Artificial">
+              <h3>Inteligencia Artificial.</h3>
+              <p>Agentes autónomos, automatización y análisis inteligente aplicado a negocio.</p>
             </article>
-            <article><img data-image="2" alt="Soft vermilion sculpture">
-              <h3>Motion.</h3>
-              <p>Give it character. Anticipation, rhythm and a moment of weightlessness.</p>
+            <article><img data-image="2" alt="Desarrollo Digital">
+              <h3>Desarrollo Digital.</h3>
+              <p>Sitios, plataformas y aplicaciones web de alto rendimiento y arquitectura robusta.</p>
             </article>
-            <article><img data-image="5" alt="Glass architecture">
-              <h3>Interaction.</h3>
-              <p>Invite the viewer. Let presence and perspective change the work.</p>
+            <article><img data-image="5" alt="Crecimiento">
+              <h3>Crecimiento.</h3>
+              <p>SEO territorial, posicionamiento en motores de IA y captación comercial calificada.</p>
             </article>
           </div>
         </section>
         <section id="works" class="panel works-panel" aria-labelledby="works-title" inert="" aria-hidden="true">
           <div class="section-kicker micro">
-            <span>03 / Selected studies</span><span>Sixteen starting points. One next possibility.</span></div>
+            <span>03 / Casos Seleccionados</span><span>Sistemas reales en producción.</span></div>
           <div class="works-heading">
             <h2 id="works-title">
-              <span class="reveal-line"><span class="reveal-word-mask"><span class="reveal-word">Follow</span></span>
-              <span class="reveal-word-mask"><span class="reveal-word">your</span></span></span><br><em class="reveal-word-mask"><span class="reveal-word">curiosity.</span></em>
+              <span class="reveal-line"><span class="reveal-word-mask"><span class="reveal-word">Construimos</span></span>
+              <span class="reveal-word-mask"><span class="reveal-word">sistemas</span></span></span><br><em class="reveal-word-mask"><span class="reveal-word">que perduran.</span></em>
             </h2>
-            <p>A walk through things I’ve made. <br>And the things we could make next.</p>
+            <p>Una mirada a proyectos y arquitecturas desplegadas. <br>Y la solución que podemos construir para tu empresa.</p>
           </div>
           <div id="works-guide" hidden=""><img crossorigin="anonymous" data-asset-src="assets/guide-poses/works-guide.png" alt="">
           </div>
-          <div id="work-hitareas" aria-label="Selected work" hidden=""></div>
+          <div id="work-hitareas" aria-label="Casos seleccionados" hidden=""></div>
           <div id="static-works" class="static-works"></div>
           <div class="study-rail">
             <div class="study-current"><span class="micro"><span id="study-number">01</span> / 16
-              <span id="study-category">Digital sculpture</span></span><button id="study-open" aria-label="View current study"><span id="study-title">An unlikely fold</span><span aria-hidden="true">↗</span></button>
-            </div><span class="study-scroll micro">Scroll to wander <span aria-hidden="true">↓</span></span>
+              <span id="study-category">Movilidad &amp; E-Commerce</span></span><button id="study-open" aria-label="Ver caso seleccionado"><span id="study-title">AGM Rent a Car</span><span aria-hidden="true">↗</span></button>
+            </div><span class="study-scroll micro">Scroll para explorar <span aria-hidden="true">↓</span></span>
           </div>
           <div class="study-finale" inert="" aria-hidden="true">
-            <p class="micro">The next one could be ours.</p>
-            <h2>Let’s work<br><em>together.</em></h2>
-            <p class="study-finale-note">An idea, a question, a new possibility.</p><iframe id="liquid-contact-frame" srcdoc="&lt;!doctype html&gt;
-&lt;html lang=&quot;en&quot;&gt;
+            <p class="micro">El próximo ecosistema puede ser el tuyo.</p>
+            <h2>Iniciemos una<br><em>conversación.</em></h2>
+            <p class="study-finale-note">Un diagnóstico técnico, un proyecto nuevo, una evolución digital.</p><iframe id="liquid-contact-frame" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;es&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
-&lt;title&gt;Start a project with Noa Vale&lt;/title&gt;
+&lt;title&gt;Iniciar proyecto con PatagoniaCoach&lt;/title&gt;
 &lt;link rel=&quot;icon&quot; href=&quot;data:,&quot;&gt;
-&lt;meta name=&quot;description&quot; content=&quot;A liquid-chrome project invitation adapted for the Noa Vale portfolio.&quot;&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Invitación a iniciar un proyecto o diagnóstico estratégico con PatagoniaCoach.&quot;&gt;
 &lt;style&gt;
 @font-face{font-family:&quot;Geist Mono&quot;;font-weight:300;font-style:normal;font-display:swap;src:url(data:font/woff2;base64,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) format(&quot;woff2&quot;)}
 :root{
@@ -255,11 +255,11 @@ body{margin:0;background:var(--bg);color:#8a8a8f;font-family:&quot;Geist Mono&qu
 &lt;/head&gt;
 &lt;body&gt;
 &lt;main class=&quot;stage&quot;&gt;
-  &lt;button class=&quot;cta&quot; type=&quot;button&quot; aria-label=&quot;Start a project with Noa Vale&quot;&gt;
+  &lt;button class=&quot;cta&quot; type=&quot;button&quot; aria-label=&quot;Iniciar conversación con PatagoniaCoach&quot;&gt;
     &lt;span class=&quot;halo&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;face&quot; aria-hidden=&quot;true&quot;&gt;&lt;canvas&gt;&lt;/canvas&gt;&lt;/span&gt;
     &lt;span class=&quot;knob-fallback&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
-    &lt;span class=&quot;label&quot; aria-hidden=&quot;true&quot;&gt;START A PROJECT&lt;/span&gt;
+    &lt;span class=&quot;label&quot; aria-hidden=&quot;true&quot;&gt;CONVERSEMOS&lt;/span&gt;
     &lt;span class=&quot;knob&quot; aria-hidden=&quot;true&quot;&gt;
       &lt;span class=&quot;glow&quot;&gt;&lt;/span&gt;
       &lt;svg class=&quot;project-arrow&quot; viewBox=&quot;0 0 176 176&quot; focusable=&quot;false&quot;&gt;
@@ -271,12 +271,12 @@ body{margin:0;background:var(--bg);color:#8a8a8f;font-family:&quot;Geist Mono&qu
 
 &lt;script&gt;
 (() =&gt; {
-  if (/[?&amp;]ref/.test(location.search)) document.documentElement.dataset.ref = '1';
+  if (/[?&amp;]ref /.test(location.search)) document.documentElement.dataset.ref = '1';
   const cta = document.querySelector('.cta');
   const cv = cta.querySelector('canvas');
   const clock = cta.querySelector('.glow');   // its transitioned opacity is the hover amount
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  cta.addEventListener('click',()=&gt;parent.postMessage({type:'noa-contact'},'*'));
+  cta.addEventListener('click',()=&gt;parent.postMessage({type:'pc-contact'},'*'));
 
   // ------------------------------------------------------------------ shaders
   const QUAD_VS = \`#version 300 es
@@ -610,11 +610,10 @@ body{margin:0;background:var(--bg);color:#8a8a8f;font-family:&quot;Geist Mono&qu
 &lt;/body&gt;
 &lt;/html&gt;
 
-" title="Start a project with Noa Vale" loading="eager"></iframe>
-            <p id="contact" class="finale-conversation"><span aria-hidden="true"></span>A conversation is a good place
-              to start.</p>
+" title="Iniciar conversación con PatagoniaCoach" loading="eager"></iframe>
+            <p id="contact" class="finale-conversation"><span aria-hidden="true"></span>Un diagnóstico estratégico es el punto de partida.</p>
           </div>
-          <img class="static-contact-portrait" crossorigin="anonymous" data-asset-src="assets/portraits/noa-contact-right.png" alt="Noa smiling and pointing both hands toward the project invitation on his right">
+          <img class="static-contact-portrait" crossorigin="anonymous" data-asset-src="assets/portraits/noa-contact-right.png" alt="PatagoniaCoach — Diagnóstico y estrategia">
 
         </section>
         <div id="loading" hidden=""></div>
@@ -623,51 +622,48 @@ body{margin:0;background:var(--bg);color:#8a8a8f;font-family:&quot;Geist Mono&qu
   </main>
   <footer class="site-footer">
     <div class="footer-signoff">
-      <span class="footer-signoff-name"><span data-artist-name="">Noa Vale</span><span class="footer-period" aria-hidden="true">.</span></span><span class="micro">Independent by nature. <span class="footer-year">© 2026</span></span>
+      <span class="footer-signoff-name"><span data-artist-name="">PatagoniaCoach</span><span class="footer-period" aria-hidden="true">.</span></span><span class="micro">Punta Arenas · Patagonia · Chile <span class="footer-year">© 2026</span></span>
     </div>
-    <div class="footer-socials" aria-label="Social profiles — coming soon">
-      <span class="micro footer-socials-label">Elsewhere /</span>
+    <div class="footer-socials" aria-label="Enlaces y servicios">
+      <span class="micro footer-socials-label">Servicios /</span>
       <ul>
-        <li><span>Instagram</span></li>
-        <li><span>X</span></li>
-        <li><span>Threads</span></li>
-        <li><span>LinkedIn</span></li>
-        <li><span>YouTube</span></li>
+        <li><a href="/servicios/desarrollo-web" style="color:inherit;text-decoration:none">Desarrollo Web</a></li>
+        <li><a href="/servicios/seo-local-magallanes" style="color:inherit;text-decoration:none">SEO Local Magallanes</a></li>
+        <li><a href="/servicios/automatizacion-con-ia" style="color:inherit;text-decoration:none">Automatización con IA</a></li>
+        <li><a href="/servicios/comunicacion-digital" style="color:inherit;text-decoration:none">Comunicación Digital</a></li>
+        <li><a href="/servicios/consultoria-transformacion-digital" style="color:inherit;text-decoration:none">Consultoría Digital</a></li>
+        <li><a href="/academia" style="color:inherit;text-decoration:none">Academia</a></li>
       </ul>
     </div>
   </footer>
   <dialog id="project-dialog" aria-labelledby="project-title" data-lenis-prevent="">
-    <button class="dialog-close studio-close" aria-label="Close project" title="Close project"><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path class="close-ribbon-back" d="m7 4 17 17-3 3L4 7Z"></path><path class="close-ribbon-face" d="m21 4 3 3L7 24l-3-3Z"></path><path class="close-ribbon-light" d="m21 4 3 3M4 21 17 8M7 4l8 8"></path></svg></button>
+    <button class="dialog-close studio-close" aria-label="Cerrar proyecto" title="Cerrar proyecto"><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path class="close-ribbon-back" d="m7 4 17 17-3 3L4 7Z"></path><path class="close-ribbon-face" d="m21 4 3 3L7 24l-3-3Z"></path><path class="close-ribbon-light" d="m21 4 3 3M4 21 17 8M7 4l8 8"></path></svg></button>
     <div class="project-visual"><img id="project-image" alt=""><video id="project-video" controls="" muted="" playsinline="" preload="metadata" hidden=""></video><span class="project-index micro" id="project-index"></span></div>
     <article class="project-copy">
       <p class="micro" id="project-category"></p>
       <h2 id="project-title"></h2>
       <p class="project-lead" id="project-short"></p>
       <p id="project-description"></p>
-      <section id="project-notes" aria-label="Study notes"></section>
+      <section id="project-notes" aria-label="Notas del caso"></section>
       <p class="project-detail" id="project-detail"></p>
       <div class="project-nav">
-        <button id="project-prev" aria-label="Previous study">←</button><span class="micro">Explore another study</span><button id="project-next" aria-label="Next study">→</button>
+        <button id="project-prev" aria-label="Caso anterior">←</button><span class="micro">Explorar otro caso</span><button id="project-next" aria-label="Siguiente caso">→</button>
       </div>
     </article>
   </dialog>
   <dialog id="contact-dialog" class="text-dialog" aria-labelledby="contact-title" data-lenis-prevent="">
-    <button class="dialog-close studio-close" aria-label="Close project brief" title="Close project brief"><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path class="close-ribbon-back" d="m7 4 17 17-3 3L4 7Z"></path><path class="close-ribbon-face" d="m21 4 3 3L7 24l-3-3Z"></path><path class="close-ribbon-light" d="m21 4 3 3M4 21 17 8M7 4l8 8"></path></svg></button>
+    <button class="dialog-close studio-close" aria-label="Cerrar contacto" title="Cerrar contacto"><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path class="close-ribbon-back" d="m7 4 17 17-3 3L4 7Z"></path><path class="close-ribbon-face" d="m21 4 3 3L7 24l-3-3Z"></path><path class="close-ribbon-light" d="m21 4 3 3M4 21 17 8M7 4l8 8"></path></svg></button>
     <div class="brief-overline">
       <span class="brief-spark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 3v26M3 16h26M7 7l18 18M7 25 25 7"></path></svg></span>
-      <p class="micro">A new beginning</p><span class="brief-edition micro" aria-hidden="true">Studio note / 01</span>
+      <p class="micro">Diagnóstico Estratégico</p><span class="brief-edition micro" aria-hidden="true">PatagoniaCoach · 2026</span>
     </div>
-    <h2 id="contact-title">What do you<br><em>have in mind?</em></h2>
-    <p>Start with a thought, a question, or an image you can’t get out of your head.</p>
+    <h2 id="contact-title">¿Qué desafío digital<br><em>quieres resolver?</em></h2>
+    <p>Comienza con un objetivo comercial, una necesidad de automatización o un nuevo proyecto.</p>
     <form id="brief-form">
-      <label for="brief-name"><span aria-hidden="true">01</span> Your name</label><input id="brief-name" name="name" autocomplete="name" placeholder="What should I call you?"><label for="brief-idea"><span aria-hidden="true">02</span> The beginning of an idea</label><textarea id="brief-idea" name="idea" rows="4" required="" placeholder="I’m thinking about…"></textarea><button type="submit" class="solid-button brief-save"><span>Save your project brief</span><span class="brief-save-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path class="save-paper" d="M7 4h12l6 6v18H7Z"></path><path class="save-fold" d="M19 4v6h6"></path><g class="save-arrow"><path d="M16 11v11m-4-4 4 4 4-4"></path></g><path class="save-check" d="m11 18 3 3 7-8"></path></svg></span></button>
-      <p id="brief-status" class="micro" role="status">Saves a copy to your device.</p>
+      <label for="brief-name"><span aria-hidden="true">01</span> Nombre o Empresa</label><input id="brief-name" name="name" autocomplete="name" placeholder="¿Cómo te llamas o qué empresa representas?"><label for="brief-idea"><span aria-hidden="true">02</span> Desafío o proyecto</label><textarea id="brief-idea" name="idea" rows="4" required="" placeholder="Describe brevemente lo que necesitas..."></textarea><button type="submit" class="solid-button brief-save"><span>Enviar mensaje</span><span class="brief-save-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path class="save-paper" d="M7 4h12l6 6v18H7Z"></path><path class="save-fold" d="M19 4v6h6"></path><g class="save-arrow"><path d="M16 11v11m-4-4 4 4 4-4"></path></g><path class="save-check" d="m11 18 3 3 7-8"></path></svg></span></button>
+      <p id="brief-status" class="micro" role="status">Guardar copia o conectar directamente.</p>
     </form>
   </dialog>
   <noscript>
-    
-    <p class="noscript">This portfolio uses JavaScript for its card experience. <a data-asset-href="assets/selected-motion/01.png">View the first study</a>.</p>
-  </noscript>
-
-  <!-- PUBLIC ASSET CONFIGURATION — immutable Git commit, original-quality media.
-     The file itself needs no server or sibling folders. Internet is needed for media. -->`;
+    <p class="noscript">Esta experiencia interactiva requiere JavaScript. <a data-asset-href="/images/projects-showcase.webp">Ver proyectos</a>.</p>
+  </noscript>`;

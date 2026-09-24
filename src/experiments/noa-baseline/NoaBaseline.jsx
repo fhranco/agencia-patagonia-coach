@@ -22,7 +22,7 @@ export default function NoaBaseline() {
   return (
     <div className="noa-baseline-root" ref={containerRef}>
       <Helmet>
-        <title>Noa Vale — Study XI / An image learns to move</title>
+        <title>PatagoniaCoach — Ecosistemas Digitales & IA en Magallanes</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
     </div>

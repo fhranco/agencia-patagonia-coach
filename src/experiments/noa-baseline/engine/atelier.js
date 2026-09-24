@@ -3,8 +3,8 @@
 export function initStudioAtelier(container = document, S = window.StudioScore) {
  const root = container.querySelector('#practice.atelier');if(!root)return;
  const copies=[...root.querySelectorAll('[data-atelier-copy]')],buttons=[...root.querySelectorAll('[data-practice]')];
- const notes=['Light reveals form','Anticipate. Turn. Settle.','From image to presence'];
- const gestures=['Scroll to find the light','Scroll to give it a pulse','Move to explore'];
+ const notes=['IA & Automatización','Desarrollo de Alta Velocidad','Posicionamiento & GEO'];
+ const gestures=['Deslizar para explorar IA','Deslizar para ver arquitectura','Deslizar para ver autoridad'];
  let step=-1,currentScore=0,currentAlpha=[0,0,0];
  const titles=copies.map(article=>{
   const heading=article.querySelector('h3'),label=heading.textContent,word=label.replace(/\.$/,'');
