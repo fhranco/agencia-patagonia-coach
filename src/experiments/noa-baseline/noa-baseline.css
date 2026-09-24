@@ -1,0 +1,46 @@
+/* Laboratory Minimal CSS Shell */
+.noa-baseline-lab {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #efebe3;
+  color: #22231f;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 2rem;
+  text-align: center;
+}
+
+.noa-baseline-lab__card {
+  background: #ffffff;
+  border: 1px solid #d3cfc5;
+  border-radius: 12px;
+  padding: 2.5rem;
+  max-width: 480px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.noa-baseline-lab__tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c8552b;
+  margin-bottom: 0.75rem;
+}
+
+.noa-baseline-lab__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: #22231f;
+}
+
+.noa-baseline-lab__text {
+  font-size: 0.95rem;
+  color: #726f66;
+  margin: 0;
+  line-height: 1.5;
+}
