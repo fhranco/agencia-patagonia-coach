@@ -22,7 +22,6 @@ gsap.registerPlugin(ScrollTrigger);
 export function initNoaBaseline(rootElement) {
   if (!rootElement) return () => {};
 
-  // Attach global instances for reference script compatibility
   window.THREE = THREE;
   window.gsap = gsap;
   window.ScrollTrigger = ScrollTrigger;
@@ -93,7 +92,6 @@ export function initNoaBaseline(rootElement) {
   const biographyActionSource = noaAsset("assets/biography-action/noa-vale-camera.png");
   const motionSources = Object.fromEntries(projects.map((p, i) => [p.id, noaAsset("assets/selected-motion/" + num(i) + ".mp4")]));
 
-  // Populate dynamic DOM fields
   $$("[data-artist-name], .artist-name").forEach(e => e.textContent = artist.name);
   $$(".monogram").forEach(el => el.firstChild && (el.firstChild.nodeValue = artist.initials));
 
@@ -140,7 +138,6 @@ export function initNoaBaseline(rootElement) {
     });
   }
 
-  // Populate hitareas
   const workHitareas = $("#work-hitareas");
   let workButtons = [];
   if (workHitareas && workHitareas.children.length === 0) {
@@ -158,7 +155,6 @@ export function initNoaBaseline(rootElement) {
     workButtons = Array.from(workHitareas.querySelectorAll("button"));
   }
 
-  // Populate static works
   const staticWorks = $("#static-works");
   if (staticWorks && staticWorks.children.length === 0) {
     studyProjects.forEach((p, i) => {
@@ -180,7 +176,7 @@ export function initNoaBaseline(rootElement) {
   let active = 0, currentStudy = -1, lastDetail = -1, ready = false, staticMode = false;
   let lenis = null, trigger = null, gallery = null, returnFocus = null, savedScroll = 0, projectIndex = 0;
   let entranceDust = null, entranceEcho = null, portraitDissolve = null;
-  let score = 0;
+  let score = 0, lastChapter = "";
 
   function updateCurrent(i) {
     active = i;
@@ -221,6 +217,7 @@ export function initNoaBaseline(rootElement) {
   const outlineGroup = $("#portrait-selected-lines");
   const portraitSoft = $("#portrait-soft"), portraitContrast = $("#portrait-contrast");
   const portraitFigure = $("#portrait-figure"), portraitImage = $("#maker-portrait");
+  const portraitDrawing = $("#portrait-drawing"), drawingTip = $("#drawing-tip");
   const portraitCaption = $("#portrait-caption"), portraitSignature = $("#portrait-signature");
   const portraitQuote = $("#portrait-quote"), signature = $("#portal-signature");
   const artistGuide = $("#artist-guide"), worksGuide = $("#works-guide");
@@ -258,7 +255,7 @@ export function initNoaBaseline(rootElement) {
       }));
       measurePortraitPaths();
     } catch (e) {
-      // embedded SVG is already in DOM as fallback
+      // embedded SVG is already present as fallback
     }
   }
 
@@ -266,15 +263,23 @@ export function initNoaBaseline(rootElement) {
   const tint = (a, b, t) => "rgb(" + a.map((v, i) => Math.round(S.mix(v, b[i], t))).join(",") + ")";
 
   const portal = $("#studio-portal");
-  let portalSize = { x: 0, y: 0, radius: 0 };
+  let portalSize = { x: 0, y: 0, r: 0, cover: 0 };
 
   function measurePortal() {
-    const stage = $("#stage");
-    if (!stage) return;
-    const W = stage.clientWidth, H = stage.clientHeight;
-    stageSize = { w: W, h: H };
-    const r = Math.hypot(W, H) / 2;
-    portalSize = { x: W / 2, y: H / 2, radius: r };
+    const stageEl = $("#stage");
+    const dot = $("#entrance-dot");
+    if (!stageEl || !dot) return;
+    const stage = stageEl.getBoundingClientRect();
+    stageSize = { w: stage.width, h: stage.height };
+    const dotRect = dot.getBoundingClientRect();
+    const x = dotRect.x + dotRect.width / 2 - stage.x;
+    const y = dotRect.y + dotRect.height / 2 - stage.y;
+    portalSize = {
+      x,
+      y,
+      r: dotRect.width / 2 || 10,
+      cover: Math.hypot(Math.max(x, stage.width - x), Math.max(y, stage.height - y)) + 2
+    };
   }
 
   function syncPortrait() {
@@ -282,11 +287,13 @@ export function initNoaBaseline(rootElement) {
     const { w: W, h: H } = stageSize;
     const q = S.portrait(score, W, H);
     portal.style.backgroundColor = tint([200, 85, 43], [239, 235, 227], q.paper);
+    const ink = tint([239, 235, 227], [82, 76, 67], S.phase(score, 2.5, 3.3));
     signature.style.color = tint([239, 235, 227], [34, 35, 31], q.paper);
     signature.style.opacity = q.titleAlpha;
     signature.style.transform = "translate3d(-50%," + q.titleY + "px,0) translateY(-50%)";
     portraitFigure.style.transform = "translate3d(" + q.x + "px," + q.y + "px,0) translate(-50%,-50%) scale(" + (q.height / 1536) + ")";
     portraitFigure.style.opacity = q.alpha;
+
     if (artistGuide) {
       artistGuide.style.opacity = q.pointingAlpha;
       artistGuide.style.transform = "translate3d(-50%," + q.pointingOffset + "px,0)";
@@ -297,129 +304,184 @@ export function initNoaBaseline(rootElement) {
     if (signature.firstElementChild && signature.lastElementChild) {
       signature.firstElementChild.style.opacity = signature.lastElementChild.style.opacity = 1 - S.phase(score, 2.25, 2.65);
     }
+
+    if (portraitDrawing) portraitDrawing.style.color = ink;
+    if (outlineGroup) outlineGroup.style.opacity = q.outlineAlpha * 0.96;
+
+    let activePath = -1, local = 0;
+    drawingPaths.forEach((path, i) => {
+      const [a, b] = strokeSpans[i] || [0, 1];
+      const t = S.phase(q.drawingProgress, a, b);
+      path.style.strokeDashoffset = 1 - t;
+      if (q.drawingProgress >= a && q.drawingProgress <= b) {
+        activePath = i;
+        local = t;
+      }
+    });
+
+    if (activePath >= 0 && drawingPaths[activePath] && drawingTip) {
+      try {
+        const len = drawingPaths[activePath].getTotalLength?.() || 100;
+        const pt = drawingPaths[activePath].getPointAtLength?.(local * len) || { x: 0, y: 0 };
+        drawingTip.style.opacity = q.tipAlpha;
+        drawingTip.setAttribute("cx", pt.x);
+        drawingTip.setAttribute("cy", pt.y);
+      } catch (err) {}
+    } else if (drawingTip) {
+      drawingTip.style.opacity = "0";
+    }
+
+    if (portraitCaption) {
+      portraitCaption.style.opacity = q.quoteAlpha;
+      portraitCaption.style.transform = "translate3d(-50%," + q.quoteOffset + "px,0)";
+    }
   }
 
-  function sync() {
-    if (!ready || staticMode) return;
-    const { w: W, h: H } = stageSize;
-    const P = S.presentation(score);
-    document.body.dataset.chapter = P.chapter;
-    document.body.style.setProperty("--score", score.toFixed(3));
-    document.body.style.setProperty("--chapter", P.chapter);
-
-    // Panels visibility
-    const panels = {
-      hero: $("#hero"),
-      entrance: $("#entrance"),
-      artist: $("#artist"),
-      practice: $("#practice"),
-      works: $("#works")
-    };
-
-    if (panels.hero) {
-      panels.hero.style.opacity = P.hero;
-      panels.hero.style.visibility = P.hero > 0.002 ? "visible" : "hidden";
-      panels.hero.inert = P.hero < 0.1;
-      panels.hero.setAttribute("aria-hidden", String(P.hero < 0.1));
+  function syncGuides(p) {
+    window.StudioAtelier?.set(score, p.practice);
+    if (worksGuide) {
+      const worksVisible = p.works * S.phase(score, 16.05, 16.5);
+      worksGuide.style.opacity = worksVisible;
+      worksGuide.style.visibility = worksVisible > 0.002 ? "visible" : "hidden";
+      if (worksGuide.firstElementChild) {
+        worksGuide.firstElementChild.style.transform = "translate3d(0," + ((1 - worksVisible) * 32) + "px,0) scale(" + (0.96 + 0.04 * worksVisible) + ")";
+      }
     }
-
-    if (panels.entrance) {
-      const entA = S.phase(score, 0.45, 0.72) * (1 - S.phase(score, 1.45, 1.88));
-      panels.entrance.style.opacity = entA;
-      panels.entrance.style.visibility = entA > 0.002 ? "visible" : "hidden";
-      panels.entrance.inert = entA < 0.1;
-      panels.entrance.setAttribute("aria-hidden", String(entA < 0.1));
-    }
-
-    if (panels.artist) {
-      panels.artist.style.opacity = P.artist;
-      panels.artist.style.visibility = P.artist > 0.002 ? "visible" : "hidden";
-      panels.artist.inert = P.artist < 0.1;
-      panels.artist.setAttribute("aria-hidden", String(P.artist < 0.1));
-    }
-
-    if (panels.practice) {
-      panels.practice.style.opacity = P.practice;
-      panels.practice.style.visibility = P.practice > 0.002 ? "visible" : "hidden";
-      panels.practice.inert = P.practice < 0.1;
-      panels.practice.setAttribute("aria-hidden", String(P.practice < 0.1));
-      window.StudioAtelier?.set(score);
-      setDetail(P.detail);
-    }
-
-    if (panels.works) {
-      panels.works.style.opacity = P.works;
-      panels.works.style.visibility = P.works > 0.002 ? "visible" : "hidden";
-      panels.works.inert = P.works < 0.1;
-      panels.works.setAttribute("aria-hidden", String(P.works < 0.1));
-      syncWorks();
-    }
-
-    syncPortal();
-    syncPortrait();
   }
 
-  function syncPortal() {
-    if (!portal) return;
-    const { w: W, h: H } = stageSize;
-    const P = S.presentation(score);
-    const alpha = P.portalAlpha;
-    portal.style.opacity = alpha;
-    portal.style.visibility = alpha > 0.002 ? "visible" : "hidden";
-
-    // Radial growth
-    const grow = P.portalGrow;
-    const maxR = Math.hypot(W, H) / 2;
-    const r = S.mix(0, maxR, grow);
-    portal.style.clipPath = "circle(" + r + "px at 50% 50%)";
-  }
-
-  function syncWorks() {
+  function syncStudies() {
     const studyHeading = $("#works .works-heading");
     const studyRail = $("#works .study-rail");
     const studyFinale = $("#works .study-finale");
     const kicker = $("#works .section-kicker");
     const footer = $(".site-footer");
 
-    const intro = S.phase(score, 15.95, 16.7);
-    const dive = S.phase(score, 17.0, 18.5);
-    const end = S.phase(score, 24.5, 26.2);
-    const footerProg = S.phase(score, 26.8, S.MAX);
+    const i = S.studyIndex(score);
+    const end = S.phase(score, S.STUDIES.contactStart, S.STUDIES.contactEnd);
+    const enter = S.phase(score, 16.46, 16.9);
+    const dive = S.phase(score, 17.05, 19.35);
+    const intro = enter * (1 - S.phase(score, 17.7, 19.35));
 
     if (studyHeading) {
-      studyHeading.style.opacity = intro * (1 - dive);
-      studyHeading.style.transform = "translateY(" + (18 * (1 - intro) - 12 * dive) + "px)";
+      studyHeading.style.opacity = intro;
+      studyHeading.style.transform = "translateY(" + (18 * (1 - enter) - 12 * dive) + "px) scale(" + (1 / (1 - 0.43 * dive)) + ")";
+      $$(".reveal-word").forEach((word, j) => {
+        const t = S.phase(score, 16.48 + j * 0.14, 17.06 + j * 0.14);
+        word.style.transform = "translateY(" + ((1 - t) * 112) + "%)";
+        word.style.opacity = t;
+      });
+      const pText = studyHeading.querySelector("p");
+      if (pText) pText.style.opacity = S.phase(score, 17.0, 17.5) * (1 - S.phase(score, 17.7, 18.6));
     }
 
     if (studyRail) {
-      const railAlpha = S.studyRailAlpha(score, stageSize.w, stageSize.h);
-      studyRail.style.opacity = railAlpha;
-      studyRail.style.visibility = railAlpha > 0.002 ? "visible" : "hidden";
+      const rail = S.studyRailAlpha(score, stageSize.w, stageSize.h);
+      studyRail.style.opacity = rail;
+      studyRail.style.visibility = rail > 0.002 ? "visible" : "hidden";
+      studyRail.inert = rail < 0.1;
+      studyRail.setAttribute("aria-hidden", String(rail < 0.1));
     }
 
     if (studyFinale) {
       studyFinale.style.opacity = end;
-      studyFinale.style.visibility = end > 0.002 ? "visible" : "hidden";
+      studyFinale.style.transform = "translate(" + (24 * (1 - end)) + "px," + (10 * (1 - end)) + "px)";
+      studyFinale.inert = end < 0.8;
+      studyFinale.setAttribute("aria-hidden", String(end < 0.8));
     }
 
     if (kicker) kicker.style.opacity = 1 - end;
 
+    const footerAlpha = S.phase(score, 26.95, S.STUDIES.contactEnd);
+    document.body.style.setProperty("--closing-progress", footerAlpha);
     if (footer) {
-      footer.style.opacity = footerProg;
-      footer.style.visibility = footerProg > 0.002 ? "visible" : "hidden";
-      footer.style.transform = "translateY(" + ((1 - footerProg) * 12) + "px)";
+      footer.inert = footerAlpha < 0.8;
+      footer.setAttribute("aria-hidden", String(footerAlpha < 0.8));
+      footer.style.visibility = footerAlpha > 0.002 ? "visible" : "hidden";
     }
 
-    const currentIdx = S.studyIndex(score);
-    if (currentIdx !== currentStudy && currentIdx >= 0 && currentIdx < studyProjects.length) {
-      currentStudy = currentIdx;
+    if (i !== currentStudy && i >= 0 && i < studyProjects.length) {
+      currentStudy = i;
       const numEl = $("#study-number"), titleEl = $("#study-title"), catEl = $("#study-category");
-      if (numEl) numEl.textContent = num(currentIdx);
-      if (titleEl) titleEl.textContent = studyProjects[currentIdx].title;
-      if (catEl) catEl.textContent = studyProjects[currentIdx].category;
+      if (numEl) numEl.textContent = num(S.studyPosition(score));
+      if (titleEl) titleEl.textContent = studyProjects[i].title;
+      if (catEl) catEl.textContent = studyProjects[i].category;
       const openBtn = $("#study-open");
-      if (openBtn) openBtn.setAttribute("aria-label", "View " + studyProjects[currentIdx].title);
+      if (openBtn) openBtn.setAttribute("aria-label", "View " + studyProjects[i].title);
+      $$("[data-study]").forEach((b, j) => {
+        b.setAttribute("aria-current", Number(b.dataset.study) === i ? "true" : "false");
+      });
     }
+  }
+
+  function sync() {
+    if (staticMode) return;
+    const p = S.presentation(score);
+    gallery?.setScroll(score);
+
+    for (const name of ["hero", "entrance", "artist", "practice", "works"]) {
+      const panel = $("#" + name);
+      if (panel) {
+        const alpha = p[name];
+        panel.style.opacity = alpha;
+        panel.style.visibility = alpha > 0.002 ? "visible" : "hidden";
+        const interactive = p.chapter === name && alpha > 0.1;
+        panel.inert = !interactive;
+        panel.setAttribute("aria-hidden", String(!interactive));
+      }
+    }
+
+    const entrance = $("#entrance");
+    const canvas = $("#gallery-canvas");
+    const dive = p.portalDive;
+
+    if (entranceDust) entranceDust.update(score);
+    else {
+      const entTitle = $("#entrance-title");
+      if (entTitle) entTitle.style.opacity = p.titleFade;
+    }
+
+    if (entrance) {
+      entrance.style.transformOrigin = portalSize.x + "px " + portalSize.y + "px";
+      entrance.style.transform = "translateZ(0) scale(" + (1 + dive * dive * 2) + ")";
+      entrance.style.filter = "none";
+    }
+
+    if (canvas) {
+      canvas.style.transformOrigin = portalSize.x + "px " + portalSize.y + "px";
+      canvas.style.transform = "translateZ(0) scale(" + (1 + dive * dive * 1.2) + ")";
+    }
+
+    const ratio = Math.max(1, portalSize.cover / Math.max(1, portalSize.r));
+    const radius = portalSize.r * Math.pow(ratio, Math.pow(p.portalGrow, 1.55));
+    if (portal) {
+      portal.style.clipPath = "circle(" + radius + "px at " + portalSize.x + "px " + portalSize.y + "px)";
+      portal.style.opacity = p.portalAlpha;
+      portal.style.visibility = p.portalAlpha > 0 ? "visible" : "hidden";
+    }
+
+    syncPortrait();
+    syncGuides(p);
+    syncStudies();
+
+    const entranceCaptionReveal = S.phase(score, 0.64, 1.04);
+    const overline = $(".entrance-overline"), foot = $(".entrance-foot");
+    if (overline) overline.style.opacity = entranceCaptionReveal;
+    if (foot) foot.style.opacity = entranceCaptionReveal;
+
+    setDetail(p.detail);
+
+    if (lastChapter !== p.chapter) {
+      lastChapter = p.chapter;
+      document.body.dataset.chapter = p.chapter;
+      const stage = $("#stage");
+      if (stage) stage.style.cursor = p.chapter === "hero" ? "grab" : "default";
+      $$(".site-header nav a").forEach(a => {
+        if (a.dataset.go === p.chapter) a.setAttribute("aria-current", "location");
+        else a.removeAttribute("aria-current");
+      });
+    }
+
+    document.body.dataset.scrollScore = score.toFixed(3);
   }
 
   // Dialog management
@@ -454,7 +516,7 @@ export function initNoaBaseline(rootElement) {
     const idxEl = dialog.querySelector("#project-index");
     if (idxEl) idxEl.textContent = num(projectIndex) + " / 16";
     const catEl = dialog.querySelector("#project-category");
-    if (catEl) catEl.textContent = p.category + " / 2026";
+    if (catEl) catEl.textContent = (p.category || "Study") + " / " + (p.year || "2026");
     const titleEl = dialog.querySelector("#project-title");
     if (titleEl) window.renderStudyTitle(titleEl, p.title, !animateTitle);
     const shortEl = dialog.querySelector("#project-short");
@@ -492,7 +554,6 @@ export function initNoaBaseline(rootElement) {
     }
   }
 
-  // Attach event handlers
   $$("dialog").forEach(d => {
     d.querySelector(".dialog-close")?.addEventListener("click", () => closeDialog(d));
     d.addEventListener("click", e => {
@@ -545,13 +606,9 @@ export function initNoaBaseline(rootElement) {
     if (contactDialog) showDialog(contactDialog, b);
   }));
 
-  // Sable dock
   const dockDestroy = initSableDock(rootElement);
-
-  // Studio Atelier
   initStudioAtelier(rootElement, StudioScore);
 
-  // Resize handler
   let resizeTimer;
   const onResize = () => {
     clearTimeout(resizeTimer);
@@ -569,7 +626,6 @@ export function initNoaBaseline(rootElement) {
   };
   window.addEventListener("resize", onResize);
 
-  // Master Boot
   async function start() {
     const loader = createStudioLoader();
     try {
@@ -618,7 +674,13 @@ export function initNoaBaseline(rootElement) {
         duration: 1.15,
         easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
-        syncTouch: false
+        syncTouch: false,
+        virtualScroll: data => {
+          if (data.event.type === "wheel" && score >= S.STUDIES.start && score < S.STUDIES.end) {
+            data.deltaY *= 1.25 + 0.55 * S.phase(score, 17.0, 22.2);
+          }
+          return true;
+        }
       });
       lenis.stop();
       lenis.on("scroll", ScrollTrigger.update);
@@ -638,6 +700,11 @@ export function initNoaBaseline(rootElement) {
         if (!document.hidden) {
           gallery?.render(time);
           window.StudioAtelier?.tick(time);
+          if (artistGuide && artistGuide.firstElementChild) {
+            const breathe = S.phase(score, 6.1, 6.65) * (1 - S.phase(score, S.INTRO.holdEnd, S.INTRO.exitEnd));
+            artistGuide.firstElementChild.style.transformOrigin = "50% 25%";
+            artistGuide.firstElementChild.style.transform = "translate3d(0," + (Math.sin(time * 0.88) * 2.5 * breathe) + "px,0) rotate(" + (Math.sin(time * 0.61) * 0.12 * breathe) + "deg)";
+          }
         }
       });
       gsap.ticker.lagSmoothing(0);
