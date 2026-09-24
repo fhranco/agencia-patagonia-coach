@@ -1,46 +1,581 @@
-/* Laboratory Minimal CSS Shell */
-.noa-baseline-lab {
-  min-height: 100vh;
+/* ==========================================================================
+   NOA BASELINE — FASE 12A.2: SINGLE-STAGE GEOMETRY BASELINE
+   Tokens, Sticky Stage, Scroll Story (1430svh) & Stacked Panels
+   ========================================================================== */
+
+:root {
+  --paper: #efebe3;
+  --ink: #22231f;
+  --muted: #726f66;
+  --line: #d3cfc5;
+  --accent: #c8552b;
+  --gutter: 3.25vw;
+  --display: 'Bricolage', 'Geist', sans-serif;
+  --body: 'Geist', Arial, sans-serif;
+  --header-height: 82px;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --gutter: 24px;
+    --header-height: 72px;
+  }
+}
+
+/* Base Wrapper for Isolated Route */
+.noa-baseline-root {
+  position: relative;
+  width: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+.noa-baseline-root * {
+  box-sizing: border-box;
+}
+
+/* Accessibility Skip Link */
+.noa-baseline-root .skip-link {
+  position: absolute;
+  top: 12px;
+  left: var(--gutter);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  z-index: 1000;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+  text-decoration: none;
+}
+
+.noa-baseline-root .skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Site Header */
+.noa-baseline-root .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  background: rgba(239, 235, 227, 0.72);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  backdrop-filter: blur(18px) saturate(1.15);
+  border-bottom: 1px solid rgba(211, 207, 197, 0.4);
+}
+
+.noa-baseline-root .wordmark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.noa-baseline-root .monogram {
+  font-family: var(--display);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.noa-baseline-root .monogram span {
+  color: var(--accent);
+}
+
+.noa-baseline-root .brand-lockup {
+  display: flex;
+  flex-direction: column;
+}
+
+.noa-baseline-root .artist-name {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.noa-baseline-root .artist-role {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* Dock Placeholder in Header */
+.noa-baseline-root .sable-dock {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(239, 235, 227, 0.85);
+  border: 1px solid rgba(211, 207, 197, 0.6);
+  border-radius: 9999px;
+  padding: 4px 6px;
+  box-shadow: 0 4px 20px rgba(34, 35, 31, 0.04);
+}
+
+.noa-baseline-root .sable-dock__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.noa-baseline-root .sable-dock__item:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.noa-baseline-root .sable-dock__icon svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 760px) {
+  .noa-baseline-root .sable-dock {
+    display: none;
+  }
+}
+
+/* Thinking Contact Trigger */
+.noa-baseline-root .thinking-contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 9999px;
+  padding: 8px 18px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.noa-baseline-root .thinking-contact:hover {
+  background: #383733;
+}
+
+/* ==========================================================================
+   SCROLL STORY & STICKY STAGE (PHYSICAL ARCHITECTURE)
+   ========================================================================== */
+
+.noa-baseline-root #scroll-story {
+  position: relative;
+  width: 100%;
+  height: 1430vh;
+  height: 1430svh;
+}
+
+.noa-baseline-root #stage {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: clip;
+  isolation: isolate;
+  background: var(--paper);
+  touch-action: pan-y;
+}
+
+/* Analog Noise Grain Overlay */
+.noa-baseline-root .grain {
+  position: absolute;
+  inset: -100px;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.65' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* WebGL Canvas Placeholder */
+.noa-baseline-root #gallery-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+}
+
+/* Video Texture Preload Element */
+.noa-baseline-root #card-motion {
+  display: none;
+}
+
+/* ==========================================================================
+   PANEL STACK (CORE SPATIAL LAYOUT)
+   ========================================================================== */
+
+.noa-baseline-root .panel {
+  position: absolute;
+  inset: 0;
+  padding: 0 var(--gutter);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.noa-baseline-root .panel a,
+.noa-baseline-root .panel button {
+  pointer-events: auto;
+}
+
+.noa-baseline-root .micro {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.noa-baseline-root .section-kicker {
+  position: absolute;
+  top: 15%;
+  left: var(--gutter);
+  display: flex;
+  gap: 24px;
+}
+
+/* --- Panel 0: Hero Panel --- */
+.noa-baseline-root .hero-panel {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--header-height) + 20px) var(--gutter) 40px;
+}
+
+.noa-baseline-root .hero-edition {
+  position: absolute;
+  top: 16%;
+  left: var(--gutter);
+  display: flex;
+  gap: 20px;
+}
+
+.noa-baseline-root #hero-title {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  white-space: nowrap;
+  font-family: var(--display);
+  font-size: clamp(64px, 10vw, 180px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  color: #d0ccc1;
+  user-select: none;
+}
+
+.noa-baseline-root .hero-bottom {
+  position: absolute;
+  bottom: 5%;
+  left: var(--gutter);
+  right: var(--gutter);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  z-index: 5;
+}
+
+.noa-baseline-root .current-work h2 {
+  margin: 4px 0 0 0;
+  font-size: clamp(22px, 2.5vw, 36px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.noa-baseline-root .card-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.noa-baseline-root .card-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.noa-baseline-root .card-arrow:hover {
+  border-color: var(--ink);
+  transform: scale(1.05);
+}
+
+.noa-baseline-root .scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+/* --- Panel 1: Entrance Panel --- */
+.noa-baseline-root .entrance-panel {
+  z-index: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #efebe3;
-  color: #22231f;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  padding: 2rem;
   text-align: center;
 }
 
-.noa-baseline-lab__card {
-  background: #ffffff;
-  border: 1px solid #d3cfc5;
-  border-radius: 12px;
-  padding: 2.5rem;
-  max-width: 480px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+.noa-baseline-root .entrance-overline {
+  margin-bottom: 16px;
 }
 
-.noa-baseline-lab__tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #c8552b;
-  margin-bottom: 0.75rem;
-}
-
-.noa-baseline-lab__title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0 0 1rem 0;
-  color: #22231f;
-}
-
-.noa-baseline-lab__text {
-  font-size: 0.95rem;
-  color: #726f66;
+.noa-baseline-root #entrance-title {
+  font-family: var(--display);
+  font-size: clamp(52px, 8vw, 136px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
   margin: 0;
+}
+
+.noa-baseline-root #entrance-dot {
+  display: inline-block;
+  width: 0.12em;
+  height: 0.12em;
+  margin-left: 0.035em;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.noa-baseline-root .entrance-foot {
+  margin-top: 24px;
+}
+
+/* Radial Portal Transition Layer */
+.noa-baseline-root #studio-portal {
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  will-change: clip-path, opacity;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* --- Panel 2: Artist / Studio Panel --- */
+.noa-baseline-root .artist-panel {
+  z-index: 17;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.noa-baseline-root #portal-signature {
+  text-align: center;
+}
+
+.noa-baseline-root .portal-name {
+  font-family: var(--display);
+  font-size: clamp(48px, 7vw, 110px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 12px 0;
+}
+
+.noa-baseline-root #portrait-figure {
+  position: relative;
+  max-width: 480px;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.noa-baseline-root .portrait-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Panel 3: Practice / Atelier Panel --- */
+.noa-baseline-root .practice-panel {
+  z-index: 5;
+}
+
+.noa-baseline-root .atelier-copy-stack {
+  position: absolute;
+  left: var(--gutter);
+  top: 35%;
+  width: 35%;
+  max-width: 440px;
+}
+
+.noa-baseline-root .atelier-copy-stack article h3 {
+  font-family: var(--display);
+  font-size: clamp(32px, 4vw, 56px);
+  margin: 8px 0 16px 0;
+  font-weight: 500;
+}
+
+.noa-baseline-root .atelier-copy-stack article h3 span {
+  color: var(--accent);
+}
+
+.noa-baseline-root .atelier-copy-stack article p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.noa-baseline-root .atelier-copy-stack article small {
+  font-size: 12px;
   line-height: 1.5;
+  color: var(--muted);
+}
+
+.noa-baseline-root .atelier-rail {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.noa-baseline-root .atelier-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.noa-baseline-root .atelier-tabs button {
+  padding: 8px 14px;
+  border-radius: 9999px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  gap: 6px;
+}
+
+/* --- Panel 4: Works Panel --- */
+.noa-baseline-root .works-panel {
+  z-index: 5;
+}
+
+.noa-baseline-root .works-heading {
+  position: absolute;
+  top: 23%;
+  left: var(--gutter);
+  max-width: 460px;
+}
+
+.noa-baseline-root .works-heading h2 {
+  font-family: var(--display);
+  font-size: clamp(40px, 5vw, 80px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  font-weight: 500;
+}
+
+.noa-baseline-root .works-heading p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-top: 18px;
+}
+
+.noa-baseline-root .study-rail {
+  position: absolute;
+  inset: auto var(--gutter) 5%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.noa-baseline-root #study-open {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--ink);
+  padding: 0;
+  margin-top: 4px;
+}
+
+/* Site Footer */
+.noa-baseline-root .site-footer {
+  position: relative;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  padding: 40px var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.noa-baseline-root .footer-signoff {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.noa-baseline-root .footer-signoff .footer-period {
+  color: var(--accent);
+}
+
+/* Dialog Modals */
+.noa-baseline-root dialog {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 32px;
+  max-width: 640px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.noa-baseline-root dialog::backdrop {
+  background: rgba(34, 35, 31, 0.4);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
