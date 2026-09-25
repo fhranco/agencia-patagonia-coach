@@ -27,20 +27,23 @@ function studyPosition(s){return Math.min(15,Math.max(0,Math.floor(tunnelTravel(
 function studyScore(position){let lo=STUDIES.start,hi=STUDIES.end;for(let n=0;n<40;n++){const mid=(lo+hi)/2;if(tunnelTravel(mid)<position*6.35)lo=mid;else hi=mid;}return(lo+hi)/2;}
 function flightPose(s,W,H,id){
  const mobile=W<=760,i=TUNNEL_ORDER.indexOf(id),z=4-i*6.35+tunnelTravel(s),side=i%2?1:-1;
- const scale=mobile?1.45:Math.min(2.1,W/H*1.42),lane=mobile?1.66:Math.min(4.8,W/H*2.15);
+ const scale=mobile?1.20:Math.min(2.1,W/H*1.42),lane=mobile?2.15:Math.min(4.8,W/H*2.15);
  // Each print has a slightly different attitude and a reversible passing breeze.
  const travel=tunnelTravel(s),a=i*2.39996,breeze=phase(s,16.05,17.1),near=phase(z,-35,7);
+ const alpha=mobile?(z>-18&&z<11?(1-phase(z,7,11)):0):(1-phase(z,12,15));
  return{x:side*(lane+(i%3)*.13)+Math.sin(travel*.085+a)*.045*breeze,
  y:[.08,-.22,.35,-.30][i%4]+Math.sin(travel*.11+a)*.035*breeze+(i>=13?phase(s,STUDIES.end-1.4+(i-13)*.10,STUDIES.end+.1)*9:0),
  z:Math.min(15,z),rx:Math.sin(a)*.022+Math.sin(travel*.13+a)*.016*breeze*near,
  ry:-side*.20+Math.cos(a)*.045+Math.sin(travel*.10+a)*.022*breeze*near,
- rz:side*.012+Math.sin(a+.8)*.018+Math.sin(travel*.12+a)*.012*breeze*near,s:scale,alpha:1-phase(z,12,15)};
+ rz:side*.012+Math.sin(a+.8)*.018+Math.sin(travel*.12+a)*.012*breeze*near,s:scale,alpha};
 }
 function contactPose(s,W,H){
  const t=phase(s,25.9,26.85),mobile=W<=760;
- // Already at standing scale behind the fifteenth (left-hand) print.
- // A lateral entrance is uncovered by the rising card, without a distant zoom.
- return screenPose(W,H,mix(-.24,mobile?.26:.31,t),mobile?.49:.51,Math.min(W*(mobile?.62:.43),H*(mobile?.43:.48)),-8,0,0,0,phase(s,25.82,26.05));
+ if(mobile){
+  // Authorized: hide the final card on mobile to prioritize text + liquid CTA
+  return{x:0,y:-5,z:20,rx:0,ry:0,rz:0,s:0.01,alpha:0};
+ }
+ return screenPose(W,H,mix(-.24,.31,t),.51,Math.min(W*.43,H*.48),-8,0,0,0,phase(s,25.82,26.05));
 }
 function studyRailAlpha(s,W,H){
  if(studyPosition(s)<15)return 1;
@@ -71,12 +74,17 @@ function portrait(s,W,H){
   captionAlpha:phase(s,5.05,5.32)*(1-triptych)*(1-exit),signatureWrite:phase(s,5.10,5.48)*(1-triptych)*(1-exit),quoteAlpha:phase(s,5.34,5.58)*(1-triptych)*(1-exit),alpha:phase(s,2.14,2.25)*(1-triptych)*(1-exit),move,exit};
 }
 function biographyPose(s,W,H,index=0){
- const small=W<=760,soloW=Math.min(W*(small?.77:.35),H*(small?.45:.57));
+ const small=W<=760;
+ if(small&&index>0){
+  // Authorized: Hide secondary cards in mobile during editorial Enfoque chapter
+  return{x:2,y:-2,z:20,rx:0,ry:0,rz:0,s:0.01,alpha:0};
+ }
+ const soloW=Math.min(W*(small?.62:.35),H*(small?.38:.57));
  const sideW=Math.min(W*(small?.50:.25),H*(small?.31:.45));
  const centerW=Math.min(W*(small?.62:.285),H*(small?.38:.515));
  const finalW=[sideW,centerW,sideW];
- const finalX=small?[.28,.50,.72]:[.205,.50,.795];
- const finalY=small?[.66,.59,.665]:[.525,.455,.525];
+ const finalX=small?[.50,.50,.50]:[.205,.50,.795];
+ const finalY=small?[.68,.68,.68]:[.525,.455,.525];
  const finalRx=small?[.045,.018,.05]:[.055,.018,.05];
  // Outer sheets open away from the centre: Card 01 exposes its left stock
  // edge, Card 03 exposes its right edge, and Philosophy faces us directly.
@@ -84,10 +92,10 @@ function biographyPose(s,W,H,index=0){
  const finalRz=small?[-.10,.012,.10]:[-.10,.012,.10];
  const finalZ=[6.6,7.4,8.2];
  const endPose=i=>screenPose(W,H,finalX[i],finalY[i],finalW[i],finalZ[i],finalRx[i],finalRy[i],finalRz[i]);
- const leadX=small?.58:.715,leadY=small?.705:.55;
+ const leadX=small?.50:.715,leadY=small?.68:.55;
  if(index===0){
   const enter=phase(s,INTRO.cardStart,INTRO.cardEnd),cross=phase(s,INTRO.cardStart,4.72),settle=phase(s,4.72,INTRO.cardEnd);
-  const cx=mix(-.5,.52,cross)+(leadX-.52)*settle;
+  const cx=mix(-.5,.50,cross)+(leadX-.50)*settle;
   // From the solo reading position, one continuous move lands at the final
   // left anchor. The arrival of Card 03 never moves either settled card again.
   const p=screenPose(W,H,cx,mix(.58,leadY,enter),soloW,7,mix(.10,small?.035:.055,enter),mix(.28,Math.PI-(small?.32:.48),enter),mix(-.14,.035,enter),phase(s,INTRO.cardStart,INTRO.cardStart+.17));
@@ -103,11 +111,16 @@ function biographyPose(s,W,H,index=0){
 // Three, five, then eleven cards expand around one dominant artwork.
 const PRACTICE_SUPPORT=[2,5,1,4,3,6,7];
 function practiceSupportPose(s,W,H,k){
- const mobile=W<=760,side=k%2?1:-1;
- const image=mobile?[[.13,.69,.30,-.14,-.20],[.87,.66,.30,.12,.24]]:[[.455,.64,.18,-.12,-.22],[.915,.56,.175,.11,.25]];
- const motion=mobile?[[.12,.66,.25,-.15,-.20],[.88,.66,.25,.12,.20],[.15,.45,.20,.12,-.25],[.85,.45,.20,-.10,.25]]:[[.19,.69,.165,-.13,-.20],[.615,.42,.15,.10,.22],[.07,.39,.115,.13,-.25],[.70,.72,.12,-.12,.25]];
- const invite=mobile?[[.13,.61,.24,-.12,-.20],[.87,.61,.24,.12,.20],[.12,.40,.20,.10,-.22],[.88,.40,.20,-.10,.22],[.12,.82,.22,-.15,-.20],[.88,.82,.22,.15,.20],[.30,.82,.15,.08,-.12],[.70,.82,.15,-.08,.12],[.08,.51,.14,-.06,-.15],[.92,.51,.14,.06,.15]]:[[.245,.53,.16,-.10,-.20],[.755,.53,.16,.10,.20],[.10,.36,.125,.11,-.28],[.90,.36,.125,-.11,.28],[.10,.735,.145,-.12,-.23],[.90,.735,.145,.12,.23],[.27,.78,.095,.08,-.16],[.73,.78,.095,-.08,.16],[.28,.31,.095,-.08,-.12],[.72,.31,.095,.08,.12]];
- const pose=(a,alpha=1)=>screenPose(W,H,a[0],a[1],Math.min(W*a[2],H*(mobile?.20:.26)),5-k*.24,.025,Math.PI*2+a[4],a[3],alpha);
+ const mobile=W<=760;
+ if(mobile){
+  // Authorized: Hide satellite cards in mobile to eliminate visual clutter and text collision
+  return{x:2,y:-2,z:20,rx:0,ry:0,rz:0,s:0.01,alpha:0};
+ }
+ const side=k%2?1:-1;
+ const image=[[.455,.64,.18,-.12,-.22],[.915,.56,.175,.11,.25]];
+ const motion=[[.19,.69,.165,-.13,-.20],[.615,.42,.15,.10,.22],[.07,.39,.115,.13,-.25],[.70,.72,.12,-.12,.25]];
+ const invite=[[.245,.53,.16,-.10,-.20],[.755,.53,.16,.10,.20],[.10,.36,.125,.11,-.28],[.90,.36,.125,-.11,.28],[.10,.735,.145,-.12,-.23],[.90,.735,.145,.12,.23],[.27,.78,.095,.08,-.16],[.73,.78,.095,-.08,.16],[.28,.31,.095,-.08,-.12],[.72,.31,.095,.08,.12]];
+ const pose=(a,alpha=1)=>screenPose(W,H,a[0],a[1],Math.min(W*a[2],H*.26),5-k*.24,.025,Math.PI*2+a[4],a[3],alpha);
  const off=pose([side<0?-.25:1.25,.55,.15,side*.18,side*.25],0);
  const across=phase(s,PRACTICE.motionStart+k*.025,PRACTICE.motionEnd+k*.025);
  const closer=phase(s,PRACTICE.interactionStart+k*.014,PRACTICE.interactionEnd+k*.014);
@@ -116,10 +129,10 @@ function practiceSupportPose(s,W,H,k){
 function practicePose(s,W,H,j){
  if(j)return practiceSupportPose(s,W,H,j-1);
  const mobile=W<=760;
- const image=mobile?[.50,.65,.57,.01,0]:[.685,.55,.325,.01,0];
- const motion=mobile?[.50,.65,.58,.025,-.07]:[.39,.55,.29,.025,-.07];
- const invite=mobile?[.50,.64,.60,0,0]:[.50,.615,.34,0,0];
- const pose=(a,close=false)=>screenPose(W,H,a[0],a[1],Math.min(W*a[2],H*(mobile?.36:close?.445:.55)),7,close?-.10:.025,Math.PI*2+a[4],a[3]);
+ const image=mobile?[.50,.68,.48,.01,0]:[.685,.55,.325,.01,0];
+ const motion=mobile?[.50,.68,.50,.025,-.07]:[.39,.55,.29,.025,-.07];
+ const invite=mobile?[.50,.68,.52,0,0]:[.50,.615,.34,0,0];
+ const pose=(a,close=false)=>screenPose(W,H,a[0],a[1],Math.min(W*a[2],H*(mobile?.32:close?.445:.55)),7,close?-.10:.025,Math.PI*2+a[4],a[3]);
  return blend(blend(pose(image),pose(motion),phase(s,PRACTICE.motionStart,PRACTICE.motionEnd)),pose(invite,true),phase(s,PRACTICE.interactionStart,PRACTICE.interactionEnd));
 }
 function scene(s,W,H,theta=.08){

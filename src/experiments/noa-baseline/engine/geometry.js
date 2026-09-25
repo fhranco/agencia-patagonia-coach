@@ -19,7 +19,7 @@
     const distance = Math.max(8.7, 2.92 + (1.6 / .82) / (t2 * aspect), 2.92 + 2 / ((width <= 760 ? .42 : aspect < 1.15 ? .5 : .58) * t2));
     const elevation = aspect < 1 ? 1.15 : 1.4;
     const pitch = Math.atan2(elevation, distance), scale = 20 / Math.hypot(distance, elevation);
-    return { pitch, scale, centerY: (height / 2 - heroHeight * (width <= 760 ? .43 : .47) + scroll) * t2 * 20 / height };
+    return { pitch, scale, centerY: (height / 2 - heroHeight * (width <= 760 ? .54 : .47) + scroll) * t2 * 20 / height };
   }
 
   function orbitPose(index, theta, rig) {

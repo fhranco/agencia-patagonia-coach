@@ -325,27 +325,19 @@ body[data-chapter=hero] #stage {
   text-align: right
 }
 
-.hero-panel h1,
-#hero-title {
+.hero-panel h1 {
   position: absolute;
-  top: 36%;
+  top: 38%;
   left: 50%;
   transform: translateX(-50%);
-  width: min(92vw, 1140px);
-  max-width: 1140px;
-  white-space: normal;
-  text-align: center;
+  white-space: nowrap;
   font-family: var(--display);
-  font-size: clamp(36px, 5vw, 72px);
-  line-height: 1.08;
-  letter-spacing: -.03em;
+  font-size: clamp(80px, 10.9vw, 192px);
+  line-height: 1;
+  letter-spacing: -.025em;
   font-weight: 500;
   color: #d0ccc1;
-  text-wrap: balance;
-  font-variation-settings: 'opsz' 96, 'wdth' 100;
-  z-index: 2;
-  margin: 0;
-  padding: 0;
+  font-variation-settings: 'opsz' 96, 'wdth' 100
 }
 
 .hero-bottom {
@@ -436,22 +428,19 @@ body[data-chapter=hero] #stage {
 }
 
 .entrance-panel h2 {
-  font: 500 clamp(44px, 6.2vw, 105px)/.96 var(--display);
-  letter-spacing: -.03em;
-  max-width: 14ch;
-  text-wrap: balance;
+  font: 500 clamp(62px, 8.4vw, 146px)/.9 var(--display);
+  letter-spacing: -.025em;
   will-change: opacity;
   font-variation-settings: 'opsz' 96, 'wdth' 100
 }
 
 .entrance-panel h2 span {
   display: inline-block;
-  width: .13em;
-  height: .13em;
-  margin-left: .04em;
+  width: .12em;
+  height: .12em;
+  margin-left: .035em;
   border-radius: 50%;
-  background: var(--accent);
-  vertical-align: baseline;
+  background: var(--accent)
 }
 
 #studio-portal {
@@ -479,10 +468,8 @@ body[data-chapter=hero] #stage {
 }
 
 #portal-signature .portal-name {
-  font: 500 clamp(32px, 7.5vw, 120px)/.95 var(--display);
-  letter-spacing: -.035em;
-  max-width: 90vw;
-  text-align: center;
+  font: 500 clamp(64px, 10vw, 172px)/.95 var(--display);
+  letter-spacing: -.04em
 }
 
 #portal-signature .micro {
@@ -524,9 +511,9 @@ body.static-page #studio-portal {
 .artist-copy {
   position: absolute;
   top: 22%;
-  left: var(--gutter, 8%);
-  width: 44%;
-  max-width: 580px;
+  left: 8%;
+  width: 39%;
+  max-width: 660px
 }
 
 .small-symbol {
@@ -538,8 +525,8 @@ body.static-page #studio-portal {
 }
 
 .artist-copy h2 {
-  font: 500 clamp(42px, 5.2vw, 86px)/.96 var(--display);
-  letter-spacing: -.03em;
+  font: 500 clamp(60px, 6.9vw, 120px)/.9 var(--display);
+  letter-spacing: -.025em;
   font-variation-settings: 'opsz' 96, 'wdth' 100
 }
 
@@ -695,15 +682,14 @@ body.static-page #studio-portal {
 }
 
 .works-heading h2 {
-  font: 500 clamp(36px, 4.4vw, 74px)/.95 var(--display);
-  letter-spacing: -.03em;
-  max-width: 14ch;
+  font: 500 clamp(42px, 4.8vw, 84px)/.92 var(--display);
+  letter-spacing: -.025em
 }
 
 .works-heading p {
-  font-size: clamp(12px, 1.05vw, 14px);
+  font-size: 13px;
   line-height: 1.6;
-  max-width: 320px;
+  max-width: 260px;
   margin-right: 4%
 }
 
@@ -1169,39 +1155,26 @@ html.lenis body {
 
   .hero-eyebrow,
   .hero-edition {
-    top: 13%;
+    top: 14%;
     font-size: 8px
   }
 
   .hero-edition {
-    max-width: 140px;
-    right: 20px
+    max-width: 90px
   }
 
-  .hero-panel h1,
-  #hero-title {
-    position: absolute;
-    top: 27%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 40px);
-    max-width: 350px;
-    font-size: clamp(24px, 7.2vw, 34px);
-    line-height: 1.15;
-    letter-spacing: -.025em;
-    white-space: normal;
-    text-align: center;
-    text-wrap: balance;
+  .hero-panel h1 {
+    font-size: 100px;
+    top: 33%;
+    letter-spacing: -.025em
   }
 
   .hero-bottom {
-    bottom: 8%;
-    left: 20px;
-    right: 20px;
+    bottom: 13%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px
+    flex-wrap: wrap;
+    gap: 22px;
+    align-items: center
   }
 
   .current-work {
@@ -1209,8 +1182,8 @@ html.lenis body {
   }
 
   .current-work h2 {
-    font-size: clamp(22px, 6.5vw, 28px);
-    margin-top: 6px
+    font-size: 34px;
+    margin-top: 10px
   }
 
   .current-work p {
@@ -1251,9 +1224,7 @@ html.lenis body {
 
   .section-kicker {
     top: 14%;
-    font-size: 8px;
-    left: 20px;
-    right: 20px
+    font-size: 8px
   }
 
   .section-kicker>span:last-child {
@@ -1261,28 +1232,24 @@ html.lenis body {
   }
 
   .entrance-panel h2 {
-    font-size: clamp(32px, 9.5vw, 46px);
-    line-height: 1.05;
-    max-width: 12ch
+    font-size: 64px
   }
 
   .entrance-overline {
     font-size: 8px;
-    top: 21%
+    top: 23%
   }
 
   .entrance-foot {
-    font-size: 8px;
-    bottom: 14%;
-    max-width: 280px
+    font-size: 7px;
+    bottom: 15%;
+    max-width: 260px
   }
 
   .artist-copy {
-    top: 18%;
-    left: 20px;
-    right: 20px;
-    width: auto;
-    max-width: none
+    top: 20%;
+    left: 24px;
+    width: calc(100% - 48px)
   }
 
   .small-symbol {
@@ -1290,9 +1257,9 @@ html.lenis body {
   }
 
   .artist-copy h2 {
-    font-size: clamp(28px, 8.5vw, 42px);
-    line-height: 1.02;
-    letter-spacing: -.025em;
+    font-size: 54px;
+    line-height: .93;
+    letter-spacing: -.025em
   }
 
   .artist-copy h2 br:first-child {
@@ -1338,21 +1305,18 @@ html.lenis body {
   }
 
   .practice-heading {
-    top: 18%;
-    left: 20px;
-    right: 20px;
+    top: 20%
   }
 
   .practice-heading h2 {
-    font-size: clamp(28px, 8vw, 38px);
-    letter-spacing: -.025em;
+    font-size: 43px
   }
 
   .practice-copy {
     top: auto;
     bottom: 8%;
-    left: 20px;
-    right: 20px;
+    left: 24px;
+    right: 24px;
     width: auto;
     max-width: none
   }
@@ -1362,28 +1326,27 @@ html.lenis body {
   }
 
   #practice-text h3 {
-    font-size: clamp(26px, 7.8vw, 36px);
-    margin-top: 10px;
-    letter-spacing: -.025em;
+    font-size: 42px;
+    margin-top: 10px
   }
 
   #discipline-copy {
     font-size: 13px;
     line-height: 1.5;
-    max-width: 92%;
+    max-width: 90%;
     margin-top: 8px
   }
 
   #discipline-tools {
-    font-size: 8px;
+    font-size: 7px;
     margin-top: 12px;
     max-width: 100%
   }
 
   .practice-tabs {
-    margin-top: 16px;
+    margin-top: 18px;
     padding-top: 10px;
-    gap: 20px
+    gap: 30px
   }
 
   .practice-tabs button {
@@ -1397,31 +1360,24 @@ html.lenis body {
   }
 
   .works-heading {
-    top: 16%;
-    left: 20px;
-    right: 20px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px
+    top: 20%;
+    align-items: start
   }
 
   .works-heading h2 {
-    font-size: clamp(26px, 7.8vw, 36px);
-    line-height: 1.05;
-    letter-spacing: -.025em;
+    font-size: 44px
   }
 
   .works-heading p {
-    font-size: 11px;
-    max-width: 280px;
+    font-size: 9px;
+    max-width: 120px;
     line-height: 1.5;
-    margin: 0
+    margin: 4px 0 0 12px
   }
 
   .works-note {
     font-size: 7px;
-    bottom: 3%;
-    left: 20px
+    bottom: 3%
   }
 
   .invitation {
@@ -3511,51 +3467,61 @@ body.static-page #scroll-story {
     font-size: 7px
   }
 
-  .atelier-copy-stack article,
-  .atelier-copy-stack article[data-atelier-copy="1"],
-  .atelier-copy-stack article[data-atelier-copy="2"] {
-    left: 20px;
-    right: 20px;
-    top: 20%;
-    width: calc(100% - 40px);
-    max-width: 350px;
+  .atelier-copy-stack article {
+    left: 24px;
+    right: 24px;
+    top: 22%;
+    width: auto;
+    max-width: none
   }
 
-  .atelier-copy-stack h3,
-  .atelier-copy-stack article[data-atelier-copy="1"] h3,
-  .atelier-copy-stack [data-atelier-copy="2"] h3 {
-    font-size: clamp(26px, 7.8vw, 36px);
-    line-height: 1.05;
-    letter-spacing: -.03em;
-    word-break: break-word;
+  .atelier-copy-stack article[data-atelier-copy="1"] {
+    left: 34%;
+    right: 24px;
+    top: 22%;
+    width: auto;
+    max-width: none
+  }
+
+  .atelier-copy-stack h3 {
+    font-size: 54px
   }
 
   .atelier-copy-stack article>span.micro {
     font-size: 8px;
-    margin-bottom: 8px;
-    letter-spacing: .08em;
+    margin-bottom: 9px
   }
 
   .atelier-copy-stack p {
     font-size: 13px;
     line-height: 1.45;
-    margin-top: 10px;
-    max-width: 32ch;
+    margin-top: 12px;
+    max-width: 31ch
   }
 
   .atelier-copy-stack p br {
-    display: none;
+    display: none
   }
 
   .atelier-copy-stack small {
-    display: none;
+    display: none
+  }
+
+  .atelier-copy-stack article[data-atelier-copy="2"] {
+    top: 22%;
+    left: 0;
+    right: 0;
+    width: auto
+  }
+
+  .atelier-copy-stack [data-atelier-copy="2"] h3 {
+    font-size: 45px
   }
 
   .atelier-copy-stack [data-atelier-copy="2"] p {
-    top: auto;
-    position: relative;
-    max-width: 32ch;
-    font-size: 13px;
+    top: 54vh;
+    max-width: none;
+    font-size: 12px
   }
 
   .atelier-play {
@@ -5872,75 +5838,54 @@ body:not(.static-page) .site-footer {
 
 @media(max-width:760px) {
   .works-panel .study-finale {
-    top: 22%;
-    left: 20px;
-    right: 20px;
-    width: calc(100% - 40px);
-    max-width: 350px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    top: 31%;
+    left: 49%;
+    right: 5%
   }
 
   .study-finale h2 {
-    font-size: clamp(26px, 7.5vw, 36px);
-    line-height: 1.05;
-    letter-spacing: -.025em;
-    margin-top: 8px;
-    text-align: center;
+    font-size: clamp(29px, 7vw, 48px);
+    margin-top: 12px
   }
 
   .study-finale>.micro {
-    font-size: 8px;
-    letter-spacing: .06em;
+    font-size: 7px;
+    letter-spacing: .035em
   }
 
   .study-finale-note {
-    font-size: 12px;
-    line-height: 1.45;
-    margin-top: 10px;
-    max-width: 28ch;
-    text-align: center;
+    font-size: 11px;
+    line-height: 1.55;
+    margin-top: 16px
   }
 
   .study-finale #liquid-contact-frame {
-    margin-top: 6px;
-    width: 100%;
-    max-width: 320px;
-    height: 110px;
+    margin-top: 0;
+    height: 112px
   }
 
   .finale-conversation {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 11px;
-    line-height: 1.5;
-    margin-top: 6px;
-    max-width: 30ch;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 10px;
+    line-height: 1.6;
+    margin-top: 0;
+    max-width: 24ch
   }
 
   .finale-conversation>span {
-    display: none;
+    width: 12px;
+    margin-top: 8px
   }
 
   body:not(.static-page) .site-footer {
-    min-height: 120px;
-    padding: 20px;
+    min-height: 105px;
+    padding: 14px 24px 18px;
     display: flex;
-    align-items: flex-start;
+    align-items: start;
     justify-content: center;
     flex-direction: column;
-    gap: 16px;
-  }
-
-  .footer-socials ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 14px;
-    font-size: 10px;
+    gap: 13px
   }
 
   .site-footer .footer-signoff {
@@ -6013,16 +5958,12 @@ body.static-page .finale-conversation {
   justify-content: center
 }
 
-body.static-page .site-footer {
-  position: relative
-}
-
 body.static-page .static-contact-portrait {
   filter: drop-shadow(8px 12px 13px #51433118)
 }
 
 /* =========================================================================
-   FASE 12C.1: RESPONSIVE & TYPOGRAPHY POLISH (AUTHORITATIVE SYSTEM)
+   FASE 12C.2: AUTHORITATIVE MOBILE RECOMPOSITION & CLEAN SYSTEM
    ========================================================================= */
 
 .noa-baseline-root {
@@ -6035,89 +5976,368 @@ body.static-page .static-contact-portrait {
   overflow: hidden;
 }
 
-/* --- Short Desktop Screens (e.g. 1440x700, laptops) --- */
-@media (min-width: 761px) and (max-height: 780px) {
-  .hero-panel h1,
-  #hero-title {
-    top: 32%;
-    font-size: clamp(30px, 4.2vw, 54px);
+@media (max-width: 760px) {
+  /* --- Global Mobile Gutter & Header --- */
+  :root {
+    --gutter: 20px;
   }
-  .hero-bottom {
-    bottom: 5%;
-  }
-  .entrance-panel h2 {
-    font-size: clamp(40px, 5.5vw, 84px);
-  }
-  .artist-copy {
-    top: 18%;
-  }
-  .artist-copy h2 {
-    font-size: clamp(36px, 4.5vw, 68px);
-  }
-  .atelier-copy-stack article {
-    top: 28%;
-  }
-  .atelier-copy-stack h3 {
-    font-size: clamp(34px, 4.2vw, 60px);
-  }
-  .works-heading {
-    top: 17%;
-  }
-  .works-panel .study-finale {
-    top: 22%;
-  }
-  .study-finale h2 {
-    font-size: clamp(32px, 3.8vw, 50px);
-  }
-  .study-finale #liquid-contact-frame {
-    height: 120px;
-  }
-}
 
-/* --- Short Mobile Screens (e.g. 390x700, small phones) --- */
-@media (max-width: 760px) and (max-height: 720px) {
+  .site-header {
+    height: 72px;
+    padding-inline: 20px;
+  }
+
+  .site-header nav,
+  .sable-dock {
+    display: none !important;
+  }
+
+  /* --- Chapter 0: Hero --- */
+  .hero-edition {
+    top: 10% !important;
+    right: 20px !important;
+    max-width: 130px !important;
+    font-size: 8px !important;
+    text-align: right !important;
+    opacity: 0.85 !important;
+  }
+
   .hero-panel h1,
   #hero-title {
-    top: 23%;
-    font-size: clamp(20px, 6.5vw, 27px);
+    position: absolute !important;
+    top: 18% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: calc(100% - 40px) !important;
+    max-width: 320px !important;
+    font-size: clamp(22px, 6.2vw, 30px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -.025em !important;
+    white-space: normal !important;
+    text-align: center !important;
+    text-wrap: balance !important;
   }
+
   .hero-bottom {
-    bottom: 4%;
-    gap: 8px;
+    bottom: 5% !important;
+    left: 20px !important;
+    right: 20px !important;
+    gap: 8px !important;
   }
+
+  .current-work h2 {
+    font-size: clamp(18px, 5.2vw, 24px) !important;
+    margin-top: 4px !important;
+  }
+
+  .current-work p {
+    font-size: 8px !important;
+  }
+
+  .card-controls {
+    gap: 10px !important;
+  }
+
+  .card-controls #open-current {
+    font-size: 11px !important;
+    padding: 6px 14px !important;
+  }
+
+  .scroll-cue {
+    display: none !important;
+  }
+
+  /* --- Chapter 1: Entrance & Portal --- */
+  .entrance-overline {
+    top: 18% !important;
+    font-size: 8px !important;
+  }
+
   .entrance-panel h2 {
-    font-size: clamp(28px, 8.5vw, 38px);
+    font-size: clamp(28px, 8.5vw, 38px) !important;
+    line-height: 1.05 !important;
+    max-width: 11ch !important;
+    text-align: center !important;
   }
+
+  .entrance-foot {
+    bottom: 12% !important;
+    font-size: 8px !important;
+    max-width: 260px !important;
+    text-align: center !important;
+  }
+
+  #portal-signature {
+    gap: 10px !important;
+  }
+
+  #portal-signature .portal-name {
+    font-size: clamp(24px, 7vw, 32px) !important;
+    letter-spacing: -.02em !important;
+    max-width: 90vw !important;
+    text-align: center !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow: visible !important;
+  }
+
+  #portal-signature .micro {
+    font-size: 8px !important;
+  }
+
+  /* --- Chapter 2: Enfoque / Artist --- */
   .artist-copy {
-    top: 15%;
+    position: absolute !important;
+    top: 15% !important;
+    left: 20px !important;
+    right: 20px !important;
+    width: calc(100% - 40px) !important;
+    max-width: 350px !important;
+    margin: 0 auto !important;
+    text-align: left !important;
   }
+
   .artist-copy h2 {
-    font-size: clamp(25px, 7.5vw, 34px);
+    font-size: clamp(22px, 6.2vw, 28px) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -.025em !important;
   }
+
+  .artist-copy h2 br {
+    display: none !important;
+  }
+
+  .artist-intro {
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+    margin-top: 10px !important;
+    max-width: 34ch !important;
+  }
+
+  .artist-text {
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    margin-top: 8px !important;
+    max-width: 36ch !important;
+    color: var(--muted) !important;
+  }
+
+  .artist-signature,
+  .artist-caption,
+  #portrait-caption {
+    display: none !important;
+  }
+
+  /* --- Chapter 3: Capacidades / Atelier --- */
+  .atelier .section-kicker {
+    top: 11% !important;
+    left: 20px !important;
+    right: 20px !important;
+    font-size: 8px !important;
+  }
+
   .atelier-copy-stack article,
+  .atelier-copy-stack article[data-atelier-copy="0"],
   .atelier-copy-stack article[data-atelier-copy="1"],
   .atelier-copy-stack article[data-atelier-copy="2"] {
-    top: 16%;
+    position: absolute !important;
+    top: 15% !important;
+    left: 20px !important;
+    right: 20px !important;
+    width: calc(100% - 40px) !important;
+    max-width: 350px !important;
+    margin: 0 auto !important;
+    text-align: left !important;
+    transform: none !important;
+    display: block !important;
   }
-  .atelier-copy-stack h3 {
-    font-size: clamp(23px, 7vw, 30px);
-  }
-  .works-heading {
-    top: 14%;
-  }
-  .works-panel .study-finale {
-    top: 16%;
-  }
-  .study-finale h2 {
-    font-size: clamp(22px, 6.8vw, 30px);
-  }
-  .study-finale #liquid-contact-frame {
-    height: 95px;
-  }
-}
 
-/* --- Responsive Modal Dialogs --- */
-@media (max-width: 760px) {
+  .atelier-copy-stack h3,
+  .atelier-copy-stack article[data-atelier-copy="1"] h3,
+  .atelier-copy-stack [data-atelier-copy="2"] h3 {
+    font-size: clamp(24px, 7vw, 32px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -.03em !important;
+  }
+
+  .atelier-copy-stack article>span.micro {
+    font-size: 8px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .atelier-copy-stack p,
+  .atelier-copy-stack [data-atelier-copy="2"] p {
+    position: static !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    margin-top: 8px !important;
+    max-width: 34ch !important;
+  }
+
+  .atelier-copy-stack p br {
+    display: none !important;
+  }
+
+  .atelier-copy-stack small {
+    display: block !important;
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    margin-top: 8px !important;
+    max-width: 36ch !important;
+    color: var(--muted) !important;
+  }
+
+  .atelier-copy-stack [data-atelier-copy="2"] .atelier-play {
+    position: static !important;
+    margin-top: 10px !important;
+    min-height: 34px !important;
+    font-size: 10px !important;
+    padding: 6px 12px !important;
+  }
+
+  .atelier-rail {
+    position: absolute !important;
+    bottom: 4% !important;
+    left: 20px !important;
+    right: 20px !important;
+    width: calc(100% - 40px) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .atelier-principle,
+  .atelier-cue {
+    display: none !important;
+  }
+
+  .atelier-tabs {
+    display: flex !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
+
+  .atelier-tabs button {
+    font-size: 8px !important;
+    min-height: 30px !important;
+    padding: 4px 10px !important;
+  }
+
+  /* --- Chapter 4: Works --- */
+  .works-panel .section-kicker {
+    top: 11% !important;
+    left: 20px !important;
+    right: 20px !important;
+    font-size: 8px !important;
+  }
+
+  .works-panel .works-heading {
+    position: absolute !important;
+    top: 15% !important;
+    left: 20px !important;
+    right: 20px !important;
+    width: calc(100% - 40px) !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+    transform: none !important;
+    translate: none !important;
+    text-align: left !important;
+    display: block !important;
+  }
+
+  .works-panel .works-heading h2,
+  #works-title {
+    font-size: clamp(22px, 6.5vw, 30px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -.025em !important;
+    white-space: normal !important;
+    word-break: normal !important;
+  }
+
+  .works-panel .works-heading p {
+    display: block !important;
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+    margin-top: 8px !important;
+    max-width: 32ch !important;
+    color: var(--muted) !important;
+  }
+
+  .works-panel .works-heading p br {
+    display: none !important;
+  }
+
+  .study-rail {
+    position: absolute !important;
+    bottom: 5% !important;
+    left: 20px !important;
+    right: 20px !important;
+    width: calc(100% - 40px) !important;
+  }
+
+  .study-current>.micro {
+    font-size: 8px !important;
+  }
+
+  #study-open {
+    font-size: clamp(16px, 5vw, 22px) !important;
+  }
+
+  /* --- Chapter 5: Finale --- */
+  .works-panel .study-finale {
+    position: absolute !important;
+    top: 20% !important;
+    left: 20px !important;
+    right: 20px !important;
+    width: calc(100% - 40px) !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .study-finale>.micro {
+    font-size: 8px !important;
+    letter-spacing: .06em !important;
+  }
+
+  .study-finale h2 {
+    font-size: clamp(24px, 7vw, 34px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -.025em !important;
+    margin-top: 8px !important;
+    text-align: center !important;
+  }
+
+  .study-finale-note {
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+    margin-top: 8px !important;
+    max-width: 28ch !important;
+    text-align: center !important;
+    color: var(--muted) !important;
+  }
+
+  .study-finale #liquid-contact-frame {
+    margin-top: 10px !important;
+    width: 100% !important;
+    max-width: 300px !important;
+    height: 110px !important;
+  }
+
+  .finale-conversation {
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 10px !important;
+    line-height: 1.5 !important;
+    margin-top: 6px !important;
+  }
+
+  /* --- Dialogs on Mobile --- */
   #project-dialog,
   #contact-dialog {
     width: calc(100vw - 32px) !important;
@@ -6126,15 +6346,43 @@ body.static-page .static-contact-portrait {
     padding: 24px 18px !important;
     border-radius: 20px !important;
   }
-  #project-dialog .project-copy h2 {
-    font-size: clamp(24px, 7vw, 34px);
+}
+
+/* --- Short Mobile Screens (max-height: 720px) --- */
+@media (max-width: 760px) and (max-height: 720px) {
+  .hero-panel h1,
+  #hero-title {
+    top: 16% !important;
+    font-size: clamp(19px, 5.8vw, 25px) !important;
   }
-  #project-dialog .project-copy p {
-    font-size: 13px;
-    line-height: 1.5;
+  .hero-bottom {
+    bottom: 3% !important;
   }
-  #contact-dialog h2 {
-    font-size: clamp(24px, 7vw, 34px);
-    line-height: 1.1;
+  .entrance-panel h2 {
+    font-size: clamp(25px, 7.5vw, 34px) !important;
+  }
+  .artist-copy {
+    top: 13% !important;
+  }
+  .artist-copy h2 {
+    font-size: clamp(20px, 5.8vw, 25px) !important;
+  }
+  .atelier-copy-stack article {
+    top: 13% !important;
+  }
+  .atelier-copy-stack h3 {
+    font-size: clamp(21px, 6.2vw, 28px) !important;
+  }
+  .works-panel .works-heading {
+    top: 13% !important;
+  }
+  .works-panel .study-finale {
+    top: 16% !important;
+  }
+  .study-finale h2 {
+    font-size: clamp(21px, 6.2vw, 28px) !important;
+  }
+  .study-finale #liquid-contact-frame {
+    height: 95px !important;
   }
 }
