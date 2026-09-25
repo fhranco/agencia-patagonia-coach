@@ -28,7 +28,7 @@ export default function PatagoniaHome() {
   }, []);
 
   return (
-    <div className="patagonia-home-root noa-baseline-root" ref={containerRef}>
+    <div className="patagonia-home-root" ref={containerRef}>
       <Helmet>
         <title>{HOME_CONTENT.title}</title>
         <meta name="description" content={HOME_CONTENT.description} />

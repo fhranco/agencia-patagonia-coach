@@ -396,7 +396,7 @@ export function initHomeEngine(rootElement) {
       const numEl = $("#study-number"), titleEl = $("#study-title"), catEl = $("#study-category");
       if (numEl) numEl.textContent = num(S.studyPosition(score));
       if (titleEl) titleEl.textContent = studyProjects[i].title;
-      if (catEl) catEl.textContent = studyProjects[i].category;
+      if (catEl) catEl.textContent = `${studyProjects[i].category} · ${studyProjects[i].typeLabel || "Caso"}`;
       const openBtn = $("#study-open");
       if (openBtn) openBtn.setAttribute("aria-label", "View " + studyProjects[i].title);
       $$("[data-study]").forEach((b, j) => {
@@ -508,7 +508,11 @@ export function initHomeEngine(rootElement) {
     const idxEl = dialog.querySelector("#project-index");
     if (idxEl) idxEl.textContent = num(projectIndex) + " / 16" + (p.provenance ? " · " + p.provenance : "");
     const catEl = dialog.querySelector("#project-category");
-    if (catEl) catEl.textContent = (p.category || "PROYECTO") + " · 53°09′S // " + (p.year || "2026");
+    if (catEl) {
+      const typeTag = (p.typeLabel || "Caso").toUpperCase();
+      const clientInfo = p.client ? ` · ${p.client}` : "";
+      catEl.textContent = `${typeTag} // ${p.category}${clientInfo} · 53°09′S`;
+    }
     const titleEl = dialog.querySelector("#project-title");
     if (titleEl) window.renderStudyTitle(titleEl, p.title, !animateTitle);
     const shortEl = dialog.querySelector("#project-short");
@@ -523,7 +527,8 @@ export function initHomeEngine(rootElement) {
 
     const ctaEl = dialog.querySelector("#project-whatsapp-cta");
     if (ctaEl) {
-      const msg = `Hola Franco (PatagoniaCoach), estuve revisando el caso ${p.title} en la web y me gustaría evaluar un proyecto o desarrollo similar.`;
+      const typeDesc = p.type === "client_case" ? "el caso de cliente" : p.type === "internal_product" ? "el producto propio" : "la demostración técnica";
+      const msg = `Hola Franco (PatagoniaCoach), estuve revisando ${typeDesc} ${p.title} en la web y me gustaría evaluar un proyecto o desarrollo similar.`;
       ctaEl.href = `https://wa.me/56995684198?text=${encodeURIComponent(msg)}`;
     }
 
@@ -605,7 +610,7 @@ export function initHomeEngine(rootElement) {
   }));
 
   const onMessageContact = e => {
-    if (e.data?.type === "pc-contact" || e.data?.type === "noa-contact") {
+    if (e.data?.type === "pc-contact") {
       const contactDialog = $("#contact-dialog");
       if (contactDialog) showDialog(contactDialog);
     }
