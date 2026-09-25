@@ -3,8 +3,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 
-import { noaAsset, loadImage } from "./assets.js";
+import { resolveHomeAsset, loadImage } from "./assets.js";
 import { ARTIST, BIOGRAPHY, STUDY_NOTES, DISCIPLINES } from "./data.js";
+import { PROJECTS, ALL_PROJECTS } from "../data/projects.js";
+import { AGENCY_INFO } from "../data/homeContent.js";
 import FieldbookMotion from "./geometry.js";
 import StudioScore from "./score.js";
 import StudioArrival from "./arrival.js";
@@ -19,7 +21,7 @@ import { StudioDetailTransition, renderStudyTitle, renderStudyNotes } from "./mo
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function initNoaBaseline(rootElement) {
+export function initHomeEngine(rootElement) {
   if (!rootElement) return () => {};
 
   window.THREE = THREE;
@@ -61,9 +63,9 @@ export function initNoaBaseline(rootElement) {
     ...p
   }));
 
-  const paths = projects.map((p, i) => noaAsset("assets/selected-motion/" + num(i) + ".png"));
+  const paths = projects.map((p, i) => resolveHomeAsset("assets/selected-motion/" + num(i) + ".png"));
   const sources = paths;
-  const practicePaths = ["01-magnetic","02-filament","03-kinetic","04-mechanism","05-architecture","06-typography","07-portrait","08-botanical","09-landscape","10-optics"].map(name => noaAsset("assets/practice/" + name + ".png"));
+  const practicePaths = ["01-magnetic","02-filament","03-kinetic","04-mechanism","05-architecture","06-typography","07-portrait","08-botanical","09-landscape","10-optics"].map(name => resolveHomeAsset("assets/practice/" + name + ".png"));
 
   const extraStudies = STUDY_NOTES.slice(8, 16).map((note, i) => ({
     id: "tunnel-" + i,
@@ -79,8 +81,8 @@ export function initNoaBaseline(rootElement) {
   const studyProjects = [...projects, ...extraStudies];
   const studyPaths = [...paths, ...practicePaths.slice(0, 8)];
 
-  const biographyActionSource = noaAsset("assets/biography-action/noa-vale-camera.png");
-  const motionSources = Object.fromEntries(projects.map((p, i) => [p.id, noaAsset("assets/selected-motion/" + num(i) + ".mp4")]));
+  const biographyActionSource = resolveHomeAsset("assets/biography-action/studio-camera.png");
+  const motionSources = Object.fromEntries(projects.map((p, i) => [p.id, resolveHomeAsset("assets/selected-motion/" + num(i) + ".mp4")]));
 
   $$("[data-artist-name], .artist-name").forEach(e => e.textContent = artist.name);
   $$(".monogram").forEach(el => el.firstChild && (el.firstChild.nodeValue = artist.initials));
@@ -231,7 +233,7 @@ export function initNoaBaseline(rootElement) {
 
   async function loadPortraitContour() {
     try {
-      const response = await fetch(noaAsset("assets/portraits/noa-vale-fullbody-contour.svg"));
+      const response = await fetch(resolveHomeAsset("assets/portraits/fullbody-contour.svg"));
       if (!response.ok) throw new Error("Contour request failed");
       const source = new DOMParser().parseFromString(await response.text(), "image/svg+xml");
       const paths = [...source.querySelectorAll("path")];
@@ -662,7 +664,7 @@ export function initNoaBaseline(rootElement) {
       const [images, biographyAction, contactPortrait, practiceImages] = await Promise.all([
         Promise.all(sources.map((src, i) => loadImage(src, projects[i].title).then(img => { loader.credit(8); return img; }))),
         loadImage(biographyActionSource, "Studio Camera").then(img => { loader.credit(4); return img; }),
-        loadImage(noaAsset("assets/portraits/noa-contact-right.png"), "PatagoniaCoach"),
+        loadImage(resolveHomeAsset("assets/portraits/contact-portrait.png"), "PatagoniaCoach"),
         Promise.all(practicePaths.map((p, i) => loadImage(p, "Practice " + (i + 1)))),
         loadPortraitContour()
       ]);
@@ -780,3 +782,5 @@ export function initNoaBaseline(rootElement) {
     }
   };
 }
+
+

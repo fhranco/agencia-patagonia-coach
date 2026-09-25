@@ -15,7 +15,7 @@ const FloatingActions = () => {
   
   const location = useLocation();
   const navigate = useNavigate();
-  const isHomePath = location.pathname === '/' || location.pathname.startsWith('/lab/noa-baseline');
+  const isHomePath = location.pathname === '/';
 
   useEffect(() => {
     const handleOpenChat = () => {

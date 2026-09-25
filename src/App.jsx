@@ -7,8 +7,8 @@ import ScrollToHash from './components/ScrollToHash';
 import BottomNav from './components/BottomNav';
 import PageLoader from './components/PageLoader';
 
-// Static import for the primary landing to ensure instant initial load
-import MainLanding from './pages/MainLanding';
+// Official Immersive Home for PatagoniaCoach V2
+import PatagoniaHome from './features/home/PatagoniaHome';
 
 // Core Service Pages (KEEP)
 const DesarrolloWeb = lazy(() => import('./pages/DesarrolloWeb'));
@@ -26,9 +26,6 @@ const ZonaMagallanes = lazy(() => import('./pages/ZonaMagallanes'));
 const ZonaPuertoNatales = lazy(() => import('./pages/ZonaPuertoNatales'));
 const ZonaTierraDelFuego = lazy(() => import('./pages/ZonaTierraDelFuego'));
 
-// Experimental Clone Laboratory (FASE 12A - Isolated, noindex)
-const NoaBaseline = lazy(() => import('./experiments/noa-baseline'));
-
 function App() {
   return (
     <HelmetProvider>
@@ -40,8 +37,8 @@ function App() {
           <BottomNav />
           <Suspense fallback={<PageLoader />}>
             <Routes>
-              {/* Hub Principal */}
-              <Route path="/" element={<MainLanding />} />
+              {/* Hub Principal — PatagoniaCoach V2 */}
+              <Route path="/" element={<PatagoniaHome />} />
               
               {/* 5 Pilares Estratégicos */}
               <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
@@ -60,9 +57,6 @@ function App() {
               <Route path="/zonas/magallanes" element={<ZonaMagallanes />} />
               <Route path="/zonas/puerto-natales" element={<ZonaPuertoNatales />} />
               <Route path="/zonas/tierra-del-fuego" element={<ZonaTierraDelFuego />} />
-              
-              {/* Isolated Lab Route (Fase 12A - Isolated, noindex) */}
-              <Route path="/lab/noa-baseline" element={<NoaBaseline />} />
               
               {/* Client-Side Fallback Redirects (301 matching server-side rules) */}
               <Route path="/servicios/creacion-paginas-web-punta-arenas" element={<Navigate to="/servicios/desarrollo-web" replace />} />

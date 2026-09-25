@@ -1,10 +1,15 @@
 export const PATAGONIA_ASSET_CONFIG = Object.freeze({
+  "assets/biography-action/studio-camera.png": "/images/strategy-core.webp",
   "assets/biography-action/noa-vale-camera.png": "/images/strategy-core.webp",
   "assets/guide-poses/practice-image.png": "/images/ai-core.webp",
   "assets/guide-poses/works-guide.png": "/images/web-core.webp",
+  "assets/identity/patagonia-signature.png": "/Logoweb.svg",
   "assets/identity/noa-vale-signature.png": "/Logoweb.svg",
+  "assets/portraits/contact-portrait.png": "/images/comm-global.webp",
   "assets/portraits/noa-contact-right.png": "/images/comm-global.webp",
+  "assets/portraits/fullbody-contour.svg": "/images/strategy-core.webp",
   "assets/portraits/noa-vale-fullbody-contour.svg": "/images/strategy-core.webp",
+  "assets/portraits/fullbody.png": "/patagonia_luxury_hero.webp",
   "assets/portraits/noa-vale-fullbody.png": "/patagonia_luxury_hero.webp",
   "assets/practice/01-magnetic.png": "/portfolio/portafolio web de nutrición integrativa.webp",
   "assets/practice/02-filament.png": "/images/seo-map.webp",
@@ -34,7 +39,7 @@ export const PATAGONIA_ASSET_CONFIG = Object.freeze({
   "assets/selected-motion/08.png": "/portfolio/impulsando el desarrollo con tailor servicios.webp"
 });
 
-export function noaAsset(path) {
+export function resolveHomeAsset(path) {
   const key = path.split("?")[0];
   const url = PATAGONIA_ASSET_CONFIG[key];
   if (!url) return path;

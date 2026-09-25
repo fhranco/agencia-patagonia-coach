@@ -4,6 +4,7 @@
 /* ==========================================================================
    LAB ISOLATION & RESIDUAL HEIGHT REMOVAL
    ========================================================================== */
+.patagonia-home-root,
 .noa-baseline-root {
   position: relative;
   width: 100%;
@@ -42,7 +43,11 @@
   visibility: hidden;
 }
 
-/* Hide global layout buttons inside the lab */
+/* Hide global layout buttons inside the immersive home */
+:has(.patagonia-home-root) .custom-cursor,
+:has(.patagonia-home-root) .fixed.bottom-0,
+:has(.patagonia-home-root) .fixed.bottom-6,
+:has(.patagonia-home-root) button[aria-label="Abrir opciones de contacto"],
 :has(.noa-baseline-root) .custom-cursor,
 :has(.noa-baseline-root) .fixed.bottom-0,
 :has(.noa-baseline-root) .fixed.bottom-6,
