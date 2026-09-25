@@ -1,0 +1,60 @@
+name: Build and Deploy Staging
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  build-staging:
+    name: Build & Verify Staging
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Inject secrets (Staging)
+        run: |
+          cat > public/secrets.php << 'EOF'
+          <?php
+          return [
+            'deepseek_key_chat' => '${{ secrets.DEEPSEEK_KEY_CHAT_STAGING || secrets.DEEPSEEK_KEY_CHAT }}',
+            'deepseek_key_api'  => '${{ secrets.DEEPSEEK_KEY_API_STAGING || secrets.DEEPSEEK_KEY_API }}',
+            'admin_email'       => 'agente@agenciapatagoniacoach.cl',
+            'contact_email'     => 'contacto@agenciapatagoniacoach.cl',
+            'site_email'        => 'no-reply@agenciapatagoniacoach.cl',
+            'whatsapp'          => '+56995684198',
+          ];
+          EOF
+
+      - name: Build staging bundle (Noindex + Analytics Disabled)
+        run: npm run staging
+
+      - name: Verify Staging Robots Disallow & Noindex
+        run: |
+          grep -q "Disallow: /" dist/robots.txt || (echo "ERROR: dist/robots.txt must contain Disallow: / in staging" && exit 1)
+          grep -q "noindex" dist/index.html || (echo "ERROR: dist/index.html must contain noindex in staging" && exit 1)
+          test ! -f dist/sitemap.xml || (echo "ERROR: dist/sitemap.xml must NOT exist in staging" && exit 1)
+          echo "[SUCCESS] Staging safeguards verified in build artifacts."
+
+      - name: Deploy to Staging Environment (FTP)
+        if: env.HAS_STAGING_FTP == 'true'
+        env:
+          HAS_STAGING_FTP: ${{ secrets.FTP_SERVER_STAGING != '' }}
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_STAGING }}
+          username: ${{ secrets.FTP_USERNAME_STAGING }}
+          password: ${{ secrets.FTP_PASSWORD_STAGING }}
+          local-dir: ./dist/
+          server-dir: ./staging/
+          protocol: ftp
+          port: 21

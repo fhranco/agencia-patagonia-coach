@@ -66,10 +66,10 @@ const ZonaMagallanes = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
-                { icon: Anchor, title: "Punta Arenas", desc: "Hub logístico y comercial. Sistemas para el corazón económico de la región." },
-                { icon: Mountain, title: "Puerto Natales", desc: "Excelencia en turismo de lujo y servicios para Torres del Paine." },
-                { icon: Zap, title: "Tierra del Fuego", desc: "Soberanía industrial y turismo de intereses especiales de alto valor." },
-                { icon: ShieldCheck, title: "Antártica", desc: "Visión estratégica para la proyección científica y logística polar." }
+                { icon: Anchor, title: "Punta Arenas", desc: "Base operativa y principal nodo urbano. Hub logístico, financiero y comercial del corazón económico de la región." },
+                { icon: Mountain, title: "Puerto Natales", desc: "Excelencia en turismo de lujo, hotelería de autor y servicios para Torres del Paine." },
+                { icon: Zap, title: "Tierra del Fuego", desc: "Soberanía industrial, minería sustentable y turismo de intereses especiales de alto valor." },
+                { icon: ShieldCheck, title: "Antártica", desc: "Visión estratégica para la proyección científica, soberanía y logística polar internacional." }
               ].map((f, i) => (
                 <div key={i} className="group p-10 bg-patagonia-surface/10 border border-white/5 rounded-[2.5rem] hover:border-patagonia-gold/20 transition-all duration-700">
                   <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-patagonia-gold group-hover:text-black transition-all">

@@ -46,14 +46,11 @@ const ZonaPuntaArenas = () => {
       <div className="pt-8 border-t border-white/5 space-y-4">
         <span className="text-[10px] uppercase tracking-[0.3em] font-black text-patagonia-gold block">Servicios de Élite en Punta Arenas:</span>
         <div className="flex flex-wrap gap-x-6 gap-y-4 text-xs font-semibold uppercase tracking-wider">
-          <a href="/servicios/marketing-digital-punta-arenas" className="text-white/60 hover:text-patagonia-gold transition-colors">Marketing Digital</a>
-          <a href="/servicios/creacion-paginas-web-punta-arenas" className="text-white/60 hover:text-patagonia-gold transition-colors">Diseño Web</a>
-          <a href="/servicios/manejo-redes-sociales-punta-arenas" className="text-white/60 hover:text-patagonia-gold transition-colors">Redes Sociales</a>
-          <a href="/servicios/videos-redes-sociales-punta-arenas" className="text-white/60 hover:text-patagonia-gold transition-colors">Videos</a>
-          <a href="/servicios/creacion-reels-punta-arenas" className="text-white/60 hover:text-patagonia-gold transition-colors">Reels</a>
-          <a href="/servicios/fotografia-para-redes-sociales" className="text-white/60 hover:text-patagonia-gold transition-colors">Fotografía</a>
-          <a href="/servicios/seo-local-punta-arenas" className="text-white/60 hover:text-patagonia-gold transition-colors">SEO Local</a>
-          <a href="/servicios/automatizacion-ia-empresas" className="text-white/60 hover:text-patagonia-gold transition-colors">Automatización IA</a>
+          <a href="/servicios/comunicacion-digital" className="text-white/60 hover:text-patagonia-gold transition-colors">Comunicación Digital</a>
+          <a href="/servicios/desarrollo-web" className="text-white/60 hover:text-patagonia-gold transition-colors">Desarrollo Web</a>
+          <a href="/servicios/seo-local-magallanes" className="text-white/60 hover:text-patagonia-gold transition-colors">SEO Local & GEO</a>
+          <a href="/servicios/automatizacion-con-ia" className="text-white/60 hover:text-patagonia-gold transition-colors">Automatización con IA</a>
+          <a href="/servicios/consultoria-transformacion-digital" className="text-white/60 hover:text-patagonia-gold transition-colors">Consultoría Digital</a>
         </div>
       </div>
     </div>

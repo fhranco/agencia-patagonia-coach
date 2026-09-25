@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, ArrowRight, ShieldCheck, Zap, Globe, Cpu } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, Globe, Cpu } from 'lucide-react';
+import { getWhatsAppUrl } from '../constants/contact';
 
 const ProjectShowcase = () => {
   const projects = [
@@ -57,22 +58,22 @@ const ProjectShowcase = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.8 }}
-              className="group relative p-12 rounded-[3.5rem] bg-patagonia-surface/10 border border-white/5 hover:border-patagonia-gold/20 transition-all duration-700 flex flex-col h-full overflow-hidden w-[85vw] lg:w-auto shrink-0 snap-center"
+              className="relative p-12 rounded-[3.5rem] bg-patagonia-surface/10 border border-white/5 flex flex-col h-full overflow-hidden w-[85vw] lg:w-auto shrink-0 snap-center"
             >
               {/* Subtle hover reveal background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-patagonia-gold/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-br from-patagonia-gold/[0.03] to-transparent opacity-0 hover:opacity-100 transition-opacity duration-1000" />
               
               <div className="relative z-10 flex flex-col h-full">
                 <div className="flex justify-between items-start mb-12">
-                  <div className={`w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-${p.color} group-hover:text-black transition-all duration-500`}>
+                  <div className={`w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 text-patagonia-gold`}>
                     <p.icon className="w-6 h-6" />
                   </div>
-                  <ExternalLink className="w-5 h-5 text-white/10 group-hover:text-patagonia-gold transition-colors" />
+                  <span className="text-[8px] uppercase tracking-widest font-mono text-white/40">PROYECTO REAL</span>
                 </div>
 
                 <div className="space-y-4 mb-10">
                   <span className="text-[10px] uppercase tracking-[0.4em] text-patagonia-gold font-black">{p.category}</span>
-                  <h3 className="text-3xl font-heading font-light text-white group-hover:italic transition-all">{p.title}</h3>
+                  <h3 className="text-3xl font-heading font-light text-white">{p.title}</h3>
                 </div>
 
                 <p className="text-patagonia-secondary font-light leading-relaxed text-sm mb-12 flex-grow">
@@ -119,7 +120,13 @@ const ProjectShowcase = () => {
                 <TestimonialCarousel />
               </div>
               <div className="flex justify-end items-end">
-                <a href="#contacto" className="btn-primary min-w-[280px]">
+                <a 
+                  href={getWhatsAppUrl('Hola Franco, me gustaría evaluar un proyecto digital con PatagoniaCoach.')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cta="whatsapp"
+                  className="btn-primary min-w-[280px] text-center"
+                >
                   Iniciar mi Proyecto Elite
                 </a>
               </div>

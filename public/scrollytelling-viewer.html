@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visor de Assets y Scrollytelling — PatagoniaCoach</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --card: #131b2e;
+      --border: #1e293b;
+      --amber: #f59e0b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 24px;
+      line-height: 1.5;
+    }
+    header {
+      max-width: 1400px;
+      margin: 0 auto 32px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--amber);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+    p.lead { color: var(--muted); font-size: 15px; max-width: 800px; }
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .metric {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 14px 18px;
+      border-radius: 8px;
+    }
+    .metric-val { font-size: 20px; font-weight: 700; color: #fff; }
+    .metric-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    
+    .tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 10px 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover { color: #fff; border-color: var(--amber); }
+    .tab-btn.active {
+      background: var(--amber);
+      color: #000;
+      border-color: var(--amber);
+    }
+
+    .interactive-player {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 1400px;
+      margin: 0 auto 40px;
+    }
+    .player-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .canvas-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #05070a;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .scrubber-panel {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    input[type="range"] {
+      flex: 1;
+      accent-color: var(--amber);
+      height: 8px;
+      cursor: pointer;
+    }
+    .play-btn {
+      padding: 8px 16px;
+      background: var(--card);
+      color: var(--amber);
+      border: 1px solid var(--amber);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 32px 0 16px;
+      color: #fff;
+    }
+    .sheet-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+    .sheet-card h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: var(--amber);
+    }
+    .sheet-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">FASE 5 — ASSETS SCROLLYTELLING LISTOS</div>
+    <h1>Visualizador Local de Frames & Contact Sheets</h1>
+    <p class="lead">
+      Inspección interactiva de los 240 frames WebP finales (1600×900, q=82) exportados desde el master <code>Final-video.mp4</code> y hojas de contacto completas por capítulo.
+    </p>
+    
+    <div class="metrics-bar">
+      <div class="metric">
+        <div class="metric-val">240</div>
+        <div class="metric-lbl">Frames WebP Útiles</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">1600 × 900</div>
+        <div class="metric-lbl">Resolución (16:9)</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">13.76 MB</div>
+        <div class="metric-lbl">Peso Total (q=82)</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">58.7 KB</div>
+        <div class="metric-lbl">Peso Promedio / Frame</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">0 a 899</div>
+        <div class="metric-lbl">Rango Master Indexado</div>
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width: 1400px; margin: 0 auto;">
+    <!-- INTERACTIVE SCRUBBER SIMULATOR -->
+    <div class="interactive-player">
+      <div class="player-header">
+        <div>
+          <h2 style="font-size: 18px; color: #fff;">Simulador Interactivo de Scrubbing (240 Frames)</h2>
+          <p style="font-size: 13px; color: var(--muted);">Arrastra el control deslizante o pulsa Play para ver la continuidad de la secuencia antes de montar el scroll.</p>
+        </div>
+        <div id="frameBadge" style="background: var(--card); padding: 8px 14px; border-radius: 6px; border: 1px solid var(--border); font-size: 13px; font-weight: 600;">
+          Frame 0001 / 0240 | Capítulo: 01_SEARCH
+        </div>
+      </div>
+
+      <div class="canvas-container">
+        <canvas id="playerCanvas" width="1600" height="900"></canvas>
+      </div>
+
+      <div class="scrubber-panel">
+        <div class="slider-row">
+          <button id="playBtn" class="play-btn">▶ Play</button>
+          <input type="range" id="frameSlider" min="1" max="240" value="1" step="1">
+          <span id="sliderVal" style="font-variant-numeric: tabular-nums; font-size: 14px; color: var(--amber); font-weight: 600;">0001</span>
+        </div>
+        <div id="chapterDesc" style="font-size: 13px; color: var(--muted); padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 6px;">
+          Cargando manifiesto...
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT SHEETS SECTION -->
+    <h2 class="section-title">Master Contact Sheet (240 Frames — 6 Capítulos)</h2>
+    <div class="sheet-card">
+      <a href="scrollytelling/contact-sheets/contact_sheet_final_240.jpg" target="_blank">
+        <img src="scrollytelling/contact-sheets/contact_sheet_final_240.jpg" alt="Master Contact Sheet">
+      </a>
+    </div>
+
+    <h2 class="section-title">Láminas Individuales por Capítulo</h2>
+    
+    <div class="sheet-card">
+      <h3>Capítulo 01: Búsqueda / Intención (28 frames | Source #0 – #95)</h3>
+      <a href="scrollytelling/contact-sheets/contact_sheet_01_search.jpg" target="_blank">
+        <img src="scrollytelling/contact-sheets/contact_sheet_01_search.jpg" alt="01 Search">
+      </a>
+    </div>
+
+    <div class="sheet-card">
+      <h3>Capítulo 02: Resultados / Descubrimiento (40 frames | Source #96 – #245)</h3>
+      <a href="scrollytelling/contact-sheets/contact_sheet_02_discovery.jpg" target="_blank">
+        <img src="scrollytelling/contact-sheets/contact_sheet_02_discovery.jpg" alt="02 Discovery">
+      </a>
+    </div>
+
+    <div class="sheet-card">
+      <h3>Capítulo 03: Responsive / Mobile (36 frames | Source #246 – #365)</h3>
+      <a href="scrollytelling/contact-sheets/contact_sheet_03_responsive.jpg" target="_blank">
+        <img src="scrollytelling/contact-sheets/contact_sheet_03_responsive.jpg" alt="03 Responsive">
+      </a>
+    </div>
+
+    <div class="sheet-card">
+      <h3>Capítulo 04: IA / Respuesta Generativa (56 frames | Source #366 – #593)</h3>
+      <a href="scrollytelling/contact-sheets/contact_sheet_04_ai.jpg" target="_blank">
+        <img src="scrollytelling/contact-sheets/contact_sheet_04_ai.jpg" alt="04 AI">
+      </a>
+    </div>
+
+    <div class="sheet-card">
+      <h3>Capítulo 05: Arquitectura Web / Componentes (48 frames | Source #594 – #785)</h3>
+      <a href="scrollytelling/contact-sheets/contact_sheet_05_architecture.jpg" target="_blank">
+        <img src="scrollytelling/contact-sheets/contact_sheet_05_architecture.jpg" alt="05 Architecture">
+      </a>
+    </div>
+
+    <div class="sheet-card">
+      <h3>Capítulo 06: Ecosistema Digital Integrado (32 frames | Source #786 – #899)</h3>
+      <a href="scrollytelling/contact-sheets/contact_sheet_06_ecosystem.jpg" target="_blank">
+        <img src="scrollytelling/contact-sheets/contact_sheet_06_ecosystem.jpg" alt="06 Ecosystem">
+      </a>
+    </div>
+  </main>
+
+  <script>
+    const canvas = document.getElementById('playerCanvas');
+    const ctx = canvas.getContext('2d');
+    const slider = document.getElementById('frameSlider');
+    const sliderVal = document.getElementById('sliderVal');
+    const frameBadge = document.getElementById('frameBadge');
+    const chapterDesc = document.getElementById('chapterDesc');
+    const playBtn = document.getElementById('playBtn');
+
+    let manifest = null;
+    const imagesCache = {};
+    let isPlaying = false;
+    let playInterval = null;
+
+    // Load Manifest
+    fetch('scrollytelling/manifest/scrollytelling_manifest.json')
+      .then(res => res.json())
+      .then(data => {
+        manifest = data;
+        loadFrame(1);
+      })
+      .catch(err => {
+        chapterDesc.innerText = 'Error cargando manifiesto: ' + err.message;
+      });
+
+    function getFrameFileName(num) {
+      return `frame_${String(num).padStart(4, '0')}.webp`;
+    }
+
+    function loadFrame(idx) {
+      const fileName = getFrameFileName(idx);
+      sliderVal.innerText = String(idx).padStart(4, '0');
+      
+      if (manifest && manifest.frames[idx - 1]) {
+        const item = manifest.frames[idx - 1];
+        frameBadge.innerText = `Frame ${String(idx).padStart(4, '0')} / 0240 | Capítulo: ${item.chapter} | Master #${item.source_frame} (${item.source_time}s)`;
+        
+        // Find chapter
+        const ch = manifest.chapters.find(c => c.id === item.chapter);
+        if (ch) {
+          chapterDesc.innerHTML = `<strong>${ch.title}</strong> — Rango Master: #${ch.master_source_range.f_start}–#${ch.master_source_range.f_end} | Progreso asignado: ${(item.normalized_progress * 100).toFixed(1)}%`;
+        }
+      }
+
+      if (imagesCache[fileName]) {
+        drawToCanvas(imagesCache[fileName]);
+      } else {
+        const img = new Image();
+        img.src = `scrollytelling/desktop/${fileName}`;
+        img.onload = () => {
+          imagesCache[fileName] = img;
+          drawToCanvas(img);
+        };
+      }
+
+      // Preload next 5 frames
+      for (let i = 1; i <= 5; i++) {
+        const nextIdx = idx + i;
+        if (nextIdx <= 240) {
+          const nextName = getFrameFileName(nextIdx);
+          if (!imagesCache[nextName]) {
+            const nextImg = new Image();
+            nextImg.src = `scrollytelling/desktop/${nextName}`;
+            nextImg.onload = () => { imagesCache[nextName] = nextImg; };
+          }
+        }
+      }
+    }
+
+    function drawToCanvas(img) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    }
+
+    slider.addEventListener('input', (e) => {
+      if (isPlaying) togglePlay();
+      loadFrame(parseInt(e.target.value, 10));
+    });
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        playBtn.innerText = '❚❚ Pause';
+        playInterval = setInterval(() => {
+          let curr = parseInt(slider.value, 10);
+          if (curr >= 240) curr = 1;
+          else curr++;
+          slider.value = curr;
+          loadFrame(curr);
+        }, 1000 / 24); // ~24 fps playback
+      } else {
+        playBtn.innerText = '▶ Play';
+        clearInterval(playInterval);
+      }
+    }
+
+    playBtn.addEventListener('click', togglePlay);
+  </script>
+</body>
+</html>

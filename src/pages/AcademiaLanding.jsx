@@ -10,7 +10,7 @@ const AcademiaLanding = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://agenciapatagoniacoach.cl/servicios/academia/#service",
+    "@id": "https://agenciapatagoniacoach.cl/academia/#service",
     "name": "Academia PatagoniaCoach",
     "provider": { "@id": "https://agenciapatagoniacoach.cl/#organization" },
     "areaServed": { "@type": "AdministrativeArea", "name": "Región de Magallanes y de la Antártica Chilena" },

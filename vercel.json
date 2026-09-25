@@ -1,0 +1,92 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/servicios/creacion-paginas-web-punta-arenas",
+      "destination": "/servicios/desarrollo-web",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/tours-virtuales-360",
+      "destination": "/servicios/desarrollo-web",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/seo-local-punta-arenas",
+      "destination": "/servicios/seo-local-magallanes",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/automatizacion-ia-empresas",
+      "destination": "/servicios/automatizacion-con-ia",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/inteligencia-artificial-punta-arenas",
+      "destination": "/servicios/automatizacion-con-ia",
+      "permanent": true
+    },
+    {
+      "source": "/ia",
+      "destination": "/servicios/automatizacion-con-ia",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/ia-generativa-visual",
+      "destination": "/servicios/automatizacion-con-ia",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/marketing-digital-punta-arenas",
+      "destination": "/servicios/comunicacion-digital",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/manejo-redes-sociales-punta-arenas",
+      "destination": "/servicios/comunicacion-digital",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/videos-redes-sociales-punta-arenas",
+      "destination": "/servicios/comunicacion-digital",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/creacion-reels-punta-arenas",
+      "destination": "/servicios/comunicacion-digital",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/fotografia-para-redes-sociales",
+      "destination": "/servicios/comunicacion-digital",
+      "permanent": true
+    },
+    {
+      "source": "/marketing",
+      "destination": "/servicios/comunicacion-digital",
+      "permanent": true
+    },
+    {
+      "source": "/consultoria",
+      "destination": "/servicios/consultoria-transformacion-digital",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/academia",
+      "destination": "/academia",
+      "permanent": true
+    },
+    {
+      "source": "/zonas/punta-arenas",
+      "destination": "/zonas/magallanes",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bot, Users, GraduationCap, ArrowUpRight } from 'lucide-react';
 
@@ -9,6 +10,7 @@ const ValueLadder = () => {
     {
       title: "Agencia Elite",
       subtitle: "EXECUCIÓN TOTAL",
+      path: "/servicios/desarrollo-web",
       description: "Diseño y despliegue de ecosistemas digitales de alto nivel. Soluciones personalizadas para organizaciones que demandan excelencia.",
       icon: <Bot className="w-10 h-10 text-patagonia-gold" />,
       features: ["Arquitectura de IA", "E-commerce de Lujo", "Automatización de Capital"]
@@ -16,6 +18,7 @@ const ValueLadder = () => {
     {
       title: "Consultoría de Poder",
       subtitle: "ESTRATEGIA & VISIÓN",
+      path: "/servicios/consultoria-transformacion-digital",
       description: "Acompañamiento táctico para la toma de decisiones críticas. Transformación cultural y operativa impulsada por tecnología.",
       icon: <Users className="w-10 h-10 text-patagonia-white/40" />,
       features: ["Roadmap Estratégico", "Protocolos de IA", "Optimización de Valor"]
@@ -23,6 +26,7 @@ const ValueLadder = () => {
     {
       title: "Academia de Maestría",
       subtitle: "EVOLUCIÓN CONTINUA",
+      path: "/academia",
       description: "Programas de inmersión para líderes y equipos. Desarrolle las capacidades necesarias para dominar la frontera tecnológica.",
       icon: <GraduationCap className="w-10 h-10 text-patagonia-white/20" />,
       features: ["Masterclass Ejecutiva", "Sprints de Inmersión", "Recursos Exclusivos"]
@@ -61,11 +65,14 @@ const ValueLadder = () => {
             </ul>
 
             <div className="mt-12">
-              <button
+              <Link
+                to={item.path}
+                data-cta="service-link"
                 className="group flex items-center gap-3 text-[10px] uppercase tracking-widest font-bold text-patagonia-gold hover:text-patagonia-white transition-colors"
               >
-                Explorar Protocolo <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </button>
+                <span>Explorar Protocolo</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </Link>
             </div>
 
             {/* Subtle Gradient Shadow on Hover */}

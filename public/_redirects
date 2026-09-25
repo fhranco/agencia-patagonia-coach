@@ -1,0 +1,21 @@
+# PatagoniaCoach 301 Permanent Redirects (Consolidation V2)
+/servicios/creacion-paginas-web-punta-arenas  /servicios/desarrollo-web  301!
+/servicios/tours-virtuales-360                /servicios/desarrollo-web  301!
+/servicios/seo-local-punta-arenas             /servicios/seo-local-magallanes  301!
+/servicios/automatizacion-ia-empresas         /servicios/automatizacion-con-ia  301!
+/servicios/inteligencia-artificial-punta-arenas /servicios/automatizacion-con-ia  301!
+/ia                                           /servicios/automatizacion-con-ia  301!
+/servicios/ia-generativa-visual               /servicios/automatizacion-con-ia  301!
+/servicios/marketing-digital-punta-arenas     /servicios/comunicacion-digital  301!
+/servicios/manejo-redes-sociales-punta-arenas /servicios/comunicacion-digital  301!
+/servicios/videos-redes-sociales-punta-arenas /servicios/comunicacion-digital  301!
+/servicios/creacion-reels-punta-arenas        /servicios/comunicacion-digital  301!
+/servicios/fotografia-para-redes-sociales     /servicios/comunicacion-digital  301!
+/marketing                                    /servicios/comunicacion-digital  301!
+/consultoria                                  /servicios/consultoria-transformacion-digital  301!
+/servicios/academia                           /academia  301!
+/zonas/punta-arenas                           /zonas/magallanes  301!
+/home                                         /  301!
+
+# SPA Fallback
+/*  /index.html  200

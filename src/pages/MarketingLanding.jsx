@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Target, MessageSquare, ShieldCheck, Zap, ArrowRight, Share2, Globe, BarChart3, Instagram, Linkedin, Users, Filter, LineChart } from 'lucide-react';
+import { Target, MessageSquare, ShieldCheck, Zap, ArrowRight, Share2, Globe, BarChart3, Instagram, Linkedin, Users, Filter, LineChart, PenTool, Camera, Video } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DigitalDiagnostic from '../components/DigitalDiagnostic';
@@ -79,34 +79,44 @@ const MarketingLanding = () => {
             <h3 className="text-4xl md:text-5xl font-heading font-light mt-6 tracking-tight">¿Qué podemos ejecutar <span className="italic text-patagonia-gold">para usted</span>?</h3>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 icon: Target,
-                title: "Diseño de Planes de Contenido",
-                desc: "No publicamos al azar. Estructuramos una parrilla mensual estratégica (Grillas) que define exactamente qué comunicar, cuándo y con qué objetivo comercial para posicionar su marca en la región."
-              },
-              {
-                icon: Users,
-                title: "Creación de Contenido (Reels & Diseño)",
-                desc: "Producimos activos visuales de primera línea. Desde el diseño de carruseles corporativos hasta la edición de Reels y videos cortos que capturan la esencia de su marca y conectan genuinamente con su audiencia."
+                title: "Estrategia & Branding Corporativo",
+                desc: "Definición de posicionamiento, tono de voz y arquitectura de marca B2B. Estructuramos planes de comunicación con objetivos comerciales claros para liderar en Magallanes."
               },
               {
                 icon: Share2,
-                title: "Gestión y Publicación Continua",
-                desc: "Nos encargamos del trabajo pesado. Programamos, monitoreamos y publicamos el contenido en todas sus plataformas (Instagram, LinkedIn, Facebook) para mantener su marca siempre activa."
+                title: "Gestión Integral de Redes Sociales",
+                desc: "Parrillas mensuales estratégicas, curaduría de contenidos y publicación continua en Instagram, LinkedIn y plataformas clave para mantener su marca activa y con autoridad."
+              },
+              {
+                icon: Users,
+                title: "Producción Audiovisual & Reels",
+                desc: "Filmación en terreno y edición de video vertical cinematográfico (Reels, Shorts, Video Corporativo) que captura la escala de sus operaciones y genera tracción genuina."
+              },
+              {
+                icon: PenTool,
+                title: "Fotografía Profesional & Producto",
+                desc: "Dirección de arte y fotografía en alta resolución de infraestructura, equipos, procesos industriales, gastronomía y hotelería de alto estándar en la Patagonia."
+              },
+              {
+                icon: BarChart3,
+                title: "Pauta Digital & Campañas de Performance",
+                desc: "Estrategias de distribución paga (Meta Ads & Google Ads) ultra-segmentadas territorialmente para captar clientes de alto valor y maximizar el retorno de inversión publicitaria."
               },
               {
                 icon: MessageSquare,
-                title: "Capacitación en Herramientas",
-                desc: "Entrenamos a su equipo interno o líderes de negocio. Les enseñamos a entender las métricas, dominar aplicaciones de diseño ágil y gestionar sus redes con estándares 100% profesionales."
+                title: "Capacitación y Transferencia Técnica",
+                desc: "Entrenamiento ejecutivo para equipos internos y directivos. Dominio de herramientas de creación ágil, lectura analítica de métricas y gestión autónoma con estándares pro."
               }
             ].map((f, i) => (
-              <div key={i} className="group p-12 bg-patagonia-surface/20 border border-white/5 rounded-[3rem] hover:border-patagonia-gold/20 transition-all duration-700">
+              <div key={i} className="group p-10 bg-patagonia-surface/20 border border-white/5 rounded-[2.5rem] hover:border-patagonia-gold/20 transition-all duration-700">
                 <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-patagonia-gold group-hover:text-black transition-all">
                     <f.icon className="w-6 h-6" />
                 </div>
-                <h4 className="text-2xl font-heading font-light text-patagonia-white mb-4">{f.title}</h4>
+                <h4 className="text-xl font-heading font-light text-patagonia-white mb-4">{f.title}</h4>
                 <p className="text-patagonia-secondary font-light leading-relaxed text-sm">{f.desc}</p>
               </div>
             ))}

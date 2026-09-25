@@ -33,11 +33,12 @@ const Footer = () => {
           </div>
 
           <div className="md:col-span-2 space-y-10">
-            <h3 className="text-[9px] font-heading tracking-[0.5em] text-patagonia-white/60 uppercase font-black">Zonas</h3>
+            <h3 className="text-[9px] font-heading tracking-[0.5em] text-patagonia-white/60 uppercase font-black">Territorio</h3>
             <ul className="space-y-6 text-patagonia-secondary font-light text-[10px] uppercase tracking-widest">
-              <li><a href="/zonas/punta-arenas" className="hover:text-patagonia-gold transition-colors">Punta Arenas</a></li>
-              <li><a href="/zonas/puerto-natales" className="hover:text-patagonia-gold transition-colors">Puerto Natales</a></li>
               <li><a href="/zonas/magallanes" className="hover:text-patagonia-gold transition-colors">Magallanes</a></li>
+              <li><a href="/zonas/puerto-natales" className="hover:text-patagonia-gold transition-colors">Puerto Natales</a></li>
+              <li><a href="/zonas/tierra-del-fuego" className="hover:text-patagonia-gold transition-colors">Tierra del Fuego</a></li>
+              <li><a href="/academia" className="hover:text-patagonia-gold transition-colors">Academia</a></li>
             </ul>
           </div>
 

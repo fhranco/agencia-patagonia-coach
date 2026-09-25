@@ -24,6 +24,7 @@ import {
   Mail,
   Loader2
 } from 'lucide-react';
+import { getWhatsAppUrl } from '../constants/contact';
 
 const businessNiches = {
   tourism: [
@@ -252,6 +253,9 @@ const DigitalDiagnostic = ({ isModal = false }) => {
   const [dimensionScores, setDimensionScores] = useState({ flow: 0, comm: 0, sales: 0, scale: 0 });
   const [answers, setAnswers] = useState([]);
   const [leadData, setLeadData] = useState({ nombre: '', email: '', whatsapp: '' });
+  const [consent, setConsent] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
+  const [isPersisted, setIsPersisted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSectorSelect = (sector) => {
@@ -318,32 +322,49 @@ const DigitalDiagnostic = ({ isModal = false }) => {
 
   const handleLeadSubmit = async (e) => {
     e.preventDefault();
+    if (!consent) return;
+
     setIsSubmitting(true);
     setStep('processing');
     
     try {
-      const formData = new FormData();
-      formData.append('nombre', leadData.nombre);
-      formData.append('email', leadData.email);
-      formData.append('whatsapp', leadData.whatsapp);
-      formData.append('score', totalScore);
-      formData.append('sector', currentSector);
-      formData.append('nicho', currentNiche.name);
-      formData.append('full_audit_data', JSON.stringify(answers));
-      
-      await fetch('/mail.php', { method: 'POST', body: formData });
+      const payload = {
+        name: leadData.nombre,
+        email: leadData.email,
+        phone: leadData.whatsapp,
+        sector: currentSector,
+        niche: currentNiche?.name || currentNiche?.id,
+        score: Math.round(scorePercentage),
+        answers: answers,
+        consent: true,
+        consent_timestamp: new Date().toISOString(),
+        website_hp: honeypot,
+        page: window.location.pathname,
+        source: 'digital-diagnostic',
+        cta: 'diagnostic-submit'
+      };
+
+      const res = await fetch('/api/diagnostic', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        setIsPersisted(true);
+      }
     } catch (err) {
-      console.error("Error enviando auditoría:", err);
+      console.warn('[DigitalDiagnostic] Persistence note:', err);
     } finally {
       setTimeout(() => {
         setIsSubmitting(false);
         setStep('result');
-      }, 2000);
+      }, 800);
     }
   };
 
   const getSectorLabels = () => {
-    if (currentSector === 'tourism') return { label: "Turismo de Élite", color: "text-[#FF7A18]" };
+    if (currentSector === 'tourism') return { label: "Turismo & Experiencias", color: "text-[#FF7A18]" };
     if (currentSector === 'industry') return { label: "Industria & Logística", color: "text-patagonia-red" };
     return { label: "Retail & B2B", color: "text-patagonia-cyan" };
   };
@@ -441,8 +462,8 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                   <Loader2 className="w-10 h-10 text-patagonia-gold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin" />
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-xl font-heading text-white italic">Transmitiendo radiografía operativa...</h4>
-                  <p className="text-patagonia-gold/60 text-xs animate-pulse">Generando reporte extendido de 20+ páginas</p>
+                  <h4 className="text-xl font-heading text-white italic">Calculando índice de madurez digital...</h4>
+                  <p className="text-patagonia-gold/60 text-xs">Estructurando radiografía dimensional y hoja de ruta táctica</p>
                 </div>
               </motion.div>
             )}
@@ -450,16 +471,42 @@ const DigitalDiagnostic = ({ isModal = false }) => {
             {step === 'lead' && (
               <motion.div key="lead" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center space-y-12">
                 <div className="space-y-4">
-                  <div className="w-16 h-16 bg-patagonia-gold/20 rounded-full flex items-center justify-center mx-auto mb-6"><Mail className="w-8 h-8 text-patagonia-gold" /></div>
+                  <div className="w-16 h-16 bg-patagonia-gold/20 rounded-full flex items-center justify-center mx-auto mb-6"><CheckCircle2 className="w-8 h-8 text-patagonia-gold" /></div>
                   <h3 className="text-4xl font-heading font-light text-white leading-tight">Auditoría Finalizada.</h3>
-                  <p className="text-patagonia-secondary max-w-md mx-auto font-light italic">Sus respuestas han sido capturadas. Ingrese sus datos para recibir el **Informe Táctico Completo** en su email.</p>
+                  <p className="text-patagonia-secondary max-w-md mx-auto font-light italic">Sus respuestas han sido procesadas. Ingrese sus datos para ver el informe dimensional y su hoja de ruta táctica.</p>
                 </div>
-                <form onSubmit={handleLeadSubmit} className="max-w-md mx-auto space-y-4">
+                <form onSubmit={handleLeadSubmit} className="max-w-md mx-auto space-y-4 text-left">
+                  {/* Honeypot */}
+                  <input 
+                    type="text" 
+                    name="website_hp" 
+                    value={honeypot} 
+                    onChange={e => setHoneypot(e.target.value)} 
+                    tabIndex={-1} 
+                    autoComplete="off" 
+                    className="hidden" 
+                    aria-hidden="true" 
+                  />
                   <input required type="text" placeholder="Nombre completo" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none text-white focus:border-patagonia-gold" onChange={e => setLeadData({...leadData, nombre: e.target.value})} />
                   <input required type="email" placeholder="Email corporativo" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none text-white focus:border-patagonia-gold" onChange={e => setLeadData({...leadData, email: e.target.value})} />
                   <input required type="tel" placeholder="WhatsApp" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none text-white focus:border-patagonia-gold" onChange={e => setLeadData({...leadData, whatsapp: e.target.value})} />
-                  <button disabled={isSubmitting} className="btn-primary w-full py-5 text-[10px] tracking-[0.4em] font-black uppercase disabled:opacity-50">
-                    {isSubmitting ? "Transmitiendo..." : "Obtener Reporte de Inteligencia"}
+                  
+                  {/* Consent checkbox */}
+                  <label className="flex items-start gap-3 cursor-pointer p-2 rounded-xl bg-white/[0.02] border border-white/5">
+                    <input 
+                      type="checkbox" 
+                      required 
+                      checked={consent} 
+                      onChange={e => setConsent(e.target.checked)} 
+                      className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-patagonia-gold focus:ring-patagonia-gold shrink-0 cursor-pointer" 
+                    />
+                    <span className="text-[11px] text-patagonia-secondary font-light leading-relaxed">
+                      Acepto que PatagoniaCoach procese mis datos para registrar esta evaluación y coordinar la asesoría técnica.
+                    </span>
+                  </label>
+
+                  <button disabled={isSubmitting || !consent} data-cta="diagnostic-submit" className="btn-primary w-full py-5 text-[10px] tracking-[0.4em] font-black uppercase disabled:opacity-50 cursor-pointer">
+                    {isSubmitting ? "Registrando Diagnóstico..." : "Ver Resultados & Hoja de Ruta"}
                   </button>
                 </form>
               </motion.div>
@@ -467,10 +514,15 @@ const DigitalDiagnostic = ({ isModal = false }) => {
 
             {step === 'result' && (
               <motion.div key="result" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-12">
-                {/* Alerta de Informe en Email */}
-                <div className="p-4 rounded-2xl bg-patagonia-gold text-black flex items-center gap-4 animate-bounce">
-                  <Mail className="w-6 h-6 flex-shrink-0" />
-                  <p className="text-[10px] font-black uppercase tracking-widest">Su Informe Detallado (20+ páginas) está siendo enviado a su email.</p>
+                {/* Indicador de Persistencia / Análisis */}
+                <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center gap-4 text-left">
+                  <CheckCircle2 className="w-6 h-6 flex-shrink-0 text-emerald-400" />
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-white">
+                      {isPersisted ? "Diagnóstico guardado correctamente" : "Diagnóstico Calculado en Tiempo Real"}
+                    </p>
+                    <p className="text-xs text-patagonia-secondary">Radiografía dimensional y roadmap listos. Puedes coordinar una sesión directa para su implementación.</p>
+                  </div>
                 </div>
 
                 {/* Header Resultado */}
@@ -487,7 +539,7 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                   </div>
                   <div className="space-y-4 text-center md:text-left">
                     <h3 className="text-3xl md:text-5xl font-heading font-light text-white leading-tight">Estado: <span className={`italic ${labels.color}`}>{scorePercentage > 75 ? "Élite Operativa" : scorePercentage > 50 ? "Tracción Media" : "Fricción Crítica"}</span></h3>
-                    <p className="text-patagonia-secondary font-light italic leading-relaxed text-lg">"Su ecosistema de <span className="text-white">{currentNiche?.name}</span> presenta oportunidades de optimización inmediata a través de arquitectura IA."</p>
+                    <p className="text-patagonia-secondary font-light italic leading-relaxed text-lg">"Su ecosistema de <span className="text-white">{currentNiche?.name}</span> presenta oportunidades de optimización inmediata a través de arquitectura digital e IA."</p>
                   </div>
                 </div>
 
@@ -534,8 +586,16 @@ const DigitalDiagnostic = ({ isModal = false }) => {
                 <div className="p-8 rounded-[3rem] bg-patagonia-gold text-black flex flex-col justify-center items-center text-center space-y-6 shadow-[0_20px_50px_rgba(250,204,21,0.2)]">
                   <ShieldCheck className="w-12 h-12" />
                   <h4 className="text-2xl font-heading font-bold leading-tight">¿Listo para ejecutar esta transformación?</h4>
-                  <a href={`https://wa.me/56995684198?text=Franco, obtuve un ${Math.round(scorePercentage)}% en mi auditoría de ${currentNiche?.name}. Quiero agendar la sesión de despliegue para las 3 fases.`} className="w-full py-5 bg-black text-white rounded-full text-[10px] tracking-[0.4em] font-black uppercase hover:scale-105 transition-all">Agendar Sesión de Despliegue</a>
-                  <p className="text-[8px] uppercase font-bold tracking-widest opacity-60">Consultoría sin costo para empresas de Magallanes</p>
+                  <a 
+                    href={getWhatsAppUrl(`Hola Franco, completé el Diagnóstico Digital en la web con un ${Math.round(scorePercentage)}% de madurez para mi empresa en el sector ${labels.label} (${currentNiche?.name}). Quiero revisar este diagnóstico y la propuesta táctica.`)} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    data-cta="diagnostic-whatsapp"
+                    className="w-full py-5 bg-black text-white rounded-full text-[10px] tracking-[0.4em] font-black uppercase hover:scale-105 transition-all text-center block"
+                  >
+                    Quiero revisar este diagnóstico
+                  </a>
+                  <p className="text-[8px] uppercase font-bold tracking-widest opacity-60">Consultoría de arquitectura digital para Magallanes</p>
                 </div>
 
                 {/* Footer Regreso */}

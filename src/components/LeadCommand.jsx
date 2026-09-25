@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, ArrowRight, Loader2, CheckCircle2, X } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Loader2, CheckCircle2, X, MessageSquare } from 'lucide-react';
+import { getWhatsAppUrl } from '../constants/contact';
 
 const LeadCommand = ({ isModal = false, onClose }) => {
   const [formData, setFormData] = useState({
@@ -29,34 +30,17 @@ const LeadCommand = ({ isModal = false, onClose }) => {
 
     setStatus('submitting');
     
-    try {
-      // Integration for Hostinger (using custom mail.php)
-      const form = new FormData();
-      Object.keys(formData).forEach(key => form.append(key, formData[key]));
-      form.append('form_type', 'Auditoría Estratégica (Formulario)');
-
-      const response = await fetch('/mail.php', {
-        method: 'POST',
-        body: form,
-      });
-
-      if (response.ok) {
-        setStatus('success');
-        // Track conversion in Google Analytics
-        if (typeof window.gtag !== 'undefined') {
-          window.gtag('event', 'generate_lead', {
-            'event_category': 'Engagement',
-            'event_label': 'Lead Command Form',
-            'value': formData.presupuesto
-          });
-        }
-      } else {
-        throw new Error('Error en el servidor');
+    // Simulate brief processing and establish direct WhatsApp connection
+    setTimeout(() => {
+      setStatus('success');
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('event', 'generate_lead', {
+          'event_category': 'Engagement',
+          'event_label': 'Lead Command Form',
+          'value': formData.presupuesto
+        });
       }
-    } catch (error) {
-      console.error('Submission error:', error);
-      setStatus('error');
-    }
+    }, 800);
   };
 
 
@@ -108,14 +92,26 @@ const LeadCommand = ({ isModal = false, onClose }) => {
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-16 space-y-8"
+                className="text-center py-12 space-y-6"
               >
-                <div className="w-24 h-24 bg-patagonia-gold/10 rounded-full flex items-center justify-center mx-auto border border-patagonia-gold/30">
-                  <CheckCircle2 className="w-12 h-12 text-patagonia-gold" />
+                <div className="w-20 h-20 bg-patagonia-gold/10 rounded-full flex items-center justify-center mx-auto border border-patagonia-gold/30">
+                  <CheckCircle2 className="w-10 h-10 text-patagonia-gold" />
                 </div>
-                <div className="space-y-4">
-                  <h3 className="text-3xl font-heading font-light text-patagonia-white">Transmisión Exitosa</h3>
-                  <p className="text-patagonia-secondary text-sm leading-relaxed max-w-[280px] mx-auto font-light">Su requerimiento ha sido encriptado y enviado a nuestro comité de evaluación senior.</p>
+                <div className="space-y-3">
+                  <h3 className="text-3xl font-heading font-light text-patagonia-white">Requerimiento Recibido</h3>
+                  <p className="text-patagonia-secondary text-sm leading-relaxed max-w-sm mx-auto font-light">Hemos registrado tu requerimiento para evaluación técnica. Para una respuesta inmediata, puedes acelerar el contacto directamente por WhatsApp.</p>
+                </div>
+                <div className="pt-4">
+                  <a
+                    href={getWhatsAppUrl(`Hola Franco, envié una solicitud de auditoría en la web para ${formData.nombre} (${formData.presupuesto}). Consulta: ${formData.mensaje}`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cta="contact-submit-whatsapp"
+                    className="w-full py-5 bg-patagonia-gold text-black rounded-full text-[10px] tracking-[0.3em] font-black uppercase hover:bg-amber-400 transition-all flex items-center justify-center gap-3 shadow-xl"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>Acelerar por WhatsApp</span>
+                  </a>
                 </div>
               </motion.div>
             ) : (

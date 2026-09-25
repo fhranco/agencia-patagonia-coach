@@ -136,7 +136,7 @@ const Consultancy = () => {
             </div>
 
             <div className="pt-12">
-               <Link to="/consultoria" className="btn-primary px-12 py-5 text-sm shadow-[0_0_40px_rgba(240,20,10,0.2)] inline-block">
+               <Link to="/servicios/consultoria-transformacion-digital" className="btn-primary px-12 py-5 text-sm shadow-[0_0_40px_rgba(240,20,10,0.2)] inline-block">
                 DISCUTIR ROADMAP ESTRATÉGICO
                </Link>
             </div>

@@ -36,3 +36,11 @@ public/secrets.php
 
 # PDFs
 *.pdf
+
+# Scrollytelling raw master & local scratch
+Final-video.mp4
+scratch/
+ngrok
+*.tar.gz
+
+.reference/

@@ -1,0 +1,440 @@
+:root {
+  --story-scroll-height: 480vh;
+  --story-scroll-height-mobile: 420vh;
+}
+
+.digital-journey {
+  position: relative;
+  width: 100%;
+  height: var(--story-scroll-height);
+  background-color: #05070A; /* Basalto Austral */
+  contain: paint;
+}
+
+.digital-journey__sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background-color: #05070A;
+}
+
+/* Canvas viewport wrap */
+.digital-journey__canvas-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.digital-journey__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+/* Atmospheric photographic vignette (Darkens left column for high text contrast without killing amber light) */
+.digital-journey__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: 
+    linear-gradient(90deg, rgba(5, 7, 10, 0.88) 0%, rgba(5, 7, 10, 0.55) 38%, rgba(5, 7, 10, 0.05) 75%, transparent 100%),
+    linear-gradient(180deg, rgba(5, 7, 10, 0.5) 0%, transparent 20%, transparent 80%, rgba(5, 7, 10, 0.85) 100%);
+}
+
+/* Acto 00: Aperture Layer */
+.digital-journey__aperture-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 25;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  transition: opacity 0.3s ease-out;
+}
+
+/* Exit transition to Acto 02 (Manifesto) */
+.digital-journey__exit-mask {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 22;
+  pointer-events: none;
+  background: #05070A;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out;
+}
+
+.digital-journey__exit-mask::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(245, 158, 11, 0.4) 40%, #F59E0B 50%, rgba(245, 158, 11, 0.4) 60%, transparent 100%);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
+}
+
+/* Content layer */
+.digital-journey__content {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(32px, 6vw, 100px);
+}
+
+.digital-journey__chapter {
+  position: absolute;
+  max-width: 580px;
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+/* Editorial Technical Marker */
+.digital-journey__marker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #F59E0B; /* Ámbar Patagónico */
+  padding: 4px 10px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  border-radius: 9999px;
+  margin-bottom: 16px;
+}
+
+.digital-journey__marker-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background-color: #F59E0B;
+}
+
+/* Monumental Headline: Text Reveal A (Split-Line Mask) */
+.digital-journey__headline-wrap {
+  margin-bottom: 16px;
+}
+
+.digital-journey__line-mask {
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+
+.digital-journey__headline-line {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: clamp(30px, 4.4vw, 56px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: #F8FAFC;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.85);
+  text-transform: uppercase;
+}
+
+.digital-journey__subhead {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(14px, 1.3vw, 17px);
+  font-weight: 300;
+  line-height: 1.6;
+  color: #94A3B8;
+  max-width: 480px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+}
+
+/* Chapter Positions */
+.digital-journey__chapter--search { top: 40%; transform: translateY(-50%); }
+.digital-journey__chapter--discovery { top: 42%; transform: translateY(-50%); }
+.digital-journey__chapter--responsive { top: 44%; transform: translateY(-50%); }
+.digital-journey__chapter--ai { top: 40%; transform: translateY(-50%); }
+.digital-journey__chapter--architecture { top: 42%; transform: translateY(-50%); }
+.digital-journey__chapter--ecosystem { top: 40%; transform: translateY(-50%); }
+
+/* Technical Progress Rail (Right side on desktop) */
+.digital-journey__rail {
+  position: absolute;
+  right: clamp(24px, 3.5vw, 54px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  pointer-events: none;
+}
+
+.digital-journey__rail-track {
+  width: 1px;
+  height: 180px;
+  background: rgba(255, 255, 255, 0.12);
+  position: relative;
+}
+
+.digital-journey__rail-bar {
+  width: 100%;
+  height: 100%;
+  background: #F59E0B;
+  transform-origin: top center;
+  transform: scaleY(0);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.8);
+}
+
+.digital-journey__rail-steps {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 190px;
+}
+
+.digital-journey__rail-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  color: #475569;
+  transition: all 0.25s ease;
+}
+
+.digital-journey__rail-step.is-active {
+  color: #F59E0B;
+}
+
+.digital-journey__rail-num {
+  font-weight: 600;
+}
+
+.digital-journey__rail-title {
+  opacity: 0;
+  transform: translateX(6px);
+  transition: all 0.25s ease;
+}
+
+.digital-journey__rail-step.is-active .digital-journey__rail-title {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Telemetry Box (Staging & Dev only) */
+.digital-journey__debug {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 9999;
+  background: rgba(5, 7, 10, 0.92);
+  border: 1px solid #1E293B;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  line-height: 1.6;
+  color: #94A3B8;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+
+.digital-journey__debug span {
+  color: #F59E0B;
+  font-weight: 600;
+}
+
+/* Chapter CTA Buttons */
+.digital-journey__cta-wrap {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.digital-journey__cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.digital-journey__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+}
+
+.digital-journey__cta-btn--primary {
+  background: #F59E0B;
+  color: #05070A;
+  border: 1px solid #F59E0B;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.25);
+}
+
+.digital-journey__cta-btn--primary:hover {
+  background: #D97706;
+  border-color: #D97706;
+  color: #05070A;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
+}
+
+.digital-journey__cta-btn--secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+.digital-journey__cta-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   MOBILE HYBRID COMPOSITION (55% Visual Top / 45% Editorial Bottom)
+   Prevents the 75-80% horizontal crop on mobile portrait viewports
+   ========================================================================== */
+@media (max-width: 768px) {
+  .digital-journey {
+    height: var(--story-scroll-height-mobile);
+  }
+
+  .digital-journey__sticky {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top 55%: Canvas retains optimal framing */
+  .digital-journey__canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: 55svh;
+    background-color: #05070A;
+  }
+
+  .digital-journey__overlay {
+    background: linear-gradient(180deg, transparent 60%, rgba(5, 7, 10, 0.95) 100%);
+  }
+
+  /* Bottom 45%: Pure solid editorial panel on Basalto Austral */
+  .digital-journey__content {
+    position: relative;
+    width: 100%;
+    height: 45svh;
+    background-color: #05070A;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px 20px;
+    align-items: flex-start;
+  }
+
+  .digital-journey__chapter {
+    position: absolute;
+    top: 24px !important;
+    left: 20px !important;
+    right: 20px !important;
+    max-width: 100%;
+    transform: none !important;
+  }
+
+  .digital-journey__headline-line {
+    font-size: clamp(24px, 6.8vw, 34px);
+    line-height: 1.08;
+  }
+
+  .digital-journey__subhead {
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: 100%;
+  }
+
+  /* Simplified mobile progress rail */
+  .digital-journey__rail {
+    top: 55svh;
+    right: 20px;
+    transform: translateY(-50%);
+    gap: 8px;
+  }
+
+  .digital-journey__rail-track {
+    display: none;
+  }
+
+  .digital-journey__rail-steps {
+    flex-direction: row;
+    height: auto;
+    gap: 12px;
+  }
+
+  .digital-journey__rail-title {
+    display: none;
+  }
+}
+
+/* Reduced Motion Fallback */
+@media (prefers-reduced-motion: reduce) {
+  .digital-journey {
+    height: auto !important;
+  }
+  .digital-journey__sticky {
+    position: relative !important;
+    height: auto !important;
+  }
+  .digital-journey__aperture-layer {
+    position: relative;
+    height: 80vh;
+  }
+  .digital-journey__canvas-wrap {
+    height: 70vh;
+  }
+  .digital-journey__content {
+    position: relative;
+    padding: 60px 24px;
+    flex-direction: column;
+    gap: 60px;
+  }
+  .digital-journey__chapter {
+    position: relative !important;
+    top: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .digital-journey__rail {
+    display: none;
+  }
+}

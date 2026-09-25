@@ -2,6 +2,7 @@
   command = "npm run build"
   publish = "dist"
 
+# GONE / 410 Historical SPAM URLs
 [[redirects]]
   from = "/cart"
   status = 410
@@ -50,210 +51,153 @@
   from = "/index.php/*"
   status = 410
 
-[[redirects]]
-  from = "/servicio/plan-ico-return-on-investment*"
-  status = 410
-
-[[redirects]]
-  from = "/servicio/single-service*"
-  status = 410
-
-# 301 Redirects
+# 301 Permanent Redirects (Consolidation V2)
 [[redirects]]
   from = "/home"
   to = "/"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/creacion-paginas-web-punta-arenas"
+  to = "/servicios/desarrollo-web"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/tours-virtuales-360"
+  to = "/servicios/desarrollo-web"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/seo-local-punta-arenas"
+  to = "/servicios/seo-local-magallanes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/automatizacion-ia-empresas"
+  to = "/servicios/automatizacion-con-ia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/inteligencia-artificial-punta-arenas"
+  to = "/servicios/automatizacion-con-ia"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/ia"
   to = "/servicios/automatizacion-con-ia"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/ia-generativa-visual"
+  to = "/servicios/automatizacion-con-ia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/marketing-digital-punta-arenas"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/manejo-redes-sociales-punta-arenas"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/videos-redes-sociales-punta-arenas"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/creacion-reels-punta-arenas"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/fotografia-para-redes-sociales"
+  to = "/servicios/comunicacion-digital"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/marketing"
   to = "/servicios/comunicacion-digital"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/consultoria"
   to = "/servicios/consultoria-transformacion-digital"
   status = 301
+  force = true
 
 [[redirects]]
-  from = "/academia"
-  to = "/servicios/academia"
+  from = "/servicios/academia"
+  to = "/academia"
   status = 301
+  force = true
 
+[[redirects]]
+  from = "/zonas/punta-arenas"
+  to = "/zonas/magallanes"
+  status = 301
+  force = true
+
+# Legacy subservices redirects
 [[redirects]]
   from = "/servicios/audio-y-podcast/*"
   to = "/servicios/comunicacion-digital"
   status = 301
-
-[[redirects]]
-  from = "/servicios/audio-y-podcast"
-  to = "/servicios/comunicacion-digital"
-  status = 301
+  force = true
 
 [[redirects]]
   from = "/servicios/diseno-de-contenido/*"
   to = "/servicios/comunicacion-digital"
   status = 301
-
-[[redirects]]
-  from = "/servicios/diseno-de-contenido"
-  to = "/servicios/comunicacion-digital"
-  status = 301
+  force = true
 
 [[redirects]]
   from = "/servicios/manual-de-identidad/*"
   to = "/servicios/comunicacion-digital"
   status = 301
-
-[[redirects]]
-  from = "/servicios/manual-de-identidad"
-  to = "/servicios/comunicacion-digital"
-  status = 301
-
-[[redirects]]
-  from = "/servicio/contenido-pro/*"
-  to = "/servicios/comunicacion-digital"
-  status = 301
-
-[[redirects]]
-  from = "/servicio/contenido-pro"
-  to = "/servicios/comunicacion-digital"
-  status = 301
+  force = true
 
 [[redirects]]
   from = "/servicios/gestion-tienda/*"
   to = "/servicios/desarrollo-web"
   status = 301
-
-[[redirects]]
-  from = "/servicios/gestion-tienda"
-  to = "/servicios/desarrollo-web"
-  status = 301
+  force = true
 
 [[redirects]]
   from = "/servicios/landing-page-express/*"
   to = "/servicios/desarrollo-web"
   status = 301
-
-[[redirects]]
-  from = "/servicios/landing-page-express"
-  to = "/servicios/desarrollo-web"
-  status = 301
+  force = true
 
 [[redirects]]
   from = "/servicios/conversion-cro/*"
   to = "/servicios/desarrollo-web"
   status = 301
-
-[[redirects]]
-  from = "/servicios/conversion-cro"
-  to = "/servicios/desarrollo-web"
-  status = 301
-
-[[redirects]]
-  from = "/servicio/diseno-web-avanzado/*"
-  to = "/servicios/desarrollo-web"
-  status = 301
-
-[[redirects]]
-  from = "/servicio/diseno-web-avanzado"
-  to = "/servicios/desarrollo-web"
-  status = 301
-
-[[redirects]]
-  from = "/servicio/diseno-web-landing-express/*"
-  to = "/servicios/desarrollo-web"
-  status = 301
-
-[[redirects]]
-  from = "/servicio/diseno-web-landing-express"
-  to = "/servicios/desarrollo-web"
-  status = 301
-
-[[redirects]]
-  from = "/servicios/fotografia-360-para-e-commerce-de-producto/*"
-  to = "/servicios/tours-virtuales-360"
-  status = 301
-
-[[redirects]]
-  from = "/servicios/fotografia-360-para-e-commerce-de-producto"
-  to = "/servicios/tours-virtuales-360"
-  status = 301
-
-[[redirects]]
-  from = "/servicios/fotografia-tour-virtual/*"
-  to = "/servicios/tours-virtuales-360"
-  status = 301
-
-[[redirects]]
-  from = "/servicios/fotografia-tour-virtual"
-  to = "/servicios/tours-virtuales-360"
-  status = 301
-
-[[redirects]]
-  from = "/servicios/fotografia-redes-sociales-lifestyle/*"
-  to = "/servicios/fotografia-para-redes-sociales"
-  status = 301
-
-[[redirects]]
-  from = "/servicios/fotografia-redes-sociales-lifestyle"
-  to = "/servicios/fotografia-para-redes-sociales"
-  status = 301
-
-[[redirects]]
-  from = "/servicios/fotografia-para-tienda-virtual/*"
-  to = "/servicios/fotografia-para-redes-sociales"
-  status = 301
-
-[[redirects]]
-  from = "/servicios/fotografia-para-tienda-virtual"
-  to = "/servicios/fotografia-para-redes-sociales"
-  status = 301
-
-[[redirects]]
-  from = "/servicio/01-fotografia-para-tienda-virtual/*"
-  to = "/servicios/fotografia-para-redes-sociales"
-  status = 301
-
-[[redirects]]
-  from = "/servicio/01-fotografia-para-tienda-virtual"
-  to = "/servicios/fotografia-para-redes-sociales"
-  status = 301
-
-[[redirects]]
-  from = "/servicios/videos-corporativos/*"
-  to = "/servicios/videos-redes-sociales-punta-arenas"
-  status = 301
-
-[[redirects]]
-  from = "/servicios/videos-corporativos"
-  to = "/servicios/videos-redes-sociales-punta-arenas"
-  status = 301
-
-[[redirects]]
-  from = "/servicios/ventas-ecommerce-plus/*"
-  to = "/servicios/aplicaciones-web-pro"
-  status = 301
-
-[[redirects]]
-  from = "/servicios/ventas-ecommerce-plus"
-  to = "/servicios/aplicaciones-web-pro"
-  status = 301
+  force = true
 
 [[redirects]]
   from = "/servicios/talleres-y-cursos-para-empresas/*"
-  to = "/servicios/academia"
+  to = "/academia"
   status = 301
+  force = true
 
-[[redirects]]
-  from = "/servicios/talleres-y-cursos-para-empresas"
-  to = "/servicios/academia"
-  status = 301
-
+# SPA Fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -275,3 +219,19 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Protección contra indexación en entornos de Staging y Preview en Netlify
+[context.staging.headers]
+  for = "/*"
+  [context.staging.headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[context.deploy-preview.headers]
+  for = "/*"
+  [context.deploy-preview.headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[context.branch-deploy.headers]
+  for = "/*"
+  [context.branch-deploy.headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"

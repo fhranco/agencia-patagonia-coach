@@ -1,0 +1,2277 @@
+{
+  "version": "1.0.0",
+  "total_useful_frames": 240,
+  "source_master": {
+    "file": "Final-video.mp4",
+    "resolution": "1920x1080",
+    "fps": 30,
+    "total_source_frames": 900,
+    "duration_s": 30.0,
+    "index_convention": "0-indexed (0 to 899)"
+  },
+  "export_spec": {
+    "format": "webp",
+    "resolution": "1600x900",
+    "aspect_ratio": "16:9",
+    "quality": 82,
+    "naming": "frame_%04d.webp"
+  },
+  "performance_guidelines": {
+    "initial_critical_set": "frame_0001.webp to frame_0012.webp (~500 KB)",
+    "remaining_frames": "progressive / chunk loading via Web Worker / idle callback"
+  },
+  "chapters": [
+    {
+      "id": "01_SEARCH",
+      "title": "Búsqueda / Intención",
+      "provisional_progress": {
+        "start": 0.0,
+        "end": 0.12
+      },
+      "master_source_range": {
+        "f_start": 0,
+        "f_end": 95
+      },
+      "frame_count": 28,
+      "selected_source_frames": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        18,
+        21,
+        25,
+        28,
+        32,
+        35,
+        39,
+        42,
+        46,
+        49,
+        53,
+        56,
+        60,
+        63,
+        67,
+        70,
+        74,
+        77,
+        81,
+        84,
+        88,
+        91,
+        95
+      ]
+    },
+    {
+      "id": "02_DISCOVERY",
+      "title": "Resultados / Descubrimiento",
+      "provisional_progress": {
+        "start": 0.12,
+        "end": 0.28
+      },
+      "master_source_range": {
+        "f_start": 96,
+        "f_end": 245
+      },
+      "frame_count": 40,
+      "selected_source_frames": [
+        96,
+        100,
+        104,
+        107,
+        111,
+        115,
+        119,
+        123,
+        127,
+        130,
+        134,
+        138,
+        142,
+        146,
+        149,
+        153,
+        157,
+        161,
+        165,
+        169,
+        172,
+        176,
+        180,
+        184,
+        188,
+        192,
+        195,
+        199,
+        203,
+        207,
+        211,
+        214,
+        218,
+        222,
+        226,
+        230,
+        234,
+        237,
+        241,
+        245
+      ]
+    },
+    {
+      "id": "03_RESPONSIVE",
+      "title": "Responsive / Mobile",
+      "provisional_progress": {
+        "start": 0.28,
+        "end": 0.43
+      },
+      "master_source_range": {
+        "f_start": 246,
+        "f_end": 365
+      },
+      "frame_count": 36,
+      "selected_source_frames": [
+        246,
+        249,
+        253,
+        256,
+        260,
+        263,
+        266,
+        270,
+        273,
+        277,
+        280,
+        283,
+        287,
+        290,
+        294,
+        297,
+        300,
+        304,
+        307,
+        311,
+        314,
+        317,
+        321,
+        324,
+        328,
+        331,
+        334,
+        338,
+        341,
+        345,
+        348,
+        351,
+        355,
+        358,
+        362,
+        365
+      ]
+    },
+    {
+      "id": "04_AI",
+      "title": "IA / Respuesta Generativa",
+      "provisional_progress": {
+        "start": 0.43,
+        "end": 0.67
+      },
+      "master_source_range": {
+        "f_start": 366,
+        "f_end": 593
+      },
+      "frame_count": 56,
+      "selected_source_frames": [
+        366,
+        370,
+        374,
+        378,
+        383,
+        387,
+        391,
+        395,
+        399,
+        403,
+        407,
+        411,
+        416,
+        420,
+        424,
+        428,
+        432,
+        436,
+        440,
+        444,
+        449,
+        453,
+        457,
+        461,
+        465,
+        469,
+        473,
+        477,
+        482,
+        486,
+        490,
+        494,
+        498,
+        502,
+        506,
+        510,
+        515,
+        519,
+        523,
+        527,
+        531,
+        535,
+        539,
+        543,
+        548,
+        552,
+        556,
+        560,
+        564,
+        568,
+        572,
+        576,
+        581,
+        585,
+        589,
+        593
+      ]
+    },
+    {
+      "id": "05_ARCHITECTURE",
+      "title": "Arquitectura Web / Componentes",
+      "provisional_progress": {
+        "start": 0.67,
+        "end": 0.87
+      },
+      "master_source_range": {
+        "f_start": 594,
+        "f_end": 785
+      },
+      "frame_count": 48,
+      "selected_source_frames": [
+        594,
+        598,
+        602,
+        606,
+        610,
+        614,
+        618,
+        622,
+        627,
+        631,
+        635,
+        639,
+        643,
+        647,
+        651,
+        655,
+        659,
+        663,
+        667,
+        671,
+        675,
+        679,
+        683,
+        687,
+        692,
+        696,
+        700,
+        704,
+        708,
+        712,
+        716,
+        720,
+        724,
+        728,
+        732,
+        736,
+        740,
+        744,
+        748,
+        752,
+        757,
+        761,
+        765,
+        769,
+        773,
+        777,
+        781,
+        785
+      ]
+    },
+    {
+      "id": "06_ECOSYSTEM",
+      "title": "Ecosistema Digital Integrado",
+      "provisional_progress": {
+        "start": 0.87,
+        "end": 1.0
+      },
+      "master_source_range": {
+        "f_start": 786,
+        "f_end": 899
+      },
+      "frame_count": 32,
+      "selected_source_frames": [
+        786,
+        790,
+        793,
+        797,
+        801,
+        804,
+        808,
+        812,
+        815,
+        819,
+        822,
+        826,
+        830,
+        833,
+        837,
+        841,
+        844,
+        848,
+        852,
+        855,
+        859,
+        863,
+        866,
+        870,
+        873,
+        877,
+        881,
+        884,
+        888,
+        892,
+        895,
+        899
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "sequence_index": 1,
+      "file": "frame_0001.webp",
+      "source_frame": 0,
+      "source_time": 0.0,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.0
+    },
+    {
+      "sequence_index": 2,
+      "file": "frame_0002.webp",
+      "source_frame": 4,
+      "source_time": 0.1333,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.00418
+    },
+    {
+      "sequence_index": 3,
+      "file": "frame_0003.webp",
+      "source_frame": 7,
+      "source_time": 0.2333,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.00837
+    },
+    {
+      "sequence_index": 4,
+      "file": "frame_0004.webp",
+      "source_frame": 11,
+      "source_time": 0.3667,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.01255
+    },
+    {
+      "sequence_index": 5,
+      "file": "frame_0005.webp",
+      "source_frame": 14,
+      "source_time": 0.4667,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.01674
+    },
+    {
+      "sequence_index": 6,
+      "file": "frame_0006.webp",
+      "source_frame": 18,
+      "source_time": 0.6,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.02092
+    },
+    {
+      "sequence_index": 7,
+      "file": "frame_0007.webp",
+      "source_frame": 21,
+      "source_time": 0.7,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.0251
+    },
+    {
+      "sequence_index": 8,
+      "file": "frame_0008.webp",
+      "source_frame": 25,
+      "source_time": 0.8333,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.02929
+    },
+    {
+      "sequence_index": 9,
+      "file": "frame_0009.webp",
+      "source_frame": 28,
+      "source_time": 0.9333,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.03347
+    },
+    {
+      "sequence_index": 10,
+      "file": "frame_0010.webp",
+      "source_frame": 32,
+      "source_time": 1.0667,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.03766
+    },
+    {
+      "sequence_index": 11,
+      "file": "frame_0011.webp",
+      "source_frame": 35,
+      "source_time": 1.1667,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.04184
+    },
+    {
+      "sequence_index": 12,
+      "file": "frame_0012.webp",
+      "source_frame": 39,
+      "source_time": 1.3,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.04603
+    },
+    {
+      "sequence_index": 13,
+      "file": "frame_0013.webp",
+      "source_frame": 42,
+      "source_time": 1.4,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.05021
+    },
+    {
+      "sequence_index": 14,
+      "file": "frame_0014.webp",
+      "source_frame": 46,
+      "source_time": 1.5333,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.05439
+    },
+    {
+      "sequence_index": 15,
+      "file": "frame_0015.webp",
+      "source_frame": 49,
+      "source_time": 1.6333,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.05858
+    },
+    {
+      "sequence_index": 16,
+      "file": "frame_0016.webp",
+      "source_frame": 53,
+      "source_time": 1.7667,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.06276
+    },
+    {
+      "sequence_index": 17,
+      "file": "frame_0017.webp",
+      "source_frame": 56,
+      "source_time": 1.8667,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.06695
+    },
+    {
+      "sequence_index": 18,
+      "file": "frame_0018.webp",
+      "source_frame": 60,
+      "source_time": 2.0,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.07113
+    },
+    {
+      "sequence_index": 19,
+      "file": "frame_0019.webp",
+      "source_frame": 63,
+      "source_time": 2.1,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.07531
+    },
+    {
+      "sequence_index": 20,
+      "file": "frame_0020.webp",
+      "source_frame": 67,
+      "source_time": 2.2333,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.0795
+    },
+    {
+      "sequence_index": 21,
+      "file": "frame_0021.webp",
+      "source_frame": 70,
+      "source_time": 2.3333,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.08368
+    },
+    {
+      "sequence_index": 22,
+      "file": "frame_0022.webp",
+      "source_frame": 74,
+      "source_time": 2.4667,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.08787
+    },
+    {
+      "sequence_index": 23,
+      "file": "frame_0023.webp",
+      "source_frame": 77,
+      "source_time": 2.5667,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.09205
+    },
+    {
+      "sequence_index": 24,
+      "file": "frame_0024.webp",
+      "source_frame": 81,
+      "source_time": 2.7,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.09623
+    },
+    {
+      "sequence_index": 25,
+      "file": "frame_0025.webp",
+      "source_frame": 84,
+      "source_time": 2.8,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.10042
+    },
+    {
+      "sequence_index": 26,
+      "file": "frame_0026.webp",
+      "source_frame": 88,
+      "source_time": 2.9333,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.1046
+    },
+    {
+      "sequence_index": 27,
+      "file": "frame_0027.webp",
+      "source_frame": 91,
+      "source_time": 3.0333,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.10879
+    },
+    {
+      "sequence_index": 28,
+      "file": "frame_0028.webp",
+      "source_frame": 95,
+      "source_time": 3.1667,
+      "chapter": "01_SEARCH",
+      "normalized_progress": 0.11297
+    },
+    {
+      "sequence_index": 29,
+      "file": "frame_0029.webp",
+      "source_frame": 96,
+      "source_time": 3.2,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.11715
+    },
+    {
+      "sequence_index": 30,
+      "file": "frame_0030.webp",
+      "source_frame": 100,
+      "source_time": 3.3333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.12134
+    },
+    {
+      "sequence_index": 31,
+      "file": "frame_0031.webp",
+      "source_frame": 104,
+      "source_time": 3.4667,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.12552
+    },
+    {
+      "sequence_index": 32,
+      "file": "frame_0032.webp",
+      "source_frame": 107,
+      "source_time": 3.5667,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.12971
+    },
+    {
+      "sequence_index": 33,
+      "file": "frame_0033.webp",
+      "source_frame": 111,
+      "source_time": 3.7,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.13389
+    },
+    {
+      "sequence_index": 34,
+      "file": "frame_0034.webp",
+      "source_frame": 115,
+      "source_time": 3.8333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.13808
+    },
+    {
+      "sequence_index": 35,
+      "file": "frame_0035.webp",
+      "source_frame": 119,
+      "source_time": 3.9667,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.14226
+    },
+    {
+      "sequence_index": 36,
+      "file": "frame_0036.webp",
+      "source_frame": 123,
+      "source_time": 4.1,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.14644
+    },
+    {
+      "sequence_index": 37,
+      "file": "frame_0037.webp",
+      "source_frame": 127,
+      "source_time": 4.2333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.15063
+    },
+    {
+      "sequence_index": 38,
+      "file": "frame_0038.webp",
+      "source_frame": 130,
+      "source_time": 4.3333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.15481
+    },
+    {
+      "sequence_index": 39,
+      "file": "frame_0039.webp",
+      "source_frame": 134,
+      "source_time": 4.4667,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.159
+    },
+    {
+      "sequence_index": 40,
+      "file": "frame_0040.webp",
+      "source_frame": 138,
+      "source_time": 4.6,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.16318
+    },
+    {
+      "sequence_index": 41,
+      "file": "frame_0041.webp",
+      "source_frame": 142,
+      "source_time": 4.7333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.16736
+    },
+    {
+      "sequence_index": 42,
+      "file": "frame_0042.webp",
+      "source_frame": 146,
+      "source_time": 4.8667,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.17155
+    },
+    {
+      "sequence_index": 43,
+      "file": "frame_0043.webp",
+      "source_frame": 149,
+      "source_time": 4.9667,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.17573
+    },
+    {
+      "sequence_index": 44,
+      "file": "frame_0044.webp",
+      "source_frame": 153,
+      "source_time": 5.1,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.17992
+    },
+    {
+      "sequence_index": 45,
+      "file": "frame_0045.webp",
+      "source_frame": 157,
+      "source_time": 5.2333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.1841
+    },
+    {
+      "sequence_index": 46,
+      "file": "frame_0046.webp",
+      "source_frame": 161,
+      "source_time": 5.3667,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.18828
+    },
+    {
+      "sequence_index": 47,
+      "file": "frame_0047.webp",
+      "source_frame": 165,
+      "source_time": 5.5,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.19247
+    },
+    {
+      "sequence_index": 48,
+      "file": "frame_0048.webp",
+      "source_frame": 169,
+      "source_time": 5.6333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.19665
+    },
+    {
+      "sequence_index": 49,
+      "file": "frame_0049.webp",
+      "source_frame": 172,
+      "source_time": 5.7333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.20084
+    },
+    {
+      "sequence_index": 50,
+      "file": "frame_0050.webp",
+      "source_frame": 176,
+      "source_time": 5.8667,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.20502
+    },
+    {
+      "sequence_index": 51,
+      "file": "frame_0051.webp",
+      "source_frame": 180,
+      "source_time": 6.0,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.20921
+    },
+    {
+      "sequence_index": 52,
+      "file": "frame_0052.webp",
+      "source_frame": 184,
+      "source_time": 6.1333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.21339
+    },
+    {
+      "sequence_index": 53,
+      "file": "frame_0053.webp",
+      "source_frame": 188,
+      "source_time": 6.2667,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.21757
+    },
+    {
+      "sequence_index": 54,
+      "file": "frame_0054.webp",
+      "source_frame": 192,
+      "source_time": 6.4,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.22176
+    },
+    {
+      "sequence_index": 55,
+      "file": "frame_0055.webp",
+      "source_frame": 195,
+      "source_time": 6.5,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.22594
+    },
+    {
+      "sequence_index": 56,
+      "file": "frame_0056.webp",
+      "source_frame": 199,
+      "source_time": 6.6333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.23013
+    },
+    {
+      "sequence_index": 57,
+      "file": "frame_0057.webp",
+      "source_frame": 203,
+      "source_time": 6.7667,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.23431
+    },
+    {
+      "sequence_index": 58,
+      "file": "frame_0058.webp",
+      "source_frame": 207,
+      "source_time": 6.9,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.23849
+    },
+    {
+      "sequence_index": 59,
+      "file": "frame_0059.webp",
+      "source_frame": 211,
+      "source_time": 7.0333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.24268
+    },
+    {
+      "sequence_index": 60,
+      "file": "frame_0060.webp",
+      "source_frame": 214,
+      "source_time": 7.1333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.24686
+    },
+    {
+      "sequence_index": 61,
+      "file": "frame_0061.webp",
+      "source_frame": 218,
+      "source_time": 7.2667,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.25105
+    },
+    {
+      "sequence_index": 62,
+      "file": "frame_0062.webp",
+      "source_frame": 222,
+      "source_time": 7.4,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.25523
+    },
+    {
+      "sequence_index": 63,
+      "file": "frame_0063.webp",
+      "source_frame": 226,
+      "source_time": 7.5333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.25941
+    },
+    {
+      "sequence_index": 64,
+      "file": "frame_0064.webp",
+      "source_frame": 230,
+      "source_time": 7.6667,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.2636
+    },
+    {
+      "sequence_index": 65,
+      "file": "frame_0065.webp",
+      "source_frame": 234,
+      "source_time": 7.8,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.26778
+    },
+    {
+      "sequence_index": 66,
+      "file": "frame_0066.webp",
+      "source_frame": 237,
+      "source_time": 7.9,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.27197
+    },
+    {
+      "sequence_index": 67,
+      "file": "frame_0067.webp",
+      "source_frame": 241,
+      "source_time": 8.0333,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.27615
+    },
+    {
+      "sequence_index": 68,
+      "file": "frame_0068.webp",
+      "source_frame": 245,
+      "source_time": 8.1667,
+      "chapter": "02_DISCOVERY",
+      "normalized_progress": 0.28033
+    },
+    {
+      "sequence_index": 69,
+      "file": "frame_0069.webp",
+      "source_frame": 246,
+      "source_time": 8.2,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.28452
+    },
+    {
+      "sequence_index": 70,
+      "file": "frame_0070.webp",
+      "source_frame": 249,
+      "source_time": 8.3,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.2887
+    },
+    {
+      "sequence_index": 71,
+      "file": "frame_0071.webp",
+      "source_frame": 253,
+      "source_time": 8.4333,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.29289
+    },
+    {
+      "sequence_index": 72,
+      "file": "frame_0072.webp",
+      "source_frame": 256,
+      "source_time": 8.5333,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.29707
+    },
+    {
+      "sequence_index": 73,
+      "file": "frame_0073.webp",
+      "source_frame": 260,
+      "source_time": 8.6667,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.30126
+    },
+    {
+      "sequence_index": 74,
+      "file": "frame_0074.webp",
+      "source_frame": 263,
+      "source_time": 8.7667,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.30544
+    },
+    {
+      "sequence_index": 75,
+      "file": "frame_0075.webp",
+      "source_frame": 266,
+      "source_time": 8.8667,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.30962
+    },
+    {
+      "sequence_index": 76,
+      "file": "frame_0076.webp",
+      "source_frame": 270,
+      "source_time": 9.0,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.31381
+    },
+    {
+      "sequence_index": 77,
+      "file": "frame_0077.webp",
+      "source_frame": 273,
+      "source_time": 9.1,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.31799
+    },
+    {
+      "sequence_index": 78,
+      "file": "frame_0078.webp",
+      "source_frame": 277,
+      "source_time": 9.2333,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.32218
+    },
+    {
+      "sequence_index": 79,
+      "file": "frame_0079.webp",
+      "source_frame": 280,
+      "source_time": 9.3333,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.32636
+    },
+    {
+      "sequence_index": 80,
+      "file": "frame_0080.webp",
+      "source_frame": 283,
+      "source_time": 9.4333,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.33054
+    },
+    {
+      "sequence_index": 81,
+      "file": "frame_0081.webp",
+      "source_frame": 287,
+      "source_time": 9.5667,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.33473
+    },
+    {
+      "sequence_index": 82,
+      "file": "frame_0082.webp",
+      "source_frame": 290,
+      "source_time": 9.6667,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.33891
+    },
+    {
+      "sequence_index": 83,
+      "file": "frame_0083.webp",
+      "source_frame": 294,
+      "source_time": 9.8,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.3431
+    },
+    {
+      "sequence_index": 84,
+      "file": "frame_0084.webp",
+      "source_frame": 297,
+      "source_time": 9.9,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.34728
+    },
+    {
+      "sequence_index": 85,
+      "file": "frame_0085.webp",
+      "source_frame": 300,
+      "source_time": 10.0,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.35146
+    },
+    {
+      "sequence_index": 86,
+      "file": "frame_0086.webp",
+      "source_frame": 304,
+      "source_time": 10.1333,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.35565
+    },
+    {
+      "sequence_index": 87,
+      "file": "frame_0087.webp",
+      "source_frame": 307,
+      "source_time": 10.2333,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.35983
+    },
+    {
+      "sequence_index": 88,
+      "file": "frame_0088.webp",
+      "source_frame": 311,
+      "source_time": 10.3667,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.36402
+    },
+    {
+      "sequence_index": 89,
+      "file": "frame_0089.webp",
+      "source_frame": 314,
+      "source_time": 10.4667,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.3682
+    },
+    {
+      "sequence_index": 90,
+      "file": "frame_0090.webp",
+      "source_frame": 317,
+      "source_time": 10.5667,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.37238
+    },
+    {
+      "sequence_index": 91,
+      "file": "frame_0091.webp",
+      "source_frame": 321,
+      "source_time": 10.7,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.37657
+    },
+    {
+      "sequence_index": 92,
+      "file": "frame_0092.webp",
+      "source_frame": 324,
+      "source_time": 10.8,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.38075
+    },
+    {
+      "sequence_index": 93,
+      "file": "frame_0093.webp",
+      "source_frame": 328,
+      "source_time": 10.9333,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.38494
+    },
+    {
+      "sequence_index": 94,
+      "file": "frame_0094.webp",
+      "source_frame": 331,
+      "source_time": 11.0333,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.38912
+    },
+    {
+      "sequence_index": 95,
+      "file": "frame_0095.webp",
+      "source_frame": 334,
+      "source_time": 11.1333,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.39331
+    },
+    {
+      "sequence_index": 96,
+      "file": "frame_0096.webp",
+      "source_frame": 338,
+      "source_time": 11.2667,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.39749
+    },
+    {
+      "sequence_index": 97,
+      "file": "frame_0097.webp",
+      "source_frame": 341,
+      "source_time": 11.3667,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.40167
+    },
+    {
+      "sequence_index": 98,
+      "file": "frame_0098.webp",
+      "source_frame": 345,
+      "source_time": 11.5,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.40586
+    },
+    {
+      "sequence_index": 99,
+      "file": "frame_0099.webp",
+      "source_frame": 348,
+      "source_time": 11.6,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.41004
+    },
+    {
+      "sequence_index": 100,
+      "file": "frame_0100.webp",
+      "source_frame": 351,
+      "source_time": 11.7,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.41423
+    },
+    {
+      "sequence_index": 101,
+      "file": "frame_0101.webp",
+      "source_frame": 355,
+      "source_time": 11.8333,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.41841
+    },
+    {
+      "sequence_index": 102,
+      "file": "frame_0102.webp",
+      "source_frame": 358,
+      "source_time": 11.9333,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.42259
+    },
+    {
+      "sequence_index": 103,
+      "file": "frame_0103.webp",
+      "source_frame": 362,
+      "source_time": 12.0667,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.42678
+    },
+    {
+      "sequence_index": 104,
+      "file": "frame_0104.webp",
+      "source_frame": 365,
+      "source_time": 12.1667,
+      "chapter": "03_RESPONSIVE",
+      "normalized_progress": 0.43096
+    },
+    {
+      "sequence_index": 105,
+      "file": "frame_0105.webp",
+      "source_frame": 366,
+      "source_time": 12.2,
+      "chapter": "04_AI",
+      "normalized_progress": 0.43515
+    },
+    {
+      "sequence_index": 106,
+      "file": "frame_0106.webp",
+      "source_frame": 370,
+      "source_time": 12.3333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.43933
+    },
+    {
+      "sequence_index": 107,
+      "file": "frame_0107.webp",
+      "source_frame": 374,
+      "source_time": 12.4667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.44351
+    },
+    {
+      "sequence_index": 108,
+      "file": "frame_0108.webp",
+      "source_frame": 378,
+      "source_time": 12.6,
+      "chapter": "04_AI",
+      "normalized_progress": 0.4477
+    },
+    {
+      "sequence_index": 109,
+      "file": "frame_0109.webp",
+      "source_frame": 383,
+      "source_time": 12.7667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.45188
+    },
+    {
+      "sequence_index": 110,
+      "file": "frame_0110.webp",
+      "source_frame": 387,
+      "source_time": 12.9,
+      "chapter": "04_AI",
+      "normalized_progress": 0.45607
+    },
+    {
+      "sequence_index": 111,
+      "file": "frame_0111.webp",
+      "source_frame": 391,
+      "source_time": 13.0333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.46025
+    },
+    {
+      "sequence_index": 112,
+      "file": "frame_0112.webp",
+      "source_frame": 395,
+      "source_time": 13.1667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.46444
+    },
+    {
+      "sequence_index": 113,
+      "file": "frame_0113.webp",
+      "source_frame": 399,
+      "source_time": 13.3,
+      "chapter": "04_AI",
+      "normalized_progress": 0.46862
+    },
+    {
+      "sequence_index": 114,
+      "file": "frame_0114.webp",
+      "source_frame": 403,
+      "source_time": 13.4333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.4728
+    },
+    {
+      "sequence_index": 115,
+      "file": "frame_0115.webp",
+      "source_frame": 407,
+      "source_time": 13.5667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.47699
+    },
+    {
+      "sequence_index": 116,
+      "file": "frame_0116.webp",
+      "source_frame": 411,
+      "source_time": 13.7,
+      "chapter": "04_AI",
+      "normalized_progress": 0.48117
+    },
+    {
+      "sequence_index": 117,
+      "file": "frame_0117.webp",
+      "source_frame": 416,
+      "source_time": 13.8667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.48536
+    },
+    {
+      "sequence_index": 118,
+      "file": "frame_0118.webp",
+      "source_frame": 420,
+      "source_time": 14.0,
+      "chapter": "04_AI",
+      "normalized_progress": 0.48954
+    },
+    {
+      "sequence_index": 119,
+      "file": "frame_0119.webp",
+      "source_frame": 424,
+      "source_time": 14.1333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.49372
+    },
+    {
+      "sequence_index": 120,
+      "file": "frame_0120.webp",
+      "source_frame": 428,
+      "source_time": 14.2667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.49791
+    },
+    {
+      "sequence_index": 121,
+      "file": "frame_0121.webp",
+      "source_frame": 432,
+      "source_time": 14.4,
+      "chapter": "04_AI",
+      "normalized_progress": 0.50209
+    },
+    {
+      "sequence_index": 122,
+      "file": "frame_0122.webp",
+      "source_frame": 436,
+      "source_time": 14.5333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.50628
+    },
+    {
+      "sequence_index": 123,
+      "file": "frame_0123.webp",
+      "source_frame": 440,
+      "source_time": 14.6667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.51046
+    },
+    {
+      "sequence_index": 124,
+      "file": "frame_0124.webp",
+      "source_frame": 444,
+      "source_time": 14.8,
+      "chapter": "04_AI",
+      "normalized_progress": 0.51464
+    },
+    {
+      "sequence_index": 125,
+      "file": "frame_0125.webp",
+      "source_frame": 449,
+      "source_time": 14.9667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.51883
+    },
+    {
+      "sequence_index": 126,
+      "file": "frame_0126.webp",
+      "source_frame": 453,
+      "source_time": 15.1,
+      "chapter": "04_AI",
+      "normalized_progress": 0.52301
+    },
+    {
+      "sequence_index": 127,
+      "file": "frame_0127.webp",
+      "source_frame": 457,
+      "source_time": 15.2333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.5272
+    },
+    {
+      "sequence_index": 128,
+      "file": "frame_0128.webp",
+      "source_frame": 461,
+      "source_time": 15.3667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.53138
+    },
+    {
+      "sequence_index": 129,
+      "file": "frame_0129.webp",
+      "source_frame": 465,
+      "source_time": 15.5,
+      "chapter": "04_AI",
+      "normalized_progress": 0.53556
+    },
+    {
+      "sequence_index": 130,
+      "file": "frame_0130.webp",
+      "source_frame": 469,
+      "source_time": 15.6333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.53975
+    },
+    {
+      "sequence_index": 131,
+      "file": "frame_0131.webp",
+      "source_frame": 473,
+      "source_time": 15.7667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.54393
+    },
+    {
+      "sequence_index": 132,
+      "file": "frame_0132.webp",
+      "source_frame": 477,
+      "source_time": 15.9,
+      "chapter": "04_AI",
+      "normalized_progress": 0.54812
+    },
+    {
+      "sequence_index": 133,
+      "file": "frame_0133.webp",
+      "source_frame": 482,
+      "source_time": 16.0667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.5523
+    },
+    {
+      "sequence_index": 134,
+      "file": "frame_0134.webp",
+      "source_frame": 486,
+      "source_time": 16.2,
+      "chapter": "04_AI",
+      "normalized_progress": 0.55649
+    },
+    {
+      "sequence_index": 135,
+      "file": "frame_0135.webp",
+      "source_frame": 490,
+      "source_time": 16.3333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.56067
+    },
+    {
+      "sequence_index": 136,
+      "file": "frame_0136.webp",
+      "source_frame": 494,
+      "source_time": 16.4667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.56485
+    },
+    {
+      "sequence_index": 137,
+      "file": "frame_0137.webp",
+      "source_frame": 498,
+      "source_time": 16.6,
+      "chapter": "04_AI",
+      "normalized_progress": 0.56904
+    },
+    {
+      "sequence_index": 138,
+      "file": "frame_0138.webp",
+      "source_frame": 502,
+      "source_time": 16.7333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.57322
+    },
+    {
+      "sequence_index": 139,
+      "file": "frame_0139.webp",
+      "source_frame": 506,
+      "source_time": 16.8667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.57741
+    },
+    {
+      "sequence_index": 140,
+      "file": "frame_0140.webp",
+      "source_frame": 510,
+      "source_time": 17.0,
+      "chapter": "04_AI",
+      "normalized_progress": 0.58159
+    },
+    {
+      "sequence_index": 141,
+      "file": "frame_0141.webp",
+      "source_frame": 515,
+      "source_time": 17.1667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.58577
+    },
+    {
+      "sequence_index": 142,
+      "file": "frame_0142.webp",
+      "source_frame": 519,
+      "source_time": 17.3,
+      "chapter": "04_AI",
+      "normalized_progress": 0.58996
+    },
+    {
+      "sequence_index": 143,
+      "file": "frame_0143.webp",
+      "source_frame": 523,
+      "source_time": 17.4333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.59414
+    },
+    {
+      "sequence_index": 144,
+      "file": "frame_0144.webp",
+      "source_frame": 527,
+      "source_time": 17.5667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.59833
+    },
+    {
+      "sequence_index": 145,
+      "file": "frame_0145.webp",
+      "source_frame": 531,
+      "source_time": 17.7,
+      "chapter": "04_AI",
+      "normalized_progress": 0.60251
+    },
+    {
+      "sequence_index": 146,
+      "file": "frame_0146.webp",
+      "source_frame": 535,
+      "source_time": 17.8333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.60669
+    },
+    {
+      "sequence_index": 147,
+      "file": "frame_0147.webp",
+      "source_frame": 539,
+      "source_time": 17.9667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.61088
+    },
+    {
+      "sequence_index": 148,
+      "file": "frame_0148.webp",
+      "source_frame": 543,
+      "source_time": 18.1,
+      "chapter": "04_AI",
+      "normalized_progress": 0.61506
+    },
+    {
+      "sequence_index": 149,
+      "file": "frame_0149.webp",
+      "source_frame": 548,
+      "source_time": 18.2667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.61925
+    },
+    {
+      "sequence_index": 150,
+      "file": "frame_0150.webp",
+      "source_frame": 552,
+      "source_time": 18.4,
+      "chapter": "04_AI",
+      "normalized_progress": 0.62343
+    },
+    {
+      "sequence_index": 151,
+      "file": "frame_0151.webp",
+      "source_frame": 556,
+      "source_time": 18.5333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.62762
+    },
+    {
+      "sequence_index": 152,
+      "file": "frame_0152.webp",
+      "source_frame": 560,
+      "source_time": 18.6667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.6318
+    },
+    {
+      "sequence_index": 153,
+      "file": "frame_0153.webp",
+      "source_frame": 564,
+      "source_time": 18.8,
+      "chapter": "04_AI",
+      "normalized_progress": 0.63598
+    },
+    {
+      "sequence_index": 154,
+      "file": "frame_0154.webp",
+      "source_frame": 568,
+      "source_time": 18.9333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.64017
+    },
+    {
+      "sequence_index": 155,
+      "file": "frame_0155.webp",
+      "source_frame": 572,
+      "source_time": 19.0667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.64435
+    },
+    {
+      "sequence_index": 156,
+      "file": "frame_0156.webp",
+      "source_frame": 576,
+      "source_time": 19.2,
+      "chapter": "04_AI",
+      "normalized_progress": 0.64854
+    },
+    {
+      "sequence_index": 157,
+      "file": "frame_0157.webp",
+      "source_frame": 581,
+      "source_time": 19.3667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.65272
+    },
+    {
+      "sequence_index": 158,
+      "file": "frame_0158.webp",
+      "source_frame": 585,
+      "source_time": 19.5,
+      "chapter": "04_AI",
+      "normalized_progress": 0.6569
+    },
+    {
+      "sequence_index": 159,
+      "file": "frame_0159.webp",
+      "source_frame": 589,
+      "source_time": 19.6333,
+      "chapter": "04_AI",
+      "normalized_progress": 0.66109
+    },
+    {
+      "sequence_index": 160,
+      "file": "frame_0160.webp",
+      "source_frame": 593,
+      "source_time": 19.7667,
+      "chapter": "04_AI",
+      "normalized_progress": 0.66527
+    },
+    {
+      "sequence_index": 161,
+      "file": "frame_0161.webp",
+      "source_frame": 594,
+      "source_time": 19.8,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.66946
+    },
+    {
+      "sequence_index": 162,
+      "file": "frame_0162.webp",
+      "source_frame": 598,
+      "source_time": 19.9333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.67364
+    },
+    {
+      "sequence_index": 163,
+      "file": "frame_0163.webp",
+      "source_frame": 602,
+      "source_time": 20.0667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.67782
+    },
+    {
+      "sequence_index": 164,
+      "file": "frame_0164.webp",
+      "source_frame": 606,
+      "source_time": 20.2,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.68201
+    },
+    {
+      "sequence_index": 165,
+      "file": "frame_0165.webp",
+      "source_frame": 610,
+      "source_time": 20.3333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.68619
+    },
+    {
+      "sequence_index": 166,
+      "file": "frame_0166.webp",
+      "source_frame": 614,
+      "source_time": 20.4667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.69038
+    },
+    {
+      "sequence_index": 167,
+      "file": "frame_0167.webp",
+      "source_frame": 618,
+      "source_time": 20.6,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.69456
+    },
+    {
+      "sequence_index": 168,
+      "file": "frame_0168.webp",
+      "source_frame": 622,
+      "source_time": 20.7333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.69874
+    },
+    {
+      "sequence_index": 169,
+      "file": "frame_0169.webp",
+      "source_frame": 627,
+      "source_time": 20.9,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.70293
+    },
+    {
+      "sequence_index": 170,
+      "file": "frame_0170.webp",
+      "source_frame": 631,
+      "source_time": 21.0333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.70711
+    },
+    {
+      "sequence_index": 171,
+      "file": "frame_0171.webp",
+      "source_frame": 635,
+      "source_time": 21.1667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.7113
+    },
+    {
+      "sequence_index": 172,
+      "file": "frame_0172.webp",
+      "source_frame": 639,
+      "source_time": 21.3,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.71548
+    },
+    {
+      "sequence_index": 173,
+      "file": "frame_0173.webp",
+      "source_frame": 643,
+      "source_time": 21.4333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.71967
+    },
+    {
+      "sequence_index": 174,
+      "file": "frame_0174.webp",
+      "source_frame": 647,
+      "source_time": 21.5667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.72385
+    },
+    {
+      "sequence_index": 175,
+      "file": "frame_0175.webp",
+      "source_frame": 651,
+      "source_time": 21.7,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.72803
+    },
+    {
+      "sequence_index": 176,
+      "file": "frame_0176.webp",
+      "source_frame": 655,
+      "source_time": 21.8333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.73222
+    },
+    {
+      "sequence_index": 177,
+      "file": "frame_0177.webp",
+      "source_frame": 659,
+      "source_time": 21.9667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.7364
+    },
+    {
+      "sequence_index": 178,
+      "file": "frame_0178.webp",
+      "source_frame": 663,
+      "source_time": 22.1,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.74059
+    },
+    {
+      "sequence_index": 179,
+      "file": "frame_0179.webp",
+      "source_frame": 667,
+      "source_time": 22.2333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.74477
+    },
+    {
+      "sequence_index": 180,
+      "file": "frame_0180.webp",
+      "source_frame": 671,
+      "source_time": 22.3667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.74895
+    },
+    {
+      "sequence_index": 181,
+      "file": "frame_0181.webp",
+      "source_frame": 675,
+      "source_time": 22.5,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.75314
+    },
+    {
+      "sequence_index": 182,
+      "file": "frame_0182.webp",
+      "source_frame": 679,
+      "source_time": 22.6333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.75732
+    },
+    {
+      "sequence_index": 183,
+      "file": "frame_0183.webp",
+      "source_frame": 683,
+      "source_time": 22.7667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.76151
+    },
+    {
+      "sequence_index": 184,
+      "file": "frame_0184.webp",
+      "source_frame": 687,
+      "source_time": 22.9,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.76569
+    },
+    {
+      "sequence_index": 185,
+      "file": "frame_0185.webp",
+      "source_frame": 692,
+      "source_time": 23.0667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.76987
+    },
+    {
+      "sequence_index": 186,
+      "file": "frame_0186.webp",
+      "source_frame": 696,
+      "source_time": 23.2,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.77406
+    },
+    {
+      "sequence_index": 187,
+      "file": "frame_0187.webp",
+      "source_frame": 700,
+      "source_time": 23.3333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.77824
+    },
+    {
+      "sequence_index": 188,
+      "file": "frame_0188.webp",
+      "source_frame": 704,
+      "source_time": 23.4667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.78243
+    },
+    {
+      "sequence_index": 189,
+      "file": "frame_0189.webp",
+      "source_frame": 708,
+      "source_time": 23.6,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.78661
+    },
+    {
+      "sequence_index": 190,
+      "file": "frame_0190.webp",
+      "source_frame": 712,
+      "source_time": 23.7333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.79079
+    },
+    {
+      "sequence_index": 191,
+      "file": "frame_0191.webp",
+      "source_frame": 716,
+      "source_time": 23.8667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.79498
+    },
+    {
+      "sequence_index": 192,
+      "file": "frame_0192.webp",
+      "source_frame": 720,
+      "source_time": 24.0,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.79916
+    },
+    {
+      "sequence_index": 193,
+      "file": "frame_0193.webp",
+      "source_frame": 724,
+      "source_time": 24.1333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.80335
+    },
+    {
+      "sequence_index": 194,
+      "file": "frame_0194.webp",
+      "source_frame": 728,
+      "source_time": 24.2667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.80753
+    },
+    {
+      "sequence_index": 195,
+      "file": "frame_0195.webp",
+      "source_frame": 732,
+      "source_time": 24.4,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.81172
+    },
+    {
+      "sequence_index": 196,
+      "file": "frame_0196.webp",
+      "source_frame": 736,
+      "source_time": 24.5333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.8159
+    },
+    {
+      "sequence_index": 197,
+      "file": "frame_0197.webp",
+      "source_frame": 740,
+      "source_time": 24.6667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.82008
+    },
+    {
+      "sequence_index": 198,
+      "file": "frame_0198.webp",
+      "source_frame": 744,
+      "source_time": 24.8,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.82427
+    },
+    {
+      "sequence_index": 199,
+      "file": "frame_0199.webp",
+      "source_frame": 748,
+      "source_time": 24.9333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.82845
+    },
+    {
+      "sequence_index": 200,
+      "file": "frame_0200.webp",
+      "source_frame": 752,
+      "source_time": 25.0667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.83264
+    },
+    {
+      "sequence_index": 201,
+      "file": "frame_0201.webp",
+      "source_frame": 757,
+      "source_time": 25.2333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.83682
+    },
+    {
+      "sequence_index": 202,
+      "file": "frame_0202.webp",
+      "source_frame": 761,
+      "source_time": 25.3667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.841
+    },
+    {
+      "sequence_index": 203,
+      "file": "frame_0203.webp",
+      "source_frame": 765,
+      "source_time": 25.5,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.84519
+    },
+    {
+      "sequence_index": 204,
+      "file": "frame_0204.webp",
+      "source_frame": 769,
+      "source_time": 25.6333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.84937
+    },
+    {
+      "sequence_index": 205,
+      "file": "frame_0205.webp",
+      "source_frame": 773,
+      "source_time": 25.7667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.85356
+    },
+    {
+      "sequence_index": 206,
+      "file": "frame_0206.webp",
+      "source_frame": 777,
+      "source_time": 25.9,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.85774
+    },
+    {
+      "sequence_index": 207,
+      "file": "frame_0207.webp",
+      "source_frame": 781,
+      "source_time": 26.0333,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.86192
+    },
+    {
+      "sequence_index": 208,
+      "file": "frame_0208.webp",
+      "source_frame": 785,
+      "source_time": 26.1667,
+      "chapter": "05_ARCHITECTURE",
+      "normalized_progress": 0.86611
+    },
+    {
+      "sequence_index": 209,
+      "file": "frame_0209.webp",
+      "source_frame": 786,
+      "source_time": 26.2,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.87029
+    },
+    {
+      "sequence_index": 210,
+      "file": "frame_0210.webp",
+      "source_frame": 790,
+      "source_time": 26.3333,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.87448
+    },
+    {
+      "sequence_index": 211,
+      "file": "frame_0211.webp",
+      "source_frame": 793,
+      "source_time": 26.4333,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.87866
+    },
+    {
+      "sequence_index": 212,
+      "file": "frame_0212.webp",
+      "source_frame": 797,
+      "source_time": 26.5667,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.88285
+    },
+    {
+      "sequence_index": 213,
+      "file": "frame_0213.webp",
+      "source_frame": 801,
+      "source_time": 26.7,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.88703
+    },
+    {
+      "sequence_index": 214,
+      "file": "frame_0214.webp",
+      "source_frame": 804,
+      "source_time": 26.8,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.89121
+    },
+    {
+      "sequence_index": 215,
+      "file": "frame_0215.webp",
+      "source_frame": 808,
+      "source_time": 26.9333,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.8954
+    },
+    {
+      "sequence_index": 216,
+      "file": "frame_0216.webp",
+      "source_frame": 812,
+      "source_time": 27.0667,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.89958
+    },
+    {
+      "sequence_index": 217,
+      "file": "frame_0217.webp",
+      "source_frame": 815,
+      "source_time": 27.1667,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.90377
+    },
+    {
+      "sequence_index": 218,
+      "file": "frame_0218.webp",
+      "source_frame": 819,
+      "source_time": 27.3,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.90795
+    },
+    {
+      "sequence_index": 219,
+      "file": "frame_0219.webp",
+      "source_frame": 822,
+      "source_time": 27.4,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.91213
+    },
+    {
+      "sequence_index": 220,
+      "file": "frame_0220.webp",
+      "source_frame": 826,
+      "source_time": 27.5333,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.91632
+    },
+    {
+      "sequence_index": 221,
+      "file": "frame_0221.webp",
+      "source_frame": 830,
+      "source_time": 27.6667,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.9205
+    },
+    {
+      "sequence_index": 222,
+      "file": "frame_0222.webp",
+      "source_frame": 833,
+      "source_time": 27.7667,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.92469
+    },
+    {
+      "sequence_index": 223,
+      "file": "frame_0223.webp",
+      "source_frame": 837,
+      "source_time": 27.9,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.92887
+    },
+    {
+      "sequence_index": 224,
+      "file": "frame_0224.webp",
+      "source_frame": 841,
+      "source_time": 28.0333,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.93305
+    },
+    {
+      "sequence_index": 225,
+      "file": "frame_0225.webp",
+      "source_frame": 844,
+      "source_time": 28.1333,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.93724
+    },
+    {
+      "sequence_index": 226,
+      "file": "frame_0226.webp",
+      "source_frame": 848,
+      "source_time": 28.2667,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.94142
+    },
+    {
+      "sequence_index": 227,
+      "file": "frame_0227.webp",
+      "source_frame": 852,
+      "source_time": 28.4,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.94561
+    },
+    {
+      "sequence_index": 228,
+      "file": "frame_0228.webp",
+      "source_frame": 855,
+      "source_time": 28.5,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.94979
+    },
+    {
+      "sequence_index": 229,
+      "file": "frame_0229.webp",
+      "source_frame": 859,
+      "source_time": 28.6333,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.95397
+    },
+    {
+      "sequence_index": 230,
+      "file": "frame_0230.webp",
+      "source_frame": 863,
+      "source_time": 28.7667,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.95816
+    },
+    {
+      "sequence_index": 231,
+      "file": "frame_0231.webp",
+      "source_frame": 866,
+      "source_time": 28.8667,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.96234
+    },
+    {
+      "sequence_index": 232,
+      "file": "frame_0232.webp",
+      "source_frame": 870,
+      "source_time": 29.0,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.96653
+    },
+    {
+      "sequence_index": 233,
+      "file": "frame_0233.webp",
+      "source_frame": 873,
+      "source_time": 29.1,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.97071
+    },
+    {
+      "sequence_index": 234,
+      "file": "frame_0234.webp",
+      "source_frame": 877,
+      "source_time": 29.2333,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.9749
+    },
+    {
+      "sequence_index": 235,
+      "file": "frame_0235.webp",
+      "source_frame": 881,
+      "source_time": 29.3667,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.97908
+    },
+    {
+      "sequence_index": 236,
+      "file": "frame_0236.webp",
+      "source_frame": 884,
+      "source_time": 29.4667,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.98326
+    },
+    {
+      "sequence_index": 237,
+      "file": "frame_0237.webp",
+      "source_frame": 888,
+      "source_time": 29.6,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.98745
+    },
+    {
+      "sequence_index": 238,
+      "file": "frame_0238.webp",
+      "source_frame": 892,
+      "source_time": 29.7333,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.99163
+    },
+    {
+      "sequence_index": 239,
+      "file": "frame_0239.webp",
+      "source_frame": 895,
+      "source_time": 29.8333,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 0.99582
+    },
+    {
+      "sequence_index": 240,
+      "file": "frame_0240.webp",
+      "source_frame": 899,
+      "source_time": 29.9667,
+      "chapter": "06_ECOSYSTEM",
+      "normalized_progress": 1.0
+    }
+  ]
+}
