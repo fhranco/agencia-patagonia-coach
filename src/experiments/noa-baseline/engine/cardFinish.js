@@ -68,16 +68,16 @@ export const paintStudyBack=function(canvas,p,index){
   para(p.detail,70,1090,850,27,37);break;
  case 3:
   c.strokeStyle=accent;c.globalAlpha=.3;c.strokeRect(90,170,844,950);c.globalAlpha=1;
-  title(512,224,114,'center');text('SISTEMAS DIGITALES & ARQUITECTURA WEB',512,505,21,accent,'IBM Plex Mono','center');
+  title(512,224,114,'center');text('ESTRATEGIA DIGITAL & DEMANDA',512,505,21,accent,'IBM Plex Mono','center');
   para(p.description,155,590,714,31,44);
   p.fragments.forEach((_,i)=>{const x=150+i*248;fragment(i,x,930,215);});break;
  case 4:
-  title(70,182,108);text('a',900,375,440,accent,'Bricolage','right');
-  label(p.label,70,555);para(p.short,70,610,410,36,48);
+  title(70,182,108);
+  label(p.label,70,555);para(p.short,70,610,650,36,48);
   rule(70,900);para(p.description,70,950,850,31,43);break;
  case 5:
-  text('Ingeniería de',70,190,108,ink,'Bricolage');text('Software',195,315,140,accent,'Bricolage');
-  p.fragments.forEach((line,i)=>{text(line,70+i*90,580+i*98,37,i===1?accent:ink);});
+  title(70,184,112);rule(70,555);
+  p.fragments.forEach((line,i)=>{text(line,70+i*60,600+i*98,34,i===1?accent:ink);});
   para(p.description,70,950,850,30,43);break;
  case 6:
   title(70,184,112);label(p.label,70,465);
@@ -92,7 +92,7 @@ export const paintStudyBack=function(canvas,p,index){
  }
  const contentBottom=bottom;
  c.fillStyle=accent;c.beginPath();c.arc(74,1200,4,0,Math.PI*2);c.fill();
- text(p.category.toUpperCase(),96,1191,17,muted,'IBM Plex Mono');text('PUNTA ARENAS · 53°09′S // 2026',954,1191,17,muted,'IBM Plex Mono','right');
+ text((p.category || p.label || 'ESTUDIO TÉCNICO').toUpperCase(),96,1191,17,muted,'IBM Plex Mono');text('PUNTA ARENAS · 53°09′S // 2026',954,1191,17,muted,'IBM Plex Mono','right');
  return{contentBottom,footerTop:1191};
 };
 

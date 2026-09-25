@@ -32,6 +32,7 @@ export const STUDY_NOTES = [
   {
     provenance: "REAL PROJECT",
     accent: "#38bdf8",
+    category: "Movilidad & E-Commerce",
     layout: "sequence",
     label: "Movilidad & E-Commerce",
     titleLines: ["AGM Rent", "a Car"],
@@ -43,6 +44,7 @@ export const STUDY_NOTES = [
   {
     provenance: "REAL PROJECT",
     accent: "#f59e0b",
+    category: "Gastronomía & Smash Burgers",
     layout: "contrast",
     label: "Gastronomía & Marca",
     titleLines: ["Ruta 9", "Burgers"],
@@ -53,29 +55,105 @@ export const STUDY_NOTES = [
   },
   {
     provenance: "REAL PROJECT",
-    accent: "#2dd4bf",
-    layout: "manifesto",
-    label: "Salud Visual & Tecnología Óptica",
-    titleLines: ["Óptica", "Harris"],
-    short: "Presencia digital, catálogo tecnológico y posicionamiento local en Punta Arenas.",
-    description: "Estrategia digital y posicionamiento web para óptica establecida en Magallanes. Estructura para la exhibición de anteojos y tecnologías ópticas de fabricantes globales (incluyendo smart glasses Ray-Ban Meta y cristales de alta precisión Varilux y Mimetika), combinada con SEO local para captar búsquedas de salud visual en Punta Arenas.",
-    fragments: ["Tecnología / Smart glasses Ray-Ban Meta", "Cristales / Varilux y Mimetika de precisión", "SEO / Captación de salud visual austral"],
-    detail: "Catálogo estructurado con schemas semánticos de óptica y ubicación geográfica."
-  },
-  {
-    provenance: "REAL PROJECT",
     accent: "#10b981",
+    category: "Economía Circular & Residuos",
     layout: "sequence",
     label: "Economía Circular & Residuos",
     titleLines: ["REMAG", "Circular"],
     short: "Ecosistema digital y comunicación para la gestión de residuos y vidrio en Magallanes.",
-    description: "Estrategia de comunicación y portal web para el proyecto de reciclaje y valorización de vidrio en la Patagonia. Difusión de la red de puntos limpios en el territorio magallánico, contenidos de educación ambiental y articulación con la comunidad para fomentar la economía circular regional.",
+    description: "Estrategia de comunicación y portal web para el proyecto de reciclaje y valorización de vidrio en la Patagonia. Difusión de la red de puntos limpios en el territorio magallánico, contenidos de educación ambiental y articulación comunitaria.",
     fragments: ["Territorio / Red de puntos limpios", "Vidrio / Valorización y economía circular", "Comunidad / Trazabilidad ciudadana"],
     detail: "Portal interactivo con georreferenciación de puntos de acopio en la región."
   },
   {
     provenance: "REAL PROJECT",
+    accent: "#06b6d4",
+    category: "Estrategia Digital & Demanda",
+    layout: "contrast",
+    label: "Marketing Digital & Demanda",
+    titleLines: ["Boost", "Patagonia"],
+    short: "Marketing digital de alta conversión y posicionamiento estratégico en la Patagonia.",
+    description: "Arquitectura web de alto rendimiento y modelos de captación de demanda para consultoría de marketing. Interfaces de inmersión y cálculo de retorno de inversión para negocios regionales en Magallanes.",
+    fragments: ["Estrategia / Embudos de captación", "Conversión / Métricas de retorno", "Autoridad / Posicionamiento regional"],
+    detail: "Ecosistema digital enfocado en adquisición medible de clientes."
+  },
+  {
+    provenance: "REAL PROJECT",
+    accent: "#38bdf8",
+    category: "Turismo Receptivo & Aventura",
+    layout: "sequence",
+    label: "Turismo Receptivo & Aventura",
+    titleLines: ["Travesía", "Paine"],
+    short: "Turismo de aventura, hotelería y expediciones en Torres del Paine.",
+    description: "Portal de inmersión visual y reservas directas para operadores de turismo aventura en Torres del Paine. Optimizado para viajeros internacionales con tiempos de carga instantáneos.",
+    fragments: ["Expediciones / Torres del Paine", "Reservas / Motor de reservas directas", "Experiencia / UI visual de alta fidelidad"],
+    detail: "Tiempos de carga ultra rápidos adaptados a viajeros de todo el mundo."
+  },
+  {
+    provenance: "REAL PROJECT",
+    accent: "#f59e0b",
+    category: "Real Estate & Urbanismo",
+    layout: "contrast",
+    label: "Real Estate & Urbanismo",
+    titleLines: ["Inmobiliaria", "Magallanes"],
+    short: "Desarrollo urbano, terrenos y proyectos habitacionales en la Patagonia Austral.",
+    description: "Plataforma para la presentación de desarrollos inmobiliarios, lotes y proyectos residenciales en el territorio magallánico. Módulos de filtrado ágil y captación de inversionistas.",
+    fragments: ["Urbanismo / Proyectos residenciales", "Catálogo / Filtrado ágil de parcelas", "Inversión / Captación de clientes B2B"],
+    detail: "Fichas técnicas interactivas y arquitectura semántica inmobiliaria."
+  },
+  {
+    provenance: "REAL PROJECT",
     accent: "#6366f1",
+    category: "Seguridad & Tecnología",
+    layout: "sequence",
+    label: "Seguridad & Tecnología",
+    titleLines: ["Seguridad &", "Tecnología"],
+    short: "Ingeniería en seguridad electrónica, telecomunicaciones y CCTV en Magallanes.",
+    description: "Portal corporativo e ingeniería de confianza técnica para licitaciones y contratos industriales en el extremo sur. Estructura de servicios de telecomunicación y videovigilancia.",
+    fragments: ["Ingeniería / Seguridad electrónica CCTV", "Telecomunicaciones / Enlaces remotos australes", "Contratos / Licitaciones industriales B2B"],
+    detail: "Autoridad técnica estructurada para contratos de minería, logística y retail."
+  },
+  {
+    provenance: "REAL PROJECT",
+    accent: "#10b981",
+    category: "Operaciones B2B & Logística",
+    layout: "contrast",
+    label: "Operaciones B2B & Logística",
+    titleLines: ["Tailor", "Servicios"],
+    short: "Logística, soporte operativo y desarrollo integral para empresas en la Patagonia.",
+    description: "Ecosistema de presentación de servicios industriales, logística operativa y soporte en terreno para faenas australes. Presentación de flota y cotizaciones corporativas.",
+    fragments: ["Operaciones / Soporte industrial en terreno", "Logística / Flota y equipamiento austral", "Cotizaciones / Canal corporativo ágil"],
+    detail: "Arquitectura corporativa orientada a conversión de contratos B2B."
+  },
+  // Estudios técnicos complementarios (túnel 09-16) basados en los mismos ecosistemas reales
+  {
+    provenance: "REAL PROJECT",
+    accent: "#ec4899",
+    category: "Salud & Bienestar de Autor",
+    layout: "manifesto",
+    label: "Salud & Bienestar de Autor",
+    titleLines: ["Nutrición", "Integrativa"],
+    short: "Salud, bienestar y agendamiento clínico de precisión en el confín austral.",
+    description: "Portal de salud y bienestar con sistema de agendamiento digital, divulgación científica y consulta clínica. Interfaz minimalista de alta retención y experiencia serena.",
+    fragments: ["Clínica / Agendamiento digital directo", "Divulgación / Evidencia científica aplicada", "Experiencia / UI serena y minimalista"],
+    detail: "Plataforma enfocada en salud integral y retención de pacientes."
+  },
+  {
+    provenance: "REAL PROJECT",
+    accent: "#2dd4bf",
+    category: "Salud Visual & Tecnología Óptica",
+    layout: "sequence",
+    label: "Salud Visual & Tecnología Óptica",
+    titleLines: ["Óptica", "Harris"],
+    short: "Presencia digital, catálogo tecnológico y posicionamiento local en Punta Arenas.",
+    description: "Estrategia digital y posicionamiento web para óptica establecida en Magallanes. Exhibición de smart glasses Ray-Ban Meta y cristales de alta precisión Varilux y Mimetika.",
+    fragments: ["Tecnología / Smart glasses Ray-Ban Meta", "Cristales / Varilux y Mimetika de precisión", "SEO / Captación de salud visual austral"],
+    detail: "Catálogo estructurado con schemas semánticos de óptica y ubicación geográfica."
+  },
+  {
+    provenance: "REAL PROJECT",
+    accent: "#6366f1",
+    category: "E-Commerce B2B Austral",
     layout: "contrast",
     label: "E-Commerce B2B Austral",
     titleLines: ["Comercial", "de la Patagonia"],
@@ -87,6 +165,7 @@ export const STUDY_NOTES = [
   {
     provenance: "REAL PROJECT",
     accent: "#0ea5e9",
+    category: "Visualización de Datos",
     layout: "manifesto",
     label: "Visualización de Datos Institucional",
     titleLines: ["Agenda Circular", "Magallanes"],
@@ -98,6 +177,7 @@ export const STUDY_NOTES = [
   {
     provenance: "REAL INTERNAL PRODUCT",
     accent: "#ec4899",
+    category: "SaaS de Planificación Táctica",
     layout: "sequence",
     label: "SaaS de Planificación Táctica",
     titleLines: ["Insta-Planner", "V3"],
@@ -109,6 +189,7 @@ export const STUDY_NOTES = [
   {
     provenance: "REAL INTERNAL PRODUCT",
     accent: "#f43f5e",
+    category: "Herramienta Estratégica & Scoring",
     layout: "contrast",
     label: "Herramienta Estratégica & Scoring",
     titleLines: ["Diagnóstico", "Digital"],
@@ -117,21 +198,10 @@ export const STUDY_NOTES = [
     fragments: ["Diagnóstico / Scoring técnico inmediato", "Hoja de ruta / Recomendaciones a medida", "Estrategia / Priorización de inversión digital"],
     detail: "Algoritmo de ponderación técnica con derivación a plan de acción inmediato."
   },
-  // Estudios técnicos complementarios (túnel 09-16) basados en los mismos ecosistemas reales
-  {
-    provenance: "REAL CAPABILITY DEMO",
-    accent: "#38bdf8",
-    layout: "manifesto",
-    label: "Sistemas de Reservas",
-    titleLines: ["Arquitectura", "de Flota"],
-    short: "Estructura de catálogo y tarifas en tiempo real.",
-    description: "Diseño modular de disponibilidad vehicular y cálculo dinámico de itinerarios para el turismo receptivo de la Patagonia.",
-    fragments: ["Disponibilidad / Sincronización continua", "Tarifario / Reglas de temporada", "Infraestructura / Edge caching"],
-    detail: "Respuestas API en menos de 50ms para navegación sin fricción."
-  },
   {
     provenance: "REAL CAPABILITY DEMO",
     accent: "#f59e0b",
+    category: "SEO Local & GEO",
     layout: "sequence",
     label: "SEO Local & Mapas",
     titleLines: ["Cobertura", "GEO Magallanes"],
@@ -142,69 +212,15 @@ export const STUDY_NOTES = [
   },
   {
     provenance: "REAL CAPABILITY DEMO",
-    accent: "#2dd4bf",
-    layout: "contrast",
-    label: "Catálogo Tecnológico",
-    titleLines: ["Precisión", "Óptica UI"],
-    short: "Exhibición de tecnologías ópticas globales.",
-    description: "Estructura de catálogo para smart glasses Ray-Ban Meta y cristales de alta gama con foco en claridad visual y especificaciones técnicas.",
-    fragments: ["Especificación / Fichas técnicas claras", "Catálogo / Navegación por filtros", "Experiencia / UI de alta precisión"],
-    detail: "Diseño visual enfocado en fidelidad de producto y confianza de marca."
-  },
-  {
-    provenance: "REAL CAPABILITY DEMO",
-    accent: "#10b981",
-    layout: "sequence",
-    label: "Economía Circular",
-    titleLines: ["Mapeo", "Puntos Limpios"],
-    short: "Portal georreferenciado para trazabilidad de reciclaje.",
-    description: "Plataforma de mapeo territorial para la red de puntos de reciclaje de vidrio en Punta Arenas y la región austral.",
-    fragments: ["Georreferenciación / Puntos de acopio", "Trazabilidad / Registro de impacto", "Educación / Contenidos para la comunidad"],
-    detail: "Carga progresiva de mapas con soporte offline básico."
-  },
-  {
-    provenance: "REAL CAPABILITY DEMO",
-    accent: "#6366f1",
+    accent: "#38bdf8",
+    category: "Sistemas de Reservas",
     layout: "manifesto",
-    label: "Distribución Mayorista",
-    titleLines: ["Flujo de", "Pedidos B2B"],
-    short: "Catálogo SPA de alta velocidad para órdenes mayoristas.",
-    description: "Arquitectura pensada para minimizar pasos en pedidos B2B recurrentes, optimizada para operarse desde bodegas o terreno.",
-    fragments: ["QuickView / Vista rápida de productos", "Carro B2B / Manejo de volumen", "Sincronización / Validación de stock"],
-    detail: "Flujos transaccionales resilientes ante conectividad inestable."
-  },
-  {
-    provenance: "REAL CAPABILITY DEMO",
-    accent: "#0ea5e9",
-    layout: "contrast",
-    label: "Indicadores Regionales",
-    titleLines: ["Matriz", "Territorial"],
-    short: "Visualización interactiva de sustentabilidad en Magallanes.",
-    description: "Módulo analítico que traduce variables ambientales y productivas en dashboards limpios para instituciones y empresas.",
-    fragments: ["Métricas / Series temporales", "Visualización / SVG optimizado", "Decisión / Datos listos para la acción"],
-    detail: "Renderizado reactivo sin librerías pesadas de gráficos."
-  },
-  {
-    provenance: "REAL CAPABILITY DEMO",
-    accent: "#ec4899",
-    layout: "sequence",
-    label: "Automatización SaaS",
-    titleLines: ["Motor", "Multitenant"],
-    short: "Orquestación de publicación y flujos sin fricción.",
-    description: "Motor centralizado de reglas de automatización que gestiona permisos, agendas y publicaciones multicanal de forma segura.",
-    fragments: ["Colas / Procesamiento asíncrono", "Seguridad / Aislamiento por tenant", "Webhooks / Conectores de integración"],
-    detail: "Arquitectura Serverless escalable con costos operativos controlados."
-  },
-  {
-    provenance: "REAL CAPABILITY DEMO",
-    accent: "#f43f5e",
-    layout: "manifesto",
-    label: "Diagnóstico Estratégico",
-    titleLines: ["Algoritmo", "Austral"],
-    short: "Scoring técnico en tiempo real para madurez digital.",
-    description: "Sistema de ponderación cuantitativa que evalúa pilares de presencia web, SEO y automatización de procesos.",
-    fragments: ["Scoring / Ponderación multidimensional", "Reporte / Recomendaciones automáticas", "Conversión / Enrutamiento a consultoría"],
-    detail: "Cálculo instantáneo en cliente sin latencia de servidor."
+    label: "Sistemas de Reservas",
+    titleLines: ["Arquitectura", "de Flota"],
+    short: "Estructura de catálogo y tarifas en tiempo real.",
+    description: "Diseño modular de disponibilidad vehicular y cálculo dinámico de itinerarios para el turismo receptivo de la Patagonia.",
+    fragments: ["Disponibilidad / Sincronización continua", "Tarifario / Reglas de temporada", "Infraestructura / Edge caching"],
+    detail: "Respuestas API en menos de 50ms para navegación sin fricción."
   }
 ];
 

@@ -12,9 +12,9 @@ const navItems = [
 
 const BottomNav = () => {
   const location = useLocation();
-  const isHomePath = location.pathname === '/';
+  const isHomeOrBaseline = location.pathname === '/' || location.pathname.startsWith('/lab/noa-baseline');
 
-  if (isHomePath) {
+  if (isHomeOrBaseline) {
     return null;
   }
 

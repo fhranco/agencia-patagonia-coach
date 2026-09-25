@@ -178,8 +178,8 @@ const HeroEditorial = () => {
         {/* Crop 1: AGM Rent a Car Primary Expanding Anchor */}
         <div ref={agmCropRef} className="hero-crop-agm">
           <img 
-            src="/images/projects-showcase.webp" 
-            alt="AGM Rent a Car - Maqueta de Catálogo de Flota" 
+            src="/portfolio/agm rent a car en la patagonia.webp" 
+            alt="AGM Rent a Car - Plataforma Web y Catálogo de Flota en Magallanes" 
             className="hero-crop-agm-img"
           />
           <div className="hero-crop-agm-overlay" />

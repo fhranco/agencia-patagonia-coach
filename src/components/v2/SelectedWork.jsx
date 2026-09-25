@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, CheckCircle, Globe, Shield, Sparkles, Cpu, Layers } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import PortfolioCatalog from './PortfolioCatalog';
 import './SelectedWork.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -104,8 +105,8 @@ const SelectedWork = () => {
           {/* Visual Dominance Column - Editorial Mockup Container */}
           <div className="agm-visual-window">
             <img 
-              src="/images/projects-showcase.webp" 
-              alt="AGM Rent a Car - Maqueta de Cotizador Web y Catálogo de Flota" 
+              src="/portfolio/agm rent a car en la patagonia.webp" 
+              alt="AGM Rent a Car - Cotizador Web y Catálogo de Flota en Magallanes" 
               className="agm-visual-img"
               loading="lazy"
             />
@@ -229,13 +230,13 @@ const SelectedWork = () => {
           {/* Visual Column: Editorial Photography Frame */}
           <div className="ruta9-visual-frame">
             <img 
-              src="/gourmet_dish_luxury.webp" 
-              alt="Ruta 9 - Maqueta Editorial de Gastronomía y Smash Burgers en Punta Arenas" 
+              src="/portfolio/pedidos rápidos, burgers increíbles.webp" 
+              alt="Ruta 9 - Gastronomía Austral y Smash Burgers en Punta Arenas" 
               className="ruta9-visual-img"
               loading="lazy"
             />
             <div className="ruta9-overlay-content">
-              <span className="ruta9-coords-badge">MAQUETA PROVISIONAL • GASTRONOMÍA & MARCA</span>
+              <span className="ruta9-coords-badge">PROYECTO REAL • GASTRONOMÍA & MARCA</span>
               <p className="font-heading text-xl text-white font-light mt-1">Sabor, Identidad & Marca Austral</p>
             </div>
           </div>
@@ -376,19 +377,26 @@ const SelectedWork = () => {
           {/* Visual Column: Circular Economy & Clean Points */}
           <div className="remag-network-col">
             <img 
-              src="/images/apps-pro.webp" 
-              alt="REMAG - Maqueta de Red de Puntos Limpios y Reciclaje de Vidrio en Magallanes" 
+              src="/portfolio/presentación web remag_ reciclaje sostenible.webp" 
+              alt="REMAG - Red de Puntos Limpios y Reciclaje de Vidrio en Magallanes" 
               className="remag-network-img"
               loading="lazy"
             />
             <div className="remag-overlay-badge">
               <span className="font-mono text-[10px] text-patagonia-gold uppercase tracking-widest">
-                MAQUETA PROVISIONAL • PUNTOS LIMPIOS & VIDRIO
+                PROYECTO REAL • PUNTOS LIMPIOS & VIDRIO
               </span>
             </div>
           </div>
         </div>
       </section>
+
+      {/* =====================================================================
+          CATÁLOGO EXTENDIDO: 6 PROYECTOS COMPLEMENTARIOS DEL PORTAFOLIO
+          BoostPatagonia, Travesía Paine, Inmobiliaria Magallanes, Serviseg,
+          Tailor Servicios, Nutrición Integrativa
+          ===================================================================== */}
+      <PortfolioCatalog />
 
       {/* =====================================================================
           BRIDGE ELEMENT: SELECTED WORK -> DESARROLLO (Physical Continuity)

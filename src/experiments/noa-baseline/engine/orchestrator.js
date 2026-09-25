@@ -519,6 +519,12 @@ export function initNoaBaseline(rootElement) {
     const notesEl = dialog.querySelector("#project-notes");
     if (notesEl) window.renderStudyNotes(notesEl, p);
 
+    const ctaEl = dialog.querySelector("#project-whatsapp-cta");
+    if (ctaEl) {
+      const msg = `Hola Franco (PatagoniaCoach), estuve revisando el caso ${p.title} en la web y me gustaría evaluar un proyecto o desarrollo similar.`;
+      ctaEl.href = `https://wa.me/56995684198?text=${encodeURIComponent(msg)}`;
+    }
+
     dialog.dataset.project = p.id;
     dialog.dataset.layout = p.layout;
     dialog.style.setProperty("--study-accent", p.accent || "#c8552b");
@@ -603,6 +609,27 @@ export function initNoaBaseline(rootElement) {
     }
   };
   window.addEventListener("message", onMessageContact);
+
+  const briefForm = $("#brief-form");
+  if (briefForm) {
+    briefForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const name = ($("#brief-name")?.value || "").trim();
+      const idea = ($("#brief-idea")?.value || "").trim();
+      const statusEl = $("#brief-status");
+
+      briefForm.dataset.saved = "true";
+      if (statusEl) statusEl.textContent = "Conectando con WhatsApp de PatagoniaCoach...";
+
+      const customMsg = `Hola Franco (PatagoniaCoach), mi nombre es ${name || "un visitante web"}. Me gustaría coordinar una conversación sobre el siguiente desafío o proyecto: ${idea}`;
+      const url = `https://wa.me/56995684198?text=${encodeURIComponent(customMsg)}`;
+
+      setTimeout(() => {
+        window.open(url, "_blank", "noopener,noreferrer");
+        if (statusEl) statusEl.textContent = "Mensaje preparado en WhatsApp. ¡Hablamos pronto!";
+      }, 350);
+    });
+  }
 
   const dockDestroy = initSableDock(rootElement);
   initStudioAtelier(rootElement, StudioScore);

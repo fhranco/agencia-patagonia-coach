@@ -622,17 +622,23 @@ body{margin:0;background:var(--bg);color:#8a8a8f;font-family:&quot;Geist Mono&qu
   </main>
   <footer class="site-footer">
     <div class="footer-signoff">
-      <span class="footer-signoff-name"><span data-artist-name="">PatagoniaCoach</span><span class="footer-period" aria-hidden="true">.</span></span><span class="micro">Punta Arenas · Chile · 53°09′S 70°55′W <span class="footer-year">© 2026</span></span>
+      <span class="footer-signoff-name"><span data-artist-name="">PatagoniaCoach</span><span class="footer-period" aria-hidden="true">.</span></span>
+      <span class="micro">Punta Arenas · Patagonia · Chile · 53°09′S 70°55′W <span class="footer-year">© 2026</span></span>
+      <span class="micro" style="margin-top:0.35rem;display:block;opacity:0.8"><a href="https://wa.me/56995684198?text=Hola%20PatagoniaCoach,%20me%20gustar%C3%ADa%20coordinar%20una%20conversaci%C3%B3n." target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">+56 9 9568 4198</a> · <a href="mailto:hola@agenciapatagoniacoach.cl" style="color:inherit;text-decoration:none">hola@agenciapatagoniacoach.cl</a></span>
     </div>
     <div class="footer-socials" aria-label="Enlaces y servicios">
-      <span class="micro footer-socials-label">Servicios /</span>
+      <span class="micro footer-socials-label">Ecosistema /</span>
       <ul>
-        <li><a href="/servicios/desarrollo-web" style="color:inherit;text-decoration:none">Desarrollo Web</a></li>
+        <li><a href="/servicios/desarrollo-web" style="color:inherit;text-decoration:none">Desarrollo Web Pro</a></li>
         <li><a href="/servicios/seo-local-magallanes" style="color:inherit;text-decoration:none">SEO Local Magallanes</a></li>
         <li><a href="/servicios/automatizacion-con-ia" style="color:inherit;text-decoration:none">Automatización con IA</a></li>
         <li><a href="/servicios/comunicacion-digital" style="color:inherit;text-decoration:none">Comunicación Digital</a></li>
         <li><a href="/servicios/consultoria-transformacion-digital" style="color:inherit;text-decoration:none">Consultoría Digital</a></li>
+        <li><a href="/servicios/aplicaciones-web-pro" style="color:inherit;text-decoration:none">Aplicaciones Web Pro</a></li>
         <li><a href="/academia" style="color:inherit;text-decoration:none">Academia</a></li>
+        <li><a href="/zonas/magallanes" style="color:inherit;text-decoration:none">Punta Arenas</a></li>
+        <li><a href="/zonas/puerto-natales" style="color:inherit;text-decoration:none">Puerto Natales</a></li>
+        <li><a href="/zonas/tierra-del-fuego" style="color:inherit;text-decoration:none">Tierra del Fuego</a></li>
       </ul>
     </div>
   </footer>
@@ -649,6 +655,12 @@ body{margin:0;background:var(--bg);color:#8a8a8f;font-family:&quot;Geist Mono&qu
       <div class="project-nav">
         <button id="project-prev" aria-label="Caso anterior">←</button><span class="micro">Explorar otro caso</span><button id="project-next" aria-label="Siguiente caso">→</button>
       </div>
+      <div class="project-action" style="margin-top:1.75rem;padding-top:1.25rem;border-top:1px solid rgba(89,84,73,0.2)">
+        <a id="project-whatsapp-cta" href="https://wa.me/56995684198" target="_blank" rel="noopener noreferrer" class="solid-button" style="display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;padding:0.75rem 1.4rem;border-radius:9999px;background:#1a1916;color:#f4eedb;font-family:'IBM Plex Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em">
+          <span>Cotizar proyecto similar</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
     </article>
   </dialog>
   <dialog id="contact-dialog" class="text-dialog" aria-labelledby="contact-title" data-lenis-prevent="">
@@ -661,7 +673,18 @@ body{margin:0;background:var(--bg);color:#8a8a8f;font-family:&quot;Geist Mono&qu
     <p>Comienza con un objetivo comercial, una necesidad de automatización o un nuevo proyecto.</p>
     <form id="brief-form">
       <label for="brief-name"><span aria-hidden="true">01</span> Nombre o Empresa</label><input id="brief-name" name="name" autocomplete="name" placeholder="¿Cómo te llamas o qué empresa representas?"><label for="brief-idea"><span aria-hidden="true">02</span> Desafío o proyecto</label><textarea id="brief-idea" name="idea" rows="4" required="" placeholder="Describe brevemente lo que necesitas..."></textarea><button type="submit" class="solid-button brief-save"><span>Enviar mensaje</span><span class="brief-save-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path class="save-paper" d="M7 4h12l6 6v18H7Z"></path><path class="save-fold" d="M19 4v6h6"></path><g class="save-arrow"><path d="M16 11v11m-4-4 4 4 4-4"></path></g><path class="save-check" d="m11 18 3 3 7-8"></path></svg></span></button>
-      <p id="brief-status" class="micro" role="status">Guardar copia o conectar directamente.</p>
+      <p id="brief-status" class="micro" role="status">Conectar directamente vía WhatsApp o guardar copia.</p>
+      <div class="brief-direct" style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;gap:0.4rem">
+        <span class="micro" style="opacity:0.7">Canal directo inmediato:</span>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="https://wa.me/56995684198?text=Hola%20PatagoniaCoach,%20me%20gustar%C3%ADa%20coordinar%20una%20conversaci%C3%B3n%20sobre%20un%20proyecto%20digital." target="_blank" rel="noopener noreferrer" style="color:var(--study-accent,#38bdf8);font-family:'IBM Plex Mono',monospace;font-size:0.75rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.35rem">
+            <span>WhatsApp (+56 9 9568 4198)</span> ↗
+          </a>
+          <a href="mailto:hola@agenciapatagoniacoach.cl" style="color:inherit;opacity:0.85;font-family:'IBM Plex Mono',monospace;font-size:0.75rem;text-decoration:none">
+            hola@agenciapatagoniacoach.cl ↗
+          </a>
+        </div>
+      </div>
     </form>
   </dialog>
   <noscript>
